@@ -1,0 +1,27 @@
+---
+permalink: maintain/fixing-mssing-network-interface-errors.html 
+sidebar: sidebar 
+keywords: storagegrid, network interface, network interface error 
+summary: Se la rete host non è configurata correttamente o se un nome viene scritto in modo errato, si verifica un errore quando StorageGRID controlla la mappatura specificata nel file /etc/storagegrid/nodes/<node-name\>.conf. 
+---
+= Correggere gli errori di interfaccia di rete mancanti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se la rete host non è configurata correttamente o se un nome viene scritto in modo errato, si verifica un errore quando StorageGRID controlla la mappatura specificata in `/etc/storagegrid/nodes/_node-name_.conf` file.
+
+Potrebbe essere visualizzato un errore o un avviso corrispondente a questo modello:
+
+`Checking configuration file `/etc/storagegrid/nodes/_node-name_.conf` per il nodo _node-name_...`
+`ERROR: _node-name_: GRID_NETWORK_TARGET = _host-interface-name_`` _node-name_: L'interfaccia '_host-interface-name_' non esiste`
+
+L'errore potrebbe essere segnalato per Grid Network, Admin Network o Client Network. Questo errore indica che `/etc/storagegrid/nodes/_node-name_.conf` Il file associa la rete StorageGRID indicata all'interfaccia host denominata `_host-interface-name_`, ma non esiste alcuna interfaccia con questo nome sull'host corrente.
+
+Se viene visualizzato questo errore, verificare di aver completato la procedura descritta in xref:deploying-new-linux-hosts.adoc[Implementare nuovi host Linux]. Utilizzare gli stessi nomi per tutte le interfacce host utilizzati sull'host originale.
+
+Se non è possibile assegnare un nome alle interfacce host in modo che corrispondano al file di configurazione del nodo, è possibile modificare il file di configurazione del nodo e modificare il valore DI GRID_NETWORK_TARGET, ADMIN_NETWORK_TARGET o CLIENT_NETWORK_TARGET in modo che corrisponda a un'interfaccia host esistente.
+
+Assicurarsi che l'interfaccia host fornisca l'accesso alla porta di rete fisica o alla VLAN appropriata e che l'interfaccia non faccia riferimento direttamente a un dispositivo di collegamento o di bridge. È necessario configurare una VLAN (o un'altra interfaccia virtuale) sulla parte superiore del dispositivo bond sull'host oppure utilizzare una coppia di bridge e Virtual Ethernet (veth).

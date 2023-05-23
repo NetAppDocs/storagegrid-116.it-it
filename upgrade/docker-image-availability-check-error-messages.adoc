@@ -1,0 +1,88 @@
+---
+permalink: upgrade/docker-image-availability-check-error-messages.html 
+sidebar: sidebar 
+keywords: upgrade, error message, docker image availability 
+summary: 'Quando si tenta di avviare il processo di aggiornamento, potrebbe essere visualizzato il messaggio di errore "i seguenti problemi sono stati identificati dalla suite di convalida per il controllo della disponibilità dell"immagine Docker". Tutti i problemi devono essere risolti prima di poter completare l"aggiornamento.' 
+---
+= Messaggi di errore "Docker image Availability check"
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si tenta di avviare il processo di aggiornamento, potrebbe essere visualizzato il messaggio di errore "`i seguenti problemi sono stati identificati dalla suite di convalida per il controllo della disponibilità dell'immagine Docker`". Tutti i problemi devono essere risolti prima di poter completare l'aggiornamento.
+
+In caso di dubbi sulle modifiche necessarie per risolvere i problemi identificati, contattare il supporto tecnico.
+
+[cols="1a,1a,1a"]
+|===
+| Messaggio | Causa | Soluzione 
+
+
+ a| 
+Impossibile determinare la versione dell'aggiornamento. File di informazioni sulla versione di aggiornamento `{file_path}` il formato non corrisponde a quello previsto.
+ a| 
+Il pacchetto di aggiornamento è corrotto.
+ a| 
+Caricare nuovamente il pacchetto di aggiornamento e riprovare. Se il problema persiste, contattare il supporto tecnico.
+
+
+
+ a| 
+File di informazioni sulla versione di aggiornamento `{file_path}` non trovato. Impossibile determinare la versione dell'aggiornamento.
+ a| 
+Il pacchetto di aggiornamento è corrotto.
+ a| 
+Caricare nuovamente il pacchetto di aggiornamento e riprovare. Se il problema persiste, contattare il supporto tecnico.
+
+
+
+ a| 
+Impossibile determinare la versione della release attualmente installata su `{node_name}`.
+ a| 
+Un file critico sul nodo è corrotto.
+ a| 
+Contattare il supporto tecnico.
+
+
+
+ a| 
+Errore di connessione durante il tentativo di elencare le versioni su `{node_name}`
+ a| 
+Il nodo è offline o la connessione è stata interrotta.
+ a| 
+Verificare che tutti i nodi siano in linea e raggiungibili dal nodo di amministrazione primario e riprovare.
+
+
+
+ a| 
+L'host per il nodo `{node_name}` Non dispone di StorageGRID `{upgrade_version}` immagine caricata. Prima di procedere con l'aggiornamento, è necessario installare immagini e servizi sull'host.
+ a| 
+I pacchetti RPM o DEB per l'aggiornamento non sono stati installati sull'host in cui è in esecuzione il nodo oppure le immagini sono ancora in fase di importazione.
+
+*Nota:* questo errore si applica solo ai nodi in esecuzione come container su Linux.
+ a| 
+Assicurarsi che i pacchetti RPM o DEB siano stati installati su tutti gli host Linux in cui sono in esecuzione i nodi. Assicurarsi che la versione sia corretta sia per il servizio che per il file di immagini. Attendere alcuni minuti e riprovare.
+
+Vedere xref:../upgrade/linux-installing-rpm-or-deb-package-on-all-hosts.adoc[Linux: Installare il pacchetto RPM o DEB su tutti gli host].
+
+
+
+ a| 
+Errore durante il controllo del nodo `{node_name}`
+ a| 
+Si è verificato un errore imprevisto.
+ a| 
+Attendere alcuni minuti e riprovare.
+
+
+
+ a| 
+Errore irreversibile durante l'esecuzione dei controlli preliminari. `{error_string}`
+ a| 
+Si è verificato un errore imprevisto.
+ a| 
+Attendere alcuni minuti e riprovare.
+
+|===

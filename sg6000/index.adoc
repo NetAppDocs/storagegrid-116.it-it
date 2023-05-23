@@ -1,0 +1,35 @@
+---
+permalink: sg6000/index.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, overview, models, features 
+summary: 'Le appliance StorageGRID SG6000 sono piattaforme di storage e calcolo integrate che operano come nodi di storage in un sistema StorageGRID. Queste appliance possono essere utilizzate in un ambiente di grid ibrido che combina nodi di storage delle appliance e nodi di storage virtuali (basati su software).' 
+---
+= Appliance SG6000: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le appliance StorageGRID SG6000 sono piattaforme di storage e calcolo integrate che operano come nodi di storage in un sistema StorageGRID. Queste appliance possono essere utilizzate in un ambiente di grid ibrido che combina nodi di storage delle appliance e nodi di storage virtuali (basati su software).
+
+Le appliance SG6000 offrono le seguenti funzionalità:
+
+* Disponibile in tre modelli:
++
+** SG6060, che include 60 dischi, supporta shelf di espansione e utilizza controller E2800A.
+** SG6060X, che include 60 dischi, supporta shelf di espansione e utilizza controller E2800B.
++
+
+NOTE: SG6060 e SG6060X hanno specifiche e funzioni identiche, ad eccezione della posizione delle porte di interconnessione sui controller di storage.
+
+** SGF6024, che offre 24 unità a stato solido (SSD).
+
+
+* Integrare gli elementi di storage e calcolo per un nodo di storage StorageGRID.
+* Includere il programma di installazione dell'appliance StorageGRID per semplificare l'implementazione e la configurazione del nodo di storage.
+* Include Gestore di sistema SANtricity per la gestione e il monitoraggio dei controller e dei dischi storage.
+* Includere un BMC (Baseboard Management Controller) per il monitoraggio e la diagnosi dell'hardware nel controller di calcolo.
+* Supporta fino a quattro connessioni 10 GbE o 25 GbE alla rete grid e alla rete client StorageGRID.
+* Supporto delle unità FIPS (Federal Information Processing Standard). Quando questi dischi vengono utilizzati con la funzione di protezione del disco in Gestione di sistema di SANtricity, viene impedito l'accesso non autorizzato ai dati.
+

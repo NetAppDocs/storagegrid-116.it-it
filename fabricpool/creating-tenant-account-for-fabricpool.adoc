@@ -1,0 +1,43 @@
+---
+permalink: fabricpool/creating-tenant-account-for-fabricpool.html 
+sidebar: sidebar 
+keywords: fabricPool, tenant, SSO 
+summary: 'È necessario creare un account tenant in Grid Manager per l"utilizzo con FabricPool.' 
+---
+= Creare un account tenant per FabricPool
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario creare un account tenant in Grid Manager per l'utilizzo con FabricPool.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.A proposito di questa attività
+Gli account tenant consentono alle applicazioni client di memorizzare e recuperare oggetti su StorageGRID. Ogni account tenant dispone di un proprio ID account, gruppi e utenti autorizzati, bucket e oggetti.
+
+È possibile utilizzare lo stesso account tenant per più cluster ONTAP. In alternativa, è possibile creare un account tenant dedicato per ciascun cluster ONTAP, in base alle esigenze.
+
+
+NOTE: Queste istruzioni presuppongono che sia stato configurato il Single Sign-on (SSO) per Grid Manager. Se SSO non è attivato, utilizzare xref:../admin/creating-tenant-account.adoc[queste istruzioni per creare un account tenant] invece.
+
+.Fasi
+. Selezionare *TENANT*.
+. Selezionare *Crea*.
+. Inserire un nome visualizzato e una descrizione.
+. Selezionare *S3*.
+. Lasciare vuoto il campo *quota di storage*.
+. Selezionare *Allow platform Services* (Consenti servizi piattaforma) per abilitare l'utilizzo dei servizi della piattaforma.
++
+Se i servizi della piattaforma sono attivati, un tenant può utilizzare funzionalità, come la replica CloudMirror, che accedono ai servizi esterni.
+
+. Non selezionare *Usa origine identità propria*.
+. Non selezionare *Allow S3 Select* (Consenti selezione S3).
+. Selezionare un gruppo federated esistente da Grid Manager per disporre dell'autorizzazione di accesso root iniziale per il tenant.
+. Selezionare *Crea tenant*.
+

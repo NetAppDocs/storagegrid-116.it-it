@@ -1,0 +1,85 @@
+---
+permalink: sg100-1000/deploying-services-appliance-as-primary-admin-node.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, admin node, deploy node, deploying node, node, deploy, deploying, primary, primary admin node 
+summary: 'Quando si implementa un"appliance di servizi come nodo amministrativo primario, si utilizza il programma di installazione dell"appliance StorageGRID incluso nell"appliance per installare il software StorageGRID oppure si carica la versione software che si desidera installare. È necessario installare e configurare il nodo di amministrazione primario prima di installare altri tipi di nodo dell"appliance. Un nodo amministratore primario può connettersi alla rete griglia e alla rete amministrativa e alla rete client opzionali, se sono configurati uno o entrambi.' 
+---
+= Implementare l'appliance di servizi come nodo di amministrazione primario
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si implementa un'appliance di servizi come nodo amministrativo primario, si utilizza il programma di installazione dell'appliance StorageGRID incluso nell'appliance per installare il software StorageGRID oppure si carica la versione software che si desidera installare. È necessario installare e configurare il nodo di amministrazione primario prima di installare altri tipi di nodo dell'appliance. Un nodo amministratore primario può connettersi alla rete griglia e alla rete amministrativa e alla rete client opzionali, se sono configurati uno o entrambi.
+
+.Di cosa hai bisogno
+* L'apparecchio è stato installato in un rack o in un cabinet, collegato alla rete e acceso.
+* I collegamenti di rete, gli indirizzi IP e il rimapping delle porte (se necessario) sono stati configurati per l'appliance utilizzando il programma di installazione dell'appliance StorageGRID.
++
+
+IMPORTANT: Se sono state rimappate delle porte, non è possibile utilizzare le stesse porte per configurare gli endpoint del bilanciamento del carico. È possibile creare endpoint utilizzando porte rimappate, ma tali endpoint verranno rimappati alle porte e al servizio CLB originali, non al servizio Load Balancer. Seguire la procedura descritta in xref:../maintain/removing-port-remaps.adoc[Rimuovere i rimap delle porte].
+
++
+Vedere xref:../admin/how-load-balancing-works-clb-service.adoc[Come funziona il bilanciamento del carico - servizio CLB (obsoleto)] Per ulteriori informazioni sul servizio CLB.
+
++
+
+NOTE: Il servizio CLB è obsoleto.
+
+* Si dispone di un laptop di assistenza con un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Conosci uno degli indirizzi IP assegnati all'appliance. È possibile utilizzare l'indirizzo IP per qualsiasi rete StorageGRID collegata.
+
+
+.A proposito di questa attività
+Per installare StorageGRID su un nodo di amministrazione primario dell'appliance:
+
+* Il programma di installazione dell'appliance StorageGRID consente di installare il software StorageGRID. Se si desidera installare una versione diversa del software, caricarla utilizzando il programma di installazione dell'appliance StorageGRID.
+* Attendere l'installazione del software.
+* Una volta installato il software, l'appliance viene riavviata automaticamente.
+
+
+.Fasi
+. Aprire un browser e inserire l'indirizzo IP del dispositivo. +
+`*https://_services_appliance_IP_:8443*`
++
+Viene visualizzata la pagina iniziale del programma di installazione dell'appliance StorageGRID.
+
+. Nella sezione *questo nodo*, selezionare *Primary Admin*.
+. Nel campo *Node name* (Nome nodo), immettere il nome che si desidera utilizzare per il nodo dell'appliance e fare clic su *Save* (Salva).
++
+Il nome del nodo viene assegnato al nodo dell'appliance nel sistema StorageGRID. Viene visualizzato nella pagina Grid Nodes in Grid Manager.
+
+. Se si desidera, per installare una versione diversa del software StorageGRID, attenersi alla seguente procedura:
++
+.. Scarica l'archivio di installazione:https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Download NetApp: Appliance StorageGRID"^].
+.. Estrarre l'archivio.
+.. Dal programma di installazione dell'appliance StorageGRID, selezionare *Avanzate* > *carica software StorageGRID*.
+.. Fare clic su *Remove* (Rimuovi) per rimuovere il pacchetto software corrente.
++
+image::../media/appliance_installer_rmv_current_software.png[Appliance Installer - Rimuovi il software corrente]
+
+.. Fare clic su *Browse* per il pacchetto software scaricato ed estratto, quindi fare clic su *Browse* per il file checksum.
++
+image::../media/appliance_installer_upload_sg_software.png[Appliance Installer - caricare il software SG]
+
+.. Selezionare *Home* per tornare alla pagina iniziale.
+
+
+. Verificare che lo stato corrente sia "`Ready to start installation of primary Admin Node name with software version x.y`" (Pronto per l'installazione del nome nodo amministratore principale con versione software x.y) e che il pulsante *Start Installation* (Avvia installazione) sia attivato.
++
+
+NOTE: Se si sta implementando l'appliance Admin Node come destinazione di cloning del nodo, interrompere il processo di implementazione e continuare la procedura di cloning del nodo seguendo la xref:../maintain/index.adoc[Ripristino e manutenzione] istruzioni.
+
+. Dalla home page del programma di installazione dell'appliance StorageGRID, fare clic su *Avvia installazione*.
++
+image::../media/appliance_installer_home_start_installation_enabled_primary_an.png[Installazione del nodo di amministrazione principale dell'appliance]
+
++
+Lo stato corrente cambia in "`Installation is in Progress`" (Installazione in corso) e viene visualizzata la pagina Monitor Installation (Installazione monitor).
+
++
+
+NOTE: Per accedere manualmente alla pagina Installazione monitor, fare clic su *Installazione monitor* dalla barra dei menu.
+
+

@@ -1,0 +1,78 @@
+---
+permalink: tenant/creating-groups-for-swift-tenant.html 
+sidebar: sidebar 
+keywords: how to create Swift tenant groups 
+summary: 'È possibile gestire le autorizzazioni di accesso per un account tenant Swift importando gruppi federati o creando gruppi locali. Almeno un gruppo deve disporre dell"autorizzazione Swift Administrator, necessaria per gestire i container e gli oggetti per un account tenant Swift.' 
+---
+= Creare gruppi per un tenant Swift
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile gestire le autorizzazioni di accesso per un account tenant Swift importando gruppi federati o creando gruppi locali. Almeno un gruppo deve disporre dell'autorizzazione Swift Administrator, necessaria per gestire i container e gli oggetti per un account tenant Swift.
+
+.Di cosa hai bisogno
+* È necessario accedere al tenant manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario appartenere a un gruppo di utenti che dispone dell'autorizzazione di accesso root.
+* Se si intende importare un gruppo federated, la federazione delle identità è stata configurata e il gruppo federated esiste già nell'origine delle identità configurata.
+
+
+.Fasi
+. Selezionare *GESTIONE ACCESSI* > *gruppi*.
++
+image::../media/tenant_add_groups_example.png[Schermata che mostra la pagina Access Control > Groups (controllo accessi > gruppi)]
+
+. Selezionare *Crea gruppo*.
+. Selezionare la scheda *Local group* (Gruppo locale) per creare un gruppo locale oppure la scheda *Federated group* (Gruppo federato) per importare un gruppo dall'origine dell'identità precedentemente configurata.
++
+Se è attivato il Single Sign-on (SSO) per il sistema StorageGRID, gli utenti appartenenti a gruppi locali non potranno accedere a Gestione tenant, anche se possono utilizzare le applicazioni client per gestire le risorse del tenant, in base alle autorizzazioni di gruppo.
+
+. Inserire il nome del gruppo.
++
+** *Local group* (Gruppo locale): Immettere un nome visualizzato e un nome univoco. È possibile modificare il nome visualizzato in un secondo momento.
+** *Federated group*: Immettere il nome univoco. Per Active Directory, il nome univoco è il nome associato a `sAMAccountName` attributo. Per OpenLDAP, il nome univoco è il nome associato a `uid` attributo.
+
+
+. Selezionare *continua*.
+. Selezionare una modalità di accesso. Se un utente appartiene a più gruppi e un gruppo è impostato su sola lettura, l'utente avrà accesso in sola lettura a tutte le impostazioni e funzioni selezionate.
++
+** *Read-write* (valore predefinito): Gli utenti possono accedere a Tenant Manager e gestire la configurazione del tenant.
+** *Sola lettura*: Gli utenti possono visualizzare solo le impostazioni e le funzionalità. Non possono apportare modifiche o eseguire operazioni nell'API di gestione del tenant Manager o del tenant. Gli utenti locali di sola lettura possono modificare le proprie password.
+
+
+. Impostare l'autorizzazione di gruppo.
++
+** Selezionare la casella di controllo *Root Access* se gli utenti devono accedere all'API di gestione tenant o tenant Manager. (Impostazione predefinita)
+** Deselezionare la casella di controllo *Root Access* se gli utenti non hanno bisogno dell'accesso all'API di gestione tenant o tenant. Ad esempio, deselezionare la casella di controllo per le applicazioni che non richiedono l'accesso al tenant. Quindi, assegnare l'autorizzazione *Swift Administrator* per consentire a questi utenti di gestire container e oggetti.
+
+
+. Selezionare *continua*.
+. Selezionare la casella di controllo *Swift Administrator* se l'utente deve poter utilizzare l'API SWIFT REST.
++
+Gli utenti Swift devono disporre dell'autorizzazione Root Access per accedere a Tenant Manager. Tuttavia, l'autorizzazione Root Access non consente agli utenti di autenticarsi nell'API SWIFT REST per creare container e acquisire oggetti. Gli utenti devono disporre dell'autorizzazione di amministratore Swift per autenticarsi nell'API DI Swift REST.
+
+. Selezionare il pulsante visualizzato, a seconda che si stia creando un gruppo federated o un gruppo locale:
++
+** Gruppo federato: *Crea gruppo*
+** Gruppo locale: *Continua*
++
+Se si sta creando un gruppo locale, il passaggio 4 (Aggiungi utenti) viene visualizzato dopo aver selezionato *continua*. Questo passaggio non viene visualizzato per i gruppi federated.
+
+
+
+. Selezionare la casella di controllo per ciascun utente che si desidera aggiungere al gruppo, quindi selezionare *Crea gruppo*.
++
+In alternativa, è possibile salvare il gruppo senza aggiungere utenti. È possibile aggiungere utenti al gruppo in un secondo momento oppure selezionarlo quando si creano nuovi utenti.
+
+. Selezionare *fine*.
++
+Il gruppo creato viene visualizzato nell'elenco dei gruppi. Le modifiche potrebbero richiedere fino a 15 minuti per essere effettive a causa del caching.
+
+
+
+.Informazioni correlate
+xref:tenant-management-permissions.adoc[Permessi di gestione del tenant]
+
+xref:../swift/index.adoc[USA Swift]

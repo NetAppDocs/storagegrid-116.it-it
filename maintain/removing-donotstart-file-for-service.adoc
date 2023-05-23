@@ -1,0 +1,42 @@
+---
+permalink: maintain/removing-donotstart-file-for-service.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, donotstart file, do not start file, remove donotstart, removing donotstart, remove do not start, removing do not start 
+summary: 'Quando si rimuove un file DoNotStart che impedisce l"avvio di un servizio, è necessario avviarlo.' 
+---
+= Rimuovere il file DoNotStart per l'assistenza
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si rimuove un file DoNotStart che impedisce l'avvio di un servizio, è necessario avviarlo.
+
+.Di cosa hai bisogno
+È necessario disporre di `Passwords.txt` file.
+
+.Fasi
+. Accedere al nodo Grid:
++
+.. Immettere il seguente comando: `ssh admin@_grid_node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
+
+
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+. Rimuovere il file DoNotStart dalla directory di servizio: `rm /etc/sv/_service_/DoNotStart`
++
+dove `service` è il nome del servizio. Ad esempio,
+
++
+[listing]
+----
+rm /etc/sv/ldr/DoNotStart
+----
+. Avviare il servizio: `service _servicename_ start`
+. Disconnettersi dalla shell dei comandi: `exit`
+

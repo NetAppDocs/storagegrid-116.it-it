@@ -1,0 +1,50 @@
+---
+permalink: sg5600/adding-appliance-to-santricity-storage-manager.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, Adding, add, appliance, SANtricity Storage Manager, SANtricity 
+summary: 'Il controller E2700 dell"appliance viene collegato a Gestione storage SANtricity e quindi viene aggiunto come array storage.' 
+---
+= Aggiungere appliance a Gestione storage SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il controller E2700 dell'appliance viene collegato a Gestione storage SANtricity e quindi viene aggiunto come array storage.
+
+.Di cosa hai bisogno
+Si sta utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+
+.A proposito di questa attività
+Per istruzioni dettagliate, consultare la documentazione di Gestione storage SANtricity.
+
+.Fasi
+. Aprire un browser Web e inserire l'indirizzo IP come URL per Gestione storage SANtricity: +
+`*https://_E2700_Controller_IP_*`
++
+Viene visualizzata la pagina di accesso a Gestione storage SANtricity.
+
+. Nella pagina *Select Addition Method* (Seleziona metodo di aggiunta), selezionare *Manual* (Manuale) e fare clic su *OK*.
+. Selezionare *Modifica* > *Aggiungi array di storage*.
++
+Viene visualizzata la pagina Add New Storage Array - Manual (Aggiungi nuovo array di storage - Manuale).
+
++
+image::../media/sanricity_add_new_storage_array_out_of_band.gif[Pagina Aggiungi nuovo array di storage di SANtricity]
+
+. Nella casella *out-of-band management*, immettere uno dei seguenti valori:
++
+** *Using DHCP:* Indirizzo IP assegnato dal server DHCP alla porta di gestione 1 sul controller E2700
+** *Non utilizza DHCP:* `192.168.128.101`
++
+
+NOTE: Solo uno dei controller dell'appliance è connesso a Gestione storage SANtricity, quindi è necessario inserire un solo indirizzo IP.
+
+
+
+. Fare clic su *Aggiungi*.
+
+
+.Informazioni correlate
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61197["Documentazione NetApp: Gestore dello storage SANtricity"^]

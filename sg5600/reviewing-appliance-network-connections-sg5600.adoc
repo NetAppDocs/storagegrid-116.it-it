@@ -1,0 +1,129 @@
+---
+permalink: sg5600/reviewing-appliance-network-connections-sg5600.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, network connections, network connection, network, connection, grid, admin, client, management, SANtricity System Manager, SANtricity 
+summary: 'Prima di installare l"appliance StorageGRID, è necessario conoscere le reti che è possibile collegare all"appliance e il modo in cui vengono utilizzate le porte di ciascun controller.' 
+---
+= Verifica delle connessioni di rete dell'appliance (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance StorageGRID, è necessario conoscere le reti che è possibile collegare all'appliance e il modo in cui vengono utilizzate le porte di ciascun controller.
+
+
+
+== Reti di appliance StorageGRID
+
+Quando si implementa un'appliance StorageGRID come nodo di storage, è possibile collegarla alle seguenti reti:
+
+* *Grid Network per StorageGRID*: La Grid Network viene utilizzata per tutto il traffico StorageGRID interno. Fornisce connettività tra tutti i nodi della rete, in tutti i siti e le subnet. La rete grid è obbligatoria.
+* *Rete amministrativa per StorageGRID*: La rete amministrativa è una rete chiusa utilizzata per l'amministrazione e la manutenzione del sistema. La rete di amministrazione è in genere una rete privata e non deve essere instradabile tra i siti. La rete di amministrazione è opzionale.
+* *Rete client per StorageGRID*: La rete client è una rete aperta utilizzata per fornire l'accesso alle applicazioni client, tra cui S3 e Swift. La rete client fornisce l'accesso del protocollo client alla griglia, in modo che la rete griglia possa essere isolata e protetta. La rete client è opzionale.
+* *Rete di gestione per Gestione storage SANtricity* (opzionale): Il controller E2700 si collega alla rete di gestione in cui è installato SANtricity, consentendo di monitorare e gestire i componenti hardware dell'appliance. Questa rete di gestione può essere la stessa della rete di amministrazione per StorageGRID o può essere una rete di gestione indipendente.
++
+Se la rete opzionale di gestione dello storage SANtricity non è connessa, potrebbe non essere possibile utilizzare alcune funzioni di SANtricity.
+
+
+
+
+NOTE: Per informazioni dettagliate sulle reti StorageGRID, consulta la _Grid primer_.
+
+
+
+== Connessioni dell'appliance StorageGRID
+
+Quando si installa un'appliance StorageGRID, è necessario collegare i due controller tra loro e alle reti richieste. La figura mostra i due controller dell'unità SG5660, con il controller E2700 nella parte superiore e il controller E5600 nella parte inferiore. Nel sistema SG5612, il controller E2700 si trova a sinistra del controller E5600 SG.
+
+image::../media/cabling_diagram.gif[Vista posteriore di SG5660 che mostra le connessioni]
+
+|===
+| Elemento | Porta | Tipo di porta | Funzione 
+
+
+ a| 
+1
+ a| 
+Porta di gestione 1 sul controller E2700
+ a| 
+Ethernet da 1 GB (RJ-45)
+ a| 
+Consente di collegare il controller E2700 alla rete in cui è installato SANtricity Storage Manager.
+
+
+
+ a| 
+2
+ a| 
+Porta di gestione 2 sul controller E2700
+ a| 
+Ethernet da 1 GB (RJ-45)
+ a| 
+Consente di collegare il controller E2700 a un laptop di assistenza durante l'installazione.
+
+
+
+ a| 
+3
+ a| 
+Due porte di interconnessione SAS su ciascun controller, etichettate CH 1 e CH 2
+ a| 
+Controller E2700: Mini-SAS-HD
+
+Controller E5600SG: Mini-SAS
+ a| 
+Collegare tra loro i due controller.
+
+
+
+ a| 
+4
+ a| 
+Porta di gestione 1 sul controller E5600SG
+ a| 
+Ethernet da 1 GB (RJ-45)
+ a| 
+Collega il controller E5600SG alla rete di amministrazione per StorageGRID.
+
+
+
+ a| 
+5
+ a| 
+Porta di gestione 2 sul controller E5600SG
+ a| 
+Ethernet da 1 GB (RJ-45)
+ a| 
+* Può essere collegato alla porta di gestione 1 se si desidera una connessione ridondante alla rete di amministrazione.
+* Può essere lasciato non cablato e disponibile per l'accesso locale temporaneo (IP 169.254.0.1).
+* Può essere utilizzato per collegare il controller E5600SG a un laptop di assistenza durante l'installazione, se non è disponibile un indirizzo IP assegnato da DHCP.
+
+
+
+
+ a| 
+6
+ a| 
+Quattro porte di rete sul controller E5600SG
+ a| 
+10 GbE (ottico)
+ a| 
+Connettersi alla rete griglia e alla rete client per StorageGRID. Consultare "`connessioni porta 10-GbE per il controller E5600SG`".
+
+|===
+.Informazioni correlate
+xref:port-bond-modes-for-e5600sg-controller-ports.adoc[Modalità di port bond per le porte del controller E5600SG]
+
+xref:gathering-installation-information-sg5600.adoc[Raccogliere informazioni sull'installazione (SG5600)]
+
+xref:cabling-appliance-sg5600.adoc[Apparecchio via cavo (SG5600)]
+
+xref:../network/index.adoc[Linee guida per il networking]
+
+xref:../vmware/index.adoc[Installare VMware]
+
+xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]
+
+xref:../ubuntu/index.adoc[Installare Ubuntu o Debian]

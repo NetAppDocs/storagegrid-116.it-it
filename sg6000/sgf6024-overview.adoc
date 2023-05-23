@@ -1,0 +1,125 @@
+---
+permalink: sg6000/sgf6024-overview.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, overview, models, features 
+summary: StorageGRIDSGF6024 include un controller di calcolo e uno shelf di storage controller che contiene 24 dischi a stato solido. 
+---
+= Panoramica di SGF6024
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRIDSGF6024 include un controller di calcolo e uno shelf di storage controller che contiene 24 dischi a stato solido.
+
+
+
+== Componenti di SGF6024
+
+L'appliance SGF6024 include i seguenti componenti:
+
+|===
+| Componente | Descrizione 
+
+
+ a| 
+Controller di calcolo
+ a| 
+Controller SG6000-CN, un server con un'unità rack (1U) che include:
+
+* 40 core (80 thread)
+* 192 GB DI RAM
+* Fino a 4 × 25 Gbps di larghezza di banda Ethernet aggregata
+* Interconnessione Fibre Channel (FC) da 4 × 16 Gbps
+* Baseboard Management Controller (BMC) che semplifica la gestione dell'hardware
+* Alimentatori ridondanti
+
+
+
+
+ a| 
+Flash array (shelf di controller)
+ a| 
+Flash array EF570 e-Series (noto anche come shelf di controller), uno shelf 2U che include:
+
+* Due controller EF570 e-Series (configurazione duplex) per fornire supporto per il failover del controller di storage
+* 24 dischi a stato solido (noti anche come SSD o unità flash)
+* Alimentatori e ventole ridondanti
+
+
+|===
+
+
+== Diagrammi di SGF6024
+
+Questa figura mostra la parte anteriore di SGF6024, che include un controller di calcolo 1U e un enclosure 2U contenente due controller di storage e 24 unità flash.
+
+image::../media/sgf6024_front_view_with_and_without_bezels.png[Viste frontali di SG6024]
+
+|===
+| Didascalia | Descrizione 
+
+
+ a| 
+1
+ a| 
+Controller di calcolo SG6000-CN con pannello anteriore
+
+
+
+ a| 
+2
+ a| 
+Flash array EF570 con pannello anteriore
+
+
+
+ a| 
+3
+ a| 
+Controller di calcolo SG6000-CN con pannello anteriore rimosso
+
+
+
+ a| 
+4
+ a| 
+Flash array EF570 con pannello anteriore rimosso
+
+|===
+Questa figura mostra il retro di SGF6024, inclusi controller di calcolo e storage, ventole e alimentatori.
+
+image::../media/sgf6024_rear_view.gif[SG6024 posteriore]
+
+|===
+| Didascalia | Descrizione 
+
+
+ a| 
+1
+ a| 
+Alimentatore (1 di 2) per il controller di calcolo SG6000-CN
+
+
+
+ a| 
+2
+ a| 
+Connettori per controller di calcolo SG6000-CN
+
+
+
+ a| 
+3
+ a| 
+Alimentatore (1 di 2) per flash array EF570
+
+
+
+ a| 
+4
+ a| 
+Controller storage EF570 e-Series (1 di 2) e connettori
+
+|===

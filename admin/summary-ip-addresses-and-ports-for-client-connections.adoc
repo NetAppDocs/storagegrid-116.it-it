@@ -1,0 +1,199 @@
+---
+permalink: admin/summary-ip-addresses-and-ports-for-client-connections.html 
+sidebar: sidebar 
+keywords: ip addresses for client, how to connect to storagegrid, ports, vip 
+summary: 'Le applicazioni client possono connettersi a StorageGRID utilizzando l"indirizzo IP di un nodo Grid e il numero di porta di un servizio su tale nodo. Se sono configurati gruppi ad alta disponibilità, le applicazioni client possono connettersi utilizzando l"indirizzo IP virtuale del gruppo ha.' 
+---
+= Riepilogo: Indirizzi IP e porte per le connessioni client
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le applicazioni client possono connettersi a StorageGRID utilizzando l'indirizzo IP di un nodo Grid e il numero di porta di un servizio su tale nodo. Se sono configurati gruppi ad alta disponibilità (ha), le applicazioni client possono connettersi utilizzando l'indirizzo IP virtuale del gruppo ha.
+
+.A proposito di questa attività
+Questa tabella riassume i diversi modi in cui i client possono connettersi a StorageGRID e gli indirizzi IP e le porte utilizzati per ciascun tipo di connessione. Le istruzioni descrivono come trovare queste informazioni in Grid Manager se gli endpoint del bilanciamento del carico e i gruppi ad alta disponibilità (ha) sono già configurati.
+
+[cols="1a,1a,1a,1a"]
+|===
+| Dove viene stabilita la connessione | Servizio a cui si connette il client | Indirizzo IP | Porta 
+
+
+ a| 
+Gruppo HA
+ a| 
+Bilanciamento del carico
+ a| 
+Indirizzo IP virtuale di un gruppo ha
+ a| 
+* Porta endpoint del bilanciamento del carico
+
+
+
+
+ a| 
+Gruppo HA
+ a| 
+CLB
+
+*Nota:* il servizio CLB è obsoleto.
+ a| 
+Indirizzo IP virtuale di un gruppo ha
+ a| 
+Porte S3 predefinite:
+
+* HTTPS: 8082
+* HTTP: 8084
+
+
+Porte Swift predefinite:
+
+* HTTPS:8083
+* HTTP:8085
+
+
+
+
+ a| 
+Nodo Admin
+ a| 
+Bilanciamento del carico
+ a| 
+Indirizzo IP del nodo di amministrazione
+ a| 
+* Porta endpoint del bilanciamento del carico
+
+
+
+
+ a| 
+Nodo gateway
+ a| 
+Bilanciamento del carico
+ a| 
+Indirizzo IP del nodo gateway
+ a| 
+* Porta endpoint del bilanciamento del carico
+
+
+
+
+ a| 
+Nodo gateway
+ a| 
+CLB
+
+*Nota:* il servizio CLB è obsoleto.
+ a| 
+Indirizzo IP del nodo gateway
+
+*Nota:* per impostazione predefinita, le porte HTTP per CLB e LDR non sono attivate.
+ a| 
+Porte S3 predefinite:
+
+* HTTPS: 8082
+* HTTP: 8084
+
+
+Porte Swift predefinite:
+
+* HTTPS:8083
+* HTTP:8085
+
+
+
+
+ a| 
+Nodo di storage
+ a| 
+LDR
+ a| 
+Indirizzo IP del nodo di storage
+ a| 
+Porte S3 predefinite:
+
+* HTTPS: 18082
+* HTTP: 18084
+
+
+Porte Swift predefinite:
+
+* HTTPS: 18083
+* HTTP:18085
+
+
+|===
+.Esempi
+Per connettere un client S3 all'endpoint Load Balancer di un gruppo ha di nodi gateway, utilizzare un URL strutturato come mostrato di seguito:
+
+* `https://_VIP-of-HA-group:LB-endpoint-port_`
+
+
+Ad esempio, se l'indirizzo IP virtuale del gruppo ha è 192.0.2.5 e il numero di porta di un endpoint di bilanciamento del carico S3 è 10443, un client S3 potrebbe utilizzare il seguente URL per connettersi a StorageGRID:
+
+* `\https://192.0.2.5:10443`
+
+
+Per connettere un client Swift all'endpoint Load Balancer di un gruppo ha di nodi gateway, utilizzare un URL strutturato come mostrato di seguito:
+
+* `https://_VIP-of-HA-group:LB-endpoint-port_`
+
+
+Ad esempio, se l'indirizzo IP virtuale del gruppo ha è 192.0.2.6 e il numero di porta di un endpoint di bilanciamento del carico di Swift è 10444, un client Swift potrebbe utilizzare il seguente URL per connettersi a StorageGRID:
+
+* `\https://192.0.2.6:10444`
+
+
+È possibile configurare un nome DNS per l'indirizzo IP utilizzato dai client per la connessione a StorageGRID. Contattare l'amministratore di rete locale.
+
+.Fasi
+. Accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+. Per trovare l'indirizzo IP di un nodo Grid:
++
+.. Selezionare *NODI*.
+.. Selezionare il nodo Admin, il nodo gateway o il nodo di storage a cui si desidera connettersi.
+.. Selezionare la scheda *Panoramica*.
+.. Nella sezione Node Information (informazioni sul nodo), annotare gli indirizzi IP del nodo.
+.. Selezionare *Mostra altro* per visualizzare gli indirizzi IPv6 e le mappature dell'interfaccia.
++
+È possibile stabilire connessioni dalle applicazioni client a uno qualsiasi degli indirizzi IP presenti nell'elenco:
+
++
+*** *Eth0:* Grid Network
+*** *Eth1:* Admin Network (opzionale)
+*** *Eth2:* rete client (opzionale)
++
+
+NOTE: Se si sta visualizzando un nodo Admin o un nodo Gateway e si tratta del nodo attivo di un gruppo ad alta disponibilità, l'indirizzo IP virtuale del gruppo ha viene visualizzato su eth2.
+
+
+
+
+
+. Per trovare l'indirizzo IP virtuale di un gruppo ad alta disponibilità:
++
+.. Selezionare *CONFIGURATION* > *Network* > *High Availability groups*.
+.. Nella tabella, annotare l'indirizzo IP virtuale del gruppo ha.
+
+
+. Per trovare il numero di porta di un endpoint Load Balancer:
++
+.. Selezionare *CONFIGURATION* > *Network* > *Load Balancer Endpoints*.
++
+Viene visualizzata la pagina Load Balancer Endpoint, che mostra l'elenco degli endpoint già configurati.
+
+.. Selezionare un endpoint e selezionare *Modifica endpoint*.
++
+Viene visualizzata la finestra Edit Endpoint (Modifica endpoint) che visualizza ulteriori dettagli sull'endpoint.
+
+.. Verificare che l'endpoint selezionato sia configurato per l'utilizzo con il protocollo corretto (S3 o Swift), quindi selezionare *Annulla*.
+.. Annotare il numero di porta dell'endpoint che si desidera utilizzare per una connessione client.
++
+
+NOTE: Se il numero di porta è 80 o 443, l'endpoint viene configurato solo sui nodi gateway, poiché tali porte sono riservate sui nodi Admin. Tutte le altre porte sono configurate sia sui nodi Gateway che sui nodi Admin.
+
+
+
+

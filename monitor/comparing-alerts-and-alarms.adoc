@@ -1,0 +1,253 @@
+---
+permalink: monitor/comparing-alerts-and-alarms.html 
+sidebar: sidebar 
+keywords: how to compare alerts and alarms 
+summary: Esistono diverse analogie tra il sistema di allarme e il sistema di allarme legacy, ma il sistema di allarme offre notevoli vantaggi ed è più semplice da utilizzare. 
+---
+= Confrontare avvisi e allarmi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esistono diverse analogie tra il sistema di allarme e il sistema di allarme legacy, ma il sistema di allarme offre notevoli vantaggi ed è più semplice da utilizzare.
+
+Fare riferimento alla seguente tabella per informazioni su come eseguire operazioni simili.
+
+[cols="1a,1a,1a"]
+|===
+|  | Avvisi | Allarmi (sistema precedente) 
+
+
+ a| 
+Come si visualizzano gli avvisi o gli allarmi attivi?
+ a| 
+* Selezionare il collegamento *Current alerts* (Avvisi correnti) nella dashboard.
+* Selezionare l'avviso nella pagina *NODI* *Panoramica*.
+* Selezionare *ALERTS* *current*.
+
+
+xref:viewing-current-alerts.adoc[Visualizzare gli avvisi correnti]
+ a| 
+Selezionare *SUPPORTO* *Allarmi (legacy)* *Allarmi correnti*.
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Cosa causa l'attivazione di un allarme o di un allarme?
+ a| 
+Gli avvisi vengono attivati quando un'espressione Prometheus in una regola di avviso valuta true per la condizione di attivazione e la durata specifiche.
+
+xref:view-alert-rules.adoc[Visualizzare le regole degli avvisi]
+ a| 
+Gli allarmi vengono attivati quando un attributo StorageGRID raggiunge un valore di soglia.
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Se viene attivato un allarme o un allarme, come si risolve il problema sottostante?
+ a| 
+Le azioni consigliate per un avviso sono incluse nelle notifiche e-mail e sono disponibili nelle pagine Avvisi di Grid Manager.
+
+Come richiesto, ulteriori informazioni sono fornite nella documentazione di StorageGRID.
+
+xref:alerts-reference.adoc[Riferimenti agli avvisi]
+ a| 
+Per informazioni su un allarme, selezionare il nome dell'attributo oppure cercare un codice di allarme nella documentazione di StorageGRID.
+
+xref:alarms-reference.adoc[Riferimento allarmi (sistema legacy)]
+
+
+
+ a| 
+Dove è possibile visualizzare un elenco di avvisi o allarmi risolti?
+ a| 
+Selezionare *ALERTS* *resolved*.
+
+xref:viewing-resolved-alerts.adoc[Visualizzare gli avvisi risolti]
+ a| 
+Selezionare *SUPPORTO* *Allarmi (legacy)* *Allarmi storici*.
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Dove posso gestire le impostazioni?
+ a| 
+Selezionare *ALERTS* *Rules*.
+
+xref:managing-alerts.adoc[Gestire gli avvisi]
+ a| 
+Selezionare *SUPPORT*. Quindi, utilizzare le opzioni nella sezione *Allarmi (legacy)* del menu.
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Quali autorizzazioni di gruppo utenti sono necessarie?
+ a| 
+* Chiunque possa accedere a Grid Manager può visualizzare gli avvisi correnti e risolti.
+* È necessario disporre dell'autorizzazione Manage Alerts (Gestisci avvisi) per gestire silenzi, notifiche di avviso e regole di avviso.
+
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+ a| 
+* Chiunque possa accedere a Grid Manager può visualizzare gli allarmi legacy.
+* Per riconoscere gli allarmi, è necessario disporre dell'autorizzazione di riconoscimento degli allarmi.
+* Per gestire gli allarmi globali e le notifiche e-mail, è necessario disporre delle autorizzazioni di configurazione della pagina topologia griglia e altre autorizzazioni di configurazione griglia.
+
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+ a| 
+Come si gestiscono le notifiche e-mail?
+ a| 
+Selezionare *ALERTS* *email setup*.
+
+*Nota:* poiché gli allarmi e gli avvisi sono sistemi indipendenti, la configurazione dell'e-mail utilizzata per le notifiche di allarme e AutoSupport non viene utilizzata per le notifiche di avviso. Tuttavia, è possibile utilizzare lo stesso server di posta per tutte le notifiche.
+
+xref:email-alert-notifications.adoc[Imposta le notifiche via email per gli avvisi]
+ a| 
+Selezionare *SUPPORT* *Alarms (legacy)* *Legacy email setup*.
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Come si gestiscono le notifiche SNMP?
+ a| 
+Selezionare *CONFIGURAZIONE* *monitoraggio* *agente SNMP*.
+
+xref:using-snmp-monitoring.adoc[Utilizzare il monitoraggio SNMP]
+ a| 
+Selezionare *CONFIGURAZIONE* *monitoraggio* *agente SNMP*.
+
+xref:using-snmp-monitoring.adoc[Utilizzare il monitoraggio SNMP]
+
+*Nota*: Le notifiche SNMP non vengono inviate per ogni allarme o gravità dell'allarme.
+
+xref:alarms-that-generate-snmp-notifications.adoc[Allarmi che generano notifiche SNMP (sistema legacy)]
+
+
+
+ a| 
+Come posso controllare chi riceve le notifiche?
+ a| 
+. Selezionare *ALERTS* *email setup*.
+. Nella sezione *destinatari*, immettere un indirizzo e-mail per ciascun elenco o persona che deve ricevere un'e-mail quando si verifica un avviso.
+
+
+xref:email-alert-notifications.adoc[Imposta le notifiche via email per gli avvisi]
+ a| 
+. Selezionare *SUPPORT* *Alarms (legacy)* *Legacy email setup*.
+. Creazione di una mailing list.
+. Selezionare *Notifiche*.
+. Selezionare la mailing list.
+
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Quali nodi di amministrazione inviano notifiche?
+ a| 
+Un singolo nodo Admin (il "`Preferred sender`").
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+ a| 
+Un singolo nodo Admin (il "`Preferred sender`").
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+ a| 
+Come posso eliminare alcune notifiche?
+ a| 
+. Selezionare *ALERTS* *silences*.
+. Selezionare la regola di avviso che si desidera disattivare.
+. Specificare la durata del silenzio.
+. Selezionare il livello di gravità dell'avviso che si desidera disattivare.
+. Selezionare per applicare il silenzio all'intera griglia, a un singolo sito o a un singolo nodo.
+
+
+*Nota*: Se è stato attivato l'agente SNMP, le silenzi sopprimono anche i trap SNMP e informano.
+
+xref:silencing-alert-notifications.adoc[Tacitare le notifiche di avviso]
+ a| 
+. Selezionare *SUPPORT* *Alarms (legacy)* *Legacy email setup*.
+. Selezionare *Notifiche*.
+. Selezionare una mailing list e selezionare *Sospendi*.
+
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Come posso eliminare tutte le notifiche?
+ a| 
+Selezionare *ALERTS* *silences*.quindi, selezionare *All rules*.
+
+*Nota*: Se è stato attivato l'agente SNMP, le silenzi sopprimono anche i trap SNMP e informano.
+
+xref:silencing-alert-notifications.adoc[Tacitare le notifiche di avviso]
+ a| 
+. Selezionare *CONFIGURAZIONE* > *sistema* > *Opzioni di visualizzazione*.
+. Selezionare la casella di controllo *notifica Sospendi tutto*.
+
+
+*Nota*: La soppressione delle notifiche e-mail a livello di sistema elimina anche le e-mail AutoSupport attivate dagli eventi.
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Come si personalizzano le condizioni e i trigger?
+ a| 
+. Selezionare *ALERTS* *Rules*.
+. Selezionare una regola predefinita da modificare oppure selezionare *Crea regola personalizzata*.
+
+
+xref:editing-alert-rules.adoc[Modificare le regole degli avvisi]
+
+xref:creating-custom-alert-rules.adoc[Creare regole di avviso personalizzate]
+ a| 
+. Selezionare *SUPPORTO* *Allarmi (legacy)* *Allarmi globali*.
+. Creare un allarme personalizzato globale per ignorare un allarme predefinito o per monitorare un attributo che non ha un allarme predefinito.
+
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+
+
+ a| 
+Come si disattiva un singolo avviso o allarme?
+ a| 
+. Selezionare *ALERTS* *Rules*.
+. Selezionare la regola e selezionare *Modifica regola*.
+. Deselezionare la casella di controllo *Enabled*.
+
+
+xref:disabling-alert-rules.adoc[Disattiva le regole di avviso]
+ a| 
+. Selezionare *SUPPORTO* *Allarmi (legacy)* *Allarmi globali*.
+. Selezionare la regola e l'icona Modifica.
+. Deselezionare la casella di controllo *Enabled*.
+
+
+xref:managing-alarms.adoc[Gestire gli allarmi (sistema legacy)]
+
+|===

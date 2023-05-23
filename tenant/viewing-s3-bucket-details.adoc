@@ -1,0 +1,55 @@
+---
+permalink: tenant/viewing-s3-bucket-details.html 
+sidebar: sidebar 
+keywords: how to view s3 bucket details 
+summary: 'È possibile visualizzare un elenco delle impostazioni dei bucket e dei bucket nell"account tenant.' 
+---
+= Visualizza i dettagli del bucket S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare un elenco delle impostazioni dei bucket e dei bucket nell'account tenant.
+
+.Di cosa hai bisogno
+* È necessario accedere al tenant manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+
+
+.Fasi
+. Selezionare *STORAGE (S3)* > *Bucket*.
++
+Viene visualizzata la pagina bucket che elenca tutti i bucket per l'account tenant.
+
++
+image::../media/buckets_table.png[Tabella bucket]
+
+. Esaminare le informazioni relative a ciascun bucket.
++
+In base alle esigenze, è possibile ordinare le informazioni in base a qualsiasi colonna oppure scorrere l'elenco in avanti e indietro.
+
++
+** Name (Nome): Il nome univoco del bucket, che non può essere modificato.
+** S3 Object Lock (blocco oggetti S3): Se S3 Object Lock (blocco oggetti S3) è attivato per questo bucket.
++
+Questa colonna non viene visualizzata se l'impostazione di blocco oggetti S3 globale è disattivata. Questa colonna mostra anche informazioni relative a qualsiasi bucket compatibile legacy.
+
+** Regione: La regione del bucket, che non può essere modificata.
+** Object Count (Conteggio oggetti): Il numero di oggetti in questo bucket.
+** Spazio utilizzato: La dimensione logica di tutti gli oggetti in questo bucket. La dimensione logica non include lo spazio effettivo richiesto per le copie replicate o codificate in cancellazione o per i metadati degli oggetti.
+** Data di creazione: Data e ora di creazione del bucket.
+
+
++
+
+IMPORTANT: I valori Object Count (Conteggio oggetti) e Space used (spazio utilizzato) visualizzati sono stime. Queste stime sono influenzate dai tempi di acquisizione, dalla connettività di rete e dallo stato dei nodi. Se nei bucket è attivata la versione, le versioni degli oggetti eliminati vengono incluse nel conteggio degli oggetti.
+
+. Per visualizzare e gestire le impostazioni di un bucket, selezionare il nome del bucket.
++
+La pagina dei dettagli del bucket consente di visualizzare e modificare le impostazioni per le opzioni del bucket, l'accesso al bucket e. xref:what-platform-services-are.adoc[servizi della piattaforma].
+
++
+image::../media/bucket_details_page.png[Pagina Dettagli bucket]
+
+

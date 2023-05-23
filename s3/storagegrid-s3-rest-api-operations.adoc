@@ -1,0 +1,52 @@
+---
+permalink: s3/storagegrid-s3-rest-api-operations.html 
+sidebar: sidebar 
+keywords: S3 REST API, S3 operations 
+summary: 'Sono state aggiunte operazioni all"API REST S3 specifiche per il sistema StorageGRID.' 
+---
+= Operazioni REST API di StorageGRID S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sono state aggiunte operazioni all'API REST S3 specifiche per il sistema StorageGRID.
+
+* xref:../s3/get-bucket-consistency-request.adoc[OTTIENI una richiesta di coerenza bucket]
++
+La richiesta DI coerenza GET Bucket consente di determinare il livello di coerenza applicato a un determinato bucket.
+
+* xref:../s3/put-bucket-consistency-request.adoc[INSERIRE la richiesta di coerenza del bucket]
++
+La richiesta DI coerenza PUT bucket consente di specificare il livello di coerenza da applicare alle operazioni eseguite su un bucket.
+
+* xref:../s3/get-bucket-last-access-time-request.adoc[OTTIENI la richiesta dell'ultimo accesso al bucket]
++
+La richiesta GET bucket last access time (OTTIENI bucket ultimo accesso) consente di determinare se gli ultimi aggiornamenti dell'orario di accesso sono attivati o disattivati per i singoli bucket.
+
+* xref:../s3/put-bucket-last-access-time-request.adoc[METTI richiesta dell'ultimo tempo di accesso al bucket]
++
+La richiesta PUT bucket Last access time consente di attivare o disattivare gli ultimi aggiornamenti del tempo di accesso per i singoli bucket. La disattivazione degli ultimi aggiornamenti dell'orario di accesso migliora le prestazioni ed è l'impostazione predefinita per tutti i bucket creati con la versione 10.3.0 o successiva.
+
+* xref:../s3/delete-bucket-metadata-notification-configuration-request.adoc[ELIMINA la richiesta di configurazione della notifica dei metadati del bucket]
++
+La richiesta di configurazione DELLA notifica dei metadati DEL bucket DELETE consente di disattivare il servizio di integrazione della ricerca per i singoli bucket eliminando il file XML di configurazione.
+
+* xref:../s3/get-bucket-metadata-notification-configuration-request.adoc[OTTIENI una richiesta di configurazione per la notifica dei metadati del bucket]
++
+La richiesta DI configurazione DELLA notifica dei metadati GET Bucket consente di recuperare l'XML di configurazione utilizzato per configurare l'integrazione della ricerca per i singoli bucket.
+
+* xref:../s3/put-bucket-metadata-notification-configuration-request.adoc[INSERIRE la richiesta di configurazione della notifica dei metadati del bucket]
++
+La richiesta di configurazione DELLA notifica dei metadati PUT bucket consente di attivare il servizio di integrazione della ricerca per i singoli bucket. L'XML di configurazione della notifica dei metadati fornito nel corpo della richiesta specifica gli oggetti i cui metadati vengono inviati all'indice di ricerca di destinazione.
+
+* xref:../s3/get-storage-usage-request.adoc[OTTIENI la richiesta di utilizzo dello storage]
++
+La richiesta GET Storage Usage indica la quantità totale di storage in uso da un account e per ciascun bucket associato all'account.
+
+* xref:../s3/deprecated-bucket-requests-for-legacy-compliance.adoc[Richieste bucket obsolete per conformità legacy]
++
+Potrebbe essere necessario utilizzare l'API REST di StorageGRID S3 per gestire i bucket creati utilizzando la funzionalità di conformità legacy.
+
+

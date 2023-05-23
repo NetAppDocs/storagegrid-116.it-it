@@ -1,0 +1,35 @@
+---
+permalink: primer/reviewing-audit-messages.html 
+sidebar: sidebar 
+keywords: audit message 
+summary: I messaggi di audit possono aiutarti a comprendere meglio le operazioni dettagliate del tuo sistema StorageGRID. È possibile utilizzare i registri di audit per risolvere i problemi e valutare le performance. 
+---
+= Esaminare i messaggi di audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I messaggi di audit possono aiutarti a comprendere meglio le operazioni dettagliate del tuo sistema StorageGRID. È possibile utilizzare i registri di audit per risolvere i problemi e valutare le performance.
+
+Durante il normale funzionamento del sistema, tutti i servizi StorageGRID generano messaggi di audit, come segue:
+
+* I messaggi di audit del sistema sono correlati al sistema di audit stesso, agli stati dei nodi della griglia, all'attività delle attività a livello di sistema e alle operazioni di backup del servizio.
+* I messaggi di audit dello storage a oggetti sono correlati allo storage e alla gestione degli oggetti all'interno di StorageGRID, tra cui storage a oggetti e recuperi, trasferimenti da grid-node a grid-node e verifiche.
+* I messaggi di controllo in lettura e scrittura del client vengono registrati quando un'applicazione client S3 o Swift richiede di creare, modificare o recuperare un oggetto.
+* I messaggi di controllo della gestione registrano le richieste degli utenti all'API di gestione.
+
+
+Ogni nodo amministrativo memorizza i messaggi di audit in file di testo. La condivisione dell'audit contiene il file attivo (audit.log) e i registri di audit compressi dei giorni precedenti. Inoltre, ciascun nodo della griglia memorizza una quantità limitata di messaggi di controllo in un file di log locale (localaudit.log).
+
+Per un facile accesso ai registri di audit, è possibile configurare l'accesso client alla condivisione di audit sia per NFS che per CIFS (CIFS è obsoleto). È inoltre possibile accedere ai file di log di audit direttamente dalla riga di comando del nodo di amministrazione.
+
+In alternativa, è possibile inviare le informazioni di audit memorizzate nei nodi Admin e nei nodi locali a un server syslog esterno. L'utilizzo di un server syslog esterno può semplificare la gestione delle informazioni di controllo e ridurre il traffico di rete. Vedere xref:../monitor/configure-audit-messages.adoc[Configurare i messaggi di audit e le destinazioni dei log] per ulteriori informazioni.
+
+Per informazioni dettagliate sul file di log di audit, sul formato dei messaggi di audit, sui tipi di messaggi di audit e sugli strumenti disponibili per analizzare i messaggi di audit, vedere xref:../audit/index.adoc[istruzioni per i messaggi di audit]. Per informazioni su come configurare l'accesso client di controllo, vedere xref:../admin/configuring-audit-client-access.adoc[Configurare l'accesso al client di audit].
+
+.Informazioni correlate
+* xref:../audit/index.adoc[Esaminare i registri di audit]
+* xref:../admin/index.adoc[Amministrare StorageGRID]
+

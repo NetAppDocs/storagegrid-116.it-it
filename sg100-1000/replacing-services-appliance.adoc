@@ -1,0 +1,102 @@
+---
+permalink: sg100-1000/replacing-services-appliance.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, Replacing, replace, remove, removing, removal, install, installing, installation 
+summary: 'Potrebbe essere necessario sostituire l"apparecchio se non funziona in modo ottimale o se si è guastato.' 
+---
+= Sostituire l'appliance di servizi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario sostituire l'apparecchio se non funziona in modo ottimale o se si è guastato.
+
+.Di cosa hai bisogno
+* Si dispone di un apparecchio sostitutivo con lo stesso codice prodotto dell'apparecchio che si sta sostituendo.
+* Sono presenti etichette per identificare ciascun cavo collegato all'apparecchio.
+* Lo hai fatto xref:locating-controller-in-data-center.adoc[posizionato fisicamente l'apparecchio].
+* L'apparecchio è stato utilizzato xref:placing-appliance-into-maintenance-mode.adoc[modalità di manutenzione attivata].
+
+
+.A proposito di questa attività
+Il nodo StorageGRID non sarà accessibile durante la sostituzione dell'appliance. Se l'apparecchio funziona a sufficienza, è possibile eseguire uno spegnimento controllato all'inizio di questa procedura.
+
+
+NOTE: Se si sostituisce l'appliance prima di installare il software StorageGRID, potrebbe non essere possibile accedere al programma di installazione dell'appliance StorageGRID subito dopo aver completato questa procedura. Sebbene sia possibile accedere al programma di installazione dell'appliance StorageGRID da altri host sulla stessa sottorete dell'appliance, non è possibile accedervi da host su altre subnet. Questa condizione dovrebbe risolversi automaticamente entro 15 minuti (in caso di timeout di qualsiasi voce della cache ARP per l'appliance originale), oppure è possibile cancellare immediatamente la condizione cancellando manualmente le vecchie voci della cache ARP dal router o dal gateway locale.
+
+.Fasi
+. Una volta attivata la modalità di manutenzione, spegnere l'apparecchio.
++
+.. Accedere al nodo Grid:
++
+... Immettere il seguente comando: `ssh admin@_grid_node_IP_`
+... Immettere la password elencata in `Passwords.txt` file.
+... Immettere il seguente comando per passare a root: `su -`
+... Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+.. Spegnere l'apparecchio: +
+`*shutdown -h now*`
+
+
+. Utilizzare uno dei due metodi per verificare che l'apparecchio sia spento:
++
+** Il LED dell'indicatore di alimentazione sulla parte anteriore dell'apparecchio è spento.
+** La pagina Power Control dell'interfaccia BMC indica che l'appliance è spenta.
+
+
+. Se le reti StorageGRID collegate all'appliance utilizzano server DHCP, aggiornare le impostazioni DNS/rete e indirizzo IP.
++
+.. Individuare l'etichetta dell'indirizzo MAC sulla parte anteriore dell'appliance e determinare l'indirizzo MAC della porta di rete amministrativa.
++
+
+NOTE: L'etichetta dell'indirizzo MAC elenca l'indirizzo MAC per la porta di gestione BMC.
+
++
+Per determinare l'indirizzo MAC della porta Admin Network, è necessario aggiungere *2* al numero esadecimale sull'etichetta. Ad esempio, se l'indirizzo MAC sull'etichetta termina con *09*, l'indirizzo MAC della porta di amministrazione terminerà con *0B*. Se l'indirizzo MAC sull'etichetta termina in *(_y_)FF*, l'indirizzo MAC per la porta di amministrazione terminerà in *(_y_+1)01*. È possibile eseguire facilmente questo calcolo aprendo Calculator in Windows, impostandolo sulla modalità Programmer, selezionando Hex, digitando l'indirizzo MAC e digitando *+ 2 =*.
+
+.. Chiedere all'amministratore di rete di associare il DNS/rete e l'indirizzo IP dell'appliance rimosso con l'indirizzo MAC dell'appliance sostitutiva.
++
+
+IMPORTANT: Prima di alimentare l'appliance sostitutiva, è necessario assicurarsi che tutti gli indirizzi IP dell'appliance originale siano stati aggiornati. In caso contrario, l'appliance otterrà nuovi indirizzi IP DHCP all'avvio e potrebbe non essere in grado di riconnettersi a StorageGRID. Questo passaggio si applica a tutte le reti StorageGRID collegate all'appliance.
+
++
+
+NOTE: Se l'appliance originale utilizzava un indirizzo IP statico, il nuovo appliance adotterà automaticamente gli indirizzi IP dell'appliance rimossa.
+
+
+
+. Rimuovere e sostituire l'apparecchio:
++
+.. Etichettare i cavi, quindi scollegare i cavi e i ricetrasmettitori di rete.
++
+
+IMPORTANT: Per evitare prestazioni degradate, non attorcigliare, piegare, pizzicare o salire sui cavi.
+
+.. Rimuovere l'apparecchio guasto dal cabinet o dal rack.
+.. Trasferire i due alimentatori, le otto ventole di raffreddamento e le due unità SSD dall'appliance guasta all'appliance sostitutiva.
++
+Seguire le istruzioni fornite per la sostituzione di questi componenti.
+
+.. Installare l'appliance sostitutiva nell'armadio o nel rack.
+.. Sostituire i cavi e i ricetrasmettitori ottici.
+.. Accendere l'apparecchio e monitorare i LED dell'apparecchio e i codici di avvio.
++
+Utilizzare l'interfaccia BMC per monitorare lo stato di avvio.
+
+
+
+. Verificare che il nodo appliance sia visualizzato in Grid Manager e che non vengano visualizzati avvisi.
+
+
+.Informazioni correlate
+xref:installing-appliance-in-cabinet-or-rack-sg100-and-sg1000.adoc[Installazione dell'appliance in un cabinet o rack (SG100 e SG1000)]
+
+xref:viewing-status-indicators-on-sg100-and-sg1000-appliances.adoc[Visualizza gli indicatori di stato sulle appliance SG100 e SG1000]
+
+xref:viewing-boot-up-codes-for-appliance-sg100-and-sg1000.adoc[Visualizzare i codici di avvio dell'appliance]

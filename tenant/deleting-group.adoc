@@ -1,0 +1,35 @@
+---
+permalink: tenant/deleting-group.html 
+sidebar: sidebar 
+keywords: how to delete tenant group 
+summary: 'È possibile eliminare un gruppo dal sistema. Gli utenti che appartengono solo a quel gruppo non potranno più accedere al tenant manager o utilizzare l"account tenant.' 
+---
+= Elimina gruppo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eliminare un gruppo dal sistema. Gli utenti che appartengono solo a quel gruppo non potranno più accedere al tenant manager o utilizzare l'account tenant.
+
+.Di cosa hai bisogno
+* È necessario accedere al tenant manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario appartenere a un gruppo di utenti che dispone dell'autorizzazione di accesso root. Vedere xref:tenant-management-permissions.adoc[Permessi di gestione del tenant].
+
+
+.Fasi
+. Selezionare *GESTIONE ACCESSI* > *gruppi*.
++
+image::../media/tenant_add_groups_example.png[Schermata della pagina Access Control > Groups (controllo accessi > gruppi)]
+
+. Selezionare le caselle di controllo dei gruppi che si desidera eliminare.
+. Selezionare *azioni* > *Elimina gruppo*.
++
+Viene visualizzato un messaggio di conferma.
+
+. Selezionare *Delete group* (Elimina gruppo) per confermare che si desidera eliminare i gruppi indicati nel messaggio di conferma.
++
+Viene visualizzato un messaggio di conferma nell'angolo superiore destro della pagina. Le modifiche potrebbero richiedere fino a 15 minuti per essere effettive a causa del caching.
+
+

@@ -1,0 +1,60 @@
+---
+permalink: maintain/checking-data-repair-jobs.html 
+sidebar: sidebar 
+keywords: storagegrid, data repair 
+summary: Prima di disattivare un nodo di rete, è necessario confermare che non sono attivi lavori di riparazione dei dati. Se le riparazioni non sono riuscite, è necessario riavviarle e lasciarle completare prima di eseguire la procedura di decommissionamento. 
+---
+= Controllare i lavori di riparazione dei dati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di disattivare un nodo di rete, è necessario confermare che non sono attivi lavori di riparazione dei dati. Se le riparazioni non sono riuscite, è necessario riavviarle e lasciarle completare prima di eseguire la procedura di decommissionamento.
+
+Se è necessario decommissionare un nodo di storage disconnesso, queste fasi verranno completate anche al termine della procedura di decommissionamento per garantire che il lavoro di riparazione dei dati sia stato completato correttamente. È necessario assicurarsi che tutti i frammenti erasure-coded presenti nel nodo rimosso siano stati ripristinati correttamente.
+
+Questi passaggi si applicano solo ai sistemi che dispongono di oggetti con codifica per la cancellazione.
+
+. Accedere al nodo di amministrazione principale:
++
+.. Immettere il seguente comando: `ssh admin@_grid_node_IP_`
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
+
+
+. Verificare la presenza di riparazioni in corso: `repair-data show-ec-repair-status`
++
+** Se non si è mai eseguito un lavoro di riparazione dei dati, l'output è `No job found`. Non è necessario riavviare alcun lavoro di riparazione.
+** Se il lavoro di riparazione dei dati è stato eseguito in precedenza o è in esecuzione, l'output elenca le informazioni per la riparazione. Ogni riparazione ha un ID di riparazione univoco. Passare alla fase successiva.
+
+
++
+[listing]
+----
+root@DC1-ADM1:~ # repair-data show-ec-repair-status
+
+Repair ID Scope Start Time End Time State Est/Affected Bytes Repaired Retry Repair
+===================================================================================
+949283 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:27:06.9 Success 17359 17359 No
+949292 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:37:06.9 Failure 17359 0     Yes
+949294 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:47:06.9 Failure 17359 0     Yes
+949299 DC1-S-99-10(Volumes: 1,2) 2016-11-30T15:57:06.9 Failure 17359 0     Yes
+----
+. Se lo stato per tutte le riparazioni è `Success`, non è necessario riavviare alcun lavoro di riparazione.
+. Se lo stato per qualsiasi riparazione è `Failure`, è necessario riavviare la riparazione.
++
+.. Ottenere l'ID della riparazione per la riparazione non riuscita dall'output.
+.. Eseguire `repair-data start-ec-node-repair` comando.
++
+Utilizzare `--repair-id` Opzione per specificare l'ID riparazione. Ad esempio, se si desidera riprovare una riparazione con l'ID riparazione 949292, eseguire questo comando: `repair-data start-ec-node-repair --repair-id 949292`
+
+.. Continuare a tenere traccia dello stato delle riparazioni dei dati EC fino a quando lo stato di tutte le riparazioni non è `Success`.
+
+
+

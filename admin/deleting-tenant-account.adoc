@@ -1,0 +1,30 @@
+---
+permalink: admin/deleting-tenant-account.html 
+sidebar: sidebar 
+keywords: tenant, delete, remove tenant 
+summary: 'È possibile eliminare un account tenant se si desidera rimuovere in modo permanente l"accesso del tenant al sistema.' 
+---
+= Elimina account tenant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eliminare un account tenant se si desidera rimuovere in modo permanente l'accesso del tenant al sistema.
+
+.Di cosa hai bisogno
+* È necessario accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario disporre di autorizzazioni di accesso specifiche.
+* È necessario rimuovere tutti i bucket (S3), i container (Swift) e gli oggetti associati all'account tenant.
+
+
+.Fasi
+. Selezionare *TENANT*.
+. Selezionare l'account tenant che si desidera eliminare.
++
+Utilizzare la casella di ricerca per cercare un account tenant in base al nome o all'ID tenant.
+
+. Dal menu a discesa *azioni*, selezionare *Elimina*.
+. Selezionare *OK*.
+

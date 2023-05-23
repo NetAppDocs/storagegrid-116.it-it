@@ -1,0 +1,49 @@
+---
+permalink: sg5600/troubleshooting-connection-issues.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, troubleshoot, troubleshooting, connection 
+summary: 'In caso di problemi di connessione durante l"installazione dell"appliance StorageGRID, eseguire le azioni correttive elencate.' 
+---
+= Risoluzione dei problemi di connessione (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In caso di problemi di connessione durante l'installazione dell'appliance StorageGRID, eseguire le azioni correttive elencate.
+
+
+
+== Impossibile connettersi all'appliance StorageGRID in rete
+
+Se non si riesce a connettersi all'appliance, potrebbe esserci un problema di rete o l'installazione dell'hardware potrebbe non essere stata completata correttamente.
+
+* *Problema*
++
+Non è possibile connettersi all'apparecchio.
+
+* *Causa*
++
+Questo potrebbe verificarsi se si verifica un problema di rete o se l'installazione dell'hardware non è stata completata correttamente.
+
+* *Azione correttiva*
++
+.. Ping dell'apparecchio: +
+`*ping _E5600_controller_IP_*`
+.. Per accedere al programma di installazione dell'appliance StorageGRID, aprire un browser e digitare quanto segue: +
+`*https://_Management_Port_IP_:8443*`
++
+Per Management_Port_IP, inserire l'indirizzo IP per la porta di gestione 1 sul controller E5600SG (fornito durante l'installazione fisica).
+
+.. Fare clic su *Configure Admin network* (Configura rete amministrativa) e controllare l'IP.
+.. Se si riceve una risposta dal ping, verificare che la porta 8443 sia aperta nei firewall.
+.. Riavviare l'appliance.
+.. Aggiornare la pagina Web di installazione.
+.. Se questo non risolve il problema di connessione, contattare il supporto tecnico dal sito del supporto NetApp all'indirizzo http://mysupport.netapp.com/["mysupport.netapp.com"^].
+
+
+
+
+.Informazioni correlate
+xref:e5600sg-controller-seven-segment-display-codes.adoc[Codici display a sette segmenti della centralina E5600SG]

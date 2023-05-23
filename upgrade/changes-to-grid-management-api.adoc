@@ -1,0 +1,88 @@
+---
+permalink: upgrade/changes-to-grid-management-api.html 
+sidebar: sidebar 
+keywords: grid management api, api, api version, swagger, rest api 
+summary: 'StorageGRID 11.6 utilizza la versione 3 dell"API per la gestione dei grid. La versione 3 è obsoleta della versione 2; tuttavia, la versione 1 e la versione 2 sono ancora supportate.' 
+---
+= Modifiche all'API Grid Management
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 11.6 utilizza la versione 3 dell'API per la gestione dei grid. La versione 3 è obsoleta della versione 2; tuttavia, la versione 1 e la versione 2 sono ancora supportate.
+
+
+IMPORTANT: È possibile continuare a utilizzare la versione 1 e la versione 2 dell'API di gestione con StorageGRID 11.6; tuttavia, il supporto per queste versioni dell'API verrà rimosso in una release futura di StorageGRID. Dopo l'aggiornamento a StorageGRID 11.6, le API v1 e v2 obsolete possono essere disattivate utilizzando `PUT /grid/config/management` API.
+
+Per ulteriori informazioni, visitare il sito Web all'indirizzo xref:../admin/using-grid-management-api.adoc[Utilizzare l'API Grid Management].
+
+
+
+== Può accedere ai documenti Swagger per le operazioni API private
+
+Ora puoi accedere ai documenti Swagger per l'API privata da Grid Manager. Per visualizzare le operazioni disponibili, selezionare l'icona della guida di Grid Manager e selezionare *documentazione API*. Quindi, selezionare *Vai alla documentazione API privata* dalla pagina API di gestione StorageGRID.
+
+Le API private di StorageGRID sono soggette a modifiche senza preavviso. Gli endpoint privati di StorageGRID ignorano anche la versione API della richiesta.
+
+
+
+== API basate su allarmi obsolete
+
+La versione 11.6 depreca tutte le API basate sugli allarmi. Le seguenti API sono interessate da questa modifica:
+
+* `GET /grid/alarms`: Completamente obsoleto
+* `GET /grid/health/topology`: Completamente obsoleto
+* `GET /grid/health`: Il `alarm-counts` sezione della risposta obsoleta
+
+
+
+
+== Può importare le chiavi di accesso S3
+
+Ora è possibile utilizzare l'API Grid Management per importare le chiavi di accesso S3 per gli utenti tenant. Ad esempio, è possibile migrare le chiavi di accesso da un altro provider S3 a StorageGRID o utilizzare questa funzione per mantenere le stesse credenziali utente tra le griglie.
+
+
+IMPORTANT: Quando questa funzione è attivata, qualsiasi utente di Grid Manager con l'autorizzazione Modifica password root tenant ha accesso completo ai dati del tenant. Disattivare questa funzione subito dopo l'utilizzo per proteggere i dati del tenant.
+
+
+
+== Operazioni con nuovi account
+
+Tre novità `grid/account` Sono state aggiunte le operazioni API:
+
+* `POST /grid​/account-enable-s3-key-import`: Questa richiesta attiva la funzione Import S3 Credentials (Importa credenziali S3). Per attivare questa funzione, è necessario disporre dell'autorizzazione di accesso root.
+* `POST /grid​/accounts​/{id}​/users​/{user_id}​/s3-access-keys`: Questa richiesta importa le credenziali S3 per un determinato utente in un account tenant. È necessario disporre dell'autorizzazione Root Access o Change tenant root password e conoscere l'ID utente e l'ID account tenant.
+* `POST /grid​/account-disable-s3-key-import`: Questa richiesta disattiva la funzione Import S3 Credentials (Importa credenziali S3). Per disattivare questa funzione, è necessario disporre dell'autorizzazione di accesso root.
+
+
+
+
+== Metodo PATCH obsoleto
+
+Il metodo DI PATCH è stato obsoleto e verrà rimosso in una release futura. Se necessario, eseguire un'operazione PUT per sostituire una risorsa invece di utilizzare un'operazione DI PATCH per modificare la risorsa.
+
+
+
+== Aggiunte a. `grid/logs/collect` endpoint
+
+Sono stati aggiunti quattro valori booleani a `grid/logs/collect` endpoint:
+
+* `applicationLogs`: Registri specifici dell'applicazione che il supporto tecnico utilizza più frequentemente per la risoluzione dei problemi. I log raccolti sono un sottoinsieme dei log dell'applicazione disponibili. L'impostazione predefinita è `true`.
+* `auditLogs`: Registri contenenti i messaggi di audit generati durante il normale funzionamento del sistema. L'impostazione predefinita è `true`.
+* `networkTrace`: Registri utilizzati per il debug di rete. L'impostazione predefinita è `false`.
+* `prometheusDatabase`: Metriche delle serie temporali dei servizi su tutti i nodi. L'impostazione predefinita è `false`.
+
+
+
+
+== Novità `​node-details /grid​/service-ids` endpoint
+
+Il nuovo `​/grid​/service-ids` Endpoint fornisce un mapping degli UUID dei nodi ai nomi dei nodi, agli ID dei servizi e ai tipi di servizio associati.
+
+
+
+== Può recuperare le password della console del nodo griglia
+
+Ora puoi utilizzare `POST ​/grid​/node-console-passwords` per recuperare l'elenco dei nodi della griglia e le relative password della console associate.

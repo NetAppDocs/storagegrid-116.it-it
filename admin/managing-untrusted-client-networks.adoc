@@ -1,0 +1,41 @@
+---
+permalink: admin/managing-untrusted-client-networks.html 
+sidebar: sidebar 
+keywords: untrusted client network 
+summary: Se si utilizza una rete client, è possibile proteggere StorageGRID da attacchi ostili accettando il traffico client in entrata solo su endpoint configurati esplicitamente. 
+---
+= Gestisci reti client non attendibili: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza una rete client, è possibile proteggere StorageGRID da attacchi ostili accettando il traffico client in entrata solo su endpoint configurati esplicitamente.
+
+Per impostazione predefinita, la rete client su ciascun nodo della griglia è _trusted_. Ovvero, per impostazione predefinita, StorageGRID considera attendibili le connessioni in entrata a ciascun nodo della griglia su tutte le porte esterne disponibili (vedere le informazioni sulle comunicazioni esterne nella sezione xref:../network/index.adoc[Linee guida per il networking]).
+
+È possibile ridurre la minaccia di attacchi ostili al sistema StorageGRID specificando che la rete client di ciascun nodo è _non attendibile_. Se la rete client di un nodo non è attendibile, il nodo accetta solo connessioni in entrata su porte esplicitamente configurate come endpoint del bilanciamento del carico. Vedere xref:configuring-load-balancer-endpoints.adoc[Configurare gli endpoint del bilanciamento del carico].
+
+
+
+== Esempio 1: Il nodo gateway accetta solo richieste HTTPS S3
+
+Si supponga che un nodo gateway rifiuti tutto il traffico in entrata sulla rete client, ad eccezione delle richieste HTTPS S3. Eseguire le seguenti operazioni generali:
+
+. Dalla pagina degli endpoint del bilanciamento del carico, configurare un endpoint del bilanciamento del carico per S3 su HTTPS sulla porta 443.
+. Nella pagina Untrusted Client Networks (reti client non attendibili), specificare che la rete client sul nodo gateway non è attendibile.
+
+
+Dopo aver salvato la configurazione, tutto il traffico in entrata sulla rete client del nodo gateway viene interrotto, ad eccezione delle richieste HTTPS S3 sulla porta 443 e delle richieste ICMP echo (ping).
+
+
+
+== Esempio 2: Storage Node invia richieste di servizi della piattaforma S3
+
+Si supponga di voler abilitare il traffico di servizio della piattaforma S3 in uscita da un nodo di storage, ma di voler impedire qualsiasi connessione in entrata a tale nodo di storage sulla rete client. Eseguire questa fase generale:
+
+* Nella pagina Untrusted Client Networks (reti client non attendibili), indicare che la rete client sul nodo di storage non è attendibile.
+
+
+Dopo aver salvato la configurazione, il nodo di storage non accetta più il traffico in entrata sulla rete client, ma continua a consentire le richieste in uscita ad Amazon Web Services.

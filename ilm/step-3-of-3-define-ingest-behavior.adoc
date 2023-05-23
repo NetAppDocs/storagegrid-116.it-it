@@ -1,0 +1,75 @@
+---
+permalink: ilm/step-3-of-3-define-ingest-behavior.html 
+sidebar: sidebar 
+keywords: ilm rule step 3, define ingest behavior 
+summary: 'Il passaggio 3 della procedura guidata Crea regola ILM consente di scegliere come proteggere gli oggetti filtrati da questa regola durante l"acquisizione.' 
+---
+= Fase 3 di 3: Definizione del comportamento di acquisizione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il passaggio 3 (Definisci comportamento di acquisizione) della procedura guidata Crea regola ILM consente di scegliere come proteggere gli oggetti filtrati da questa regola durante l'acquisizione.
+
+.A proposito di questa attività
+StorageGRID può eseguire copie temporanee e mettere in coda gli oggetti per la valutazione ILM in un secondo momento, oppure può eseguire copie per soddisfare immediatamente le istruzioni di posizionamento della regola.
+
+image::../media/define_ingest_behavior_for_ilm_rule.png[Creare la regola ILM passo 3 di 3]
+
+.Fasi
+. Selezionare l'opzione di protezione dei dati da utilizzare quando vengono acquisiti oggetti:
++
+[cols="1a,2a"]
+|===
+| Opzione | Descrizione 
+
+
+ a| 
+Rigoroso
+ a| 
+Utilizza sempre le posizioni di questa regola per l'acquisizione. L'acquisizione non riesce quando non è possibile eseguire il posizionamento di questa regola.
+
+
+
+ a| 
+Bilanciato
+ a| 
+Efficienza ILM ottimale. Tenta di inserire i posizionamenti di questa regola. Crea copie temporanee quando ciò non è possibile.
+
+
+
+ a| 
+Commit doppio
+ a| 
+Crea copie temporanee al momento dell'acquisizione e applica le posizioni di questa regola in un secondo momento.
+
+|===
++
+Balanced offre una combinazione di sicurezza ed efficienza dei dati adatta nella maggior parte dei casi. Per soddisfare requisiti specifici, vengono generalmente utilizzati i requisiti Strict o Dual Commit.
+
++
+Vedere xref:data-protection-options-for-ingest.adoc[Opzioni di protezione dei dati per l'acquisizione] e. xref:advantages-disadvantages-of-ingest-options.adoc[Vantaggi, svantaggi e limitazioni delle opzioni di protezione dei dati] per ulteriori informazioni.
+
++
+[NOTE]
+====
+Viene visualizzato un messaggio di errore se si seleziona l'opzione Strict (rigoroso) o Balanced (bilanciato) e la regola utilizza una delle seguenti posizioni:
+
+** Un pool di storage cloud al giorno 0
+** Un nodo di archivio al giorno 0
+** Un Cloud Storage Pool o un nodo di archivio quando la regola utilizza un tempo di creazione definito dall'utente come tempo di riferimento
+
+
+====
+. Selezionare *Salva*.
++
+La regola ILM viene salvata. La regola non diventa attiva fino a quando non viene aggiunta a un criterio ILM e tale criterio non viene attivato.
+
+
+
+.Informazioni correlate
+* xref:example-5-ilm-rules-and-policy-for-strict-ingest-behavior.adoc[Esempio 5: Regole e policy ILM per un comportamento rigoroso di acquisizione]
+* xref:creating-ilm-policy.adoc[Creare un criterio ILM]
+

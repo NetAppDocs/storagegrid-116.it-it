@@ -1,0 +1,65 @@
+---
+permalink: admin/scheduling-data-migration.html 
+sidebar: sidebar 
+keywords: data migration schedule, monitor data migration 
+summary: La migrazione dei dati deve essere pianificata e monitorata, se necessario, per garantire che i dati vengano inseriti in base alla policy ILM entro i tempi richiesti. 
+---
+= Pianificare e monitorare la migrazione dei dati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La migrazione dei dati deve essere pianificata e monitorata, se necessario, per garantire che i dati vengano inseriti in base alla policy ILM entro i tempi richiesti.
+
+
+
+== Pianificazione della migrazione dei dati
+
+Evita la migrazione dei dati durante le ore di funzionamento principali. Limitare la migrazione dei dati a serate, fine settimana e altri periodi in cui l'utilizzo del sistema è basso.
+
+Se possibile, non pianificare la migrazione dei dati durante i periodi di attività elevata. Tuttavia, se non è pratico evitare completamente il periodo di attività elevato, è sicuro procedere finché si monitorano attentamente gli attributi pertinenti e si interviene se superano i valori accettabili.
+
+
+
+== Monitorare la migrazione dei dati
+
+Questa tabella elenca gli attributi da monitorare durante la migrazione dei dati e i problemi che rappresentano.
+
+Se si utilizzano criteri di classificazione del traffico con limiti di velocità per accelerare l'acquisizione, è possibile monitorare la velocità osservata insieme alle statistiche descritte nella tabella seguente e ridurre i limiti, se necessario.
+
+[cols="1a,2a"]
+|===
+| Monitorare | Descrizione 
+
+
+ a| 
+Numero di oggetti in attesa di valutazione ILM
+ a| 
+. Selezionare *SUPPORT* > *Tools* > *Grid topology*.
+. Selezionare *_Deployment_* *Overview* *Main*.
+. Nella sezione ILM Activity (attività ILM), monitorare il numero di oggetti visualizzati per i seguenti attributi:
++
+** *In attesa - tutti (XQUZ)*: Il numero totale di oggetti in attesa di valutazione ILM.
+** *In attesa - Client (XCQZ)*: Il numero totale di oggetti in attesa di valutazione ILM dalle operazioni del client (ad esempio, acquisizione).
+
+
+. Se il numero di oggetti visualizzato per uno di questi attributi supera 100,000, ridurre il tasso di acquisizione degli oggetti per ridurre il carico sul sistema StorageGRID.
+
+
+
+
+ a| 
+Capacità di storage del sistema di archiviazione mirato
+ a| 
+Se la policy ILM salva una copia dei dati migrati in un sistema storage di archiviazione di destinazione (nastro o cloud), monitorate la capacità del sistema storage di archiviazione di destinazione per garantire che vi sia una capacità sufficiente per i dati migrati.
+
+
+
+ a| 
+*Nodo di archivio* *ARC* *Memorizza*
+ a| 
+Se viene attivato un allarme per l'attributo *Store Failures (ARVF)*, il sistema storage di archiviazione di destinazione potrebbe aver raggiunto la capacità. Controllare il sistema storage di archiviazione di destinazione e risolvere eventuali problemi che hanno generato un allarme.
+
+|===

@@ -1,0 +1,34 @@
+---
+permalink: ubuntu/specifying-domain-name-system-server-information.html 
+sidebar: sidebar 
+keywords: how to specify Domain Name System server information 
+summary: È necessario specificare le informazioni DNS per il sistema StorageGRID, in modo da poter accedere ai server esterni utilizzando i nomi host invece degli indirizzi IP. 
+---
+= Specificare le informazioni sul server Domain Name System
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario specificare le informazioni DNS (Domain Name System) per il sistema StorageGRID, in modo da poter accedere ai server esterni utilizzando i nomi host invece degli indirizzi IP.
+
+.A proposito di questa attività
+La specifica delle informazioni sul server DNS consente di utilizzare nomi host FQDN (Fully Qualified Domain Name) anziché indirizzi IP per le notifiche e-mail e AutoSupport. Si consiglia di specificare almeno due server DNS.
+
+
+IMPORTANT: Fornire da due a sei indirizzi IPv4 per i server DNS. Selezionare i server DNS ai quali ciascun sito può accedere localmente in caso di rete. In questo modo si garantisce che un sito islanded continui ad avere accesso al servizio DNS. Dopo aver configurato l'elenco dei server DNS a livello di griglia, è possibile personalizzare ulteriormente l'elenco dei server DNS per ciascun nodo. Per ulteriori informazioni, vedere le informazioni sulla modifica della configurazione DNS nelle istruzioni di ripristino e manutenzione.
+
+Se le informazioni del server DNS vengono omesse o configurate in modo errato, viene attivato un allarme DNST sul servizio SSM di ciascun nodo della rete. L'allarme viene cancellato quando il DNS è configurato correttamente e le nuove informazioni sul server hanno raggiunto tutti i nodi della griglia.
+
+.Fasi
+. Specificare l'indirizzo IPv4 per almeno un server DNS nella casella di testo *Server 1*.
+. Se necessario, selezionare il segno più accanto all'ultima voce per aggiungere altre voci del server.
++
+image::../media/9_gmi_installer_dns_page.gif[Questa immagine viene spiegata dal testo circostante.]
+
++
+Si consiglia di specificare almeno due server DNS. È possibile specificare fino a sei server DNS.
+
+. Selezionare *Avanti*.
+

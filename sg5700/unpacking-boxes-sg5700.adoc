@@ -1,0 +1,69 @@
+---
+permalink: sg5700/unpacking-boxes-sg5700.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, install, installation, unpack, unbox, prepare, inventory, components, contents 
+summary: 'Prima di installare l"appliance StorageGRID, disimballare tutte le confezioni e confrontare il contenuto con gli elementi riportati sulla confezione.' 
+---
+= Disimballare le scatole (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance StorageGRID, disimballare tutte le confezioni e confrontare il contenuto con gli elementi riportati sulla confezione.
+
+* *Appliance SG5712 con 12 dischi installati*
++
+image::../media/de212c_table_size.gif[Appliance 2U SG5712]
+
+* *Appliance SG5760 senza unità installate*
++
+image::../media/de460c_table_size.gif[Appliance 4U SG5760]
+
+* *Pannello anteriore dell'apparecchio*
++
+image::../media/sg5700_front_bezels.gif[Cornici di SG5712 e SG5760]
+
+* *Kit guida con istruzioni*
++
+image::../media/rail_kit.gif[Kit di guide]
+
+* *SG5760: Sessanta dischi*
++
+image::../media/sg5760_drive.gif[Disco]
+
+* *SG5760: Maniglie*
++
+image::../media/handles.gif[Maniglie SG5760]
+
+* *SG5760: Staffe posteriori e dadi a gabbia per l'installazione in rack a foro quadrato*
++
+image::../media/back_brackets_table_size.gif[Staffe posteriori e dadi a gabbia per SG5760]
+
+
+
+
+
+== Cavi e connettori
+
+La spedizione per l'appliance StorageGRID include i seguenti cavi e connettori:
+
+* *Due cavi di alimentazione per il tuo paese*
++
+image::../media/power_cords.gif[Cavi di alimentazione]
+
++
+Il cabinet potrebbe essere dotato di cavi di alimentazione speciali utilizzati al posto dei cavi di alimentazione forniti con l'apparecchio.
+
+* *Cavi ottici e ricetrasmettitori SFP*
++
+image::../media/fc_cable_and_sfp.gif[Cavi ottici e SFP]
+
++
+Due cavi ottici per le porte di interconnessione FC
+
++
+Otto ricetrasmettitori SFP+, compatibili con le quattro porte di interconnessione FC da 16 GB/s e le quattro porte di rete da 10 GbE
+
+

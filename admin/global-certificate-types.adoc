@@ -1,0 +1,16 @@
+---
+permalink: admin/global-certificate-types.html 
+sidebar: sidebar 
+keywords: rsa, ecdsa, custom certificate encryption 
+summary: 'Il sistema StorageGRID supporta i certificati server crittografati con RSA o ECDSA (algoritmo di firma digitale a curva ellittica).' 
+---
+= Tipi di certificato server supportati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema StorageGRID supporta certificati personalizzati crittografati con RSA o ECDSA (algoritmo di firma digitale a curva ellittica).
+
+Per ulteriori informazioni su come StorageGRID protegge le connessioni client per l'API REST, vedere xref:../s3/index.adoc[Utilizzare S3] oppure xref:../swift/index.adoc[USA Swift].

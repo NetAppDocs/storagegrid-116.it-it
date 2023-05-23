@@ -1,0 +1,85 @@
+---
+permalink: admin/removing-user-or-group-from-cifs-audit-share.html 
+sidebar: sidebar 
+keywords: cifs audit client 
+summary: 'Non è possibile rimuovere l"ultimo utente o gruppo autorizzato ad accedere alla condivisione di controllo.' 
+---
+= Rimuovere un utente o un gruppo da una condivisione di audit CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Non è possibile rimuovere l'ultimo utente o gruppo autorizzato ad accedere alla condivisione di controllo.
+
+.Di cosa hai bisogno
+* Hai il `Passwords.txt` File con le password dell'account root (disponibili in DETTO pacchetto).
+* Hai il `Configuration.txt` File (disponibile in DETTO pacchetto).
+
+
+.A proposito di questa attività
+L'esportazione dell'audit tramite CIFS/Samba è stata deprecata e verrà rimossa in una release futura di StorageGRID.
+
+.Fasi
+. Accedere al nodo di amministrazione principale:
++
+.. Immettere il seguente comando: `ssh admin@_primary_Admin_Node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+. Avviare l'utility di configurazione CIFS: `config_cifs.rb`
++
+[listing]
+----
+
+---------------------------------------------------------------------
+| Shares                 | Authentication         | Config          |
+---------------------------------------------------------------------
+| add-audit-share        | set-authentication     | validate-config |
+| enable-disable-share   | set-netbios-name       | help            |
+| add-user-to-share      | join-domain            | exit            |
+| remove-user-from-share | add-password-server    |                 |
+| modify-group           | remove-password-server |                 |
+|                        | add-wins-server        |                 |
+|                        | remove-wins-server     |                 |
+---------------------------------------------------------------------
+----
+. Iniziare a rimuovere un utente o un gruppo: `remove-user-from-share`
++
+Viene visualizzato un elenco numerato delle condivisioni di audit disponibili per il nodo di amministrazione. La condivisione dell'audit è etichettata audit-export.
+
+. Inserire il numero della condivisione di controllo: `_audit_share_number_`
+. Quando viene richiesto di rimuovere un utente o un gruppo: `user` oppure `group`
++
+Viene visualizzato un elenco numerato di utenti o gruppi per la condivisione dell'audit.
+
+. Inserire il numero corrispondente all'utente o al gruppo che si desidera rimuovere: `_number_`
++
+La condivisione di controllo viene aggiornata e l'utente o il gruppo non può più accedere alla condivisione di controllo. Ad esempio:
+
++
+[listing]
+----
+Enabled shares
+ 1. audit-export
+Select the share to change: 1
+Remove user or group? [User/group]: User
+Valid users for this share
+1. audituser
+2. newaudituser
+Select the user to remove: 1
+
+Removed user "audituser" from share "audit-export".
+
+Press return to continue.
+----
+. Chiudere l'utilità di configurazione CIFS: `exit`
+. Se l'implementazione di StorageGRID include nodi di amministrazione in altri siti, disattivare la condivisione di controllo in ciascun sito secondo necessità.
+. Disconnettersi da ogni shell dei comandi al termine della configurazione: `exit`
+

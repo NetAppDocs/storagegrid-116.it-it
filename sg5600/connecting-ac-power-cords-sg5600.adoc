@@ -1,0 +1,38 @@
+---
+permalink: sg5600/connecting-ac-power-cords-sg5600.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, wire, wiring, cabling, cable, Connecting, connect, power cords, power, ac, ac power 
+summary: Collegare i cavi di alimentazione CA alla fonte di alimentazione esterna e al connettore di alimentazione CA di ciascun controller. Una volta collegati i cavi di alimentazione, è possibile accenderli. 
+---
+= Collegamento dei cavi di alimentazione CA (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Collegare i cavi di alimentazione CA alla fonte di alimentazione esterna e al connettore di alimentazione CA di ciascun controller. Una volta collegati i cavi di alimentazione, è possibile accenderli.
+
+.Di cosa hai bisogno
+Entrambi gli interruttori di alimentazione dell'apparecchio devono essere spenti prima di collegare l'alimentazione.
+
+
+CAUTION: *Rischio di scosse elettriche* -- prima di collegare i cavi di alimentazione, assicurarsi che i due interruttori di alimentazione dell'apparecchio siano spenti.
+
+.A proposito di questa attività
+* Utilizzare fonti di alimentazione separate per ciascun alimentatore.
++
+Il collegamento a fonti di alimentazione indipendenti mantiene la ridondanza dell'alimentazione.
+
+* È possibile utilizzare i cavi di alimentazione forniti con il controller con prese tipiche utilizzate nel paese di destinazione, ad esempio prese a muro di un alimentatore ininterrotto (UPS).
++
+Tuttavia, questi cavi di alimentazione non sono destinati all'uso nella maggior parte degli armadi conformi allo standard EIA.
+
+
+
+.Fasi
+. Spegnere gli interruttori di alimentazione del contenitore o dello chassis.
+. Spegnere gli interruttori di alimentazione dei controller.
+. Collegare i cavi di alimentazione principali dal cabinet alle fonti di alimentazione esterne.
+. Collegare i cavi di alimentazione al connettore di alimentazione CA di ciascun controller.
+

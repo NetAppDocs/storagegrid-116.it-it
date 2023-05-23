@@ -1,0 +1,83 @@
+---
+permalink: expand/configuring-expanded-storagegrid-system.html 
+sidebar: sidebar 
+keywords: expansion, configuration 
+summary: 'Dopo aver completato un"espansione, è necessario eseguire ulteriori operazioni di integrazione e configurazione.' 
+---
+= Fasi di configurazione dopo l'espansione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver completato un'espansione, è necessario eseguire ulteriori operazioni di integrazione e configurazione.
+
+.A proposito di questa attività
+È necessario completare le attività di configurazione elencate di seguito per i nodi griglia che si stanno aggiungendo all'espansione. Alcune attività potrebbero essere facoltative, a seconda delle opzioni selezionate durante l'installazione e l'amministrazione del sistema e di come si desidera configurare i nodi della griglia aggiunti durante l'espansione.
+
+.Fasi
+. Se è stato aggiunto un nodo di storage, completare le seguenti attività di configurazione:
++
+.. Esaminare i pool di storage utilizzati nelle regole ILM per assicurarsi che venga utilizzato il nuovo storage. Vedere xref:../ilm/index.adoc[Gestire gli oggetti con ILM].
++
+*** Se è stato aggiunto un sito, creare un pool di storage per il sito e aggiornare le regole ILM per utilizzare il nuovo pool di storage.
+*** Se è stato aggiunto un nodo di storage a un sito esistente, verificare che il nuovo nodo utilizzi il livello di storage corretto.
++
+
+NOTE: Per impostazione predefinita, un nuovo nodo di storage viene assegnato al livello di storage All Storage Node e aggiunto ai pool di storage che utilizzano tale livello per il sito. Se si desidera che un nuovo nodo utilizzi un livello di storage personalizzato, è necessario assegnarlo manualmente al livello di valutazione personalizzato (*ILM* > *Storage Grades*).
+
+
+
+.. Verificare che il nodo di storage stia acquisendo oggetti. Vedere xref:verifying-storage-node-is-active.adoc[Verificare che il nodo di storage sia attivo].
+.. Ribilanciare i dati con codifica di cancellazione (solo se non è stato possibile aggiungere il numero consigliato di nodi di storage). Vederexref:rebalancing-erasure-coded-data-after-adding-storage-nodes.adoc[Ribilanciare i dati con codifica di cancellazione dopo l'aggiunta di nodi di storage].
+
+
+. Se è stato aggiunto un nodo gateway, completare la seguente attività di configurazione:
++
+** Se si utilizzano gruppi ad alta disponibilità (ha) per le connessioni client, aggiungere facoltativamente il nodo gateway a un gruppo ha. Selezionare *CONFIGURATION* > *Network* > *High Availability groups* per rivedere l'elenco dei gruppi ha esistenti e aggiungere il nuovo nodo. Vedere xref:../admin/index.adoc[Amministrare StorageGRID].
+
+
+. Se è stato aggiunto un nodo amministratore, completare le seguenti attività di configurazione:
++
+.. Se è attivato il Single Sign-on (SSO) per il sistema StorageGRID, creare un trust per la parte di base per il nuovo nodo di amministrazione. Non è possibile accedere al nodo fino a quando non si crea questo trust per la parte di base. Vederexref:../admin/configuring-sso.adoc[Configurare il single sign-on].
+.. Se si intende utilizzare il servizio Load Balancer sui nodi Admin, aggiungere facoltativamente il nuovo nodo Admin a un gruppo ha. Selezionare *CONFIGURATION* > *Network* > *High Availability groups* per rivedere l'elenco dei gruppi ha esistenti e aggiungere il nuovo nodo. Vedere xref:../admin/index.adoc[Amministrare StorageGRID].
+.. Facoltativamente, copiare il database del nodo di amministrazione dal nodo di amministrazione primario al nodo di amministrazione di espansione se si desidera mantenere costanti le informazioni di attributo e controllo su ciascun nodo di amministrazione. Vedere xref:copying-admin-node-database.adoc[Copiare il database Admin Node].
+.. Facoltativamente, copiare il database Prometheus dal nodo di amministrazione primario al nodo di amministrazione di espansione se si desidera mantenere costanti le metriche storiche su ciascun nodo di amministrazione. Vedere xref:copying-prometheus-metrics.adoc[Copia le metriche Prometheus].
+.. Facoltativamente, copiare i registri di controllo esistenti dal nodo di amministrazione principale al nodo di amministrazione dell'espansione se si desidera mantenere coerenti le informazioni di registro cronologiche su ciascun nodo di amministrazione. Vedere xref:copying-audit-logs.adoc[Copia dei registri di audit].
+.. Facoltativamente, configurare l'accesso al sistema per scopi di controllo tramite una condivisione file NFS o CIFS. Vedere xref:../admin/index.adoc[Amministrare StorageGRID].
++
+
+NOTE: L'esportazione dell'audit tramite CIFS/Samba è stata deprecata e verrà rimossa in una release futura di StorageGRID.
+
+.. Facoltativamente, modificare il mittente preferito per le notifiche. È possibile impostare l'Admin Node di espansione come mittente preferito. In caso contrario, un nodo amministrativo esistente configurato come mittente preferito continua a inviare notifiche, tra cui messaggi AutoSupport, notifiche SNMP, e-mail di avviso ed e-mail di allarme (sistema legacy). Vedere xref:../admin/index.adoc[Amministrare StorageGRID].
+
+
+. Se è stato aggiunto un nodo di archiviazione, completare le seguenti attività di configurazione.
++
+.. Configurare la connessione del nodo di archiviazione al sistema di archiviazione esterno di destinazione. Una volta completata l'espansione, i nodi di archiviazione si trovano in uno stato di allarme fino a quando non si configurano le informazioni di connessione tramite il componente *ARC* > *Target*. Vedere xref:../admin/index.adoc[Amministrare StorageGRID].
+.. Aggiornare il criterio ILM per archiviare i dati dell'oggetto attraverso il nuovo nodo di archivio. Vedere xref:../ilm/index.adoc[Gestire gli oggetti con ILM].
+.. Configurare gli allarmi personalizzati per gli attributi utilizzati per monitorare la velocità e l'efficienza del recupero dei dati degli oggetti dai nodi di archiviazione. Vedere xref:../admin/index.adoc[Amministrare StorageGRID].
+
+
+. Per verificare se i nodi di espansione sono stati aggiunti con una rete client non attendibile o per modificare se la rete client di un nodo è non attendibile o attendibile, andare a *CONFIGURAZIONE* > *rete* > *rete client non attendibile*.
++
+Se la rete client sul nodo di espansione non è attendibile, le connessioni al nodo sulla rete client devono essere effettuate utilizzando un endpoint di bilanciamento del carico. Vedere xref:../admin/index.adoc[Amministrare StorageGRID].
+
+. Configurare il DNS (Domain Name System).
++
+Se le impostazioni DNS sono state specificate separatamente per ciascun nodo della griglia, è necessario aggiungere impostazioni DNS personalizzate per nodo per i nuovi nodi. Vedere xref:../maintain/modifying-dns-configuration-for-single-grid-node.adoc[Modificare la configurazione DNS per un nodo griglia singolo].
+
++
+La procedura consigliata prevede che l'elenco dei server DNS a livello di griglia contenga alcuni server DNS accessibili localmente da ciascun sito. Se è stato appena aggiunto un nuovo sito, aggiungere nuovi server DNS per il sito alla configurazione DNS a livello di griglia.
+
++
+
+IMPORTANT: Fornire da due a sei indirizzi IPv4 per i server DNS. Selezionare i server DNS ai quali ciascun sito può accedere localmente in caso di rete. In questo modo si garantisce che un sito islanded continui ad avere accesso al servizio DNS. Dopo aver configurato l'elenco dei server DNS a livello di griglia, è possibile personalizzare ulteriormente l'elenco dei server DNS per ciascun nodo. Per ulteriori informazioni, vedere xref:../maintain/modifying-dns-configuration-for-single-grid-node.adoc[Modificare la configurazione DNS per un nodo griglia singolo]..
+
+. Se è stato aggiunto un nuovo sito, verificare che i server NTP (Network Time Protocol) siano accessibili da tale sito. Vedere xref:../maintain/configuring-ntp-servers.adoc[Configurare i server NTP].
++
+
+IMPORTANT: Assicurarsi che almeno due nodi di ciascun sito possano accedere ad almeno quattro origini NTP esterne. Se solo un nodo di un sito può raggiungere le origini NTP, si verificheranno problemi di tempistica se tale nodo non funziona. Inoltre, la designazione di due nodi per sito come origini NTP primarie garantisce tempi precisi se un sito viene isolato dal resto della rete.
+
+

@@ -1,0 +1,92 @@
+---
+permalink: maintain/restoring-and-validating-grid-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, restore grid node, restore node, validate grid node, validate node 
+summary: È necessario ripristinare i file di configurazione della griglia per eventuali nodi della griglia guasti, quindi validare i file di configurazione della griglia e risolvere eventuali errori. 
+---
+= Ripristinare e validare i nodi della griglia
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario ripristinare i file di configurazione della griglia per eventuali nodi della griglia guasti, quindi validare i file di configurazione della griglia e risolvere eventuali errori.
+
+.A proposito di questa attività
+È possibile importare qualsiasi nodo di griglia che dovrebbe essere presente sull'host, a condizione che sia `/var/local` il volume non è stato perso a causa del guasto dell'host precedente. Ad esempio, il `/var/local` Il volume potrebbe ancora esistere se si utilizza lo storage condiviso per i volumi di dati del sistema StorageGRID, come descritto nelle istruzioni di installazione di StorageGRID per il sistema operativo Linux in uso. L'importazione del nodo ripristina il file di configurazione del nodo sull'host.
+
+Se non è possibile importare nodi mancanti, è necessario ricreare i file di configurazione della griglia.
+
+È quindi necessario convalidare il file di configurazione della griglia e risolvere eventuali problemi di rete o storage che potrebbero verificarsi prima di riavviare StorageGRID. Quando si crea nuovamente il file di configurazione per un nodo, è necessario utilizzare lo stesso nome per il nodo sostitutivo utilizzato per il nodo che si sta ripristinando.
+
+Per ulteriori informazioni sulla posizione di, consultare le istruzioni di installazione di `/var/local` volume per un nodo.
+
+.Fasi
+. Nella riga di comando dell'host recuperato, elencare tutti i nodi della griglia StorageGRID attualmente configurati:``sudo storagegrid node list``
++
+Se non sono configurati nodi di griglia, non verrà generato alcun output. Se alcuni nodi della griglia sono configurati, l'output deve essere nel seguente formato:
+
++
+[listing]
+----
+Name               Metadata-Volume
+================================================================
+dc1-adm1           /dev/mapper/sgws-adm1-var-local
+dc1-gw1            /dev/mapper/sgws-gw1-var-local
+dc1-sn1            /dev/mapper/sgws-sn1-var-local
+dc1-arc1           /dev/mapper/sgws-arc1-var-local
+----
++
+Se alcuni o tutti i nodi della griglia che devono essere configurati sull'host non sono elencati, è necessario ripristinare i nodi della griglia mancanti.
+
+. Per importare nodi griglia che hanno un `/var/local` volume:
++
+.. Eseguire il seguente comando per ciascun nodo da importare:``sudo storagegrid node import node-var-local-volume-path``
++
+Il `storagegrid node import` il comando ha esito positivo solo se il nodo di destinazione è stato chiuso correttamente sull'host su cui è stato eseguito l'ultima volta. In caso contrario, si verificherà un errore simile al seguente:
+
++
+`This node (_node-name_) appears to be owned by another host (UUID host-uuid).`
+
++
+`Use the --force flag if you are sure import is safe.`
+
+.. Se viene visualizzato un errore relativo al nodo di proprietà di un altro host, eseguire nuovamente il comando con `--force` contrassegno per completare l'importazione:``sudo storagegrid --force node import node-var-local-volume-path``
++
+
+NOTE: Tutti i nodi importati con `--force` flag richiederà ulteriori passaggi di ripristino prima che possano ricongiungersi alla griglia, come descritto in xref:whats-next-performing-additional-recovery-steps-if-required.adoc[Cosa c'è di seguito: Se necessario, eseguire ulteriori passaggi di ripristino].
+
+
+
+. Per i nodi griglia che non dispongono di `/var/local` ricreare il file di configurazione del nodo per ripristinarlo nell'host.
++
+Seguire le linee guida in "`Create node Configuration Files`" (Crea file di configurazione del nodo) nelle istruzioni di installazione.
+
++
+
+IMPORTANT: Quando si crea nuovamente il file di configurazione per un nodo, è necessario utilizzare lo stesso nome per il nodo sostitutivo utilizzato per il nodo che si sta ripristinando. Per le implementazioni Linux, assicurarsi che il nome del file di configurazione contenga il nome del nodo. Se possibile, utilizzare le stesse interfacce di rete, le mappature dei dispositivi a blocchi e gli stessi indirizzi IP. Questa procedura riduce al minimo la quantità di dati che devono essere copiati nel nodo durante il ripristino, il che potrebbe rendere il ripristino molto più rapido (in alcuni casi, minuti piuttosto che settimane).
+
++
+
+IMPORTANT: Se si utilizzano nuovi dispositivi a blocchi (dispositivi che il nodo StorageGRID non ha utilizzato in precedenza) come valori per una qualsiasi delle variabili di configurazione che iniziano con `BLOCK_DEVICE_` quando si ricreano i file di configurazione per un nodo, attenersi a tutte le linee guida riportate in xref:fixing-missing-block-device-errors.adoc[Correggere gli errori del dispositivo a blocchi mancanti].
+
+. Eseguire il seguente comando sull'host ripristinato per elencare tutti i nodi StorageGRID.
++
+`sudo storagegrid node list`
+
+. Convalidare il file di configurazione del nodo per ogni nodo della griglia il cui nome è stato visualizzato nell'output dell'elenco dei nodi StorageGRID:
++
+`sudo storagegrid node validate _node-name_`
+
++
+Prima di avviare il servizio host StorageGRID, è necessario risolvere eventuali errori o avvisi. Le sezioni seguenti forniscono ulteriori dettagli sugli errori che potrebbero avere un significato speciale durante il ripristino.
+
+
+
+.Informazioni correlate
+xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]
+
+xref:../ubuntu/index.adoc[Installare Ubuntu o Debian]
+
+xref:fixing-mssing-network-interface-errors.adoc[Correggere gli errori di interfaccia di rete mancanti]

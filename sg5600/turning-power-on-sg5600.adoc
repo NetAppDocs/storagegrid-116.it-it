@@ -1,0 +1,46 @@
+---
+permalink: sg5600/turning-power-on-sg5600.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, power on, power, start 
+summary: 'L"accensione dell"enclosure fornisce alimentazione a entrambi i controller.' 
+---
+= Accendere (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'accensione dell'enclosure fornisce alimentazione a entrambi i controller.
+
+.Fasi
+. Accendere i due interruttori di alimentazione sul retro dell'enclosure.
++
+Durante l'alimentazione, i LED dei controller si accendono e si spengono a intermittenza.
+
++
+Il completamento del processo di accensione può richiedere fino a dieci minuti. I controller si riavviano diverse volte durante la sequenza di avvio iniziale, causando l'aumento e il calo delle ventole e la lampeggiamento dei LED.
+
+. Controllare il LED di alimentazione e i LED host link Active su ciascun controller per verificare che l'alimentazione sia stata attivata.
+. Attendere che tutti i dischi mostrino un LED verde persistente, che indica che sono online.
+. Verificare la presenza di LED verdi sulla parte anteriore e posteriore del contenitore.
++
+Se vengono visualizzati LED ambra, prendere nota della loro posizione.
+
+. Esaminare il display a sette segmenti del controller E5600SG.
++
+Questo display visualizza *ho*, seguito da una sequenza di ripetizione di due cifre.
+
++
+[listing]
+----
+HO -- IP address for Admin Network -- IP address for Grid Network HO
+----
++
+Nella sequenza, il primo set di numeri è l'indirizzo IP assegnato da DHCP per la porta di gestione 1 del controller. Questo indirizzo viene utilizzato per collegare il controller alla rete di amministrazione per StorageGRID. Il secondo gruppo di numeri è l'indirizzo IP assegnato da DHCP utilizzato per collegare l'appliance alla rete di rete per StorageGRID.
+
++
+
+NOTE: Se non è stato possibile assegnare un indirizzo IP utilizzando DHCP, viene visualizzato 0.0.0.0.
+
+

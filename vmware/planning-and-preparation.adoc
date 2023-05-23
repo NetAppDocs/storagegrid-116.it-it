@@ -1,0 +1,43 @@
+---
+permalink: vmware/planning-and-preparation.html 
+sidebar: sidebar 
+keywords: how to plan before installation 
+summary: Prima di implementare i nodi grid e configurare la griglia StorageGRID, è necessario conoscere i passaggi e i requisiti per completare la procedura. 
+---
+= Prima dell'installazione (VMware)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di implementare i nodi grid e configurare la griglia StorageGRID, è necessario conoscere i passaggi e i requisiti per completare la procedura.
+
+Le procedure di implementazione e configurazione di StorageGRID presuppongono una certa familiarità con l'architettura e le funzionalità operative del sistema StorageGRID.
+
+È possibile implementare uno o più siti contemporaneamente; tuttavia, tutti i siti devono soddisfare il requisito minimo di avere almeno tre nodi di storage.
+
+
+IMPORTANT: StorageGRID non supporta l'utilizzo di Virtual Storage Area Network (VSAN), perché la protezione del disco sottostante non è RAID hardware.
+
+Prima di avviare la procedura di implementazione del nodo e di configurazione della griglia, è necessario:
+
+* Pianificare l'implementazione di StorageGRID.
+* Installazione, connessione e configurazione di tutto l'hardware richiesto, incluse eventuali appliance StorageGRID, in base alle specifiche.
++
+
+NOTE: Le istruzioni di installazione e integrazione specifiche dell'hardware non sono incluse nella procedura di installazione di StorageGRID. Per informazioni su come installare le appliance StorageGRID, consultare le istruzioni di installazione e manutenzione dell'appliance.
+
+* Comprendere xref:../network/index.adoc[opzioni di rete disponibili e modalità di implementazione di ciascuna opzione di rete sui nodi di rete].
+* Raccogliere tutte le informazioni di rete in anticipo. A meno che non si utilizzi DHCP, raccogliere gli indirizzi IP da assegnare a ciascun nodo della griglia e gli indirizzi IP dei server DNS (Domain Name System) e NTP (Network Time Protocol) che verranno utilizzati.
+* Decidere quali strumenti di implementazione e configurazione si desidera utilizzare.
+
+
+.Informazioni correlate
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
+xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+xref:../sg5700/index.adoc[Appliance di storage SG5700]
+
+xref:../sg5600/index.adoc[Appliance di storage SG5600]

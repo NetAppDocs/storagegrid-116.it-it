@@ -1,0 +1,105 @@
+---
+permalink: sg100-1000/installation-and-deployment-overview.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, Installation, deployment, Install, deploy, Installing, deploying 
+summary: 'È possibile installare una o più appliance di servizi StorageGRID quando si implementa StorageGRID per la prima volta oppure aggiungere nodi di appliance di servizi in un secondo momento come parte di un"espansione.' 
+---
+= Panoramica dell'installazione e dell'implementazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile installare una o più appliance di servizi StorageGRID quando si implementa StorageGRID per la prima volta oppure aggiungere nodi di appliance di servizi in un secondo momento come parte di un'espansione.
+
+.Di cosa hai bisogno
+Il sistema StorageGRID utilizza la versione richiesta del software StorageGRID.
+
+[cols="1a,2a"]
+|===
+| Appliance | Versione StorageGRID richiesta 
+
+
+ a| 
+SG100
+ a| 
+11.4 o versione successiva (si consiglia l'ultima correzione rapida)
+
+
+
+ a| 
+SG1000
+ a| 
+11.3 o versione successiva (si consiglia l'ultima correzione rapida)
+
+|===
+
+
+== Attività di installazione e implementazione
+
+La preparazione e l'aggiunta di un'appliance StorageGRID alla griglia includono quattro passaggi principali:
+
+. xref:preparing-for-installation-sg100-and-sg1000.adoc[Preparazione per l'installazione]:
++
+** Preparazione del sito di installazione
+** Disimballaggio delle confezioni e controllo del contenuto
+** Ottenere attrezzature e strumenti aggiuntivi
+** Verifica della configurazione di rete
+** Opzionale: Configurazione di un server KMS (Key Management Server) esterno se si intende crittografare tutti i dati dell'appliance. Per ulteriori informazioni sulla gestione delle chiavi esterne, consultare le istruzioni per l'amministrazione di StorageGRID.
+
+
+. xref:registering-hardware-sg100-and-sg1000.adoc[Installazione dell'hardware]:
++
+** Registrazione dell'hardware
+** Installazione dell'apparecchio in un cabinet o rack
+** Cablaggio dell'appliance
+** Collegamento del cavo di alimentazione e alimentazione
+** Visualizzazione dei codici di stato di avvio
+
+
+. xref:configuring-storagegrid-connections-sg100-and-sg1000.adoc[Configurazione dell'hardware]:
++
+** Accesso al programma di installazione dell'appliance StorageGRID e configurazione delle impostazioni IP di collegamento e di rete necessarie per la connessione alle reti StorageGRID
+** Accesso all'interfaccia BMC (Baseboard Management Controller) dell'appliance.
+** Facoltativo: Abilitare la crittografia dei nodi se si intende utilizzare un KMS esterno per crittografare i dati dell'appliance.
+
+
+. Implementazione di un gateway appliance o di un nodo amministratore
++
+Una volta installato e configurato l'hardware dell'appliance, è possibile implementarlo come nodo gateway e nodo amministratore in un sistema StorageGRID. Sia le appliance SG100 che SG1000 possono operare come nodi gateway e nodi di amministrazione (primari e non primari) contemporaneamente.
+
++
+[cols="2a,2a"]
+|===
+| Attività | Istruzioni 
+
+
+ a| 
+Implementazione di un gateway appliance o di un nodo amministrativo in un nuovo sistema StorageGRID
+ a| 
+xref:deploying-services-appliance-node.adoc[Implementare un nodo di appliance di servizi]
+
+
+
+ a| 
+Aggiunta di un gateway appliance o di un nodo amministrativo a un sistema StorageGRID esistente
+ a| 
+xref:../expand/index.adoc[Espandere un sistema StorageGRID]
+
+
+
+ a| 
+Implementazione di un gateway appliance o di un nodo amministrativo come parte di un'operazione di recovery del nodo
+ a| 
+xref:../maintain/index.adoc[Ripristinare e gestire un sistema StorageGRID]
+
+|===
+
+
+.Informazioni correlate
+xref:../expand/index.adoc[Espandi il tuo grid]
+
+xref:../maintain/index.adoc[Recuperare e gestire la griglia]
+
+xref:../admin/index.adoc[Amministrare StorageGRID]

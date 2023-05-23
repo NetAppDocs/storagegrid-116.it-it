@@ -1,0 +1,80 @@
+---
+permalink: s3/put-bucket-consistency-request.html 
+sidebar: sidebar 
+keywords: S3 REST API, S3 operations, PUT bucket consistency request 
+summary: La richiesta DI coerenza PUT bucket consente di specificare il livello di coerenza da applicare alle operazioni eseguite su un bucket. 
+---
+= INSERIRE la richiesta di coerenza del bucket
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La richiesta DI coerenza PUT bucket consente di specificare il livello di coerenza da applicare alle operazioni eseguite su un bucket.
+
+I controlli di coerenza predefiniti sono impostati in modo da garantire la lettura dopo la scrittura degli oggetti creati di recente.
+
+Per completare questa operazione, si dispone dell'autorizzazione s3:PutBucketConsistency o si è root dell'account.
+
+
+
+== Richiesta
+
+Il `x-ntap-sg-consistency` il parametro deve contenere uno dei seguenti valori:
+
+|===
+| Controllo della coerenza | Descrizione 
+
+
+ a| 
+tutto
+ a| 
+Tutti i nodi ricevono i dati immediatamente, altrimenti la richiesta non riesce.
+
+
+
+ a| 
+forte-globale
+ a| 
+Garantisce la coerenza di lettura dopo scrittura per tutte le richieste dei client in tutti i siti.
+
+
+
+ a| 
+sito forte
+ a| 
+Garantisce la coerenza di lettura dopo scrittura per tutte le richieste dei client all'interno di un sito.
+
+
+
+ a| 
+read-after-new-write
+ a| 
+(Impostazione predefinita) fornisce coerenza di lettura dopo scrittura per i nuovi oggetti ed eventuale coerenza per gli aggiornamenti degli oggetti. Offre alta disponibilità e garanzie di protezione dei dati. Il più vicino possibile alle garanzie di coerenza di Amazon S3.
+
+*Nota:* se l'applicazione utilizza richieste HEAD su oggetti che non esistono, potrebbe essere visualizzato un numero elevato di errori 500 interni del server se uno o più nodi di storage non sono disponibili. Per evitare questi errori, imposta il controllo di coerenza su "`Available`", a meno che non necessiti di garanzie di coerenza simili a Amazon S3.
+
+
+
+ a| 
+Disponibile (eventuale coerenza per le operazioni TESTA)
+ a| 
+Si comporta come il livello di coerenza "`read-after-new-write`", ma fornisce solo una coerenza finale per le operazioni HEAD. Offre una maggiore disponibilità per le operazioni HEAD rispetto a "`read-after-new-write`" se i nodi storage non sono disponibili. Differisce dalle garanzie di coerenza di Amazon S3 solo per le operazioni HEAD.
+
+|===
+*Nota:* in generale, utilizzare il valore del controllo di coerenza "`read-after-new-write`". Se le richieste non funzionano correttamente, modificare il comportamento del client dell'applicazione, se possibile. In alternativa, configurare il client per specificare il controllo di coerenza per ogni richiesta API. Impostare il controllo di coerenza a livello di bucket solo come ultima risorsa.
+
+
+
+== Esempio di richiesta
+
+[source, subs="specialcharacters,quotes"]
+----
+PUT /bucket?x-ntap-sg-consistency=strong-global HTTP/1.1
+Date: _date_
+Authorization: _authorization string_
+Host: _host_
+----
+.Informazioni correlate
+xref:consistency-controls.adoc[Controlli di coerenza]

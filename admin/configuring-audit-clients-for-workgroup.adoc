@@ -1,0 +1,169 @@
+---
+permalink: admin/configuring-audit-clients-for-workgroup.html 
+sidebar: sidebar 
+keywords: audit client for workgroup 
+summary: 'Eseguire questa procedura per ogni nodo amministratore in un"implementazione StorageGRID da cui si desidera recuperare i messaggi di controllo.' 
+---
+= Configurare i client di audit per Workgroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Eseguire questa procedura per ogni nodo amministratore in un'implementazione StorageGRID da cui si desidera recuperare i messaggi di controllo.
+
+.Di cosa hai bisogno
+* Hai il `Passwords.txt` File con la password dell'account root/admin (disponibile nel pacchetto).
+* Hai il `Configuration.txt` File (disponibile in DETTO pacchetto).
+
+
+.A proposito di questa attività
+L'esportazione dell'audit tramite CIFS/Samba è stata deprecata e verrà rimossa in una release futura di StorageGRID.
+
+.Fasi
+. Accedere al nodo di amministrazione principale:
++
+.. Immettere il seguente comando: `ssh admin@_primary_Admin_Node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+. Verificare che tutti i servizi abbiano uno stato di esecuzione o verificato: `storagegrid-status`
++
+Se tutti i servizi non sono in esecuzione o verificati, risolvere i problemi prima di continuare.
+
+. Tornare alla riga di comando, premere *Ctrl*+*C*.
+. Avviare l'utility di configurazione CIFS: `config_cifs.rb`
++
+[listing]
+----
+
+---------------------------------------------------------------------
+| Shares                 | Authentication         | Config          |
+---------------------------------------------------------------------
+| add-audit-share        | set-authentication     | validate-config |
+| enable-disable-share   | set-netbios-name       | help            |
+| add-user-to-share      | join-domain            | exit            |
+| remove-user-from-share | add-password-server    |                 |
+| modify-group           | remove-password-server |                 |
+|                        | add-wins-server        |                 |
+|                        | remove-wins-server     |                 |
+---------------------------------------------------------------------
+----
+. Impostare l'autenticazione per Windows Workgroup:
++
+Se l'autenticazione è già stata impostata, viene visualizzato un messaggio di avviso. Se l'autenticazione è già stata impostata, passare alla fase successiva.
+
++
+.. Inserire: `set-authentication`
+.. Quando viene richiesto di installare Windows Workgroup o Active Directory, immettere: `workgroup`
+.. Quando richiesto, immettere un nome per il gruppo di lavoro: `_workgroup_name_`
+.. Quando richiesto, creare un nome NetBIOS significativo: `_netbios_name_`
++
+oppure
+
++
+Premere *Invio* per utilizzare il nome host del nodo di amministrazione come nome NetBIOS.
+
++
+Lo script riavvia il server Samba e le modifiche vengono applicate. Questa operazione dovrebbe richiedere meno di un minuto. Dopo aver impostato l'autenticazione, aggiungere un client di audit.
+
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
+. Aggiungere un client di audit:
++
+.. Inserire: `add-audit-share`
++
+
+NOTE: La condivisione viene aggiunta automaticamente in sola lettura.
+
+.. Quando richiesto, aggiungere un utente o un gruppo: `_user_`
+.. Quando richiesto, inserire il nome utente per l'audit: `_audit_user_name_`
+.. Quando richiesto, inserire una password per l'utente di controllo: `_password_`
+.. Quando richiesto, immettere nuovamente la stessa password per confermarla: `_password_`
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
++
+
+NOTE: Non è necessario inserire una directory. Il nome della directory di controllo è predefinito.
+
+. Se più di un utente o gruppo è autorizzato ad accedere alla condivisione di controllo, aggiungere gli utenti aggiuntivi:
++
+.. Inserire: `add-user-to-share`
++
+Viene visualizzato un elenco numerato di condivisioni abilitate.
+
+.. Quando richiesto, inserire il numero della condivisione audit-export: `_share_number_`
+.. Quando richiesto, aggiungere un utente o un gruppo: `user`
++
+oppure `group`
+
+.. Quando richiesto, inserire il nome dell'utente o del gruppo di controllo: `_audit_user or audit_group_`
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+.. Ripetere questi passaggi secondari per ogni utente o gruppo aggiuntivo che ha accesso alla condivisione di controllo.
+
+
+. In alternativa, verificare la configurazione: `validate-config`
++
+I servizi vengono controllati e visualizzati. È possibile ignorare i seguenti messaggi:
+
++
+[listing]
+----
+Can't find include file /etc/samba/includes/cifs-interfaces.inc
+Can't find include file /etc/samba/includes/cifs-filesystem.inc
+Can't find include file /etc/samba/includes/cifs-custom-config.inc
+Can't find include file /etc/samba/includes/cifs-shares.inc
+rlimit_max: increasing rlimit_max (1024) to minimum Windows limit (16384)
+----
++
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata la configurazione del client di audit.
+
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
+. Chiudere l'utilità di configurazione CIFS: `exit`
+. Avviare il servizio Samba: `service smbd start`
+. Se l'implementazione di StorageGRID è un singolo sito, passare alla fase successiva.
++
+oppure
+
++
+Facoltativamente, se l'implementazione di StorageGRID include nodi di amministrazione in altri siti, attivare questa condivisione di controllo come richiesto:
+
++
+.. Accedere in remoto al nodo di amministrazione di un sito:
++
+... Immettere il seguente comando: `ssh admin@_grid_node_IP_`
+... Immettere la password elencata in `Passwords.txt` file.
+... Immettere il seguente comando per passare a root: `su -`
+... Immettere la password elencata in `Passwords.txt` file.
+
+
+.. Ripetere la procedura per configurare la condivisione di controllo per ogni nodo amministrativo aggiuntivo.
+.. Chiudere l'accesso remoto sicuro alla shell nel nodo di amministrazione remoto: `exit`
+
+
+. Disconnettersi dalla shell dei comandi: `exit`
+

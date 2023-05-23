@@ -1,0 +1,83 @@
+---
+permalink: sg5700/viewing-sg5700-boot-up-status-codes.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, boot codes, boot-up codes, start codes, codes, boot, start 
+summary: 'I display a sette segmenti di ciascun controller mostrano codici di stato e di errore all"accensione dell"appliance.' 
+---
+= Visualizza i codici di stato di avvio di SG5700
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I display a sette segmenti di ciascun controller mostrano codici di stato e di errore all'accensione dell'appliance.
+
+.A proposito di questa attività
+Il controller E2800 e il controller E5700SG visualizzano stati e codici di errore diversi.
+
+Per comprendere il significato di questi codici, consulta le seguenti risorse:
+
+|===
+| Controller | Riferimento 
+
+
+ a| 
+Controller E2800
+ a| 
+_Guida al monitoraggio dei sistemi E5700 e E2800_
+
+*Nota:* i codici elencati per il controller e-Series E5700 non si applicano al controller E5700SG dell'appliance.
+
+
+
+ a| 
+Controller E5700SG
+ a| 
+"`sindicatori di stato sul controller E5700SG`"
+
+|===
+.Fasi
+. Durante l'avvio, monitorare l'avanzamento visualizzando i codici visualizzati sui display a sette segmenti.
++
+** Il display a sette segmenti del controller E2800 mostra la sequenza di ripetizione *OS*, *SD*, `*_blank_*` per indicare che sta eseguendo l'elaborazione all'inizio della giornata.
+** Il display a sette segmenti del controller E5700SG mostra una sequenza di codici, che termina con *AA* e *FF*.
+
+
+. Dopo l'avvio dei controller, verificare che i display a sette segmenti mostrino quanto segue:
++
+image::../media/seven_segment_display_codes.gif[Display a sette segmenti dopo l'avvio dei controller.]
+
++
+|===
+| Controller | Display a sette segmenti 
+
+
+ a| 
+Controller E2800
+ a| 
+Mostra 99, che è l'ID predefinito per uno shelf di controller e-Series.
+
+
+
+ a| 
+Controller E5700SG
+ a| 
+Mostra *ho*, seguito da una sequenza di ripetizione di due numeri.
+
+[listing]
+----
+HO -- IP address for Admin Network -- IP address for Grid Network HO
+----
+Nella sequenza, il primo set di numeri è l'indirizzo IP assegnato da DHCP per la porta di gestione 1 del controller. Questo indirizzo viene utilizzato per collegare il controller alla rete di amministrazione per StorageGRID. Il secondo gruppo di numeri è l'indirizzo IP assegnato da DHCP utilizzato per collegare l'appliance alla rete di rete per StorageGRID.
+
+*Nota:* se non è stato possibile assegnare un indirizzo IP utilizzando DHCP, viene visualizzato 0.0.0.0.
+
+|===
+. Se i display a sette segmenti mostrano altri valori, vedere xref:troubleshooting-hardware-installation.adoc[Risoluzione dei problemi relativi all'installazione dell'hardware (SG5700)] e confermare che la procedura di installazione è stata completata correttamente. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+.Informazioni correlate
+xref:status-indicators-on-e5700sg-controller.adoc[Indicatori di stato sul controller E5700SG]
+
+https://library.netapp.com/ecmdocs/ECMLP2588751/html/frameset.html["Guida al monitoraggio dei sistemi E5700 ed E2800"^]

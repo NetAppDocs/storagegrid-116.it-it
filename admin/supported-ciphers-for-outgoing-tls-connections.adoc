@@ -1,0 +1,52 @@
+---
+permalink: admin/supported-ciphers-for-outgoing-tls-connections.html 
+sidebar: sidebar 
+keywords: tls cipher suites, transport layer security connections 
+summary: 'Il sistema StorageGRID supporta un set limitato di suite di crittografia per le connessioni TLS (Transport Layer Security) ai sistemi esterni utilizzati per la federazione di identità e i pool di storage cloud.' 
+---
+= Crittografia supportata per le connessioni TLS in uscita
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema StorageGRID supporta un set limitato di suite di crittografia per le connessioni TLS (Transport Layer Security) ai sistemi esterni utilizzati per la federazione di identità e i pool di storage cloud.
+
+
+
+== Versioni supportate di TLS
+
+StorageGRID supporta TLS 1.2 e TLS 1.3 per le connessioni a sistemi esterni utilizzati per la federazione delle identità e i pool di storage cloud.
+
+I cifrari TLS supportati per l'utilizzo con sistemi esterni sono stati selezionati per garantire la compatibilità con una vasta gamma di sistemi esterni. L'elenco è più grande dell'elenco di cifrature supportate per l'utilizzo con le applicazioni client S3 o Swift.
+
+
+NOTE: Le opzioni di configurazione TLS, quali versioni di protocollo, crittografia, algoritmi di scambio delle chiavi e algoritmi MAC, non sono configurabili in StorageGRID. Se hai richieste specifiche su queste impostazioni, contatta il tuo rappresentante NetApp.
+
+
+
+== Suite di crittografia TLS 1.2 supportate
+
+Sono supportate le seguenti suite di crittografia TLS 1.2:
+
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+* TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+* TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+* TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+* TLS_RSA_WITH_AES_128_GCM_SHA256
+* TLS_RSA_WITH_AES_256_GCM_SHA384
+
+
+
+
+== Suite di crittografia TLS 1.3 supportate
+
+Sono supportate le seguenti suite di crittografia TLS 1.3:
+
+* TLS_AES_256_GCM_SHA384
+* TLS_CHACHA20_POLY1305_SHA256
+* TLS_AES_128_GCM_SHA256
+

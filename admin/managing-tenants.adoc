@@ -1,0 +1,96 @@
+---
+permalink: admin/managing-tenants.html 
+sidebar: sidebar 
+keywords: manage tenants, tenant account, what is a tenant 
+summary: 'In qualità di amministratore di grid, è possibile creare e gestire gli account tenant utilizzati dai client S3 e Swift per memorizzare e recuperare oggetti, monitorare l"utilizzo dello storage e gestire le azioni che i client sono in grado di eseguire utilizzando il sistema StorageGRID.' 
+---
+= Gestire i tenant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In qualità di amministratore di grid, è possibile creare e gestire gli account tenant utilizzati dai client S3 e Swift per memorizzare e recuperare oggetti, monitorare l'utilizzo dello storage e gestire le azioni che i client sono in grado di eseguire utilizzando il sistema StorageGRID.
+
+
+
+== Cosa sono gli account tenant?
+
+Gli account tenant consentono alle applicazioni client che utilizzano l'API REST di S3 (Simple Storage Service) o l'API DI Swift REST di memorizzare e recuperare oggetti su StorageGRID.
+
+Ogni account tenant supporta l'utilizzo di un singolo protocollo, che viene specificato quando si crea l'account. Per memorizzare e recuperare oggetti in un sistema StorageGRID con entrambi i protocolli, è necessario creare due account tenant: Uno per i bucket S3 e gli oggetti e uno per i container Swift e gli oggetti. Ogni account tenant dispone di un proprio ID account, di gruppi e utenti autorizzati, di bucket o container e di oggetti.
+
+Se si desidera separare gli oggetti memorizzati nel sistema da diverse entità, è possibile creare ulteriori account tenant. Ad esempio, è possibile configurare più account tenant in uno dei seguenti casi di utilizzo:
+
+* *Caso d'utilizzo aziendale:* se si amministra un sistema StorageGRID in un'applicazione aziendale, è possibile separare lo storage a oggetti del grid dai diversi reparti dell'organizzazione. In questo caso, è possibile creare account tenant per il reparto Marketing, il reparto Assistenza clienti, il reparto risorse umane e così via.
++
+
+NOTE: Se si utilizza il protocollo client S3, è possibile utilizzare semplicemente i bucket S3 e le policy bucket per separare gli oggetti tra i reparti di un'azienda. Non è necessario utilizzare account tenant. Per ulteriori informazioni, consultare le istruzioni per l'implementazione delle applicazioni client S3.
+
+* *Caso d'utilizzo del provider di servizi:* se si amministra un sistema StorageGRID come provider di servizi, è possibile separare lo storage a oggetti della griglia dalle diverse entità che affitteranno lo storage sulla griglia. In questo caso, è necessario creare account tenant per la società A, la società B, la società C e così via.
+
+
+
+
+== Creare e configurare account tenant
+
+Quando si crea un account tenant, si specificano le seguenti informazioni:
+
+* Visualizza il nome dell'account tenant.
+* Quale protocollo client verrà utilizzato dall'account tenant (S3 o Swift).
+* Per gli account tenant S3: Se l'account tenant dispone dell'autorizzazione per utilizzare i servizi della piattaforma con i bucket S3. Se si consente agli account tenant di utilizzare i servizi della piattaforma, è necessario assicurarsi che la griglia sia configurata per supportare il loro utilizzo. Vedere "`Managing platform Services`".
+* Facoltativamente, una quota di storage per l'account tenant, ovvero il numero massimo di gigabyte, terabyte o petabyte disponibili per gli oggetti del tenant. Se la quota viene superata, il tenant non può creare nuovi oggetti.
++
+
+NOTE: La quota di storage di un tenant rappresenta una quantità logica (dimensione dell'oggetto), non una quantità fisica (dimensione sul disco).
+
+* Se la federazione delle identità è attivata per il sistema StorageGRID, il gruppo federato dispone dell'autorizzazione di accesso root per configurare l'account tenant.
+* Se l'SSO (Single Sign-on) non è in uso per il sistema StorageGRID, se l'account tenant utilizzerà la propria origine di identità o condividerà l'origine di identità della griglia e la password iniziale per l'utente root locale del tenant.
+
+
+Una volta creato un account tenant, è possibile eseguire le seguenti attività:
+
+* *Gestisci i servizi della piattaforma per il grid*: Se abiliti i servizi della piattaforma per gli account tenant, assicurati di comprendere come vengono inviati i messaggi dei servizi della piattaforma e i requisiti di rete che l'utilizzo dei servizi della piattaforma comporta nella tua implementazione StorageGRID.
+* *Monitorare l'utilizzo dello storage di un account tenant*: Una volta che i tenant iniziano a utilizzare i propri account, è possibile utilizzare Grid Manager per monitorare la quantità di storage consumata da ciascun tenant.
++
+
+NOTE: I valori di utilizzo dello storage di un tenant potrebbero non essere aggiornati se i nodi sono isolati da altri nodi della griglia. I totali verranno aggiornati al ripristino della connettività di rete.
+
++
+Se sono state impostate le quote per i tenant, è possibile attivare l'avviso *quota elevata del tenant* per determinare se i tenant consumano le quote. Se attivato, questo avviso viene attivato quando un tenant utilizza il 90% della propria quota. Per ulteriori informazioni, consultare il riferimento agli avvisi nelle istruzioni per il monitoraggio e la risoluzione dei problemi di StorageGRID.
+
+* *Configure client Operations* (Configura operazioni client): È possibile configurare se alcuni tipi di operazioni client sono vietate.
+
+
+
+
+== Configurare i tenant S3
+
+Una volta creato un account tenant S3, gli utenti tenant possono accedere a tenant Manager per eseguire attività come le seguenti:
+
+* Impostazione della federazione delle identità (a meno che l'origine delle identità non sia condivisa con la griglia) e creazione di gruppi e utenti locali
+* Gestione delle chiavi di accesso S3
+* Creazione e gestione di bucket S3
+* Monitoraggio dell'utilizzo dello storage
+* Utilizzo dei servizi della piattaforma (se abilitati)
+
+
+
+IMPORTANT: Gli utenti del tenant S3 possono creare e gestire la chiave di accesso S3 e i bucket con Tenant Manager, ma devono utilizzare un'applicazione client S3 per acquisire e gestire gli oggetti.
+
+
+
+== Configurare i tenant di Swift
+
+Dopo la creazione di un account tenant Swift, l'utente root del tenant può accedere al tenant Manager per eseguire attività come le seguenti:
+
+* Impostazione della federazione delle identità (a meno che l'origine delle identità non sia condivisa con la griglia) e creazione di gruppi e utenti locali
+* Monitoraggio dell'utilizzo dello storage
+
+
+
+IMPORTANT: Gli utenti Swift devono disporre dell'autorizzazione di accesso root per accedere a Tenant Manager. Tuttavia, l'autorizzazione di accesso root non consente agli utenti di autenticarsi nell'API REST di Swift per creare container e acquisire oggetti. Gli utenti devono disporre dell'autorizzazione di amministratore Swift per autenticarsi nell'API DI Swift REST.
+
+.Informazioni correlate
+xref:../tenant/index.adoc[Utilizzare un account tenant]

@@ -1,0 +1,48 @@
+---
+permalink: maintain/recovering-storagegrid-appliance-storage-node.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, appliance storage node failure 
+summary: 'La procedura per il ripristino di un nodo di storage dell"appliance StorageGRID guasto è la stessa, sia che si stia ripristinando dalla perdita del disco di sistema che dalla perdita dei soli volumi di storage.' 
+---
+= Ripristinare il nodo storage dell'appliance
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La procedura per il ripristino di un nodo di storage dell'appliance StorageGRID guasto è la stessa, sia che si stia ripristinando dalla perdita del disco di sistema che dalla perdita dei soli volumi di storage.
+
+.A proposito di questa attività
+È necessario preparare l'appliance e reinstallare il software, configurare il nodo in modo che si riunisca di nuovo nella griglia, riformattare lo storage e ripristinare i dati dell'oggetto.
+
+image::../media/overview_sga_recovery.gif[Diagramma di flusso generale del ripristino dell'appliance StorageGRID]
+
+
+CAUTION: Se più di un nodo di storage si è guastato (o non è in linea), contattare il supporto tecnico. Non eseguire la seguente procedura di ripristino. Potrebbe verificarsi una perdita di dati.
+
+
+CAUTION: Se si tratta del secondo guasto del nodo di storage in meno di 15 giorni dopo un guasto o un ripristino del nodo di storage, contattare il supporto tecnico. La ricostruzione di Cassandra su due o più nodi di storage entro 15 giorni può causare la perdita di dati.
+
+
+NOTE: Se più di un nodo di storage in un sito si è guastato, potrebbe essere necessaria una procedura di ripristino del sito. Contattare il supporto tecnico.
+
+xref:how-site-recovery-is-performed-by-technical-support.adoc[Come viene eseguito il ripristino del sito dal supporto tecnico]
+
+
+IMPORTANT: Se le regole ILM sono configurate in modo da memorizzare una sola copia replicata e la copia esiste su un volume di storage che ha avuto esito negativo, non sarà possibile ripristinare l'oggetto.
+
+
+NOTE: Se si verifica un allarme Services: Status - Cassandra (SVST) durante il ripristino, consultare le istruzioni per il monitoraggio e la risoluzione dei problemi per ripristinare l'allarme mediante la ricostruzione di Cassandra. Dopo la ricostruzione di Cassandra, gli allarmi devono essere disattivati. Se gli allarmi non vengono disattivati, contattare il supporto tecnico.
+
+
+NOTE: Per le procedure di manutenzione dell'hardware, come ad esempio la sostituzione di un controller o la reinstallazione di SANtricity OS, consultare le istruzioni di installazione e manutenzione dell'appliance di storage.
+
+.Informazioni correlate
+xref:../monitor/index.adoc[Monitorare e risolvere i problemi]
+
+xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+xref:../sg5700/index.adoc[Appliance di storage SG5700]
+
+xref:../sg5600/index.adoc[Appliance di storage SG5600]

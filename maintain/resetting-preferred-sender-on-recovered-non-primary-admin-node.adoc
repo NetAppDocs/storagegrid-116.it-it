@@ -1,0 +1,29 @@
+---
+permalink: maintain/resetting-preferred-sender-on-recovered-non-primary-admin-node.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, non-primary admin node, reset preferred sender, resetting preferred sender 
+summary: Se il nodo amministrativo non primario che si sta ripristinando è attualmente impostato come mittente preferito di notifiche di avviso, notifiche di allarme e messaggi AutoSupport, è necessario riconfigurare questa impostazione nel sistema StorageGRID. 
+---
+= Ripristinare il mittente preferito sul nodo di amministrazione non primario recuperato
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se il nodo amministrativo non primario che si sta ripristinando è attualmente impostato come mittente preferito di notifiche di avviso, notifiche di allarme e messaggi AutoSupport, è necessario riconfigurare questa impostazione nel sistema StorageGRID.
+
+.Di cosa hai bisogno
+* È necessario accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario disporre di autorizzazioni di accesso specifiche.
+* Il nodo Admin recuperato deve essere installato e in esecuzione.
+
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* > *sistema* > *Opzioni di visualizzazione*.
+. Selezionare il nodo di amministrazione recuperato dall'elenco a discesa *Preferred Sender* (mittente preferito).
+. Fare clic su *Applica modifiche*.
+
+
+.Informazioni correlate
+xref:../admin/index.adoc[Amministrare StorageGRID]

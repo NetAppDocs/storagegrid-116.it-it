@@ -1,0 +1,33 @@
+---
+permalink: upgrade/impact-of-upgrade-on-groups-and-user-accounts.html 
+sidebar: sidebar 
+keywords: upgrade, permissions 
+summary: 'È necessario comprendere l"impatto dell"aggiornamento di StorageGRID, in modo da poter aggiornare i gruppi e gli account utente in modo appropriato una volta completato l"aggiornamento.' 
+---
+= Impatto di un aggiornamento su gruppi e account utente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario comprendere l'impatto dell'aggiornamento di StorageGRID, in modo da poter aggiornare i gruppi e gli account utente in modo appropriato una volta completato l'aggiornamento.
+
+
+
+== Modifiche alle autorizzazioni e alle opzioni del gruppo
+
+Dopo aver eseguito l'aggiornamento a StorageGRID 11.6, selezionare le seguenti autorizzazioni e opzioni aggiornate o nuove (*CONFIGURAZIONE* > *controllo di accesso* > *gruppi di amministratori*).
+
+[cols="1a,2a"]
+|===
+| Permesso o opzione | Descrizione 
+
+
+ a| 
+Account tenant
+ a| 
+Oltre a consentire agli utenti di creare, modificare e rimuovere account tenant, questa autorizzazione consente ora agli amministratori di visualizzare i criteri di classificazione del traffico esistenti (*CONFIGURAZIONE* > *rete* > *classificazione del traffico*).
+
+|===
+Vedere xref:../admin/managing-admin-groups.adoc[Gestire i gruppi di amministratori].

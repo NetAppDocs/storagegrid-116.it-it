@@ -1,0 +1,14 @@
+---
+permalink: sg6000/installing-hardware.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, hardware, install, installing 
+summary: 'L"installazione dell"hardware richiede l"installazione del controller SG6000-CN e dello shelf dello storage controller in un cabinet o rack, il collegamento dei cavi e l"alimentazione.' 
+---
+= Installazione dell'hardware (SG6000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'installazione dell'hardware richiede l'installazione del controller SG6000-CN e dello shelf dello storage controller in un cabinet o rack, il collegamento dei cavi e l'alimentazione.

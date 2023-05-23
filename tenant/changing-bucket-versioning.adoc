@@ -1,0 +1,70 @@
+---
+permalink: tenant/changing-bucket-versioning.html 
+sidebar: sidebar 
+keywords: how to change bucket versioning, disabled versioning, enabled versioning, suspended versioning 
+summary: 'Se si utilizza un tenant S3, è possibile utilizzare il tenant Manager o l"API di gestione tenant per modificare lo stato di versione per i bucket S3.' 
+---
+= Modificare la versione degli oggetti per un bucket
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza un tenant S3, è possibile utilizzare il tenant Manager o l'API di gestione tenant per modificare lo stato di versione per i bucket S3.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso al tenant manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* L'utente appartiene a un gruppo di utenti che dispone dell'autorizzazione Manage All Bucket (Gestisci tutti i bucket) o Root Access (accesso root). Queste autorizzazioni sovrascrivono le impostazioni delle autorizzazioni nelle policy di gruppo o bucket.
++
+xref:tenant-management-permissions.adoc[Permessi di gestione del tenant]
+
+
+
+.A proposito di questa attività
+È possibile attivare o sospendere il controllo delle versioni degli oggetti per un bucket. Una volta attivata la versione per un bucket, non sarà possibile tornare allo stato senza versione. Tuttavia, è possibile sospendere il controllo delle versioni per il bucket.
+
+* Disabled (Disattivato): La versione non è mai stata attivata
+* Enabled (attivato): Il controllo delle versioni è attivato
+* Suspended (sospeso): Il controllo delle versioni era stato precedentemente attivato e sospeso
+
+
+xref:../s3/object-versioning.adoc[Versione degli oggetti S3]
+
+xref:../ilm/example-4-ilm-rules-and-policy-for-s3-versioned-objects.adoc[Regole e criteri ILM per gli oggetti con versione S3 (esempio 4)]
+
+.Fasi
+. Selezionare *STORAGE (S3)* > *Bucket*.
+. Selezionare il nome del bucket dall'elenco.
+. Selezionare *Opzioni bucket* > *versione oggetto*.
++
+image::../media/bucket_object_versioning.png[Versione oggetto Change bucket]
+
+. Selezionare uno stato di versione per gli oggetti in questo bucket.
++
+
+NOTE: Se S3 Object Lock (blocco oggetti S3) o legacy compliance (compliance legacy) è attivato, le opzioni *Object versioning* (versione oggetto) sono disattivate.
+
++
+[cols="1a,3a"]
+|===
+| Opzione | Descrizione 
+
+
+ a| 
+Abilitare il controllo delle versioni
+ a| 
+Abilitare la versione degli oggetti se si desidera memorizzare ogni versione di ciascun oggetto in questo bucket. È quindi possibile recuperare le versioni precedenti di un oggetto in base alle esigenze.
+
+Gli oggetti già presenti nel bucket verranno sottoposti alla versione quando vengono modificati da un utente.
+
+
+
+ a| 
+Sospendere il controllo delle versioni
+ a| 
+Sospendere la versione degli oggetti se non si desidera più creare nuove versioni degli oggetti. È comunque possibile recuperare le versioni di oggetti esistenti.
+
+|===
+. Selezionare *Save Changes* (Salva modifiche).
+

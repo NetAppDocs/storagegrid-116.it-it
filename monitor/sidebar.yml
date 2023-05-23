@@ -1,0 +1,198 @@
+---
+section: monitor
+title: Monitorare e risolvere i problemi
+entries:
+- title: Panoramica
+  pdf-filename: Monitorare e risolvere i problemi relativi a StorageGRID
+  url: "/monitor/index.html"
+- title: Visualizza la dashboard
+  url: "/monitor/viewing-dashboard.html"
+- title: Visualizzare la pagina nodi
+  url: "/monitor/viewing-nodes-page.html"
+  entries:
+  - title: Visualizzare la scheda Panoramica
+    url: "/monitor/viewing-overview-tab.html"
+  - title: Visualizzare la scheda hardware
+    url: "/monitor/viewing-hardware-tab.html"
+  - title: Visualizzare la scheda rete
+    url: "/monitor/viewing-network-tab.html"
+  - title: Visualizzare la scheda Storage (archiviazione)
+    url: "/monitor/viewing-storage-tab.html"
+  - title: Utilizzare la scheda Task (attività) per riavviare un nodo Grid
+    url: "/monitor/using-task-tab-to-reboot-grid-node.html"
+  - title: Visualizzare la scheda oggetti
+    url: "/monitor/viewing-objects-tab.html"
+  - title: Visualizzare la scheda ILM
+    url: "/monitor/viewing-ilm-tab.html"
+  - title: Visualizzare la scheda bilanciamento del carico
+    url: "/monitor/viewing-load-balancer-tab.html"
+  - title: Visualizzare la scheda Platform Services (servizi piattaforma)
+    url: "/monitor/viewing-platform-services-tab.html"
+  - title: Visualizzare la scheda Gestore di sistema di SANtricity
+    url: "/monitor/viewing-santricity-system-manager-tab.html"
+- title: Informazioni da monitorare regolarmente
+  url: "/monitor/information-you-should-monitor-regularly.html"
+  entries:
+  - title: Monitorare lo stato del sistema
+    url: "/monitor/monitoring-system-health.html"
+    entries:
+    - title: Monitorare gli stati di connessione del nodo
+      url: "/monitor/monitoring-node-connection-states.html"
+    - title: Visualizzare gli avvisi correnti
+      url: "/monitor/viewing-current-alerts.html"
+    - title: Visualizzare gli avvisi risolti
+      url: "/monitor/viewing-resolved-alerts.html"
+    - title: Visualizzare un avviso specifico
+      url: "/monitor/viewing-specific-alert.html"
+    - title: Visualizzare gli allarmi legacy
+      url: "/monitor/viewing-legacy-alarms.html"
+  - title: Monitorare la capacità dello storage
+    url: "/monitor/monitoring-storage-capacity.html"
+  - title: Monitorare la gestione del ciclo di vita delle informazioni
+    url: "/monitor/monitoring-information-lifecycle-management.html"
+  - title: Monitorare le connessioni di rete e le performance
+    url: "/monitor/monitoring-network-connections-and-performance.html"
+  - title: Monitorare le risorse a livello di nodo
+    url: "/monitor/monitoring-node-level-resources.html"
+  - title: Monitorare l'attività del tenant
+    url: "/monitor/monitoring-tenant-activity.html"
+  - title: Monitorare la capacità di archiviazione
+    url: "/monitor/monitoring-archival-capacity.html"
+  - title: Monitorare le operazioni di bilanciamento del carico
+    url: "/monitor/monitoring-load-balancing-operations.html"
+  - title: Applicare hotfix o aggiornare il software, se necessario
+    url: "/monitor/applying-hotfixes-or-upgrading-software-if-necessary.html"
+- title: Gestire avvisi e allarmi
+  entries:
+  - title: Panoramica
+    url: "/monitor/managing-alerts-and-alarms.html"
+  - title: Confrontare avvisi e allarmi
+    url: "/monitor/comparing-alerts-and-alarms.html"
+  - title: Gestire gli avvisi
+    entries:
+    - title: Panoramica
+      url: "/monitor/managing-alerts.html"
+    - title: Visualizzare le regole degli avvisi
+      url: "/monitor/view-alert-rules.html"
+    - title: Creare regole di avviso personalizzate
+      url: "/monitor/creating-custom-alert-rules.html"
+    - title: Modificare le regole degli avvisi
+      url: "/monitor/editing-alert-rules.html"
+    - title: Disattiva le regole di avviso
+      url: "/monitor/disabling-alert-rules.html"
+    - title: Rimuovere le regole di avviso personalizzate
+      url: "/monitor/removing-custom-alert-rules.html"
+    - title: Gestire le notifiche di avviso
+      entries:
+      - title: Impostare le notifiche SNMP
+        url: "/monitor/snmp-alert-notifications.html"
+      - title: Impostare le notifiche via email
+        url: "/monitor/email-alert-notifications.html"
+      - title: Tacitare le notifiche di avviso
+        url: "/monitor/silencing-alert-notifications.html"
+  - title: Gestire gli allarmi (sistema legacy)
+    url: "/monitor/managing-alarms.html"
+- title: Configurare i messaggi di audit e le destinazioni dei log
+  url: "/monitor/configure-audit-messages.html"
+- title: Utilizzare un server syslog esterno
+  entries:
+  - title: Considerazioni sul server syslog esterno
+    url: "/monitor/considerations-for-external-syslog-server.html"
+  - title: Configurare un server syslog esterno
+    url: "/monitor/configuring-syslog-server.html"
+- title: Utilizzare il monitoraggio SNMP
+  url: "/monitor/using-snmp-monitoring.html"
+  entries:
+  - title: Configurare l'agente SNMP
+    url: "/monitor/configuring-snmp-agent.html"
+  - title: Aggiornare l'agente SNMP
+    url: "/monitor/updating-snmp-agent.html"
+- title: Raccogliere dati StorageGRID aggiuntivi
+  entries:
+  - title: Utilizzare grafici e grafici
+    url: "/monitor/using-charts-and-reports.html"
+  - title: Utilizzare report di testo
+    url: "/monitor/types-of-text-reports.html"
+  - title: Monitorare L'EFFICIENZA e OTTENERE le performance
+    url: "/monitor/monitoring-put-and-get-performance.html"
+  - title: Monitorare le operazioni di verifica degli oggetti
+    url: "/monitor/monitoring-object-verification-operations.html"
+  - title: Monitorare gli eventi
+    url: "/monitor/monitoring-events.html"
+  - title: Esaminare i messaggi di audit
+    url: "/monitor/reviewing-audit-messages.html"
+  - title: Raccogliere i file di log e i dati di sistema
+    url: "/monitor/collecting-log-files-and-system-data.html"
+  - title: Attivare manualmente un messaggio AutoSupport
+    url: "/monitor/manually-triggering-autosupport-message.html"
+  - title: Visualizzare l'albero topologia griglia
+    url: "/monitor/viewing-grid-topology-tree.html"
+  - title: Rivedere le metriche di supporto
+    url: "/monitor/reviewing-support-metrics.html"
+  - title: Eseguire la diagnostica
+    url: "/monitor/running-diagnostics.html"
+  - title: Creare applicazioni di monitoraggio personalizzate
+    url: "/monitor/creating-custom-monitoring-applications.html"
+- title: Risolvere i problemi di un sistema StorageGRID
+  entries:
+  - title: Panoramica sulla risoluzione dei problemi
+    url: "/monitor/troubleshooting-storagegrid-system.html"
+  - title: Risolvere i problemi relativi a oggetti e storage
+    entries:
+    - title: Confermare le posizioni dei dati degli oggetti
+      url: "/monitor/confirming-object-data-locations.html"
+    - title: Errori dell'archivio di oggetti
+      url: "/monitor/object-store-storage-volume-failures.html"
+    - title: Verificare l'integrità dell'oggetto
+      url: "/monitor/verifying-object-integrity.html"
+    - title: Risolvere i problemi relativi ai dati degli oggetti persi e mancanti
+      url: "/monitor/troubleshooting-lost-and-missing-object-data.html"
+      entries:
+      - title: Esaminare gli oggetti persi
+        url: "/monitor/investigating-lost-objects.html"
+      - title: Cercare e ripristinare oggetti potenzialmente persi
+        url: "/monitor/searching-for-and-restoring-potentially-lost-objects.html"
+      - title: Ripristinare i conteggi degli oggetti persi e mancanti
+        url: "/monitor/resetting-lost-and-missing-object-counts.html"
+    - title: Risolvere i problemi relativi all'avviso di storage dei dati a oggetti
+        in esaurimento
+      url: "/monitor/troubleshooting-low-object-data-storage-alert.html"
+    - title: Risolvere i problemi relativi agli avvisi di override del watermark di
+        sola lettura bassa
+      url: "/monitor/troubleshoot-low-watermark-alert.html"
+    - title: Risolvere i problemi relativi all'allarme Storage Status (SST)
+      url: "/monitor/troubleshooting-storage-status-alarm.html"
+    - title: Risoluzione dei problemi relativi all'erogazione dei messaggi dei servizi
+        della piattaforma (allarme SMTT)
+      url: "/monitor/troubleshooting-delivery-platform-services-messages.html"
+  - title: Risolvere i problemi relativi ai metadati
+    url: "/monitor/troubleshooting-metadata-issues.html"
+  - title: Risolvere gli errori del certificato
+    url: "/monitor/troubleshooting-certificate-errors.html"
+  - title: Risolvere i problemi relativi al nodo di amministrazione e all'interfaccia
+      utente
+    url: "/monitor/troubleshooting-admin-node-and-user-interface-issues.html"
+  - title: Risolvere i problemi di rete, hardware e piattaforma
+    url: "/monitor/troubleshooting-network-hardware-and-platform-issues.html"
+  - title: Risolvere i problemi relativi al server syslog esterno
+    url: "/monitor/troubleshooting-syslog-server.html"
+- title: Riferimenti agli avvisi
+  url: "/monitor/alerts-reference.html"
+- title: Metriche Prometheus comunemente utilizzate
+  url: "/monitor/commonly-used-prometheus-metrics.html"
+- title: Riferimento allarmi (sistema legacy)
+  url: "/monitor/alarms-reference.html"
+  entries:
+  - title: Allarmi che generano notifiche SNMP (sistema legacy)
+    url: "/monitor/alarms-that-generate-snmp-notifications.html"
+- title: Riferimenti ai file di log
+  url: "/monitor/logs-files-reference.html"
+  entries:
+  - title: Log del software StorageGRID
+    url: "/monitor/storagegrid-software-logs.html"
+  - title: Log di implementazione e manutenzione
+    url: "/monitor/deployment-and-maintenance-logs.html"
+  - title: Registri per software di terze parti
+    url: "/monitor/logs-for-third-party-software.html"
+  - title: A proposito di bycast.log
+    url: "/monitor/about-bycast-log.html"

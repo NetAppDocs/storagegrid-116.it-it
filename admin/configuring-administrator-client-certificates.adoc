@@ -1,0 +1,430 @@
+---
+permalink: admin/configuring-administrator-client-certificates.html 
+sidebar: sidebar 
+keywords: client certificates, prometheus 
+summary: I certificati client consentono ai client esterni autorizzati di accedere al database StorageGRID Prometheus, fornendo un modo sicuro per i tool esterni di monitorare StorageGRID. 
+---
+= Configurare i certificati client
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I certificati client consentono ai client esterni autorizzati di accedere al database StorageGRID Prometheus, fornendo un modo sicuro per i tool esterni di monitorare StorageGRID.
+
+Se si desidera accedere a StorageGRID utilizzando uno strumento di monitoraggio esterno, è necessario caricare o generare un certificato client utilizzando Grid Manager e copiare le informazioni del certificato nello strumento esterno.
+
+Consultare le informazioni su xref:using-storagegrid-security-certificates.adoc[utilizzo generale dei certificati di sicurezza] e. xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[configurazione di certificati server personalizzati].
+
+
+NOTE: Per garantire che le operazioni non vengano interrotte da un certificato del server guasto, l'avviso *scadenza dei certificati client configurati nella pagina certificati* viene attivato quando il certificato del server sta per scadere. Se necessario, è possibile visualizzare la scadenza del certificato corrente selezionando *CONFIGURAZIONE* *sicurezza* *certificati* e osservando la data di scadenza del certificato client nella scheda Client.
+
+
+NOTE: Se si utilizza un server di gestione delle chiavi (KMS) per proteggere i dati su nodi appliance appositamente configurati, consultare le informazioni specifiche su xref:kms-adding.adoc[Caricamento di un certificato del client KMS].
+
+.Di cosa hai bisogno
+* Si dispone dell'autorizzazione di accesso root.
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Per configurare un certificato client:
++
+** Si dispone dell'indirizzo IP o del nome di dominio del nodo di amministrazione.
+** Se è stato configurato il certificato dell'interfaccia di gestione StorageGRID, si dispone della CA, del certificato client e della chiave privata utilizzati per configurare il certificato dell'interfaccia di gestione.
+** Per caricare il certificato, la chiave privata del certificato è disponibile sul computer locale.
+** La chiave privata deve essere stata salvata o registrata al momento della creazione. Se non si dispone della chiave privata originale, è necessario crearne una nuova.
+
+
+* Per modificare un certificato client:
++
+** Si dispone dell'indirizzo IP o del nome di dominio del nodo di amministrazione.
+** Per caricare il proprio certificato o un nuovo certificato, la chiave privata, il certificato client e la CA (se utilizzata) sono disponibili sul computer locale.
+
+
+
+
+
+
+== Aggiungere certificati client
+
+Per aggiungere un certificato client, seguire la procedura relativa allo scenario in uso:
+
+* <<Certificato dell'interfaccia di gestione già configurato>>
+* <<CERTIFICATO client emesso DALLA CA>>
+* <<Certificato generato da Grid Manager>>
+
+
+
+
+=== Certificato dell'interfaccia di gestione già configurato
+
+Utilizzare questa procedura per aggiungere un certificato client se un certificato dell'interfaccia di gestione è già configurato utilizzando una CA, un certificato client e una chiave privata forniti dal cliente.
+
+.Fasi
+. In Grid Manager, selezionare *CONFIGURATION* *Security* *Certificates*, quindi selezionare la scheda *Client*.
+. Selezionare *Aggiungi*.
+. Immettere un nome di certificato contenente almeno 1 e non più di 32 caratteri.
+. Per accedere alle metriche Prometheus utilizzando lo strumento di monitoraggio esterno, selezionare *Allow Prometheus* (Consenti Prometheus).
+. Nella sezione *tipo di certificato*, caricare il certificato dell'interfaccia di gestione `.pem` file.
++
+.. Selezionare *carica certificato*, quindi selezionare *continua*.
+.. Caricare il file di certificato dell'interfaccia di gestione (`.pem`).
++
+*** Selezionare *Dettagli certificato client* per visualizzare i metadati del certificato e il PEM del certificato.
+*** Selezionare *Copy certificate PEM* (Copia PEM certificato) per copiare il contenuto del certificato e incollarlo altrove.
+
+
+.. Selezionare *Crea* per salvare il certificato in Grid Manager.
++
+Il nuovo certificato viene visualizzato nella scheda Client.
+
+
+
+. Configurare le seguenti impostazioni sullo strumento di monitoraggio esterno, ad esempio Grafana.
++
+.. *Nome*: Immettere un nome per la connessione.
++
+StorageGRID non richiede queste informazioni, ma è necessario fornire un nome per verificare la connessione.
+
+.. *URL*: Immettere il nome di dominio o l'indirizzo IP per il nodo di amministrazione. Specificare HTTPS e la porta 9091.
++
+Ad esempio: `+https://admin-node.example.com:9091+`
+
+.. Abilitare *TLS Client Auth* e *con CA Certate*.
+.. In TLS/SSL Auth Details (Dettagli autorizzazione TLS/SSL), copiare e incollare: +
++
+*** Il certificato CA dell'interfaccia di gestione a **CA Cert**
+*** Il certificato del client a **Client Cert**
+*** La chiave privata per **chiave client**
+
+
+.. *ServerName*: Immettere il nome di dominio del nodo di amministrazione.
++
+Il nome server deve corrispondere al nome di dominio così come appare nel certificato dell'interfaccia di gestione.
+
+.. Salvare e verificare il certificato e la chiave privata copiati da StorageGRID o da un file locale.
++
+Ora puoi accedere alle metriche Prometheus da StorageGRID con il tuo tool di monitoraggio esterno.
+
++
+Per informazioni sulle metriche, vedere xref:../monitor/index.adoc[Istruzioni per il monitoraggio di StorageGRID].
+
+
+
+
+
+
+
+=== CERTIFICATO client emesso DALLA CA
+
+Utilizzare questa procedura per aggiungere un certificato client amministratore se non è stato configurato un certificato dell'interfaccia di gestione e si intende aggiungere un certificato client per Prometheus che utilizza un certificato client emesso dalla CA e una chiave privata.
+
+.Fasi
+. Eseguire i passi da a. xref:configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc[configurare un certificato dell'interfaccia di gestione].
+. In Grid Manager, selezionare *CONFIGURATION* *Security* *Certificates*, quindi selezionare la scheda *Client*.
+. Selezionare *Aggiungi*.
+. Immettere un nome di certificato contenente almeno 1 e non più di 32 caratteri.
+. Per accedere alle metriche Prometheus utilizzando lo strumento di monitoraggio esterno, selezionare *Allow Prometheus* (Consenti Prometheus).
+. Nella sezione *tipo di certificato*, caricare il certificato client, la chiave privata e il bundle CA `.pem` file:
++
+.. Selezionare *carica certificato*, quindi selezionare *continua*.
+.. Caricare i file di certificato client, chiave privata e bundle CA (`.pem`).
++
+*** Selezionare *Dettagli certificato client* per visualizzare i metadati del certificato e il PEM del certificato.
+*** Selezionare *Copy certificate PEM* (Copia PEM certificato) per copiare il contenuto del certificato e incollarlo altrove.
+
+
+.. Selezionare *Crea* per salvare il certificato in Grid Manager.
++
+I nuovi certificati vengono visualizzati nella scheda Client.
+
+
+
+. Configurare le seguenti impostazioni sullo strumento di monitoraggio esterno, ad esempio Grafana.
++
+.. *Nome*: Immettere un nome per la connessione.
++
+StorageGRID non richiede queste informazioni, ma è necessario fornire un nome per verificare la connessione.
+
+.. *URL*: Immettere il nome di dominio o l'indirizzo IP per il nodo di amministrazione. Specificare HTTPS e la porta 9091.
++
+Ad esempio: `+https://admin-node.example.com:9091+`
+
+.. Abilitare *TLS Client Auth* e *con CA Certate*.
+.. In TLS/SSL Auth Details (Dettagli autorizzazione TLS/SSL), copiare e incollare: +
++
+*** Il certificato CA dell'interfaccia di gestione a **CA Cert**
+*** Il certificato del client a **Client Cert**
+*** La chiave privata per **chiave client**
+
+
+.. *ServerName*: Immettere il nome di dominio del nodo di amministrazione.
++
+Il nome server deve corrispondere al nome di dominio così come appare nel certificato dell'interfaccia di gestione.
+
+.. Salvare e verificare il certificato e la chiave privata copiati da StorageGRID o da un file locale.
++
+Ora puoi accedere alle metriche Prometheus da StorageGRID con il tuo tool di monitoraggio esterno.
+
++
+Per informazioni sulle metriche, vedere xref:../monitor/index.adoc[Istruzioni per il monitoraggio di StorageGRID].
+
+
+
+
+
+
+
+=== Certificato generato da Grid Manager
+
+Utilizzare questa procedura per aggiungere un certificato client amministratore se non è stato configurato un certificato dell'interfaccia di gestione e si intende aggiungere un certificato client per Prometheus che utilizza la funzione di generazione del certificato in Grid Manager.
+
+.Fasi
+. In Grid Manager, selezionare *CONFIGURATION* *Security* *Certificates*, quindi selezionare la scheda *Client*.
+. Selezionare *Aggiungi*.
+. Immettere un nome di certificato contenente almeno 1 e non più di 32 caratteri.
+. Per accedere alle metriche Prometheus utilizzando lo strumento di monitoraggio esterno, selezionare *Allow Prometheus* (Consenti Prometheus).
+. Nella sezione *tipo di certificato*, selezionare *genera certificato*.
+. Specificare le informazioni del certificato:
++
+** *Domain name*: Uno o più nomi di dominio pienamente qualificati del nodo admin da includere nel certificato. Utilizzare un * come carattere jolly per rappresentare più nomi di dominio.
+** *IP*: Uno o più indirizzi IP del nodo amministrativo da includere nel certificato.
+** *Oggetto*: Nome distinto (DN) o oggetto X.509 del proprietario del certificato.
+
+
+. Selezionare *generate*.
+. [[client_cert_details]] selezionare *Dettagli certificato client* per visualizzare i metadati del certificato e il PEM del certificato.
++
+
+IMPORTANT: Non sarà possibile visualizzare la chiave privata del certificato dopo aver chiuso la finestra di dialogo. Copiare o scaricare la chiave in un luogo sicuro.
+
++
+** Selezionare *Copy certificate PEM* (Copia PEM certificato) per copiare il contenuto del certificato e incollarlo altrove.
+** Selezionare *Download certificate* (Scarica certificato) per salvare il file del certificato.
++
+Specificare il nome del file del certificato e la posizione di download. Salvare il file con l'estensione `.pem`.
+
++
+Ad esempio: `storagegrid_certificate.pem`
+
+** Selezionare *Copy private key* (Copia chiave privata) per copiare la chiave privata del certificato e incollarla altrove.
+** Selezionare *Download private key* (Scarica chiave privata) per salvare la chiave privata come file.
++
+Specificare il nome del file della chiave privata e la posizione di download.
+
+
+
+. Selezionare *Crea* per salvare il certificato in Grid Manager.
++
+Il nuovo certificato viene visualizzato nella scheda Client.
+
+. In Grid Manager, selezionare *CONFIGURATION* *Security* *Certificates*, quindi selezionare la scheda *Global*.
+. Selezionare *certificato interfaccia di gestione*.
+. Selezionare *Usa certificato personalizzato*.
+. Caricare i file certificate.pem e private_key.pem da <<client_cert_details,dettagli del certificato del client>> fase. Non è necessario caricare il bundle CA.
++
+.. Selezionare *carica certificato*, quindi selezionare *continua*.
+.. Caricare ciascun file di certificato (`.pem`).
+.. Selezionare *Crea* per salvare il certificato in Grid Manager.
++
+Il nuovo certificato viene visualizzato nella scheda Client.
+
+
+
+. Configurare le seguenti impostazioni sullo strumento di monitoraggio esterno, ad esempio Grafana.
++
+.. *Nome*: Immettere un nome per la connessione.
++
+StorageGRID non richiede queste informazioni, ma è necessario fornire un nome per verificare la connessione.
+
+.. *URL*: Immettere il nome di dominio o l'indirizzo IP per il nodo di amministrazione. Specificare HTTPS e la porta 9091.
++
+Ad esempio: `+https://admin-node.example.com:9091+`
+
+.. Abilitare *TLS Client Auth* e *con CA Certate*.
+.. In TLS/SSL Auth Details (Dettagli autorizzazione TLS/SSL), copiare e incollare: +
++
+*** Il certificato del client dell'interfaccia di gestione per **CA Cert** e **Client Cert**
+*** La chiave privata per **chiave client**
+
+
+.. *ServerName*: Immettere il nome di dominio del nodo di amministrazione.
++
+Il nome server deve corrispondere al nome di dominio così come appare nel certificato dell'interfaccia di gestione.
+
+.. Salvare e verificare il certificato e la chiave privata copiati da StorageGRID o da un file locale.
++
+Ora puoi accedere alle metriche Prometheus da StorageGRID con il tuo tool di monitoraggio esterno.
+
++
+Per informazioni sulle metriche, vedere xref:../monitor/index.adoc[Istruzioni per il monitoraggio di StorageGRID].
+
+
+
+
+
+
+
+== Modificare i certificati client
+
+È possibile modificare un certificato client amministratore per modificarne il nome, abilitare o disabilitare l'accesso Prometheus o caricare un nuovo certificato quando quello corrente è scaduto.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sicurezza* *certificati*, quindi selezionare la scheda *Client*.
++
+Le date di scadenza del certificato e le autorizzazioni di accesso Prometheus sono elencate nella tabella. Se un certificato scade presto o è già scaduto, viene visualizzato un messaggio nella tabella e viene attivato un avviso.
+
+. Selezionare il certificato che si desidera modificare.
+. Selezionare *Modifica*, quindi selezionare *Modifica nome e permesso*
+. Immettere un nome di certificato contenente almeno 1 e non più di 32 caratteri.
+. Per accedere alle metriche Prometheus utilizzando lo strumento di monitoraggio esterno, selezionare *Allow Prometheus* (Consenti Prometheus).
+. Selezionare *continua* per salvare il certificato in Grid Manager.
++
+Il certificato aggiornato viene visualizzato nella scheda Client.
+
+
+
+
+
+== Allegare un nuovo certificato client
+
+È possibile caricare un nuovo certificato una volta scaduto il certificato corrente.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sicurezza* *certificati*, quindi selezionare la scheda *Client*.
++
+Le date di scadenza del certificato e le autorizzazioni di accesso Prometheus sono elencate nella tabella. Se un certificato scade presto o è già scaduto, viene visualizzato un messaggio nella tabella e viene attivato un avviso.
+
+. Selezionare il certificato che si desidera modificare.
+. Selezionare *Edit* (Modifica), quindi un'opzione di modifica.
++
+[role="tabbed-block"]
+====
+.Carica certificato
+--
+Copiare il testo del certificato per incollarlo altrove.
+
+.. Selezionare *carica certificato*, quindi selezionare *continua*.
+.. Caricare il nome del certificato client (`.pem`).
++
+Selezionare *Dettagli certificato client* per visualizzare i metadati del certificato e il PEM del certificato.
+
++
+*** Selezionare *Download certificate* (Scarica certificato) per salvare il file del certificato.
++
+Specificare il nome del file del certificato e la posizione di download. Salvare il file con l'estensione `.pem`.
+
++
+Ad esempio: `storagegrid_certificate.pem`
+
+*** Selezionare *Copy certificate PEM* (Copia PEM certificato) per copiare il contenuto del certificato e incollarlo altrove.
+
+
+.. Selezionare *Crea* per salvare il certificato in Grid Manager.
++
+Il certificato aggiornato viene visualizzato nella scheda Client.
+
+
+
+--
+.Generare un certificato
+--
+Generare il testo del certificato da incollare altrove.
+
+.. Selezionare *genera certificato*.
+.. Specificare le informazioni del certificato:
++
+*** *Domain name*: Uno o più nomi di dominio completi da includere nel certificato. Utilizzare un * come carattere jolly per rappresentare più nomi di dominio.
+*** *IP*: Uno o più indirizzi IP da includere nel certificato.
+*** *Oggetto*: Nome distinto (DN) o oggetto X.509 del proprietario del certificato.
+*** *Giorni validi*: Numero di giorni successivi alla creazione della scadenza del certificato.
+
+
+.. Selezionare *generate*.
+.. Selezionare *Dettagli certificato client* per visualizzare i metadati del certificato e il PEM del certificato.
++
+
+IMPORTANT: Non sarà possibile visualizzare la chiave privata del certificato dopo aver chiuso la finestra di dialogo. Copiare o scaricare la chiave in un luogo sicuro.
+
++
+*** Selezionare *Copy certificate PEM* (Copia PEM certificato) per copiare il contenuto del certificato e incollarlo altrove.
+*** Selezionare *Download certificate* (Scarica certificato) per salvare il file del certificato.
++
+Specificare il nome del file del certificato e la posizione di download. Salvare il file con l'estensione `.pem`.
+
++
+Ad esempio: `storagegrid_certificate.pem`
+
+*** Selezionare *Copy private key* (Copia chiave privata) per copiare la chiave privata del certificato e incollarla altrove.
+*** Selezionare *Download private key* (Scarica chiave privata) per salvare la chiave privata come file.
++
+Specificare il nome del file della chiave privata e la posizione di download.
+
+
+
+.. Selezionare *Crea* per salvare il certificato in Grid Manager.
++
+Il nuovo certificato viene visualizzato nella scheda Client.
+
+
+
+--
+====
+
+
+
+
+== Scaricare o copiare i certificati client
+
+È possibile scaricare o copiare un certificato client da utilizzare altrove.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sicurezza* *certificati*, quindi selezionare la scheda *Client*.
+. Selezionare il certificato che si desidera copiare o scaricare.
+. Scaricare o copiare il certificato.
++
+[role="tabbed-block"]
+====
+.Scaricare il file del certificato
+--
+Scarica il certificato `.pem` file.
+
+.. Selezionare *Scarica certificato*.
+.. Specificare il nome del file del certificato e la posizione di download. Salvare il file con l'estensione `.pem`.
++
+Ad esempio: `storagegrid_certificate.pem`
+
+
+
+--
+.Copia certificato
+--
+Copiare il testo del certificato per incollarlo altrove.
+
+.. Selezionare *Copy certificate PEM* (Copia certificato PEM).
+.. Incollare il certificato copiato in un editor di testo.
+.. Salvare il file di testo con l'estensione `.pem`.
++
+Ad esempio: `storagegrid_certificate.pem`
+
+
+
+--
+====
+
+
+
+
+== Rimuovere i certificati client
+
+Se non è più necessario un certificato client amministratore, è possibile rimuoverlo.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sicurezza* *certificati*, quindi selezionare la scheda *Client*.
+. Selezionare il certificato che si desidera rimuovere.
+. Selezionare *Delete* (Elimina), quindi confermare.
+
+
+
+NOTE: Per rimuovere fino a 10 certificati, selezionare ciascun certificato da rimuovere nella scheda Client, quindi selezionare *azioni* *Elimina*.
+
+Dopo la rimozione di un certificato, i client che hanno utilizzato il certificato devono specificare un nuovo certificato client per accedere al database StorageGRID Prometheus.

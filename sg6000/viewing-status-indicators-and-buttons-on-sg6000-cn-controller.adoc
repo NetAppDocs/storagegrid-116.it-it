@@ -1,0 +1,90 @@
+---
+permalink: sg6000/viewing-status-indicators-and-buttons-on-sg6000-cn-controller.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, status, indicators, lights, leds, light, led, switch , button, power, reset, identify, alarm, indicator, boot codes, boot, code, start, startup, start up, start-up, progress, sg6000-cn 
+summary: Il controller SG6000-CN include indicatori che consentono di determinare lo stato del controller, inclusi i seguenti indicatori e pulsanti. 
+---
+= Visualizzare gli indicatori di stato e i pulsanti sul controller SG6000-CN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il controller SG6000-CN include indicatori che consentono di determinare lo stato del controller, inclusi i seguenti indicatori e pulsanti.
+
+image::../media/sg6000_cn_front_indicators.gif[Indicatori anteriori - SG6000-CN]
+
+[cols="1a,2a,3a"]
+|===
+|  | Display | Descrizione 
+
+
+ a| 
+1
+ a| 
+Pulsante di accensione
+ a| 
+* Blu: Il controller è acceso.
+* OFF: Il controller è spento.
+
+
+
+
+ a| 
+2
+ a| 
+Pulsante di reset
+ a| 
+_Nessun indicatore_
+
+Utilizzare questo pulsante per eseguire un hard reset del controller.
+
+
+
+ a| 
+3
+ a| 
+Identificare il pulsante
+ a| 
+* Blu lampeggiante o fisso: Identifica il controller nell'armadio o nel rack.
+* OFF: Il controller non è visivamente identificabile nell'armadio o nel rack.
+
+
+Questo pulsante può essere impostato su lampeggiante, acceso (fisso) o spento.
+
+
+
+ a| 
+4
+ a| 
+LED di allarme
+ a| 
+* Ambra: Si è verificato un errore.
++
+*Nota:* per visualizzare i codici di avvio e di errore, è necessario accedere all'interfaccia BMC.
+
+* OFF: Non sono presenti errori.
+
+
+|===
+
+
+== Codici generali di boot
+
+Durante l'avvio o dopo un hard reset del controller SG6000-CN, si verifica quanto segue:
+
+. Il BMC (Baseboard Management Controller) registra i codici per la sequenza di avvio, inclusi gli eventuali errori che si verificano.
+. Il pulsante di alimentazione si illumina.
+. Se si verificano errori durante l'avvio, il LED di allarme si accende.
++
+Per visualizzare i codici di avvio e di errore, è necessario accedere all'interfaccia BMC.
+
+
+
+.Informazioni correlate
+xref:troubleshooting-hardware-installation.adoc[Risoluzione dei problemi relativi all'installazione dell'hardware (SG6000)]
+
+xref:configuring-bmc-interface-sg6000.adoc[Configurare l'interfaccia BMC (SG6000)]
+
+xref:powering-on-sg6000-cn-controller-and-verifying-operation.adoc[Accendere il controller SG6000-CN e verificarne il funzionamento]

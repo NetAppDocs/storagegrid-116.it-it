@@ -1,0 +1,68 @@
+---
+permalink: tenant/understanding-notifications-for-buckets.html 
+sidebar: sidebar 
+keywords: s3 bucket event notification, sequencer key 
+summary: Puoi attivare la notifica degli eventi per un bucket S3 se desideri che StorageGRID invii notifiche relative a eventi specifici a un servizio di notifica semplice Amazon di destinazione. 
+---
+= Comprendere le notifiche per i bucket
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Puoi attivare la notifica degli eventi per un bucket S3 se desideri che StorageGRID invii notifiche relative a eventi specifici a un servizio di notifica semplice Amazon di destinazione.
+
+È possibile xref:configuring-event-notifications.adoc[configurare le notifiche degli eventi] Associando XML di configurazione delle notifiche a un bucket di origine. L'XML di configurazione delle notifiche segue le convenzioni S3 per la configurazione delle notifiche bucket, con l'argomento SNS di destinazione specificato come URN di un endpoint.
+
+Le notifiche degli eventi vengono create nel bucket di origine come specificato nella configurazione della notifica e vengono inviate alla destinazione. Se un evento associato a un oggetto ha esito positivo, viene creata una notifica relativa a tale evento e messa in coda per il recapito.
+
+L'unicità e l'ordine delle notifiche non sono garantiti. È possibile che più di una notifica di un evento venga inviata alla destinazione a seguito delle operazioni eseguite per garantire il successo della consegna. Inoltre, poiché la consegna è asincrona, non è garantito che l'ordine temporale delle notifiche alla destinazione corrisponda all'ordine degli eventi nel bucket di origine, in particolare per le operazioni provenienti da diversi siti StorageGRID. È possibile utilizzare `sequencer` Digitare il messaggio dell'evento per determinare l'ordine degli eventi per un particolare oggetto, come descritto nella documentazione di Amazon S3.
+
+
+
+== Notifiche e messaggi supportati
+
+La notifica degli eventi StorageGRID segue l'API Amazon S3 con le seguenti limitazioni:
+
+* Non è possibile configurare una notifica per i seguenti tipi di eventi. Questi tipi di evento sono *non* supportati.
++
+** `s3:ReducedRedundancyLostObject`
+** `s3:ObjectRestore:Completed`
+
+
+* Le notifiche degli eventi inviate da StorageGRID utilizzano il formato JSON standard, ad eccezione del fatto che non includono alcune chiavi e utilizzano valori specifici per altre, come mostrato nella tabella:
+
+
+[cols="1a,2a"]
+|===
+| Nome della chiave | Valore StorageGRID 
+
+
+ a| 
+EventSource
+ a| 
+`sgws:s3`
+
+
+
+ a| 
+AwsRegion
+ a| 
+non incluso
+
+
+
+ a| 
+x-amz-id-2
+ a| 
+non incluso
+
+
+
+ a| 
+arn
+ a| 
+`urn:sgws:s3:::bucket_name`
+
+|===

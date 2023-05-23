@@ -1,0 +1,38 @@
+---
+permalink: maintain/replacing-failed-node-with-services-appliance.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, replace failed node, services appliance 
+summary: 'È possibile utilizzare un"appliance di servizi SG100 o SG1000 per ripristinare un nodo gateway guasto, un nodo Admin non primario guasto o un nodo Admin primario guasto ospitato su VMware, un host Linux o un"appliance di servizi. Questa procedura è una fase della procedura di ripristino del nodo di rete.' 
+---
+= Sostituire il nodo guasto con l'appliance di servizi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare un'appliance di servizi SG100 o SG1000 per ripristinare un nodo gateway guasto, un nodo Admin non primario guasto o un nodo Admin primario guasto ospitato su VMware, un host Linux o un'appliance di servizi. Questa procedura è una fase della procedura di ripristino del nodo di rete.
+
+.Di cosa hai bisogno
+* È necessario aver stabilito che è vera una delle seguenti situazioni:
++
+** Impossibile ripristinare la macchina virtuale che ospita il nodo.
+** L'host Linux fisico o virtuale per il nodo grid è guasto e deve essere sostituito.
+** L'appliance di servizi che ospita il nodo Grid deve essere sostituita.
+
+
+* Assicurarsi che la versione del programma di installazione dell'appliance StorageGRID sul dispositivo di servizi corrisponda alla versione software del sistema StorageGRID, come descritto in Installazione e manutenzione dell'hardware per la verifica e l'aggiornamento della versione del programma di installazione dell'appliance StorageGRID.
++
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
+
+
+
+IMPORTANT: Non implementare sia un'appliance SG100 che un'appliance di servizio SG1000 nello stesso sito. Potrebbero verificarsi performance imprevedibili.
+
+.A proposito di questa attività
+È possibile utilizzare un'appliance di servizi SG100 o SG1000 per ripristinare un nodo di rete guasto nei seguenti casi:
+
+* Il nodo guasto è stato ospitato su VMware o Linux (modifica della piattaforma)
+* Il nodo guasto era ospitato su un'appliance di servizi (sostituzione della piattaforma)
+

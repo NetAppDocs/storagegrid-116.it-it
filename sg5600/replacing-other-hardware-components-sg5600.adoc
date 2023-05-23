@@ -1,0 +1,92 @@
+---
+permalink: sg5600/replacing-other-hardware-components-sg5600.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, Replacing, replace, hardware, components, remove, removing, removal, install, installing, installation, drive, fan, power supply, battery 
+summary: 'Potrebbe essere necessario sostituire un disco, una ventola, un alimentatore o una batteria nell"appliance StorageGRID.' 
+---
+= Sostituire gli altri componenti hardware
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario sostituire un disco, una ventola, un alimentatore o una batteria nell'appliance StorageGRID.
+
+.Di cosa hai bisogno
+* Si dispone della procedura di sostituzione dell'hardware e-Series.
+* L'apparecchio è stato utilizzato xref:placing-appliance-into-maintenance-mode.adoc[in modalità di manutenzione] se la procedura di sostituzione dei componenti richiede lo spegnimento dell'apparecchio.
+
+
+.A proposito di questa attività
+Per sostituire un'unità, un filtro a carboni attivi della ventola, un filtro a carboni attivi, una batteria, Oppure fare riferimento alle procedure standard per gli array di storage E2700 ed E5600. Concentratevi sulle istruzioni dettagliate per la rimozione e la sostituzione dell'hardware; molte delle procedure di gestione dello storage SANtricity non si applicano a un'appliance.
+
+
+
+== Istruzioni per la sostituzione dei componenti SG5612
+
+|===
+| FRU | Vedere 
+
+
+ a| 
+Disco
+ a| 
+Seguire la procedura descritta nelle istruzioni e-Series per la sostituzione di un'unità nei vassoi E2600, E2700, E5400, E5500, E5600, 12 o 24 dischi.
+
+
+
+ a| 
+Filtro a carboni attivi della ventola di alimentazione
+ a| 
+Seguire la procedura descritta nelle istruzioni e-Series per la sostituzione di un contenitore della ventola di alimentazione guasto nel vassoio del controller E5612 o E5624
+
+
+
+ a| 
+Batteria nel controller E2700 (richiede la rimozione del controller)
+ a| 
+Seguire la procedura descritta in xref:replacing-e2700-controller.adoc[Sostituire il controller E2700], ma installare la nuova batteria nel controller esistente.
+
+|===
+
+
+== Istruzioni per la sostituzione dei componenti SG5660
+
+|===
+| FRU | Vedere 
+
+
+ a| 
+Disco
+ a| 
+Seguire la procedura descritta nelle istruzioni e-Series per la sostituzione di un'unità nei vassoi E2660, E2760, E5460, E5560 o E5660.
+
+
+
+ a| 
+Filtro a carboni attivi
+ a| 
+Seguire la procedura descritta nelle istruzioni e-Series per la sostituzione di un contenitore di alimentazione guasto nel vassoio del controller E5660
+
+
+
+ a| 
+Filtro della ventola
+ a| 
+Seguire la procedura descritta nelle istruzioni e-Series per la sostituzione di un contenitore della ventola guasto nel vassoio del controller E5660
+
+
+
+ a| 
+Batteria nel controller E2700 (richiede la rimozione del controller)
+ a| 
+Seguire la procedura descritta in xref:replacing-e2700-controller.adoc[Sostituire il controller E2700], ma installare la nuova batteria nel controller esistente.
+
+|===
+.Informazioni correlate
+https://mysupport.netapp.com/info/web/ECMP11751516.html["Procedure di sostituzione hardware NetApp e-Series ed EF-Series"^]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61765["Documentazione NetApp: Serie E2700"^]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61893["Documentazione NetApp: Serie E5600"^]

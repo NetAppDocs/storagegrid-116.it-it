@@ -1,0 +1,48 @@
+---
+permalink: upgrade/removed-or-deprecated-features.html 
+sidebar: sidebar 
+keywords: features, removed, deprecated 
+summary: 'Alcune funzionalità sono state rimosse o obsolete in questa release. Esaminare questi elementi per capire se è necessario aggiornare le applicazioni client o modificare la configurazione prima di eseguire l"aggiornamento.' 
+---
+= Funzionalità rimosse o obsolete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Alcune funzionalità sono state rimosse o obsolete in questa release. Esaminare questi elementi per capire se è necessario aggiornare le applicazioni client o modificare la configurazione prima di eseguire l'aggiornamento.
+
+
+
+== Sistema di allarme e API basate sugli allarmi deprecati
+
+A partire dalla release StorageGRID 11.6, il sistema di allarme legacy è obsoleto. L'interfaccia utente e le API per il sistema di allarme legacy verranno rimosse in una release futura.
+
+
+IMPORTANT: Se si utilizzano ancora allarmi legacy, pianificare una transizione completa al sistema di allerta dopo l'aggiornamento a StorageGRID 11.6. Vedere xref:../monitor/managing-alerts-and-alarms.adoc[Gestire avvisi e allarmi: Panoramica] per ulteriori informazioni sugli avvisi.
+
+La versione 11.6 depreca tutte le API basate sugli allarmi. Le seguenti API sono interessate da questa modifica:
+
+* `GET /grid/alarms`: Completamente obsoleto
+* `GET /grid/health/topology`: Completamente obsoleto
+* `GET /grid/health`: Il `alarm-counts` sezione della risposta obsoleta
+
+
+
+
+== Le versioni future non supporteranno la dimensione massima dell'oggetto 5 TIB per L'oggetto PUT
+
+Nelle versioni future di StorageGRID, la dimensione massima per un'operazione di singolo oggetto PUT sarà 5 GiB, invece di 5 TIB. È possibile utilizzare il caricamento multiparte per oggetti di dimensioni superiori a 5 GiB, fino a un massimo di 5 TIB (5,497,558,138,880 byte).
+
+Per facilitare la transizione dei client all'utilizzo di oggetti di dimensioni inferiori in PUT object, l'avviso *S3 PUT object size too large* verrà attivato in StorageGRID 11.6 se un client S3 tenta di caricare un oggetto che supera i 5 GiB.
+
+
+
+== Funzionalità NAS Bridge obsoleta
+
+La funzione NAS Bridge precedentemente ha immesso un accesso limitato con la release StorageGRID 11.4. La funzione di bridge NAS rimane ad accesso limitato ed è obsoleta a partire da StorageGRID 11.6.
+
+NAS Bridge 11.4 rimane la versione finale e continuerà a essere compatibile con StorageGRID 11.6. Esaminare https://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"^] Per la compatibilità continua tra le versioni di NAS Bridge 11.4 e StorageGRID.
+
+Consultare il sito NetApp Support per https://mysupport.netapp.com/site/info/version-support["Programma di supporto per NAS Bridge"^].

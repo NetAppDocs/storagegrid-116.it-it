@@ -1,0 +1,145 @@
+---
+permalink: expand/adding-storage-capacity-for-erasure-coded-objects.html 
+sidebar: sidebar 
+keywords: erasure coding, capacity, storage nodes, ec, expand, expansion 
+summary: 'Se il criterio ILM include una regola che crea copie con codifica di cancellazione, è necessario pianificare dove aggiungere nuovo storage e quando aggiungere nuovo storage. La quantità di storage aggiunta e la tempistica dell"aggiunta possono influire sulla capacità di storage utilizzabile del grid.' 
+---
+= Aggiungere capacità di storage per gli oggetti con codifica per la cancellazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se il criterio ILM include una regola che crea copie con codifica di cancellazione, è necessario pianificare dove aggiungere nuovo storage e quando aggiungere nuovo storage. La quantità di storage aggiunta e la tempistica dell'aggiunta possono influire sulla capacità di storage utilizzabile del grid.
+
+Il primo passo nella pianificazione di un'espansione dello storage consiste nell'esaminare le regole dei criteri ILM che creano oggetti con codifica in cancellazione. Poiché StorageGRID crea _k+m_ frammenti per ogni oggetto con codifica di cancellazione e memorizza ciascun frammento su un nodo di storage diverso, è necessario assicurarsi che almeno _k+m_ nodi di storage abbiano spazio per i nuovi dati con codifica di cancellazione dopo l'espansione. Se il profilo di erasure coding fornisce la protezione dalla perdita di sito, è necessario aggiungere storage a ciascun sito. Vedere xref:../ilm/index.adoc[Gestire gli oggetti con ILM].
+
+Il numero di nodi da aggiungere dipende anche dal livello di riempimento dei nodi esistenti quando si esegue l'espansione.
+
+
+
+== Raccomandazioni generali per l'aggiunta di capacità di storage per gli oggetti con codifica di cancellazione
+
+Se si desidera evitare calcoli dettagliati, è possibile aggiungere due nodi di storage per sito quando i nodi di storage esistenti raggiungono il 70% della capacità.
+
+Questa raccomandazione generale fornisce risultati ragionevoli in un'ampia gamma di schemi di erasure coding sia per le griglie a sito singolo che per le griglie in cui la codifica erasure fornisce protezione dalle perdite di sito.
+
+Per comprendere meglio i fattori che portano a questo suggerimento o per sviluppare un piano più preciso per il tuo sito, consulta la sezione successiva. Per un consiglio personalizzato e ottimizzato per la tua situazione, contatta il tuo rappresentante commerciale NetApp.
+
+
+
+== Calcola il numero di nodi storage di espansione da aggiungere per gli oggetti con codifica in cancellazione
+
+Per ottimizzare il modo in cui si espande un'implementazione che memorizza oggetti con codifica in cancellazione, è necessario prendere in considerazione molti fattori:
+
+* Schema di erasure coding in uso
+* Caratteristiche del pool di storage utilizzato per l'erasure coding, incluso il numero di nodi in ogni sito e la quantità di spazio libero in ogni nodo
+* Se la griglia è stata precedentemente espansa (perché la quantità di spazio libero per nodo di storage potrebbe non essere approssimativamente la stessa su tutti i nodi)
+* Natura esatta del criterio ILM, ad esempio se le regole ILM rendono oggetti replicati e codificati in cancellazione
+
+
+Gli esempi seguenti possono aiutare a comprendere l'impatto dello schema di erasure coding, il numero di nodi nel pool di storage e la quantità di spazio libero su ciascun nodo.
+
+Considerazioni simili influiscono sui calcoli di una policy ILM che memorizza dati replicati e codificati in cancellazione e sui calcoli di una griglia precedentemente espansa.
+
+
+IMPORTANT: Gli esempi di questa sezione rappresentano le Best practice per l'aggiunta di capacità di storage a un sistema StorageGRID. Se non si riesce ad aggiungere il numero di nodi consigliato, potrebbe essere necessario eseguire la procedura di ribilanciamento EC per consentire la memorizzazione di ulteriori oggetti con codifica di cancellazione. Vedere xref:considerations-for-rebalancing-erasure-coded-data.adoc[Ribilanciare i dati codificati in cancellazione].
+
+
+
+== Esempio 1: Espandere la griglia di un sito che utilizza la codifica di cancellazione 2+1
+
+Questo esempio mostra come espandere un semplice grid che include solo tre nodi di storage.
+
+
+NOTE: Questo esempio utilizza solo tre nodi di storage per semplicità. Tuttavia, si sconsiglia di utilizzare solo tre nodi di storage: Un vero e proprio grid di produzione dovrebbe utilizzare un minimo di _k+m_ + 1 nodi di storage per la ridondanza, che equivale a quattro nodi di storage (2+1+1) per questo esempio.
+
+Si supponga quanto segue:
+
+* Tutti i dati vengono memorizzati utilizzando lo schema di erasure coding 2+1. Con lo schema di erasure coding 2+1, ogni oggetto viene memorizzato come tre frammenti e ogni frammento viene salvato su un nodo di storage diverso.
+* Hai un sito con tre nodi di storage. Ogni nodo di storage ha una capacità totale di 100 TB.
+* Si desidera espandere aggiungendo nuovi nodi di storage da 100 TB.
+* Si desidera bilanciare i dati con codifica erasure tra il vecchio e il nuovo nodo.
+
+
+Sono disponibili diverse opzioni, in base alla quantità di memoria dei nodi di storage quando si esegue l'espansione.
+
+* *Aggiungere tre nodi di storage da 100 TB quando i nodi esistenti sono pieni al 100%*
++
+In questo esempio, i nodi esistenti sono pieni al 100%. Poiché non esiste capacità libera, è necessario aggiungere immediatamente tre nodi per continuare la cancellazione della codifica 2+1.
+
++
+Una volta completata l'espansione, quando gli oggetti vengono codificati in modo cancellabile, tutti i frammenti verranno posizionati sui nuovi nodi.
+
++
+image::../media/used_space_after_3_node_expansion.png[Spazio utilizzato dopo l'espansione a 3 nodi]
+
++
+
+NOTE: Questa espansione aggiunge _k+m_ nodi. Si consiglia di aggiungere quattro nodi per la ridondanza. Se si aggiungono solo nodi storage di espansione _k+m_ quando i nodi esistenti sono pieni al 100%, tutti i nuovi oggetti vengono memorizzati nei nodi di espansione. Se uno dei nuovi nodi diventa non disponibile, anche temporaneamente, StorageGRID non può soddisfare i requisiti ILM.
+
+* *Aggiungere due nodi di storage da 100 TB, quando i nodi di storage esistenti sono pieni al 67%*
++
+In questo esempio, i nodi esistenti sono pieni al 67%. Poiché i nodi esistenti (33 TB per nodo) offrono 100 TB di capacità libera, è necessario aggiungere due nodi solo se si esegue l'espansione ora.
+
++
+L'aggiunta di 200 TB di capacità aggiuntiva consente di continuare la cancellazione 2+1 della codifica e di bilanciare i dati con codifica erasure in tutti i nodi.
+
++
+image::../media/node_expansion_example_67_percent.png[Esempio di espansione del nodo 1 67%]
+
+* *Aggiungere un nodo di storage da 100 TB quando i nodi di storage esistenti sono pieni al 33%*
++
+In questo esempio, i nodi esistenti sono pieni al 33%. Poiché i nodi esistenti (67 TB per nodo) offrono 200 TB di capacità libera, è necessario aggiungere un solo nodo se si esegue l'espansione ora.
+
++
+L'aggiunta di 100 TB di capacità aggiuntiva consente di continuare la cancellazione 2+1 della codifica e di bilanciare i dati con codifica erasure in tutti i nodi.
+
++
+image::../media/node_expansion_example_33_percent.png[Esempio di espansione del nodo 1 33%]
+
+
+
+
+
+== Esempio 2: Espandere la griglia a tre siti che utilizza la codifica di cancellazione 6+3
+
+Questo esempio mostra come sviluppare un piano di espansione per un grid multi-sito con uno schema di erasure coding con un numero maggiore di frammenti. Nonostante le differenze tra questi esempi, il piano di espansione consigliato è molto simile.
+
+Si supponga quanto segue:
+
+* Tutti i dati vengono memorizzati utilizzando lo schema di erasure coding 6+3. Con lo schema di erasure coding 6+3, ogni oggetto viene memorizzato come 9 frammenti e ogni frammento viene salvato in un nodo di storage diverso.
+* Si dispone di tre siti e ciascun sito dispone di quattro nodi di storage (12 nodi in totale). Ogni nodo ha una capacità totale di 100 TB.
+* Si desidera espandere aggiungendo nuovi nodi di storage da 100 TB.
+* Si desidera bilanciare i dati con codifica erasure tra il vecchio e il nuovo nodo.
+
+
+Sono disponibili diverse opzioni, in base alla quantità di memoria dei nodi di storage quando si esegue l'espansione.
+
+* *Aggiungere nove nodi di storage da 100 TB (tre per sito), quando i nodi esistenti sono pieni al 100%*
++
+In questo esempio, i 12 nodi esistenti sono pieni al 100%. Poiché non esiste capacità libera, è necessario aggiungere immediatamente nove nodi (900 TB di capacità aggiuntiva) per continuare la cancellazione dei codici 6+3.
+
++
+Una volta completata l'espansione, quando gli oggetti vengono codificati in modo cancellabile, tutti i frammenti verranno posizionati sui nuovi nodi.
+
++
+
+NOTE: Questa espansione aggiunge _k+m_ nodi. Si consiglia di aggiungere 12 nodi (quattro per sito) per la ridondanza. Se si aggiungono solo nodi storage di espansione _k+m_ quando i nodi esistenti sono pieni al 100%, tutti i nuovi oggetti vengono memorizzati nei nodi di espansione. Se uno dei nuovi nodi diventa non disponibile, anche temporaneamente, StorageGRID non può soddisfare i requisiti ILM.
+
+* *Aggiungere sei nodi di storage da 100 TB (due per sito), quando i nodi esistenti sono pieni al 75%*
++
+In questo esempio, i 12 nodi esistenti sono pieni al 75%. Poiché esistono 300 TB di capacità libera (25 TB per nodo), è necessario aggiungere sei nodi solo se si esegue l'espansione ora. Aggiungere due nodi a ciascuno dei tre siti.
+
++
+L'aggiunta di 600 TB di capacità di storage consente di continuare la cancellazione di codici 6+3 e di bilanciare i dati con codifica erasure in tutti i nodi.
+
+* *Aggiungere tre nodi di storage da 100 TB (uno per sito), quando i nodi esistenti sono pieni al 50%*
++
+In questo esempio, i 12 nodi esistenti sono pieni al 50%. Poiché esistono 600 TB di capacità libera (50 TB per nodo), è sufficiente aggiungere tre nodi se si esegue l'espansione ora. Aggiungere un nodo a ciascuno dei tre siti.
+
++
+L'aggiunta di 300 TB di capacità di storage consente di continuare la cancellazione di codici 6+3 e di bilanciare i dati con codifica erasure in tutti i nodi.
+
+

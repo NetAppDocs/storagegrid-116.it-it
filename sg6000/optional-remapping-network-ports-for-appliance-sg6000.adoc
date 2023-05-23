@@ -1,0 +1,43 @@
+---
+permalink: sg6000/optional-remapping-network-ports-for-appliance-sg6000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, remapping, remap, map, mapping, network, ports 
+summary: 'Potrebbe essere necessario rimappare le porte interne del nodo di storage dell"appliance a diverse porte esterne. Ad esempio, potrebbe essere necessario rimappare le porte a causa di un problema di firewall.' 
+---
+= Opzionale: Consente di rimappare le porte di rete per l'appliance
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario rimappare le porte interne del nodo di storage dell'appliance a diverse porte esterne. Ad esempio, potrebbe essere necessario rimappare le porte a causa di un problema di firewall.
+
+.Di cosa hai bisogno
+* In precedenza è stato effettuato l'accesso al programma di installazione dell'appliance StorageGRID.
+* Non sono stati configurati e non si prevede di configurare gli endpoint del bilanciamento del carico.
++
+
+NOTE: Se si rimappano le porte, non è possibile utilizzare le stesse porte per configurare gli endpoint del bilanciamento del carico. Se si desidera configurare gli endpoint del bilanciamento del carico e le porte sono già state rimappate, seguire la procedura descritta in xref:../maintain/removing-port-remaps.adoc[Rimuovere i rimap delle porte].
+
+
+
+.Fasi
+. Dal programma di installazione dell'appliance StorageGRID, fare clic su *Configura rete* *Porte rimappate*.
++
+Viene visualizzata la pagina Remap Port (porta Remap).
+
+. Dalla casella a discesa *Network* (rete), selezionare la rete per la porta che si desidera rimappare: Grid, Admin o Client.
+. Dalla casella di riepilogo *Protocol* (protocollo), selezionare il protocollo IP: TCP o UDP.
+. Dalla casella a discesa *Remap Direction* (direzione rimappamento), selezionare la direzione del traffico che si desidera rimappare per questa porta: Inbound (in entrata), Outbound (in uscita) o Bi-directional (bidirezionale).
+. Per *Original Port* (porta originale), immettere il numero della porta che si desidera rimappare.
+. Per *Mapped-to Port*, inserire il numero della porta che si desidera utilizzare.
+. Fare clic su *Add Rule* (Aggiungi regola).
++
+La nuova mappatura delle porte viene aggiunta alla tabella e il remapping ha effetto immediato.
+
++
+image::../media/remap_ports.gif[Schermata che mostra l'opzione Porte remap nel programma di installazione dell'appliance StorageGRID webscale]
+
+. Per rimuovere una mappatura delle porte, selezionare il pulsante di opzione della regola che si desidera rimuovere e fare clic su *Remove Selected Rule* (Rimuovi regola selezionata).
+

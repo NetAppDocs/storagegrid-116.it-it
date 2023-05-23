@@ -1,0 +1,56 @@
+---
+permalink: primer/configuring-security-settings.html 
+sidebar: sidebar 
+keywords: how to configure security settings 
+summary: È possibile configurare diverse impostazioni di sicurezza da Gestione griglia per proteggere il sistema StorageGRID. 
+---
+= Configurare le impostazioni di sicurezza
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare diverse impostazioni di sicurezza da Gestione griglia per proteggere il sistema StorageGRID.
+
+
+
+== Certificati
+
+StorageGRID utilizza due tipi di certificati di sicurezza:
+
+* I certificati del server sono richiesti quando si utilizzano connessioni HTTPS. I certificati del server vengono utilizzati per stabilire connessioni sicure tra client e server, autenticando l'identità di un server nei suoi client e fornendo un percorso di comunicazione sicuro per i dati. Il server e il client dispongono di una copia del certificato.
+* I certificati client autenticano un'identità del client o dell'utente nel server, fornendo un'autenticazione più sicura rispetto alle sole password. I certificati client non crittografano i dati.
+
+
+È possibile visualizzare tutti i certificati StorageGRID nella pagina *CONFIGURAZIONE* *sicurezza* *certificati*.
+
+
+
+== Server di gestione delle chiavi
+
+È possibile configurare uno o più server di gestione delle chiavi esterni (KMS) per fornire chiavi di crittografia ai servizi StorageGRID e alle appliance di storage. Ogni cluster KMS o KMS utilizza il protocollo KMIP (Key Management Interoperability Protocol) per fornire una chiave di crittografia ai nodi appliance nel sito StorageGRID associato. L'utilizzo di server di gestione delle chiavi consente di proteggere i dati StorageGRID anche se un'appliance viene rimossa dal data center. Una volta crittografati i volumi dell'appliance, non è possibile accedere ai dati dell'appliance a meno che il nodo non sia in grado di comunicare con il KMS.
+
+
+NOTE: Per utilizzare la gestione delle chiavi di crittografia, è necessario attivare l'impostazione *Node Encryption* per ogni appliance durante l'installazione, prima di aggiungere l'appliance alla griglia.
+
+
+
+== Impostazioni del proxy
+
+Se si utilizzano i servizi della piattaforma S3 o i Cloud Storage Pools, è possibile configurare un server proxy non trasparente tra i nodi di storage e gli endpoint S3 esterni. Se si inviano messaggi AutoSupport utilizzando HTTPS o HTTP, è possibile configurare un server proxy non trasparente tra i nodi di amministrazione e il supporto tecnico.
+
+image::../media/proxy_settings_menu_storage.png[Menu Proxy Settings - Storage (Impostazioni proxy - archiviazione)]
+
+
+
+== Reti client non attendibili
+
+Se si utilizza una rete client, è possibile proteggere StorageGRID da attacchi ostili specificando che la rete client di ciascun nodo non è attendibile. Se la rete client di un nodo non è attendibile, il nodo accetta solo connessioni in entrata su porte esplicitamente configurate come endpoint del bilanciamento del carico.
+
+Ad esempio, è possibile che un nodo gateway rifiuti tutto il traffico in entrata sulla rete client ad eccezione delle richieste HTTPS S3. In alternativa, è possibile attivare il traffico del servizio della piattaforma S3 in uscita da un nodo di storage, impedendo al contempo eventuali connessioni in entrata a tale nodo di storage sulla rete client.
+
+.Informazioni correlate
+* xref:../admin/index.adoc[Amministrare StorageGRID]
+* xref:managing-tenants-and-client-connections.adoc[Gestire tenant e connessioni client]
+

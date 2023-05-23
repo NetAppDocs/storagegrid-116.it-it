@@ -1,0 +1,169 @@
+---
+permalink: upgrade/obtaining-required-materials-for-software-upgrade.html 
+sidebar: sidebar 
+keywords: upgrade, requirements, rhel, red hat, linux, centOS, ubuntu, debian 
+summary: 'Prima di iniziare l"aggiornamento del software, è necessario procurarsi tutti i materiali necessari per completare l"aggiornamento con successo.' 
+---
+= Ottenere il materiale necessario per un aggiornamento del software
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di iniziare l'aggiornamento del software, è necessario procurarsi tutti i materiali necessari per completare l'aggiornamento con successo.
+
+[cols="1a,3a"]
+|===
+| Elemento | Note 
+
+
+ a| 
+File di aggiornamento di StorageGRID
+ a| 
+<<Scaricare i file di aggiornamento di StorageGRID>> al laptop di assistenza.
+
+
+
+ a| 
+Laptop di assistenza
+ a| 
+Il laptop di assistenza deve disporre di:
+
+* Porta di rete
+* Client SSH (ad esempio, putty)
+
+
+
+
+ a| 
+xref:../admin/web-browser-requirements.adoc[Browser Web supportato]
+ a| 
+Il supporto del browser in genere cambia per ogni release di StorageGRID. Assicurarsi che il browser sia compatibile con la nuova versione di StorageGRID.
+
+
+
+ a| 
+Pacchetto di ripristino (`.zip`)
+ a| 
+<<Scaricare il pacchetto di ripristino>> prima di eseguire l'aggiornamento e salvare il file in una posizione sicura. Il file Recovery Package consente di ripristinare il sistema in caso di errore.
+
+
+
+ a| 
+`Passwords.txt` file
+ a| 
+Questo file è incluso NEL pacchetto, che fa parte del pacchetto di ripristino `.zip` file. È necessario ottenere la versione più recente del pacchetto di ripristino.
+
+
+
+ a| 
+Passphrase di provisioning
+ a| 
+La passphrase viene creata e documentata al momento dell'installazione del sistema StorageGRID. La passphrase di provisioning non è elencata in `Passwords.txt` file.
+
+
+
+ a| 
+Documentazione correlata
+ a| 
+* xref:../release-notes/index.adoc[Note di rilascio] Per StorageGRID 11.6. Leggere attentamente queste informazioni prima di avviare l'aggiornamento.
+* Istruzioni per xref:../admin/index.adoc[Amministrazione di StorageGRID].
+* Se si sta aggiornando una distribuzione Linux, le istruzioni di installazione di StorageGRID per la piattaforma Linux:
++
+** xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]
+** xref:../ubuntu/index.adoc[Installare Ubuntu o Debian]
+
+
+* Altra documentazione StorageGRID, secondo necessità.
+
+
+|===
+
+
+== Scaricare i file di aggiornamento di StorageGRID
+
+È necessario scaricare uno o più file, a seconda di dove sono installati i nodi.
+
+* *Tutte le piattaforme*: `.upgrade` file
+
+
+Se su host Linux vengono implementati nodi, è necessario scaricare anche un archivio RPM o DEB, che verrà installato prima di avviare l'aggiornamento:
+
+* *Red Hat Enterprise Linux o CentOS*: Un file RPM aggiuntivo (`.zip` oppure `.tgz`)
+* *Ubuntu o Debian*: Un file DEB aggiuntivo (`.zip` oppure `.tgz`)
+
+
+.Fasi
+. Passare a. https://mysupport.netapp.com/site/products/all/details/storagegrid/downloads-tab["Download NetApp: StorageGRID"^].
+. Selezionare il pulsante per scaricare l'ultima versione oppure selezionare un'altra versione dal menu a discesa e selezionare *Go*.
++
+Le versioni del software StorageGRID hanno questo formato: 11._x.y_. Le hotfix StorageGRID hanno questo formato: 11._x.a. .z_.
+
+. Accedi con il nome utente e la password del tuo account NetApp.
+. Se viene visualizzata un'istruzione Caution/MustRead, leggerla e selezionare la casella di controllo.
++
+Questa istruzione viene visualizzata se è necessaria una correzione rapida per la release.
+
+. Leggere il Contratto di licenza con l'utente finale, selezionare la casella di controllo, quindi selezionare *Accept & Continue* (Accetta e continua).
++
+Viene visualizzata la pagina dei download per la versione selezionata. La pagina contiene tre colonne:
+
++
+** Installare StorageGRID
+** Aggiornare StorageGRID
+** File di supporto per appliance StorageGRID
+
+
+. Nella colonna *Upgrade StorageGRID*, selezionare e scaricare `.upgrade` archiviare.
++
+Ogni piattaforma richiede `.upgrade` archiviare.
+
+. Se vengono implementati nodi su host Linux, scaricare anche l'archivio RPM o DEB in entrambi `.tgz` oppure `.zip` formato. Selezionare `.zip` File se si esegue Windows sul laptop di assistenza.
++
+** Red Hat Enterprise Linux o CentOS +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-RPM-_uniqueID_.tgz`
+** Ubuntu o Debian +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.zip` +
+`StorageGRID-Webscale-_version_-DEB-_uniqueID_.tgz`
++
+
+NOTE: Non sono richiesti file aggiuntivi per SG100 o SG1000.
+
+
+
+
+
+
+
+== Scaricare il pacchetto di ripristino
+
+Il file del pacchetto di ripristino consente di ripristinare il sistema StorageGRID in caso di errore. Scaricare il file del pacchetto di ripristino corrente prima di apportare modifiche alla topologia della griglia al sistema StorageGRID o prima di aggiornare il software. Quindi, scaricare una nuova copia del pacchetto di ripristino dopo aver apportato modifiche alla topologia della griglia o dopo aver aggiornato il software.
+
+.Di cosa hai bisogno
+* È necessario accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario disporre della passphrase di provisioning.
+* È necessario disporre di autorizzazioni di accesso specifiche.
+
+
+.Fasi
+. Selezionare *manutenzione* > *sistema* > *pacchetto di ripristino*.
+. Inserire la passphrase di provisioning e selezionare *Avvia download*.
++
+Il download viene avviato immediatamente.
+
+. Al termine del download:
++
+.. Aprire `.zip` file.
+.. Confermare che include un `gpt-backup` e un interno `.zip` file.
+.. Estrarre l'interno `.zip` file.
+.. Confermare che è possibile aprire `Passwords.txt` file.
+
+
+. Copiare il file del pacchetto di ripristino scaricato (`.zip`) in due posizioni sicure e separate.
++
+
+IMPORTANT: Il file del pacchetto di ripristino deve essere protetto perché contiene chiavi di crittografia e password che possono essere utilizzate per ottenere dati dal sistema StorageGRID.
+
+

@@ -1,0 +1,81 @@
+---
+permalink: sg5600/replacing-e5600sg-controller.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, hardware, Replacing, replace, E5600sg, controller, remove, removing, removal, install, installing, installation 
+summary: Potrebbe essere necessario sostituire il controller E5600SG. 
+---
+= Sostituire la centralina E5600SG
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario sostituire il controller E5600SG.
+
+.Di cosa hai bisogno
+È necessario disporre dell'accesso alle seguenti risorse:
+
+* Informazioni sulla sostituzione dell'hardware e-Series sul sito di supporto NetApp all'indirizzo +http://mysupport.netapp.com/["mysupport.netapp.com"^]
+* Documentazione di E5600 sul sito di supporto
+* L'apparecchio è stato utilizzato xref:placing-appliance-into-maintenance-mode.adoc[modalità di manutenzione attivata].
+
+
+.A proposito di questa attività
+Se entrambi i controller funzionano a sufficienza per consentire un arresto controllato, è possibile prima spegnere il controller E5600 per interrompere la connettività al controller E2700.
+
+
+NOTE: Se si sostituisce il controller prima di installare il software StorageGRID, potrebbe non essere possibile accedere al programma di installazione dell'appliance StorageGRID subito dopo aver completato questa procedura. Sebbene sia possibile accedere al programma di installazione dell'appliance StorageGRID da altri host sulla stessa sottorete dell'appliance, non è possibile accedervi da host su altre subnet. Questa condizione dovrebbe risolversi entro 15 minuti (quando qualsiasi voce della cache ARP per il timeout del controller originale), oppure è possibile cancellare immediatamente la condizione cancellando manualmente le vecchie voci della cache ARP dal router o gateway locale.
+
+.Fasi
+. Utilizzare una protezione antistatica.
+. Etichettare ciascun cavo collegato al controller E5600SG, in modo da poter ricollegare correttamente i cavi.
++
+
+IMPORTANT: Per evitare prestazioni degradate, non attorcigliare, piegare, pizzicare o salire sui cavi. Non piegare i cavi con un raggio di 5 cm (2").
+
+. Una volta attivata la modalità di manutenzione dell'apparecchio, spegnere il controller E5600SG.
++
+.. Accedere al nodo Grid:
++
+... Immettere il seguente comando: `ssh admin@_grid_node_IP_`
+... Immettere la password elencata in `Passwords.txt` file.
+... Immettere il seguente comando per passare a root: `su -`
+... Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+.. Spegnere il controller E5600SG: +
+`*shutdown -h now*`
+
+
+. Spegnere il contenitore e attendere che l'attività del LED e del display a sette segmenti sul retro del controller si sia interrotta.
+. Rimuovere i cavi.
+. Rimuovere il controller, come descritto nella documentazione del controller E5600SG.
+. Inserire il nuovo controller, come descritto nella documentazione del controller E5600SG.
+. Sostituire tutti i cavi.
+. Riaccendere il contenitore.
+. Monitorare i codici a sette segmenti.
++
+** Controller E2700:
++
+Lo stato finale del LED è `99`.
+
+** Controller E5600SG:
++
+Lo stato finale del LED è `HA`.
+
+
+
+. Monitorare lo stato del nodo di storage dell'appliance in Grid Manager.
++
+Verificare che i nodi di storage dell'appliance tornino allo stato previsto.
+
+
+
+.Informazioni correlate
+https://mysupport.netapp.com/info/web/ECMP11751516.html["Procedure di sostituzione hardware NetApp e-Series ed EF-Series"^]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61893["Documentazione NetApp: Serie E5600"^]

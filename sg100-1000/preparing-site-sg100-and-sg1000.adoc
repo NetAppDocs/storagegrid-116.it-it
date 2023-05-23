@@ -1,0 +1,49 @@
+---
+permalink: sg100-1000/preparing-site-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, install, installation, site prep, site preparating, preparing site, site requirements, requirements, site, dimensions, weight, weights, temperature, humidity, altitude, airflow, heat, wiring, power, grounding, facility 
+summary: 'Prima di installare l"apparecchio, assicurarsi che il sito e l"armadietto o il rack che si intende utilizzare soddisfino le specifiche di un"appliance StorageGRID.' 
+---
+= Preparazione del sito (SG100 e SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'apparecchio, assicurarsi che il sito e l'armadietto o il rack che si intende utilizzare soddisfino le specifiche di un'appliance StorageGRID.
+
+.Fasi
+. Verificare che il sito soddisfi i requisiti di temperatura, umidità, intervallo di altitudine, flusso d'aria, dissipazione del calore, cablaggio, alimentazione e messa a terra. Per ulteriori informazioni, consulta il NetApp Hardware Universe.
+. Verificare che la tensione di alimentazione CA fornita dalla propria postazione sia corretta (compresa tra 120 e 240 volt CA).
+. Procurarsi un cabinet da 19" (48.3 cm) o un rack per gli scaffali di queste dimensioni (senza cavi):
++
+|===
+| Altezza | Larghezza | Profondità | Peso massimo 
+
+
+ a| 
+1.70 poll.
+
+(4.32 cm)
+ a| 
+17.32 poll.
+
+(44.0 cm)
+ a| 
+32.0 poll.
+
+(81.3 cm)
+ a| 
+39 libbre
+
+(17.7 kg)
+
+|===
+. Decidere dove installare l'appliance.
+
+
+.Informazioni correlate
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+https://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"^]

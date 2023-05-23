@@ -1,0 +1,18 @@
+---
+permalink: admin/managing-storage-options.html 
+sidebar: sidebar 
+keywords: storage options 
+summary: 'Le opzioni di storage includono le impostazioni di segmentazione degli oggetti, i valori correnti per le filigrane dei volumi di storage e l"impostazione spazio riservato metadati. È inoltre possibile visualizzare le porte S3 e Swift utilizzate dal servizio CLB obsoleto sui nodi gateway e dal servizio LDR sui nodi storage.' 
+---
+= Gestire le opzioni di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le opzioni di storage includono le impostazioni di segmentazione degli oggetti, i valori correnti per le filigrane dei volumi di storage e l'impostazione spazio riservato metadati. È inoltre possibile visualizzare le porte S3 e Swift utilizzate dal servizio CLB obsoleto sui nodi gateway e dal servizio LDR sui nodi storage.
+
+Per informazioni sulle assegnazioni delle porte, vedere xref:summary-ip-addresses-and-ports-for-client-connections.adoc[Riepilogo: Indirizzi IP e porte per le connessioni client].
+
+image::../media/storage_options.png[Opzioni di storage]

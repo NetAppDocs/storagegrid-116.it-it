@@ -1,0 +1,50 @@
+---
+permalink: ilm/removing-cloud-storage-pool.html 
+sidebar: sidebar 
+keywords: remove cloud storage pool 
+summary: È possibile rimuovere un Cloud Storage Pool che non viene utilizzato in una regola ILM e che non contiene dati oggetto. 
+---
+= Rimuovere un pool di storage cloud
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile rimuovere un Cloud Storage Pool che non viene utilizzato in una regola ILM e che non contiene dati oggetto.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+* Hai confermato che il bucket S3 o il container Azure non contiene oggetti. Si verifica un errore se si tenta di rimuovere un Cloud Storage Pool se contiene oggetti. Vedere xref:troubleshooting-cloud-storage-pools.adoc[Risolvere i problemi dei pool di storage cloud].
++
+
+NOTE: Quando crei un pool di storage cloud, StorageGRID scrive un file di marker nel bucket o nel container per identificarlo come pool di storage cloud. Non rimuovere questo file, denominato `x-ntap-sgws-cloud-pool-uuid`.
+
+* Sono già state rimosse le regole ILM che potrebbero aver utilizzato il pool.
+
+
+.Fasi
+. Selezionare *ILM* > *Storage Pools*.
++
+Viene visualizzata la pagina Storage Pools.
+
+. Selezionare il pulsante di opzione per un Cloud Storage Pool che non è attualmente utilizzato in una regola ILM.
++
+Non è possibile rimuovere un pool di storage cloud se utilizzato in una regola ILM. Il pulsante *Remove* (Rimuovi) è disattivato.
+
++
+image::../media/cloud_storage_pool_used_in_ilm_rule.png[Pool di storage cloud utilizzato nella regola ILM]
+
+. Selezionare *Rimuovi*.
++
+Viene visualizzato un avviso di conferma.
+
++
+image::../media/cloud_storage_pool_remove.gif[Rimozione del pool di cloud storage]
+
+. Selezionare *OK*.
++
+Il Cloud Storage Pool viene rimosso.
+
+

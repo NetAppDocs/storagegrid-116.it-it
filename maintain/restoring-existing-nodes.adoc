@@ -1,0 +1,24 @@
+---
+permalink: maintain/restoring-existing-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, restore node to host 
+summary: Per ripristinare un nodo Grid guasto in un nuovo host Linux, ripristinare il file di configurazione del nodo utilizzando i comandi appropriati. 
+---
+= Ripristinare i nodi della griglia nell'host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per ripristinare un nodo Grid guasto in un nuovo host Linux, ripristinare il file di configurazione del nodo utilizzando i comandi appropriati.
+
+Quando si esegue una nuova installazione, si crea un file di configurazione del nodo per ciascun nodo della griglia da installare su un host. Quando si ripristina un nodo della griglia su un host sostitutivo, il file di configurazione del nodo viene ripristinato o sostituito per eventuali nodi della griglia guasti.
+
+Se sono stati conservati volumi di storage a blocchi dall'host precedente, potrebbe essere necessario eseguire ulteriori procedure di ripristino. I comandi di questa sezione consentono di determinare quali procedure aggiuntive sono necessarie.
+
+.Fasi
+* xref:restoring-and-validating-grid-nodes.adoc[Ripristinare e validare i nodi della griglia]
+* xref:starting-storagegrid-host-service.adoc[Avviare il servizio host StorageGRID]
+* xref:recovering-nodes-that-fail-to-start-normally.adoc[Ripristinare i nodi che non si avviano normalmente]
+

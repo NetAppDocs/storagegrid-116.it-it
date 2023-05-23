@@ -1,0 +1,49 @@
+---
+permalink: fabricpool/best-practices-for-high-availability-groups.html 
+sidebar: sidebar 
+keywords: fabricPool, high availability group, HA group, active-active, active-backup, cloud tier, best practices 
+summary: 'Prima di collegare StorageGRID come livello cloud FabricPool, è necessario utilizzare Gestione griglia di StorageGRID per configurare un gruppo ad alta disponibilità (ha).' 
+---
+= Best practice per i gruppi ad alta disponibilità
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di collegare StorageGRID come livello cloud FabricPool, è necessario utilizzare Gestione griglia StorageGRID per configurare un gruppo ad alta disponibilità (ha).
+
+
+
+== Che cos'è un gruppo ad alta disponibilità (ha)?
+
+Per garantire che il servizio bilanciamento del carico sia sempre disponibile per gestire i dati FabricPool, è possibile raggruppare le interfacce di rete di più nodi di amministrazione e gateway in una singola entità, nota come gruppo ad alta disponibilità (ha). Se il nodo attivo nel gruppo ha non riesce, un altro nodo del gruppo può continuare a gestire il carico di lavoro.
+
+Ogni gruppo ha fornisce un accesso altamente disponibile ai servizi condivisi sui nodi associati. Ad esempio, un gruppo ha costituito da interfacce solo su nodi gateway o su entrambi i nodi Admin e Gateway fornisce un accesso altamente disponibile al servizio Load Balancer condiviso.
+
+Per creare un gruppo ha, attenersi alla seguente procedura generale:
+
+. Selezionare le interfacce di rete per uno o più nodi di amministrazione o nodi gateway. È possibile selezionare l'interfaccia Grid Network (eth0), l'interfaccia Client Network (eth2) o un'interfaccia VLAN.
++
+
+IMPORTANT: Se si prevede di utilizzare un'interfaccia VLAN per separare il traffico FabricPool, un amministratore di rete deve prima configurare un'interfaccia di trunk e la VLAN corrispondente. Ogni VLAN è identificata da un ID numerico o da un tag. Ad esempio, la rete potrebbe utilizzare la VLAN 100 per il traffico FabricPool.
+
+. Assegnare uno o più indirizzi IP virtuali (VIP) al gruppo. Le applicazioni client, come FabricPool, possono utilizzare uno qualsiasi di questi indirizzi VIP per connettersi a StorageGRID.
+. Specificare un'interfaccia come principale e determinare l'ordine di priorità per le interfacce di backup. L'interfaccia principale è l'interfaccia attiva a meno che non si verifichi un errore.
+
+
+Se il gruppo ha include più di un'interfaccia e l'interfaccia primaria non funziona, gli indirizzi VIP passano alla prima interfaccia di backup nell'ordine di priorità. Se l'interfaccia non funziona, gli indirizzi VIP passano all'interfaccia di backup successiva e così via. Questo processo di failover richiede in genere solo pochi secondi ed è abbastanza rapido da consentire alle applicazioni client di avere un impatto minimo e può fare affidamento sui normali comportamenti di ripetizione per continuare a funzionare.
+
+Quando il guasto viene risolto e un'interfaccia con priorità più alta diventa nuovamente disponibile, gli indirizzi VIP vengono automaticamente spostati nell'interfaccia con priorità più alta disponibile.
+
+
+
+== Best practice per i gruppi ad alta disponibilità (ha)
+
+Le Best practice per la creazione di un gruppo StorageGRID ha per FabricPool dipendono dal carico di lavoro, come segue:
+
+* Se si prevede di utilizzare FabricPool con i dati del carico di lavoro primario, è necessario creare un gruppo ha che includa almeno due nodi di bilanciamento del carico per evitare l'interruzione del recupero dei dati.
+* Se si prevede di utilizzare la policy di tiering del volume solo snapshot di FabricPool o Tier di performance locali non primari (ad esempio, ubicazioni per il disaster recovery o destinazioni NetApp SnapMirror®), è possibile configurare un gruppo ha con un solo nodo.
+
+
+Queste istruzioni descrivono la configurazione di un gruppo ha per Active-Backup ha (un nodo è attivo e un nodo è il backup). Tuttavia, potrebbe essere preferibile utilizzare DNS Round Robin o Active-Active ha. Per ulteriori informazioni sui vantaggi di queste altre configurazioni ha, vedere xref:../admin/configuration-options-for-ha-groups.adoc[Opzioni di configurazione per i gruppi ha].

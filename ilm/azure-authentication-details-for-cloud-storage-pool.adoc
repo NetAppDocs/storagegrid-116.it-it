@@ -1,0 +1,87 @@
+---
+permalink: ilm/azure-authentication-details-for-cloud-storage-pool.html 
+sidebar: sidebar 
+keywords: cloud storage pool, azure blob storage 
+summary: Quando si crea un pool di storage cloud per lo storage Azure Blob, è necessario specificare un nome account e una chiave account per il container esterno che StorageGRID utilizzerà per memorizzare gli oggetti. 
+---
+= Azure: Specificare i dettagli di autenticazione per un pool di storage cloud
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si crea un pool di storage cloud per lo storage Azure Blob, è necessario specificare un nome account e una chiave account per il container esterno che StorageGRID utilizzerà per memorizzare gli oggetti.
+
+.Di cosa hai bisogno
+* Sono state inserite le informazioni di base per il Cloud Storage Pool e sono stati specificati *Azure Blob Storage* come tipo di provider. Nel campo *Authentication Type* (tipo di autenticazione) viene visualizzato *Shared Key* (chiave condivisa).
++
+image::../media/cloud_storage_pool_create_azure.png[Cloud Storage Pool Crea Azure]
+
+* Conosci l'URI (Uniform Resource Identifier) utilizzato per accedere al container di storage Blob utilizzato per il Cloud Storage Pool.
+* Conosci il nome dell'account di storage e la chiave segreta. È possibile utilizzare il portale Azure per trovare questi valori.
+
+
+.Fasi
+. Nella sezione *Service Endpoint*, immettere l'URI (Uniform Resource Identifier) utilizzato per accedere al container di storage Blob utilizzato per il Cloud Storage Pool.
++
+Specificare l'URI in uno dei seguenti formati:
+
++
+** `+https://host:port+`
+** `+http://host:port+`
+
+
++
+Se non si specifica una porta, per impostazione predefinita viene utilizzata la porta 443 per gli URI HTTPS e la porta 80 per gli URI HTTP. + + + *URI di esempio per Azure Blob Storage Container*: +
+`https://_myaccount_.blob.core.windows.net`
+
+. Nella sezione *Authentication*, fornire le seguenti informazioni:
++
+.. Per *Nome account*, immettere il nome dell'account di storage Blob proprietario del container di servizi esterno.
+.. Per *account Key*, immettere la chiave segreta per l'account di storage Blob.
+
+
++
+
+NOTE: Per gli endpoint Azure, è necessario utilizzare l'autenticazione con chiave condivisa.
+
+. Nella sezione *verifica server*, selezionare il metodo da utilizzare per validare il certificato per le connessioni TLS al Cloud Storage Pool:
++
+[cols="1a,2a"]
+|===
+| Opzione | Descrizione 
+
+
+ a| 
+Utilizzare il certificato CA del sistema operativo
+ a| 
+Utilizzare i certificati Grid CA installati nel sistema operativo per proteggere le connessioni.
+
+
+
+ a| 
+USA certificato CA personalizzato
+ a| 
+Utilizzare un certificato CA personalizzato. Selezionare *Select New* (Seleziona nuovo) e caricare il certificato con codifica PEM.
+
+
+
+ a| 
+Non verificare il certificato
+ a| 
+Il certificato utilizzato per la connessione TLS non viene verificato.
+
+|===
+. Selezionare *Salva*.
+
+
+Quando si salva un pool di storage cloud, StorageGRID esegue le seguenti operazioni:
+
+* Convalida l'esistenza del container e dell'URI e ne consente l'accesso utilizzando le credenziali specificate.
+* Scrive un file marker nel container per identificarlo come pool di storage cloud. Non rimuovere mai questo file, denominato `x-ntap-sgws-cloud-pool-uuid`.
+
+
+Se la convalida del Cloud Storage Pool non riesce, viene visualizzato un messaggio di errore che spiega perché la convalida non è riuscita. Ad esempio, se si verifica un errore nel certificato o se il contenitore specificato non esiste già, potrebbe essere visualizzato un errore.
+
+Consultare le istruzioni per xref:troubleshooting-cloud-storage-pools.adoc[Risoluzione dei problemi relativi ai pool di storage cloud], Risolvere il problema, quindi provare a salvare nuovamente il Cloud Storage Pool.

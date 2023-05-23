@@ -1,0 +1,217 @@
+---
+permalink: primer/viewing-nodes-page.html 
+sidebar: sidebar 
+keywords: nodes page, connection state, unknown, administratively down, critical, major, minor, icon 
+summary: 'Quando hai bisogno di informazioni più dettagliate sul tuo sistema StorageGRID rispetto a quelle fornite dalla dashboard, puoi utilizzare la pagina Nodes per visualizzare le metriche per l"intera griglia, ogni sito nella griglia e ogni nodo di un sito.' 
+---
+= Visualizzare la pagina nodi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando hai bisogno di informazioni più dettagliate sul tuo sistema StorageGRID rispetto a quelle fornite dalla dashboard, puoi utilizzare la pagina Nodes per visualizzare le metriche per l'intera griglia, ogni sito nella griglia e ogni nodo di un sito.
+
+image::../media/nodes_table.png[Menu nodi]
+
+La tabella Nodes (nodi) elenca tutti i siti e i nodi nel sistema StorageGRID. Vengono visualizzate informazioni di riepilogo per ciascun nodo. Se un nodo ha un avviso attivo, viene visualizzata un'icona accanto al nome del nodo. Se il nodo è connesso e non sono presenti avvisi attivi, non viene visualizzata alcuna icona.
+
+
+
+== Icone di stato della connessione
+
+* *Non connesso - Sconosciuto* image:../media/icon_alarm_blue_unknown.png["icona del punto interrogativo blu"]: Il nodo non è connesso alla rete per un motivo sconosciuto. Ad esempio, la connessione di rete tra i nodi è stata persa o l'alimentazione è inattiva. Potrebbe essere attivato anche l'avviso *Impossibile comunicare con il nodo*. Potrebbero essere attivi anche altri avvisi. Questa situazione richiede un'attenzione immediata.
++
+
+NOTE: Un nodo potrebbe apparire come sconosciuto durante le operazioni di shutdown gestite. In questi casi, è possibile ignorare lo stato Unknown (Sconosciuto).
+
+* *Non connesso - amministrazione non attiva* image:../media/icon_alarm_gray_administratively_down.png["icona del punto interrogativo grigio"]: Il nodo non è connesso alla rete per un motivo previsto. Ad esempio, il nodo o i servizi sul nodo sono stati normalmente spenti, il nodo è in fase di riavvio o il software è in fase di aggiornamento. Potrebbero essere attivi anche uno o più avvisi.
+
+
+Se un nodo viene disconnesso dalla griglia, potrebbe essere visualizzato un avviso sottostante, ma viene visualizzata solo l'icona "`non connesso`". Per visualizzare gli avvisi attivi per un nodo, selezionare il nodo.
+
+
+
+== Icone di avviso
+
+Se è presente un avviso attivo per un nodo, accanto al nome del nodo viene visualizzata una delle seguenti icone:
+
+* *Critico* image:../media/icon_alert_red_critical.png["Icona Avviso rosso critico"]: Si verifica una condizione anomala che ha interrotto le normali operazioni di un nodo o servizio StorageGRID. È necessario risolvere immediatamente il problema sottostante. Se il problema non viene risolto, potrebbero verificarsi interruzioni del servizio e perdita di dati.
+* *Maggiore* image:../media/icon_alert_orange_major.png["Icona Alert arancione maggiore"]: Si verifica una condizione anomala che influisce sulle operazioni correnti o si avvicina alla soglia per un avviso critico. È necessario analizzare gli avvisi principali e risolvere eventuali problemi sottostanti per assicurarsi che le condizioni anomale non interrompano il normale funzionamento di un nodo o servizio StorageGRID.
+* *Minore* image:../media/icon_alert_yellow_minor.png["Icona Avviso giallo minore"]: Il sistema funziona normalmente, ma si verifica una condizione anomala che potrebbe influire sulla capacità di funzionamento del sistema se continua a funzionare. È necessario monitorare e risolvere gli avvisi minori che non vengono risolti da soli per assicurarsi che non causino problemi più gravi.
+
+
+
+
+== Dettagli di un sistema, sito o nodo
+
+Per visualizzare le informazioni disponibili, selezionare il nome della griglia, del sito o del nodo nel modo seguente:
+
+* Selezionare il nome della griglia per visualizzare un riepilogo aggregato delle statistiche per l'intero sistema StorageGRID. (La schermata mostra un sistema denominato implementazione StorageGRID).
+* Selezionare un sito specifico del data center per visualizzare un riepilogo aggregato delle statistiche per tutti i nodi del sito.
+* Selezionare un nodo specifico per visualizzare informazioni dettagliate relative a tale nodo.
+
+
+
+
+== Schede per la pagina nodi
+
+Le schede nella parte superiore della pagina nodi si basano su ciò che si seleziona dalla struttura a sinistra.
+
+[cols="1a,2a,1a"]
+|===
+| Nome scheda | Descrizione | Incluso per 
+
+
+ a| 
+Panoramica
+ a| 
+* Fornisce informazioni di base su ciascun nodo.
+* Mostra gli avvisi attivi che influiscono sul nodo.
+
+ a| 
+Tutti i nodi
+
+
+
+ a| 
+Hardware
+ a| 
+* Visualizza l'utilizzo della CPU e della memoria per ciascun nodo
+* Per i nodi appliance, fornisce informazioni aggiuntive sull'hardware.
+
+ a| 
+Tutti i nodi
+
+
+
+ a| 
+Rete
+ a| 
+Visualizza un grafico che mostra il traffico di rete ricevuto e inviato attraverso le interfacce di rete. La vista di un singolo nodo mostra informazioni aggiuntive per il nodo.
+ a| 
+Tutti i nodi, ciascun sito e l'intero grid
+
+
+
+ a| 
+Storage
+ a| 
+* Fornisce informazioni dettagliate sui dischi e sui volumi su ciascun nodo.
+* Per i nodi di storage, ogni sito e l'intero grid include grafici che mostrano lo storage dei dati a oggetti e lo storage dei metadati utilizzati nel tempo.
+
+ a| 
+Tutti i nodi, ciascun sito e l'intero grid
+
+
+
+ a| 
+Oggetti
+ a| 
+* Fornisce informazioni sulle velocità di acquisizione e recupero di S3 e Swift.
+* Per i nodi di storage, fornisce conteggi di oggetti e informazioni sulle query dell'archivio di metadati e sulla verifica in background.
+
+ a| 
+Nodi di storage, ciascun sito e l'intero grid
+
+
+
+ a| 
+ILM
+ a| 
+Fornisce informazioni sulle operazioni ILM (Information Lifecycle Management).
+
+* Per i nodi di storage, fornisce dettagli sulla valutazione ILM e sulla verifica in background per l'eliminazione degli oggetti codificati.
+* Per ogni sito e per l'intera griglia, mostra un grafico della coda ILM nel tempo.
+* Per l'intera griglia, fornisce il tempo stimato per completare una scansione ILM completa di tutti gli oggetti.
+
+ a| 
+Nodi di storage, ciascun sito e l'intero grid
+
+
+
+ a| 
+Bilanciamento del carico
+ a| 
+Include grafici diagnostici e relativi alle performance del servizio Load Balancer.
+
+* Per ogni sito, fornisce un riepilogo aggregato delle statistiche per tutti i nodi del sito.
+* Per l'intero grid, fornisce un riepilogo aggregato delle statistiche per tutti i siti.
+
+ a| 
+Nodi di amministrazione e nodi gateway, ciascun sito e l'intero grid
+
+
+
+ a| 
+Servizi della piattaforma
+ a| 
+Fornisce informazioni sulle operazioni di servizio della piattaforma S3 in un sito.
+ a| 
+Ogni sito
+
+
+
+ a| 
+Gestore di sistema di SANtricity
+ a| 
+Fornisce l'accesso a Gestione di sistema di SANtricity. Da Gestore di sistema di SANtricity, è possibile esaminare le informazioni ambientali e di diagnostica hardware per il controller di storage, nonché i problemi relativi ai dischi.
+ a| 
+Nodi di appliance di storage
+
+*Nota*: La scheda Gestore di sistema di SANtricity non viene visualizzata se il firmware del controller sul dispositivo di storage è precedente alla 8.70 (11.70).
+
+|===
+
+
+== Metriche Prometheus
+
+Il servizio Prometheus sui nodi di amministrazione raccoglie le metriche delle serie temporali dai servizi su tutti i nodi.
+
+Le metriche raccolte da Prometheus vengono utilizzate in diversi punti del Grid Manager:
+
+* *Pagina nodi*: I grafici e i grafici nelle schede disponibili nella pagina nodi utilizzano lo strumento di visualizzazione Grafana per visualizzare le metriche delle serie temporali raccolte da Prometheus. Grafana visualizza i dati delle serie temporali in formato grafico e grafico, mentre Prometheus funge da origine dei dati back-end.
++
+image::../media/nodes_page_network_traffic_graph.png[Grafico Prometheus]
+
+* *Avvisi*: Gli avvisi vengono attivati a livelli di severità specifici quando le condizioni delle regole di avviso che utilizzano le metriche Prometheus valutano come vero.
+* *API per la gestione dei grid*: Puoi utilizzare le metriche Prometheus in regole di avviso personalizzate o con strumenti di automazione esterni per monitorare il tuo sistema StorageGRID. Un elenco completo delle metriche Prometheus è disponibile nell'API Grid Management. (Dalla parte superiore di Grid Manager, selezionare l'icona della guida e selezionare *documentazione API* *metriche*.) Sebbene siano disponibili più di mille metriche, per monitorare le operazioni StorageGRID più critiche è necessario solo un numero relativamente ridotto.
++
+
+NOTE: Le metriche che includono _private_ nei loro nomi sono destinate esclusivamente all'uso interno e sono soggette a modifiche tra le release di StorageGRID senza preavviso.
+
+* La pagina *SUPPORT* *Tools* *Diagnostics* e la pagina *SUPPORT* *Tools* *Metrics*: Queste pagine, destinate principalmente al supporto tecnico, forniscono una serie di tool e grafici che utilizzano i valori delle metriche Prometheus.
++
+
+NOTE: Alcune funzioni e voci di menu della pagina metriche sono intenzionalmente non funzionali e sono soggette a modifiche.
+
+
+
+
+
+== Attributi StorageGRID
+
+Gli attributi riportano valori e stati per molte delle funzioni del sistema StorageGRID. I valori degli attributi sono disponibili per ciascun nodo della griglia, per ciascun sito e per l'intera griglia.
+
+Gli attributi StorageGRID vengono utilizzati in diverse posizioni del gestore griglia:
+
+* Pagina *Nodes*: Molti dei valori mostrati nella pagina Nodes sono attributi StorageGRID. (Le metriche Prometheus sono visualizzate anche nelle pagine dei nodi).
+* *Allarmi*: Quando gli attributi raggiungono valori di soglia definiti, gli allarmi StorageGRID (sistema legacy) vengono attivati a livelli di severità specifici.
+* *Grid Topology tree*: I valori degli attributi vengono visualizzati nell'albero Grid Topology (*SUPPORT* *Tools* *Grid Topology*).
+* *Eventi*: Gli eventi di sistema si verificano quando alcuni attributi registrano una condizione di errore o di errore per un nodo, inclusi errori come gli errori di rete.
+
+
+
+
+=== Valori degli attributi
+
+Gli attributi vengono riportati con il massimo sforzo e sono approssimativamente corretti. In alcuni casi, gli aggiornamenti degli attributi possono andare persi, ad esempio il crash di un servizio o il guasto e la ricostruzione di un nodo di rete.
+
+Inoltre, i ritardi di propagazione potrebbero rallentare il reporting degli attributi. I valori aggiornati per la maggior parte degli attributi vengono inviati al sistema StorageGRID a intervalli fissi. Possono essere necessari alcuni minuti prima che un aggiornamento sia visibile nel sistema e due attributi che cambiano più o meno contemporaneamente possono essere riportati in momenti leggermente diversi.
+
+.Informazioni correlate
+* xref:../monitor/index.adoc[Monitorare e risolvere i problemi]
+* xref:monitoring-and-managing-alerts.adoc[Monitorare e gestire gli avvisi]
+* xref:using-storagegrid-support-options.adoc[Utilizzare le opzioni di supporto di StorageGRID]
+

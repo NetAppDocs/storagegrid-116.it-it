@@ -1,0 +1,89 @@
+---
+permalink: vmware/where-to-go-next.html 
+sidebar: sidebar 
+keywords: after installation 
+summary: 'Una volta completata l"installazione, è necessario eseguire una serie di passaggi di integrazione e configurazione. Sono necessari alcuni passaggi, altri opzionali.' 
+---
+= Dove andare
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta completata l'installazione, è necessario eseguire una serie di passaggi di integrazione e configurazione. Sono necessari alcuni passaggi, altri opzionali.
+
+
+
+== Attività richieste
+
+* Configurare VMware vSphere Hypervisor per il riavvio automatico.
++
+È necessario configurare l'hypervisor per riavviare le macchine virtuali al riavvio del server. Senza un riavvio automatico, le macchine virtuali e i nodi della griglia rimangono spenti dopo il riavvio del server. Per ulteriori informazioni, consultare la documentazione di VMware vSphere Hypervisor.
+
+* Creare un account tenant per ogni protocollo client (Swift o S3) che verrà utilizzato per memorizzare gli oggetti sul sistema StorageGRID.
+* Controllare l'accesso al sistema configurando gruppi e account utente. In alternativa, è possibile configurare un'origine di identità federata (ad esempio Active Directory o OpenLDAP), in modo da poter importare utenti e gruppi di amministrazione. In alternativa, è possibile creare utenti e gruppi locali.
+* Integrare e testare le applicazioni client API S3 o Swift che verranno utilizzate per caricare gli oggetti nel sistema StorageGRID.
+* Una volta pronti, configurare le regole ILM (Information Lifecycle Management) e il criterio ILM che si desidera utilizzare per proteggere i dati degli oggetti.
++
+
+NOTE: Quando si installa StorageGRID, il criterio ILM predefinito, criterio di base 2 copie, è attivo. Questo criterio include la regola ILM di stock (eseguire 2 copie) e si applica se non sono stati attivati altri criteri.
+
+* Se l'installazione include nodi di storage dell'appliance, utilizzare il software SANtricity per completare le seguenti operazioni:
++
+** Connessione a ogni appliance StorageGRID.
+** Verificare la ricezione dei dati AutoSupport.
+
+
+* Se il sistema StorageGRID include nodi di archiviazione, configurare la connessione del nodo di archiviazione al sistema di archiviazione esterno di destinazione.
+
+
+
+NOTE: Se un nodo di archiviazione utilizza Tivoli Storage Manager come sistema di storage di archiviazione esterno, è necessario configurare anche Tivoli Storage Manager.
+
+* Esaminare e seguire le linee guida per la protezione avanzata del sistema StorageGRID per eliminare i rischi per la sicurezza.
+* Configurare le notifiche e-mail per gli avvisi di sistema.
+
+
+
+
+== Attività facoltative
+
+* Se si desidera ricevere notifiche dal sistema di allarme (legacy), configurare le mailing list e le notifiche via email per gli allarmi.
+* Aggiornare gli indirizzi IP del nodo griglia se sono stati modificati dopo la pianificazione dell'implementazione e la generazione del pacchetto di ripristino. Per informazioni sulla modifica degli indirizzi IP, consultare le istruzioni di ripristino e manutenzione.
+* Configurare la crittografia dello storage, se necessario.
+* Configurare la compressione dello storage per ridurre le dimensioni degli oggetti memorizzati, se necessario.
+* Configurare l'accesso al client di audit. È possibile configurare l'accesso al sistema per scopi di controllo tramite una condivisione file NFS o CIFS. Consultare le istruzioni per l'amministrazione di StorageGRID.
+
+
+
+NOTE: L'esportazione dell'audit tramite CIFS/Samba è stata deprecata e verrà rimossa in una release futura di StorageGRID.
+
+.Informazioni correlate
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+xref:../s3/index.adoc[Utilizzare S3]
+
+xref:../swift/index.adoc[USA Swift]
+
+xref:../ilm/index.adoc[Gestire gli oggetti con ILM]
+
+xref:../monitor/index.adoc[Monitorare e risolvere i problemi]
+
+xref:../maintain/index.adoc[Ripristino e manutenzione]
+
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
+xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+xref:../sg5700/index.adoc[Appliance di storage SG5700]
+
+xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+xref:../release-notes/index.adoc[Note di rilascio]
+
+xref:../harden/index.adoc[Protezione avanzata del sistema]
+
+xref:../audit/index.adoc[Esaminare i registri di audit]
+
+xref:../upgrade/index.adoc[Aggiornare il software]

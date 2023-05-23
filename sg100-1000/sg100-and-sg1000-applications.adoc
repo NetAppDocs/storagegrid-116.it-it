@@ -1,0 +1,47 @@
+---
+permalink: sg100-1000/sg100-and-sg1000-applications.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, applications, how to use, services 
+summary: È possibile configurare le appliance dei servizi StorageGRID in vari modi per fornire servizi gateway e ridondanza di alcuni servizi di amministrazione grid. 
+---
+= Applicazioni SG100 e SG1000
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare le appliance dei servizi StorageGRID in vari modi per fornire servizi gateway e ridondanza di alcuni servizi di amministrazione grid.
+
+Le appliance possono essere implementate nei seguenti modi:
+
+* Aggiungere a una griglia nuova o esistente come nodo gateway
+* Aggiungere a una nuova griglia come nodo di amministrazione primario o non primario o a una griglia esistente come nodo di amministrazione non primario
+* Operare contemporaneamente come nodo gateway e nodo amministratore (primario o non primario)
+
+
+L'appliance facilita l'utilizzo di gruppi ad alta disponibilità (ha) e il bilanciamento intelligente del carico per le connessioni dei percorsi dati S3 o Swift.
+
+I seguenti esempi descrivono come massimizzare le funzionalità dell'appliance:
+
+* Utilizzare due appliance SG100 o due SG1000 per fornire servizi gateway configurandoli come nodi gateway.
++
+
+IMPORTANT: Non implementare le appliance di servizio SG100 e SG1000 nello stesso sito. Potrebbero verificarsi performance imprevedibili.
+
+* Utilizza due appliance SG100 o due SG1000 per fornire la ridondanza di alcuni servizi di amministrazione della griglia. A tale scopo, configurare ogni appliance come nodi di amministrazione.
+* Utilizza due appliance SG100 o due SG1000 per fornire servizi di bilanciamento del carico e di configurazione del traffico ad alta disponibilità accessibili tramite uno o più indirizzi IP virtuali. A tale scopo, configurare le appliance come qualsiasi combinazione di nodi Admin o Gateway e aggiungere entrambi i nodi allo stesso gruppo ha.
++
+
+IMPORTANT: Se si utilizzano nodi Admin e nodi Gateway nello stesso gruppo ha, le porte CLB (Connection Load Balancer) e le porte solo nodo Admin non avranno esito negativo. Per istruzioni sulla configurazione dei gruppi ha, consultare le istruzioni per l'amministrazione di StorageGRID.
+
++
+
+NOTE: Il servizio CLB è obsoleto.
+
+
+
+Se utilizzati con le appliance di storage StorageGRID, sia SG100 che SG1000 consentono l'implementazione di grid solo appliance senza dipendenze da hypervisor esterni o hardware di calcolo.
+
+.Informazioni correlate
+xref:../admin/index.adoc[Amministrare StorageGRID]

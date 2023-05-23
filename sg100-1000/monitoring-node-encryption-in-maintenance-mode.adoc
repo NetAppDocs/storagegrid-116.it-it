@@ -1,0 +1,63 @@
+---
+permalink: sg100-1000/monitoring-node-encryption-in-maintenance-mode.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, kms, key management server, monitor, monitoring, status, encryption 
+summary: 'Se è stata attivata la crittografia dei nodi per l"appliance durante l"installazione, è possibile monitorare lo stato di crittografia dei nodi di ciascun nodo dell"appliance, inclusi i dettagli relativi allo stato di crittografia dei nodi e al server di gestione delle chiavi (KMS).' 
+---
+= Monitoraggio della crittografia dei nodi in modalità di manutenzione (SG100 e SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se è stata attivata la crittografia dei nodi per l'appliance durante l'installazione, è possibile monitorare lo stato di crittografia dei nodi di ciascun nodo dell'appliance, inclusi i dettagli dello stato di crittografia dei nodi e del server di gestione delle chiavi (KMS).
+
+.Di cosa hai bisogno
+* È stata attivata la crittografia dei nodi per l'appliance durante l'installazione. Non è possibile attivare la crittografia dei nodi dopo l'installazione dell'appliance.
+* Lo hai fatto xref:placing-appliance-into-maintenance-mode.adoc[impostare l'apparecchio in modalità di manutenzione].
+
+
+.Fasi
+. Dal programma di installazione dell'appliance StorageGRID, selezionare *Configura hardware* > *crittografia del nodo*.
++
+image::../media/fde_monitor_in_maint_mode.png[CONFIGURAZIONE chiara DI KMS]
+
++
+La pagina Node Encryption include tre sezioni:
+
++
+** Encryption Status (Stato crittografia) indica se la crittografia del nodo è attivata o disattivata per l'appliance.
+** Key Management Server Details (Dettagli server di gestione delle chiavi): Mostra le informazioni sul KMS utilizzato per crittografare l'appliance. È possibile espandere le sezioni del certificato del server e del client per visualizzare i dettagli e lo stato del certificato.
++
+*** Per risolvere i problemi relativi ai certificati stessi, ad esempio il rinnovo dei certificati scaduti, consultare la xref:../admin/kms-configuring.adoc[Istruzioni per la configurazione di KMS].
+*** Se si verificano problemi imprevisti durante la connessione agli host KMS, verificare che xref:checking-dns-server-configuration.adoc[I server DNS (Domain Name System) sono corretti] e questo xref:configuring-network-links-sg100-and-sg1000.adoc[la rete dell'appliance è configurata correttamente].
+*** Se non si riesce a risolvere i problemi relativi al certificato, contattare il supporto tecnico.
+
+
+** Cancella chiave KMS disattiva la crittografia dei nodi per l'appliance, rimuove l'associazione tra l'appliance e il server di gestione delle chiavi configurato per il sito StorageGRID ed elimina tutti i dati dall'appliance. È necessario xref:clearing-key-management-server-configuration.adoc[Cancellare la chiave KMS] Prima di installare l'appliance in un altro sistema StorageGRID.
++
+
+IMPORTANT: La cancellazione della configurazione KMS elimina i dati dall'appliance, rendendoli inaccessibili in modo permanente. Questi dati non sono ripristinabili.
+
+
+
+. Una volta terminato il controllo dello stato di crittografia del nodo, riavviare il nodo. Dal programma di installazione dell'appliance StorageGRID, selezionare *Avanzate* > *Riavvia controller*, quindi selezionare una delle seguenti opzioni:
++
+** Selezionare *Riavvia in StorageGRID* per riavviare il controller con il nodo che si ricongiunge alla griglia. Selezionare questa opzione se si è terminato di lavorare in modalità di manutenzione e si è pronti per ripristinare il normale funzionamento del nodo.
+** Selezionare *Reboot into Maintenance Mode* (Riavvia in modalità di manutenzione) per riavviare il controller con il nodo in modalità di manutenzione. (Questa opzione è disponibile solo quando il controller è in modalità di manutenzione). Selezionare questa opzione se sono necessarie ulteriori operazioni di manutenzione sul nodo prima che possa ricongiungersi alla griglia.
++
+image::../media/reboot_controller_from_maintenance_mode.png[Riavviare il controller in modalità di manutenzione]
+
++
+Il riavvio dell'appliance e il ricongiungersi alla griglia possono richiedere fino a 20 minuti. Per confermare che il riavvio è stato completato e che il nodo ha ricongiungersi alla griglia, tornare a Grid Manager. La pagina *NODES* dovrebbe visualizzare uno stato normale (nessuna icona) per il nodo appliance, a indicare che non sono attivi avvisi e che il nodo è connesso alla griglia.
+
++
+image::../media/nodes_menu.png[Nodo appliance riconentrato in Grid]
+
+
+
+
+
+.Informazioni correlate
+xref:../admin/index.adoc[Amministrare StorageGRID]

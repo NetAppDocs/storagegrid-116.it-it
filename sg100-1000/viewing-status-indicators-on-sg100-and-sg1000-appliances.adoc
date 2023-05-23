@@ -1,0 +1,120 @@
+---
+permalink: sg100-1000/viewing-status-indicators-on-sg100-and-sg1000-appliances.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, status, indicators, lights, leds, light, led, switch , button, power, reset, identify, alarm, ssd, indicator, boot codes, boot, code, start, startup, start up, start-up, progress 
+summary: 'L"appliance include indicatori che consentono di determinare lo stato del controller dell"appliance e dei due SSD.' 
+---
+= Visualizza gli indicatori di stato sulle appliance SG100 e SG1000
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'appliance include indicatori che consentono di determinare lo stato del controller dell'appliance e dei due SSD.
+
+
+
+== Indicatori e pulsanti dell'apparecchio
+
+image::../media/sg6000_cn_front_indicators.gif[Indicatori anteriori - SG1000]
+
+|===
+|  | Display | Stato 
+
+
+ a| 
+1
+ a| 
+Pulsante di accensione
+ a| 
+* Blu: L'apparecchio è acceso.
+* Spento: L'apparecchio è spento.
+
+
+
+
+ a| 
+2
+ a| 
+Pulsante di reset
+ a| 
+Utilizzare questo pulsante per eseguire un hard reset del controller.
+
+
+
+ a| 
+3
+ a| 
+Identificare il pulsante
+ a| 
+Questo pulsante può essere impostato su lampeggiante, acceso (fisso) o spento.
+
+* Blu, lampeggiante: Identifica l'apparecchio nell'armadio o nel rack.
+* Blu, fisso: Identifica l'apparecchio nell'armadio o nel rack.
+* OFF: L'apparecchio non è identificabile visivamente nell'armadio o nel rack.
+
+
+
+
+ a| 
+4
+ a| 
+LED di allarme
+ a| 
+* Ambra, fisso: Si è verificato un errore.
++
+*Nota:* per visualizzare i codici di avvio e di errore, è necessario accedere all'interfaccia BMC.
+
+* OFF: Non sono presenti errori.
+
+
+|===
+
+
+== Codici generali di boot
+
+Durante l'avvio o dopo una reimpostazione a freddo dell'appliance, si verifica quanto segue:
+
+. Il BMC (Baseboard Management Controller) registra i codici per la sequenza di avvio, inclusi gli eventuali errori che si verificano.
+. Il pulsante di alimentazione si illumina.
+. Se si verificano errori durante l'avvio, il LED di allarme si accende.
++
+Per visualizzare i codici di avvio e di errore, è necessario accedere all'interfaccia BMC.
+
+
+
+
+
+== Indicatori SSD
+
+image::../media/ssd_indicators.png[Indicatori SSD]
+
+|===
+| LED | Display | Stato 
+
+
+ a| 
+1
+ a| 
+Stato/guasto del disco
+ a| 
+* Blu (fisso): L'unità è in linea
+* Ambra (lampeggiante): Errore del disco
+* OFF: Slot vuoto
+
+
+
+
+ a| 
+2
+ a| 
+Disco attivo
+ a| 
+Blu (lampeggiante): Accesso all'unità in corso
+
+|===
+.Informazioni correlate
+xref:troubleshooting-hardware-installation-sg100-and-sg1000.adoc[Risoluzione dei problemi relativi all'installazione dell'hardware (SG100 e SG1000)]
+
+xref:configuring-bmc-interface-sg1000.adoc[Configurare l'interfaccia BMC (SG100 e SG1000)]

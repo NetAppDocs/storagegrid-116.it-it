@@ -1,0 +1,104 @@
+---
+permalink: sg6000/sg6060-cabling-optional-expansion-shelves.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, cabling, cable, wiring, wire, expansion shelf, sg6060 
+summary: Se si utilizzano shelf di espansione, è necessario collegarli allo shelf del controller E2860. È possibile disporre di un massimo di due shelf di espansione per ogni appliance SG6060. 
+---
+= SG6060 e SG6060X: Collegamento di shelf di espansione opzionali
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizzano shelf di espansione, è necessario collegarli allo shelf del controller E2860. È possibile disporre di un massimo di due shelf di espansione per ogni appliance SG6060 o SG6060X.
+
+.Di cosa hai bisogno
+* I due cavi SAS vengono forniti con ogni shelf di espansione.
+* Gli shelf di espansione sono stati installati nel cabinet o nel rack che contiene lo shelf del controller E2860.
++
+xref:sg6060-installing-60-drive-shelves-into-cabinet-or-rack.adoc[SG6060 e SG6060X: Installazione di shelf da 60 dischi in cabinet o rack]
+
+
+
+.Fase
+Collegare ogni shelf di espansione allo shelf del controller E2860 come mostrato nello schema.
+
+Questo disegno mostra il cablaggio per due shelf di espansione in un SG6060 (il cablaggio di espansione per SG6060X è lo stesso). Se si dispone di un solo shelf di espansione, collegare IOM A al controller A e IOM B al controller B.
+
+image::../media/expansion_shelves_connections_sg6060.png[Connessioni shelf di espansione SG6060 e SG6060X]
+
+[cols="1a,2a"]
+|===
+| Didascalia | Descrizione 
+
+
+ a| 
+1
+ a| 
+SG6000-CN
+
+
+
+ a| 
+2
+ a| 
+Shelf di controller E2860
+
+
+
+ a| 
+3
+ a| 
+Controller A.
+
+
+
+ a| 
+4
+ a| 
+Controller B
+
+
+
+ a| 
+5
+ a| 
+Shelf di espansione 1
+
+
+
+ a| 
+6
+ a| 
+IOM A per shelf di espansione 1
+
+
+
+ a| 
+7
+ a| 
+IOM B per shelf di espansione 1
+
+
+
+ a| 
+8
+ a| 
+Shelf di espansione 2
+
+
+
+ a| 
+9
+ a| 
+IOM A per shelf di espansione 2
+
+
+
+ a| 
+10
+ a| 
+IOM B per shelf di espansione 2
+
+|===

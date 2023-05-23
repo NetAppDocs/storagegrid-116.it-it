@@ -1,0 +1,122 @@
+---
+permalink: ilm/creating-ilm-policy-after-s3-object-lock-is-enabled.html 
+sidebar: sidebar 
+keywords: how to create ILM policy, policy for S3 object lock 
+summary: 'Se l"impostazione blocco oggetti S3 globale è attivata, i passaggi per la creazione di un criterio sono leggermente diversi. È necessario assicurarsi che il criterio ILM sia conforme ai requisiti dei bucket che hanno attivato il blocco oggetti S3.' 
+---
+= Creare un criterio ILM dopo aver attivato il blocco oggetti S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se l'impostazione blocco oggetti S3 globale è attivata, i passaggi per la creazione di un criterio sono leggermente diversi. È necessario assicurarsi che il criterio ILM sia conforme ai requisiti dei bucket che hanno attivato il blocco oggetti S3.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+* L'impostazione di blocco oggetti S3 globale è già abilitata per il sistema StorageGRID.
++
+
+NOTE: Se l'impostazione globale S3 Object Lock (blocco oggetti S3) non è stata attivata, seguire le istruzioni generali per xref:creating-proposed-ilm-policy.adoc[Creazione di una policy ILM proposta].
+
+* Sono state create le regole ILM conformi e non conformi che si desidera aggiungere al criterio proposto. Se necessario, è possibile salvare una policy proposta, creare regole aggiuntive e quindi modificare la policy proposta per aggiungere le nuove regole. Vederexref:example-7-compliant-ilm-policy-for-s3-object-lock.adoc[Esempio 7: Policy ILM conforme per il blocco oggetti S3].
+* Lo hai fatto xref:creating-default-ilm-rule.adoc[Creazione di una regola ILM predefinita] per i criteri conformi.
+* Facoltativamente, hai guardato il video: https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c929e94e-353a-4375-b112-acc5013c81c7["Video: Policy ILM di StorageGRID"^]
++
+[link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=c929e94e-353a-4375-b112-acc5013c81c7]
+image::../media/video-screenshot-ilm-policies.png[Video: Policy ILM di StorageGRID]
+
+
+
+.Fasi
+. Selezionare *ILM* > *Policy*.
++
+Viene visualizzata la pagina ILM Policies (Criteri ILM). Se l'impostazione globale S3 Object Lock è attivata, la pagina ILM Policies (Criteri ILM) indica quali regole ILM sono conformi.
+
++
+image::../media/ilm_policies_page_compliant.png[Conformità alla pagina delle policy ILM]
+
+. Immettere un nome univoco per la policy proposta nel campo *Nome*.
++
+Immettere almeno 1 e non più di 64 caratteri.
+
+. Inserire il motivo della creazione di una nuova policy proposta nel campo *motivo della modifica*.
++
+Immettere almeno 1 e non più di 128 caratteri.
+
+. Per aggiungere regole al criterio, selezionare *Seleziona regole*.
++
+Viene visualizzata la finestra di dialogo Select Rules for Policy (Seleziona regole per policy), con tutte le regole definite elencate.
+
++
+** La sezione Select Default Rule (Seleziona regola predefinita) elenca le regole che possono essere quelle predefinite per un criterio conforme. Include regole conformi che non utilizzano filtri o il tempo di riferimento non corrente.
+** La sezione Seleziona altre regole elenca le altre regole conformi e non compatibili che possono essere selezionate per questo criterio.
++
+image::../media/ilm_policy_select_rules_for_compliant_policy.png[Policy ILM: Selezionare le regole per la policy di conformità]
+
+
+
+. Selezionare il nome di una regola o l'icona ulteriori dettagli image:../media/icon_nms_more_details.gif["ulteriori dettagli"] per visualizzare le impostazioni relative a tale regola.
+. Nella sezione *Select Default Rule* (Seleziona regola predefinita), selezionare una regola predefinita per il criterio proposto.
++
+La tabella di questa sezione elenca solo le regole conformi e non utilizzano filtri.
+
++
+
+NOTE: Se nella sezione Select Default Rule (Seleziona regola predefinita) non è elencata alcuna regola, uscire dalla pagina dei criteri ILM e. xref:creating-default-ilm-rule.adoc[Creare una regola ILM predefinita] conforme.
+
++
+
+IMPORTANT: Non utilizzare la regola di creazione di 2 copie come regola predefinita per un criterio. La regola Make 2 copies utilizza un singolo pool di storage, tutti i nodi di storage, che contiene tutti i siti. Se si utilizza questa regola, sullo stesso sito potrebbero essere collocate più copie di un oggetto.
+
+. Nella sezione *Seleziona altre regole*, selezionare le altre regole che si desidera includere nel criterio.
++
+.. Se è necessaria una regola "`default`" diversa per gli oggetti nei bucket S3 non conformi, selezionare facoltativamente una regola non conforme che non utilizza un filtro.
++
+Ad esempio, è possibile utilizzare un Cloud Storage Pool o un nodo di archiviazione per memorizzare gli oggetti nei bucket che non hanno attivato il blocco oggetti S3.
+
++
+
+NOTE: È possibile selezionare solo una regola non conforme che non utilizza un filtro. Non appena si seleziona una regola, la colonna *è selezionabile* mostra *No* per qualsiasi altra regola non conforme senza filtri.
+
+.. Selezionare qualsiasi altra regola conforme o non conforme che si desidera utilizzare nel criterio.
++
+Le altre regole devono utilizzare almeno un filtro (account tenant, nome bucket o filtro avanzato, ad esempio la dimensione dell'oggetto).
+
+
+
+. Una volta selezionate le regole, selezionare *Apply* (Applica).
++
+Vengono elencate le regole selezionate. La regola predefinita è alla fine, con le altre regole sopra di essa. Se è stata selezionata anche una regola "`default`" non conforme, tale regola viene aggiunta come seconda o ultima regola nel criterio.
+
++
+In questo esempio, l'ultima regola, 2 copie 2 data center, è la regola predefinita: È conforme e non dispone di filtri. La seconda all'ultima regola, Cloud Storage Pool, non ha filtri ma non è conforme.
+
++
+image::../media/ilm_policies_selected_rules_compliant.png[Criteri ILM conformi alle regole selezionate]
+
+. Trascinare e rilasciare le righe per le regole non predefinite per determinare l'ordine in cui verranno valutate queste regole.
++
+Non è possibile spostare la regola predefinita o la regola "`default`" non conforme.
+
++
+
+IMPORTANT: Verificare che le regole ILM siano nell'ordine corretto. Una volta attivato il criterio, gli oggetti nuovi ed esistenti vengono valutati dalle regole nell'ordine elencato, iniziando dall'inizio.
+
+. Se necessario, selezionare l'icona di eliminazione image:../media/icon_nms_delete_new.gif["icona elimina"] Per eliminare le regole che non si desidera inserire nel criterio o *Select Rules* (Seleziona regole) per aggiungere altre regole.
+. Al termine, selezionare *Salva*.
++
+La pagina delle policy ILM viene aggiornata:
+
++
+** Il criterio salvato viene visualizzato come proposto. Le policy proposte non hanno date di inizio e fine.
+** I pulsanti *simulate* e *activate* sono abilitati.
++
+image::../media/ilm_policy_proposed_policy_s3_object_lock.png[Policy ILM Proposed Policy S3 Object Lock]
+
+
+
+. Passare a. xref:simulating-ilm-policy.adoc[Simulare un criterio ILM].
+

@@ -1,0 +1,83 @@
+---
+permalink: sg5600/installation-and-deployment-overview.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, Installation, deployment, Install, deploy, Installing, deploying 
+summary: 'È possibile installare una o più appliance StorageGRID quando si implementa StorageGRID per la prima volta, oppure aggiungere nodi di storage dell"appliance in un secondo momento come parte di un"espansione. Potrebbe inoltre essere necessario installare un nodo di storage dell"appliance come parte di un"operazione di recovery.' 
+---
+= Panoramica dell'installazione e dell'implementazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile installare una o più appliance StorageGRID quando si implementa StorageGRID per la prima volta, oppure aggiungere nodi di storage dell'appliance in un secondo momento come parte di un'espansione. Potrebbe inoltre essere necessario installare un nodo di storage dell'appliance come parte di un'operazione di recovery.
+
+L'aggiunta di un'appliance di storage StorageGRID a un sistema StorageGRID include quattro passaggi principali:
+
+. Preparazione per l'installazione:
++
+** Preparazione del sito di installazione
+** Disimballaggio delle confezioni e controllo del contenuto
+** Ottenere attrezzature e strumenti aggiuntivi
+** Raccolta di indirizzi IP e informazioni di rete
+** Opzionale: Configurazione di un server KMS (Key Management Server) esterno se si intende crittografare tutti i dati dell'appliance. Per ulteriori informazioni sulla gestione delle chiavi esterne, consultare le istruzioni per l'amministrazione di StorageGRID.
+
+
+. Installazione dell'hardware:
++
+** Registrazione dell'hardware
+** Installazione dell'apparecchio in un cabinet o rack
+** Installazione dei dischi (solo SG5660)
+** Cablaggio dell'appliance
+** Collegamento dei cavi di alimentazione e alimentazione
+** Visualizzazione dei codici di stato di avvio
+
+
+. Configurazione dell'hardware:
++
+** Accesso a Gestione storage SANtricity, impostazione di un indirizzo IP statico per la porta di gestione 1 sul controller E2700 e configurazione delle impostazioni di Gestione storage SANtricity
+** Accesso al programma di installazione dell'appliance StorageGRID e configurazione delle impostazioni IP di collegamento e di rete necessarie per la connessione alle reti StorageGRID
+** Facoltativo: Abilitare la crittografia dei nodi se si intende utilizzare un KMS esterno per crittografare i dati dell'appliance.
+** Facoltativo: Modifica della modalità RAID.
+
+
+. Implementazione dell'appliance come nodo di storage:
+
+
+|===
+| Attività | Fare riferimento a. 
+
+
+ a| 
+Implementazione di un nodo di storage dell'appliance in un nuovo sistema StorageGRID
+ a| 
+xref:deploying-appliance-storage-node.adoc[Implementare l'appliance Storage Node]
+
+
+
+ a| 
+Aggiunta di un nodo di storage dell'appliance a un sistema StorageGRID esistente
+ a| 
+Istruzioni per espandere un sistema StorageGRID
+
+
+
+ a| 
+Implementazione di un nodo di storage dell'appliance come parte di un'operazione di recovery del nodo di storage
+ a| 
+Istruzioni per il ripristino e la manutenzione
+
+|===
+.Informazioni correlate
+xref:preparing-for-installation.adoc[Preparazione per l'installazione (SG5600)]
+
+xref:installing-hardware.adoc[Installazione dell'hardware (SG5600)]
+
+xref:configuring-hardware.adoc[Configurare l'hardware (SG5600)]
+
+xref:../expand/index.adoc[Espandi il tuo grid]
+
+xref:../maintain/index.adoc[Ripristino e manutenzione]
+
+xref:../admin/index.adoc[Amministrare StorageGRID]

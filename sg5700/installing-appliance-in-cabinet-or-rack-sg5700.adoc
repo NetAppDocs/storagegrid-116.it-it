@@ -1,0 +1,67 @@
+---
+permalink: sg5700/installing-appliance-in-cabinet-or-rack-sg5700.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, install, installing, installation, cabinet, rack, rail, rails 
+summary: 'Installare le guide nel cabinet o nel rack, quindi far scorrere l"apparecchio sulle guide. Se si dispone di un sistema SG5760, è necessario installare anche i dischi dopo l"installazione dell"apparecchio.' 
+---
+= Installazione dell'appliance in cabinet o rack (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Installare le guide nel cabinet o nel rack, quindi far scorrere l'apparecchio sulle guide. Se si dispone di un sistema SG5760, è necessario installare anche i dischi dopo l'installazione dell'apparecchio.
+
+.Di cosa hai bisogno
+* Hai esaminato il documento Safety Notices incluso nella confezione e compreso le precauzioni per lo spostamento e l'installazione dell'hardware.
+* Le istruzioni sono fornite con il kit di guide.
+* Si dispone delle _istruzioni per l'installazione e la configurazione_ dell'apparecchio.
+
+
+
+CAUTION: Installare l'hardware dalla parte inferiore del rack, dell'armadio o del rack per evitare che l'apparecchiatura si ribalti.
+
+
+CAUTION: SG5712 pesa circa 29 kg (64 lb) quando è completamente carico di dischi. Per spostare in sicurezza il sistema SG5712 sono necessarie due persone o un sollevatore meccanico.
+
+
+CAUTION: SG5760 pesa circa 60 kg (132 lb) senza unità installate. Sono necessarie quattro persone o un sollevatore meccanico per spostare in sicurezza un SG5760 vuoto.
+
+
+CAUTION: Per evitare di danneggiare l'hardware, non spostare mai un SG5760 se sono installati dischi. Rimuovere tutti i dischi prima di spostare lo shelf.
+
+.Fasi
+. Seguire attentamente le istruzioni del kit di guide per installare le guide nel cabinet o nel rack.
+. Se si dispone di un sistema SG5760, attenersi alla procedura descritta di seguito per preparare lo spostamento dell'apparecchio.
++
+.. Rimuovere la confezione esterna. Quindi, piegare verso il basso le alette della scatola interna.
+.. Se si solleva l'unità SG5760 manualmente, fissare le quattro maniglie ai lati del telaio.
++
+Rimuovete queste maniglie mentre fate scorrere l'apparecchio sulle guide.
+
+
+
+. Consultare le _istruzioni di installazione e configurazione_ e far scorrere l'apparecchio nell'armadietto o nel rack.
+. Consultare le _istruzioni di installazione e configurazione_ e fissare l'apparecchio all'armadietto o al rack.
++
+Se si dispone di un SG5760, utilizzare le staffe posteriori per fissare l'apparecchio alla parte posteriore del rack o dell'armadietto. Utilizzare i dadi della gabbia se il rack o l'armadietto presenta fori quadrati.
+
+. Se si dispone di un sistema SG5760, installare 12 dischi in ciascuno dei 5 cassetti.
++
+Per garantire il corretto funzionamento, è necessario installare tutti e 60 i dischi.
+
++
+.. Indossare il braccialetto ESD e rimuovere le unità dalla confezione.
+.. Rilasciare le leve sul cassetto superiore e far scorrere il cassetto verso l'esterno utilizzando le leve.
+.. Sollevare la maniglia dell'unità in verticale e allineare i pulsanti dell'unità con le tacche del cassetto.
++
+image::../media/appliance_drive_insertion.gif[Installare il disco nell'appliance da 60 dischi]
+
+.. Premendo delicatamente sulla parte superiore dell'unità, ruotare la maniglia verso il basso fino a quando l'unità non scatta in posizione.
+.. Dopo aver installato le prime 12 unità, far scorrere nuovamente il cassetto spingendo al centro e chiudendo delicatamente entrambe le leve.
+.. Ripetere questa procedura per gli altri quattro cassetti.
+
+
+. Fissare il pannello anteriore.
+

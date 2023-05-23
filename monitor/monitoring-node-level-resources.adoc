@@ -1,0 +1,40 @@
+---
+permalink: monitor/monitoring-node-level-resources.html 
+sidebar: sidebar 
+keywords: monitoring, monitoring node-level resources, grid nodes 
+summary: È necessario monitorare i singoli nodi della griglia per verificarne i livelli di utilizzo delle risorse. 
+---
+= Monitorare le risorse a livello di nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario monitorare i singoli nodi della griglia per verificarne i livelli di utilizzo delle risorse.
+
+.Di cosa hai bisogno
+* È necessario accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+
+
+.A proposito di questa attività
+Se i nodi sono costantemente sovraccarichi, potrebbero essere necessari più nodi per operazioni efficienti.
+
+.Fasi
+. Per visualizzare informazioni sull'utilizzo dell'hardware di un nodo grid:
++
+.. Dalla pagina *NODES*, selezionare il nodo.
+.. Selezionare la scheda *hardware* per visualizzare i grafici relativi all'utilizzo della CPU e della memoria.
++
+image::../media/nodes_page_hardware_tab_graphs.png[Scheda hardware della pagina nodi]
+
+.. Per visualizzare un intervallo di tempo diverso, selezionare uno dei comandi sopra il grafico o il grafico. È possibile visualizzare le informazioni disponibili per intervalli di 1 ora, 1 giorno, 1 settimana o 1 mese. È inoltre possibile impostare un intervallo personalizzato, che consente di specificare intervalli di data e ora.
+.. Se il nodo è ospitato su un'appliance di storage o su un'appliance di servizi, scorrere verso il basso per visualizzare le tabelle dei componenti. Lo stato di tutti i componenti deve essere "`nominale`". Esaminare i componenti con qualsiasi altro stato.
+
+
+
+
+.Informazioni correlate
+xref:viewing-hardware-tab.adoc#view-information-about-appliance-storage-nodes[Visualizza informazioni sui nodi di storage dell'appliance]
+
+xref:viewing-hardware-tab.adoc#view-information-about-appliance-admin-nodes-and-gateway-nodes[Visualizza informazioni sui nodi di amministrazione dell'appliance e sui nodi gateway]

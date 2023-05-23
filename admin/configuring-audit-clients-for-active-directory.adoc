@@ -1,0 +1,189 @@
+---
+permalink: admin/configuring-audit-clients-for-active-directory.html 
+sidebar: sidebar 
+keywords: audit client for ad, active directory 
+summary: 'Eseguire questa procedura per ogni nodo amministratore in un"implementazione StorageGRID da cui si desidera recuperare i messaggi di controllo.' 
+---
+= Configurare i client di audit per Active Directory
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Eseguire questa procedura per ogni nodo amministratore in un'implementazione StorageGRID da cui si desidera recuperare i messaggi di controllo.
+
+.Di cosa hai bisogno
+* Hai il `Passwords.txt` File con la password dell'account root/admin (disponibile nel pacchetto).
+* Si dispone del nome utente e della password di CIFS Active Directory.
+* Hai il `Configuration.txt` File (disponibile in DETTO pacchetto).
+
+
+
+NOTE: L'esportazione dell'audit tramite CIFS/Samba è stata deprecata e verrà rimossa in una release futura di StorageGRID.
+
+.Fasi
+. Accedere al nodo di amministrazione principale:
++
+.. Immettere il seguente comando: `ssh admin@_primary_Admin_Node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+. Verificare che tutti i servizi abbiano uno stato di esecuzione o verificato: `storagegrid-status`
++
+Se tutti i servizi non sono in esecuzione o verificati, risolvere i problemi prima di continuare.
+
+. Tornare alla riga di comando, premere *Ctrl*+*C*.
+. Avviare l'utility di configurazione CIFS: `config_cifs.rb`
++
+[listing]
+----
+
+---------------------------------------------------------------------
+| Shares                 | Authentication         | Config          |
+---------------------------------------------------------------------
+| add-audit-share        | set-authentication     | validate-config |
+| enable-disable-share   | set-netbios-name       | help            |
+| add-user-to-share      | join-domain            | exit            |
+| remove-user-from-share | add-password-server    |                 |
+| modify-group           | remove-password-server |                 |
+|                        | add-wins-server        |                 |
+|                        | remove-wins-server     |                 |
+---------------------------------------------------------------------
+----
+. Impostare l'autenticazione per Active Directory: `set-authentication`
++
+Nella maggior parte delle implementazioni, è necessario impostare l'autenticazione prima di aggiungere il client di audit. Se l'autenticazione è già stata impostata, viene visualizzato un messaggio di avviso. Se l'autenticazione è già stata impostata, passare alla fase successiva.
+
++
+.. Quando viene richiesto di installare Workgroup o Active Directory: `ad`
+.. Quando richiesto, inserire il nome del dominio ad (nome di dominio breve).
+.. Quando richiesto, inserire l'indirizzo IP o il nome host DNS del controller di dominio.
+.. Quando richiesto, inserire il nome completo del dominio.
++
+Utilizzare lettere maiuscole.
+
+.. Quando viene richiesto di attivare il supporto winbind, digitare *y*.
++
+Winbind viene utilizzato per risolvere le informazioni di utenti e gruppi dai server ad.
+
+.. Quando richiesto, inserire il nome NetBIOS.
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
+. Unirsi al dominio:
++
+.. Se non è già stato avviato, avviare l'utility di configurazione CIFS: `config_cifs.rb`
+.. Unirsi al dominio: `join-domain`
+.. Viene richiesto di verificare se l'Admin Node è attualmente un membro valido del dominio. Se questo nodo di amministrazione non ha precedentemente aderito al dominio, immettere: `no`
+.. Quando richiesto, fornire il nome utente dell'amministratore: `_administrator_username_`
++
+dove `_administrator_username_` È il nome utente di CIFS Active Directory, non il nome utente di StorageGRID.
+
+.. Quando richiesto, fornire la password dell'amministratore: `_administrator_password_`
++
+erano `_administrator_password_` È il nome utente di CIFS Active Directory, non la password di StorageGRID.
+
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
+. Verificare di aver inserito correttamente il dominio:
++
+.. Unirsi al dominio: `join-domain`
+.. Quando viene richiesto di verificare se il server è attualmente un membro valido del dominio, immettere: `y`
++
+Se viene visualizzato il messaggio "`Join is OK,`" significa che l'accesso al dominio è stato eseguito correttamente. Se non si ottiene questa risposta, provare a impostare nuovamente l'autenticazione e ad accedere al dominio.
+
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
+. Aggiungere un client di audit: `add-audit-share`
++
+.. Quando viene richiesto di aggiungere un utente o un gruppo, immettere: `user`
+.. Quando viene richiesto di inserire il nome utente per l'audit, inserire il nome utente per l'audit.
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
+. Se più di un utente o gruppo è autorizzato ad accedere alla condivisione di controllo, aggiungere altri utenti: `add-user-to-share`
++
+Viene visualizzato un elenco numerato di condivisioni abilitate.
+
++
+.. Inserire il numero della condivisione audit-export.
+.. Quando viene richiesto di aggiungere un utente o un gruppo, immettere: `group`
++
+Viene richiesto il nome del gruppo di audit.
+
+.. Quando viene richiesto il nome del gruppo di audit, immettere il nome del gruppo di utenti di audit.
+.. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+.. Ripetere questo passaggio per ogni utente o gruppo aggiuntivo che ha accesso alla condivisione di controllo.
+
+
+. In alternativa, verificare la configurazione: `validate-config`
++
+I servizi vengono controllati e visualizzati. È possibile ignorare i seguenti messaggi:
+
++
+** Impossibile trovare il file di inclusione `/etc/samba/includes/cifs-interfaces.inc`
+** Impossibile trovare il file di inclusione `/etc/samba/includes/cifs-filesystem.inc`
+** Impossibile trovare il file di inclusione `/etc/samba/includes/cifs-interfaces.inc`
+** Impossibile trovare il file di inclusione `/etc/samba/includes/cifs-custom-config.inc`
+** Impossibile trovare il file di inclusione `/etc/samba/includes/cifs-shares.inc`
+** Rlimit_max: Aumento di rlimit_max (1024) al limite minimo di Windows (16384)
++
+
+IMPORTANT: Non combinare l'impostazione 'security=ads' con il parametro 'password server'. (Per impostazione predefinita, Samba rileverà automaticamente il DC corretto da contattare).
+
++
+... Quando richiesto, premere *Invio* per visualizzare la configurazione del client di controllo.
+... Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+
+
+
+
+. Chiudere l'utilità di configurazione CIFS: `exit`
+. Se l'implementazione di StorageGRID è un singolo sito, passare alla fase successiva.
++
+oppure
+
++
+Facoltativamente, se l'implementazione di StorageGRID include nodi di amministrazione in altri siti, abilitare queste condivisioni di controllo come richiesto:
+
++
+.. Accedere in remoto al nodo di amministrazione di un sito:
++
+... Immettere il seguente comando: `ssh admin@_grid_node_IP_`
+... Immettere la password elencata in `Passwords.txt` file.
+... Immettere il seguente comando per passare a root: `su -`
+... Immettere la password elencata in `Passwords.txt` file.
+
+
+.. Ripetere questa procedura per configurare le condivisioni di controllo per ciascun nodo di amministrazione.
+.. Chiudere l'accesso remoto sicuro alla shell nel nodo di amministrazione: `exit`
+
+
+. Disconnettersi dalla shell dei comandi: `exit`
+

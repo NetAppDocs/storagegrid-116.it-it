@@ -1,0 +1,76 @@
+---
+permalink: sg5600/unpacking-boxes-sg5600.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, install, installation, unpack, unbox, prepare, inventory, components, contents 
+summary: 'Prima di installare l"appliance StorageGRID, disimballare tutte le confezioni e confrontare il contenuto con gli elementi riportati sulla confezione.' 
+---
+= Disimballare le scatole (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance StorageGRID, disimballare tutte le confezioni e confrontare il contenuto con gli elementi riportati sulla confezione.
+
+* * Enclosure SG5660, uno chassis 4U con 60 dischi*
++
+image::../media/appliance_enclosure.gif[Enclosure 4U]
+
+* * Enclosure SG5612, uno chassis 2U con 12 dischi*
++
+image::../media/appliance_enclosure_2u.gif[Chassis 2U DE1600]
+
+* *Pannello 4U o cappucci terminali 2U*
++
+image:../media/appliance_bezel.gif["Pannello 4U"] image:../media/appliance_bezel_2u_endcaps.gif["Cappucci terminali 2U"]
+
+* *Dischi NL-SAS*
++
+image::../media/appliance_drive.gif[Disco]
+
++
+I dischi sono preinstallati nel sistema 2U SG5612, ma non nel sistema 4U SG5660 per garantire la sicurezza della spedizione.
+
+* *Controller E5600SG*
++
+image::../media/sga_controller_5600_diagram.gif[Controller E5600]
+
+* *Controller E2700*
++
+image::../media/sga_controller_2700_diagram.gif[Controller E2700]
+
+* *Viti e guide di montaggio*
++
+image::../media/appliance_mounting_rail_kit.png[Kit di guide di montaggio]
+
+* *Maniglie per enclosure (solo enclosure 4U)*
++
+image::../media/appliance_enclosure_handles.gif[Maniglie dell'enclosure]
+
+
+
+
+
+== Cavi e connettori
+
+La spedizione per l'appliance StorageGRID include i seguenti cavi e connettori:
+
+* *Cavi di alimentazione per il tuo paese*
++
+image::../media/appliance_power_cords.gif[Cavi di alimentazione]
+
++
+L'apparecchio viene fornito con due cavi di alimentazione CA per il collegamento a una fonte di alimentazione esterna, ad esempio una presa a muro. Il cabinet potrebbe essere dotato di cavi di alimentazione speciali utilizzati al posto dei cavi di alimentazione forniti con l'apparecchio.
+
+* *Cavi di interconnessione SAS*
++
+image::../media/appliance_mini_sas_cables.gif[Cavi mini SAS]
+
++
+Due cavi di interconnessione SAS da 0.5 metri con connettori mini-SAS-HD e mini-SAS.
+
++
+Il connettore quadrato si inserisce nel controller E2700 e il connettore rettangolare si inserisce nel controller E5600 SG.
+
+

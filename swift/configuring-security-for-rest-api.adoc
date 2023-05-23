@@ -1,0 +1,178 @@
+---
+permalink: swift/configuring-security-for-rest-api.html 
+sidebar: sidebar 
+keywords: configure rest api security 
+summary: 'È necessario esaminare le misure di sicurezza implementate per L"API REST e comprendere come proteggere il sistema.' 
+---
+= Configurare la sicurezza per l'API REST
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario esaminare le misure di sicurezza implementate per L'API REST e comprendere come proteggere il sistema.
+
+
+
+== In che modo StorageGRID fornisce la sicurezza per le API REST
+
+È necessario comprendere in che modo il sistema StorageGRID implementa la sicurezza, l'autenticazione e l'autorizzazione per l'API REST.
+
+StorageGRID utilizza le seguenti misure di sicurezza.
+
+* Le comunicazioni del client con il servizio Load Balancer utilizzano HTTPS se HTTPS è configurato per l'endpoint del bilanciamento del carico.
++
+Quando si configura un endpoint di bilanciamento del carico, è possibile attivare HTTP. Ad esempio, è possibile utilizzare HTTP per test o altri scopi non di produzione. Per ulteriori informazioni, consultare le istruzioni per l'amministrazione di StorageGRID.
+
+* Per impostazione predefinita, StorageGRID utilizza HTTPS per le comunicazioni client con i nodi di storage e il servizio CLB sui nodi gateway.
++
+È possibile abilitare HTTP per queste connessioni. Ad esempio, è possibile utilizzare HTTP per test o altri scopi non di produzione. Per ulteriori informazioni, consultare le istruzioni per l'amministrazione di StorageGRID.
+
++
+
+NOTE: Il servizio CLB è obsoleto.
+
+* Le comunicazioni tra StorageGRID e il client vengono crittografate mediante TLS.
+* Le comunicazioni tra il servizio Load Balancer e i nodi di storage all'interno della griglia vengono crittografate indipendentemente dal fatto che l'endpoint del bilanciamento del carico sia configurato per accettare connessioni HTTP o HTTPS.
+* I client devono fornire le intestazioni di autenticazione HTTP a StorageGRID per eseguire operazioni REST API.
+
+
+
+
+=== Certificati di sicurezza e applicazioni client
+
+I client possono connettersi al servizio Load Balancer sui nodi Gateway o sui nodi Admin, direttamente ai nodi Storage o al servizio CLB obsoleto sui nodi Gateway.
+
+In tutti i casi, le applicazioni client possono stabilire connessioni TLS utilizzando un certificato server personalizzato caricato dall'amministratore della griglia o un certificato generato dal sistema StorageGRID:
+
+* Quando le applicazioni client si connettono al servizio Load Balancer, utilizzano il certificato configurato per l'endpoint specifico del bilanciamento del carico utilizzato per stabilire la connessione. Ogni endpoint dispone di un proprio certificato, ovvero un certificato server personalizzato caricato dall'amministratore della griglia o un certificato generato dall'amministratore della griglia in StorageGRID durante la configurazione dell'endpoint.
+* Quando le applicazioni client si connettono direttamente a un nodo di storage o al servizio CLB sui nodi gateway, utilizzano i certificati server generati dal sistema e generati per i nodi di storage al momento dell'installazione del sistema StorageGRID (firmati dall'autorità di certificazione del sistema), oppure un singolo certificato server personalizzato fornito per la griglia da un amministratore della griglia.
+
+
+I client devono essere configurati in modo da considerare attendibile l'autorità di certificazione che ha firmato il certificato utilizzato per stabilire connessioni TLS.
+
+Consultare le istruzioni per l'amministrazione di StorageGRID per informazioni sulla configurazione degli endpoint del bilanciamento del carico e per istruzioni sull'aggiunta di un singolo certificato server personalizzato per le connessioni TLS direttamente ai nodi di storage o al servizio CLB sui nodi gateway.
+
+
+
+=== Riepilogo
+
+La seguente tabella mostra come vengono implementati i problemi di sicurezza nelle API S3 e Swift REST:
+
+|===
+| Problema di sicurezza | Implementazione per API REST 
+
+
+ a| 
+Sicurezza della connessione
+ a| 
+TLS
+
+
+
+ a| 
+Autenticazione del server
+ a| 
+Certificato server X.509 firmato dalla CA di sistema o certificato server personalizzato fornito dall'amministratore
+
+
+
+ a| 
+Autenticazione del client
+ a| 
+* S3: Account S3 (ID chiave di accesso e chiave di accesso segreta)
+* Swift: Account Swift (nome utente e password)
+
+
+
+
+ a| 
+Autorizzazione del client
+ a| 
+* S3: Proprietà del bucket e tutte le policy di controllo degli accessi applicabili
+* Swift: Accesso al ruolo di amministratore
+
+
+|===
+.Informazioni correlate
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+== Algoritmi di hashing e crittografia supportati per le librerie TLS
+
+Il sistema StorageGRID supporta un set limitato di suite di crittografia che le applicazioni client possono utilizzare quando si stabilisce una sessione TLS (Transport Layer Security).
+
+
+
+=== Versioni supportate di TLS
+
+StorageGRID supporta TLS 1.2 e TLS 1.3.
+
+
+IMPORTANT: SSLv3 e TLS 1.1 (o versioni precedenti) non sono più supportati.
+
+
+
+=== Suite di crittografia supportate
+
+[cols="1a,1a"]
+|===
+| Versione TLS | IANA nome della suite di crittografia 
+
+
+ a| 
+1.2
+ a| 
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+
+
+ a| 
+TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+
+
+
+ a| 
+TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+
+
+ a| 
+1.3
+ a| 
+TLS_AES_256_GCM_SHA384
+
+
+
+ a| 
+TLS_CHACHA20_POLY1305_SHA256
+
+
+
+ a| 
+TLS_AES_128_GCM_SHA256
+
+|===
+
+
+=== Suite di crittografia obsolete
+
+Le seguenti suite di crittografia sono obsolete. Il supporto per questi cifrari verrà rimosso in una release futura.
+
+|===
+| Nome IANA 
+
+
+ a| 
+TLS_RSA_WITH_AES_128_GCM_SHA256
+
+
+
+ a| 
+TLS_RSA_WITH_AES_256_GCM_SHA384
+
+|===
+.Informazioni correlate
+xref:configuring-tenant-accounts-and-connections.adoc[Configurare gli account e le connessioni del tenant]

@@ -1,0 +1,14 @@
+---
+permalink: sg100-1000/maintaining-services-appliance-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, maintain, maintaining, hardware, procedures, tasks 
+summary: 'Potrebbe essere necessario eseguire le procedure di manutenzione dell"apparecchio. Le procedure descritte in questa sezione presuppongono che l"appliance sia già stata implementata come nodo gateway o nodo amministratore in un sistema StorageGRID.' 
+---
+= Manutenzione dell'appliance
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario eseguire le procedure di manutenzione dell'apparecchio. Le procedure descritte in questa sezione presuppongono che l'appliance sia già stata implementata come nodo gateway o nodo amministratore in un sistema StorageGRID.

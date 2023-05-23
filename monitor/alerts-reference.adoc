@@ -1,0 +1,1740 @@
+---
+permalink: monitor/alerts-reference.html 
+sidebar: sidebar 
+keywords: alerts reference 
+summary: La tabella seguente elenca tutti gli avvisi StorageGRID predefiniti. Se necessario, è possibile creare regole di avviso personalizzate per adattarsi al proprio approccio di gestione del sistema. 
+---
+= Riferimenti agli avvisi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La tabella seguente elenca tutti gli avvisi StorageGRID predefiniti. Se necessario, è possibile creare regole di avviso personalizzate per adattarsi al proprio approccio di gestione del sistema.
+
+Consultare le informazioni su xref:commonly-used-prometheus-metrics.adoc[Metriche Prometheus comunemente utilizzate] per informazioni sulle metriche utilizzate in alcuni di questi avvisi.
+
+[cols="1a,2a"]
+|===
+| Nome dell'avviso | Descrizione e azioni consigliate 
+
+
+ a| 
+Batteria dell'appliance scaduta
+ a| 
+La batteria del controller di storage dell'appliance è scaduta.
+
+. Sostituire la batteria. La procedura per la sostituzione di un controller di storage include la procedura per la rimozione e la sostituzione della batteria. Consultare le istruzioni relative all'appliance di storage:
++
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Batteria dell'appliance guasta
+ a| 
+La batteria del controller di storage dell'appliance si è guastata.
+
+. Sostituire la batteria. La procedura per la sostituzione di un controller di storage include la procedura per la rimozione e la sostituzione della batteria. Consultare le istruzioni relative all'appliance di storage:
++
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+La capacità appresa della batteria dell'appliance non è sufficiente
+ a| 
+La capacità appresa della batteria nel controller di storage dell'appliance non è sufficiente.
+
+. Sostituire la batteria. La procedura per la sostituzione di un controller di storage include la procedura per la rimozione e la sostituzione della batteria. Consultare le istruzioni relative all'appliance di storage:
++
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Batteria dell'apparecchio quasi scaduta
+ a| 
+La batteria del controller di storage dell'appliance sta per scadere.
+
+. Sostituire la batteria al più presto. La procedura per la sostituzione di un controller di storage include la procedura per la rimozione e la sostituzione della batteria. Consultare le istruzioni relative all'appliance di storage:
++
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Batteria dell'apparecchio rimossa
+ a| 
+La batteria nel controller di storage dell'appliance non è presente.
+
+. Installare una batteria. La procedura per la sostituzione di un controller di storage include la procedura per la rimozione e la sostituzione della batteria. Consultare le istruzioni relative all'appliance di storage:
++
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Batteria dell'apparecchio troppo calda
+ a| 
+La batteria del controller di storage dell'apparecchio è surriscaldata.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Esaminare i possibili motivi dell'aumento della temperatura, ad esempio un guasto alla ventola o all'HVAC.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Errore di comunicazione BMC dell'appliance
+ a| 
+La comunicazione con il BMC (Baseboard Management Controller) è stata persa.
+
+. Verificare che il BMC funzioni correttamente. Selezionare *NODES*, quindi selezionare la scheda *hardware* per il nodo dell'appliance. Individuare il campo Compute Controller BMC IP (IP BMC controller di calcolo) e individuare l'IP desiderato.
+. Tentare di ripristinare le comunicazioni BMC posizionando il nodo in modalità di manutenzione, quindi spegnendo e riaccendendo l'appliance. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Periferica di backup della cache dell'appliance non riuscita
+ a| 
+Si è verificato un errore in una periferica di backup della cache persistente.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Contattare il supporto tecnico.
+
+
+
+
+ a| 
+Capacità insufficiente del dispositivo di backup della cache dell'appliance
+ a| 
+La capacità della periferica di backup della cache è insufficiente.
+
+Contattare il supporto tecnico.
+
+
+
+ a| 
+Dispositivo di backup cache dell'appliance protetto da scrittura
+ a| 
+Una periferica di backup della cache è protetta da scrittura.
+
+Contattare il supporto tecnico.
+
+
+
+ a| 
+Mancata corrispondenza delle dimensioni della memoria cache dell'appliance
+ a| 
+I due controller dell'appliance hanno dimensioni della cache diverse.
+
+Contattare il supporto tecnico.
+
+
+
+ a| 
+Temperatura dello chassis del controller di calcolo dell'appliance troppo alta
+ a| 
+La temperatura del controller di calcolo in un'appliance StorageGRID ha superato una soglia nominale.
+
+. Verificare l'eventuale presenza di condizioni di surriscaldamento dei componenti hardware e seguire le azioni consigliate:
++
+** Se si dispone di SG100, SG1000 o SG6000, utilizzare BMC.
+** Se si dispone di un sistema SG5600 o SG5700, utilizzare Gestore di sistema di SANtricity.
+
+
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Temperatura CPU del controller di calcolo dell'appliance troppo alta
+ a| 
+La temperatura della CPU nel controller di calcolo di un'appliance StorageGRID ha superato una soglia nominale.
+
+. Verificare l'eventuale presenza di condizioni di surriscaldamento dei componenti hardware e seguire le azioni consigliate:
++
+** Se si dispone di SG100, SG1000 o SG6000, utilizzare BMC.
+** Se si dispone di un sistema SG5600 o SG5700, utilizzare Gestore di sistema di SANtricity.
+
+
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+
+
+
+
+ a| 
+Il controller di calcolo dell'appliance richiede attenzione
+ a| 
+È stato rilevato un guasto hardware nel controller di calcolo di un'appliance StorageGRID.
+
+. Verificare la presenza di errori nei componenti hardware e seguire le azioni consigliate:
++
+** Se si dispone di SG100, SG1000 o SG6000, utilizzare BMC.
+** Se si dispone di un sistema SG5600 o SG5700, utilizzare Gestore di sistema di SANtricity.
+
+
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+
+
+
+
+ a| 
+Si è verificato un problema nell'alimentatore A del controller di calcolo dell'appliance
+ a| 
+Si è verificato un problema nell'alimentatore A del controller di calcolo. Questo avviso potrebbe indicare che l'alimentatore è guasto o che si è verificato un problema nell'alimentazione.
+
+. Verificare la presenza di errori nei componenti hardware e seguire le azioni consigliate:
++
+** Se si dispone di SG100, SG1000 o SG6000, utilizzare BMC.
+** Se si dispone di un sistema SG5600 o SG5700, utilizzare Gestore di sistema di SANtricity.
+
+
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+
+
+
+
+ a| 
+Si è verificato un problema nell'alimentatore B del controller di calcolo dell'appliance
+ a| 
+L'alimentazione B nel controller di calcolo presenta un problema.
+
+Questo avviso potrebbe indicare che l'alimentatore è guasto o che si è verificato un problema di alimentazione.
+
+. Verificare la presenza di errori nei componenti hardware e seguire le azioni consigliate:
++
+** Se si dispone di SG100, SG1000 o SG6000, utilizzare BMC.
+** Se si dispone di un sistema SG5600 o SG5700, utilizzare Gestore di sistema di SANtricity.
+
+
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+
+
+
+
+ a| 
+Il servizio di monitoraggio dell'hardware di calcolo dell'appliance si è bloccato
+ a| 
+Il servizio che monitora lo stato dell'hardware dello storage ha smesso di riportare i dati.
+
+. Controllare lo stato del servizio di stato del sistema eos nel sistema operativo di base.
+. Se il servizio si trova in uno stato di arresto o di errore, riavviarlo.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Rilevato guasto nel Fibre Channel dell'appliance
+ a| 
+È stato rilevato un problema di collegamento Fibre Channel tra lo storage controller dell'appliance e il controller di calcolo.
+
+Questo avviso potrebbe indicare la presenza di un problema relativo alla connessione Fibre Channel tra lo storage e i controller di calcolo nell'appliance.
+
+. Verificare la presenza di errori nei componenti hardware (*NODI* *_nodo appliance_* *hardware*). Se lo stato di uno dei componenti non è "`nominale`", eseguire le seguenti operazioni:
++
+.. Verificare che i cavi Fibre Channel tra i controller siano collegati correttamente.
+.. Assicurarsi che i cavi Fibre Channel siano privi di piegature eccessive.
+.. Verificare che i moduli SFP+ siano inseriti correttamente.
++
+*Nota:* se il problema persiste, il sistema StorageGRID potrebbe disattivare automaticamente la connessione problematica.
+
+
+
+. Se necessario, sostituire i componenti. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+
+
+
+
+ a| 
+Errore della porta HBA Fibre Channel dell'appliance
+ a| 
+Una porta HBA Fibre Channel si sta guastando o si è guastata.
+
+Contattare il supporto tecnico.
+
+
+
+ a| 
+Unità flash cache dell'appliance non ottimali
+ a| 
+I dischi utilizzati per la cache SSD non sono ottimali.
+
+. Sostituire le unità cache SSD. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Interconnessione dell'appliance/contenitore della batteria rimosso
+ a| 
+Il contenitore di interconnessione/batteria non è presente.
+
+. Sostituire la batteria. La procedura per la sostituzione di un controller di storage include la procedura per la rimozione e la sostituzione della batteria. Consultare le istruzioni relative all'appliance di storage.
++
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Porta LACP dell'appliance mancante
+ a| 
+Una porta su un'appliance StorageGRID non partecipa al bond LACP.
+
+. Controllare la configurazione dello switch. Assicurarsi che l'interfaccia sia configurata nel gruppo di aggregazione dei collegamenti corretto.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Alimentatore generale dell'appliance degradato
+ a| 
+La potenza di un'appliance StorageGRID è diversa dalla tensione di esercizio consigliata.
+
+. Controllare lo stato degli alimentatori A e B per determinare quale alimentatore funziona in modo anomalo e seguire le azioni consigliate:
++
+** Se si dispone di SG100, SG1000 o SG6000, utilizzare BMC.
+** Se si dispone di un sistema SG5600 o SG5700, utilizzare Gestore di sistema di SANtricity.
+
+
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
+
+
+
+
+
+ a| 
+Guasto del controller dello storage dell'appliance A.
+ a| 
+Si è verificato un errore nel controller storage A di un'appliance StorageGRID.
+
+. Utilizzare Gestione di sistema di SANtricity per controllare i componenti hardware e seguire le azioni consigliate.
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Guasto del controller storage dell'appliance B.
+ a| 
+Il controller dello storage B in un'appliance StorageGRID si è guastato.
+
+. Utilizzare Gestione di sistema di SANtricity per controllare i componenti hardware e seguire le azioni consigliate.
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Guasto al disco del controller dello storage dell'appliance
+ a| 
+Uno o più dischi di un'appliance StorageGRID si sono guastati o non sono ottimali.
+
+. Utilizzare Gestione di sistema di SANtricity per controllare i componenti hardware e seguire le azioni consigliate.
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Problema hardware del controller dello storage dell'appliance
+ a| 
+Il software SANtricity segnala "richiede attenzione" per un componente di un'appliance StorageGRID.
+
+. Utilizzare Gestione di sistema di SANtricity per controllare i componenti hardware e seguire le azioni consigliate.
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Guasto all'alimentazione Del controller dello storage dell'appliance A.
+ a| 
+L'alimentazione A di un'appliance StorageGRID non è conforme alla tensione di esercizio consigliata.
+
+. Utilizzare Gestione di sistema di SANtricity per controllare i componenti hardware e seguire le azioni consigliate.
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Guasto all'alimentazione B del controller storage dell'appliance
+ a| 
+L'alimentazione B di un apparecchio StorageGRID non è conforme alla tensione di esercizio consigliata.
+
+. Utilizzare Gestione di sistema di SANtricity per controllare i componenti hardware e seguire le azioni consigliate.
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Il servizio di monitoraggio hardware dello storage dell'appliance si è bloccato
+ a| 
+Il servizio che monitora lo stato dell'hardware dello storage ha smesso di riportare i dati.
+
+. Controllare lo stato del servizio di stato del sistema eos nel sistema operativo di base.
+. Se il servizio si trova in uno stato di arresto o di errore, riavviarlo.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Gli shelf di storage delle appliance sono degradati
+ a| 
+Lo stato di uno dei componenti dello shelf di storage di un'appliance di storage è degradato.
+
+. Utilizzare Gestione di sistema di SANtricity per controllare i componenti hardware e seguire le azioni consigliate.
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Temperatura dell'apparecchio superata
+ a| 
+La temperatura nominale o massima del controller di storage dell'appliance è stata superata.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Esaminare i possibili motivi dell'aumento della temperatura, ad esempio un guasto alla ventola o all'HVAC.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Sensore di temperatura dell'apparecchio rimosso
+ a| 
+È stato rimosso un sensore di temperatura. Contattare il supporto tecnico.
+
+
+
+ a| 
+Errore compattatore automatico Cassandra
+ a| 
+Si è verificato un errore nel compattatore automatico Cassandra.
+
+Il compattatore automatico Cassandra è presente su tutti i nodi di storage e gestisce le dimensioni del database Cassandra per la sovrascrittura e l'eliminazione di carichi di lavoro pesanti. Anche se questa condizione persiste, alcuni carichi di lavoro sperimenteranno un consumo inaspettatamente elevato di metadati.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Contattare il supporto tecnico.
+
+
+
+
+ a| 
+I registri di controllo vengono aggiunti alla coda in-memory
+ a| 
+Il nodo non può inviare i log al server syslog locale e la coda in-memory si sta riempiendo.
+
+. Assicurarsi che il servizio rsyslog sia in esecuzione sul nodo.
+. Se necessario, riavviare il servizio rsyslog sul nodo utilizzando il comando `service rsyslog restart`.
+. Se non è possibile riavviare il servizio rsyslog e non si salvano messaggi di audit sui nodi di amministrazione, contattare il supporto tecnico. Se questa condizione non viene corretta, i registri di controllo andranno persi.
+
+
+
+
+ a| 
+Metriche del compattatore automatico Cassandra non aggiornate
+ a| 
+Le metriche che descrivono il compattatore automatico Cassandra non sono aggiornate.
+
+Il compattatore automatico Cassandra è presente su tutti i nodi di storage e gestisce le dimensioni del database Cassandra per la sovrascrittura e l'eliminazione di carichi di lavoro pesanti. Mentre questo avviso persiste, alcuni carichi di lavoro sperimenteranno un consumo inaspettatamente elevato di metadati.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Contattare il supporto tecnico.
+
+
+
+
+ a| 
+Errore di comunicazione Cassandra
+ a| 
+I nodi che eseguono il servizio Cassandra hanno problemi di comunicazione tra loro.
+
+Questo avviso indica che qualcosa sta interferendo con le comunicazioni da nodo a nodo. Potrebbe esserci un problema di rete o il servizio Cassandra potrebbe essere inattivo su uno o più nodi di storage.
+
+. Determinare se è presente un altro avviso che interessa uno o più nodi di storage. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Verificare la presenza di un problema di rete che potrebbe interessare uno o più nodi di storage.
+. Selezionare *SUPPORT* > *Tools* > *Grid topology*.
+. Per ciascun nodo di storage del sistema, selezionare *SSM* *servizi*. Assicurarsi che lo stato del servizio Cassandra sia "in esecuzione".
+. Se Cassandra non è in esecuzione, seguire la procedura descritta in xref:../maintain/starting-or-restarting-service.adoc[avvio o riavvio di un servizio].
+. Se tutte le istanze del servizio Cassandra sono in esecuzione e l'avviso non viene risolto, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Le compaction di Cassandra sono sovraccaricate
+ a| 
+Il processo di compattazione Cassandra è sovraccarico.
+
+In caso di sovraccarico del processo di compattazione, le prestazioni di lettura potrebbero essere ridotte e la RAM potrebbe essere consuicata. Anche il servizio Cassandra potrebbe non rispondere o bloccarsi.
+
+. Riavviare il servizio Cassandra seguendo la procedura descritta in xref:../maintain/starting-or-restarting-service.adoc[riavvio di un servizio].
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Metriche di riparazione Cassandra non aggiornate
+ a| 
+Le metriche che descrivono i lavori di riparazione Cassandra non sono aggiornate. Se questa condizione persiste per più di 48 ore, le query del client, come gli elenchi dei bucket, potrebbero mostrare i dati cancellati.
+
+. Riavviare il nodo. Da Grid Manager, selezionare *NODES*, selezionare il nodo e selezionare la scheda Tasks (attività).
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Il processo di riparazione di Cassandra è lento
+ a| 
+Il progresso delle riparazioni del database Cassandra è lento.
+
+Quando le riparazioni del database sono lente, le operazioni di coerenza dei dati Cassandra vengono ostacolate. Se questa condizione persiste per più di 48 ore, le query del client, come gli elenchi dei bucket, potrebbero mostrare i dati cancellati.
+
+. Verificare che tutti i nodi di storage siano online e che non siano presenti avvisi relativi alla rete.
+. Monitorare questo avviso per un massimo di 2 giorni per verificare se il problema si risolve da solo.
+. Se le riparazioni del database continuano a procedere lentamente, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Servizio di riparazione Cassandra non disponibile
+ a| 
+Il servizio di riparazione Cassandra non è disponibile.
+
+Il servizio di riparazione Cassandra esiste su tutti i nodi di storage e fornisce funzioni di riparazione critiche per il database Cassandra. Se questa condizione persiste per più di 48 ore, le query del client, come gli elenchi dei bucket, potrebbero mostrare i dati cancellati.
+
+. Selezionare *SUPPORT* > *Tools* > *Grid topology*.
+. Per ciascun nodo di storage del sistema, selezionare *SSM* *servizi*. Assicurarsi che lo stato del servizio Cassandra Reaper sia "in esecuzione".
+. Se Cassandra Reaper non è in esecuzione, seguire la procedura descritta in xref:../maintain/starting-or-restarting-service.adoc[avvio o riavvio di un servizio].
+. Se tutte le istanze del servizio Cassandra Reaper sono in esecuzione e l'avviso non viene risolto, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Tabella Cassandra corrotta
+ a| 
+Cassandra ha rilevato un danneggiamento della tabella.
+
+Cassandra si riavvia automaticamente se rileva la corruzione della tabella.
+
+Contattare il supporto tecnico.
+
+
+
+ a| 
+Errore di connettività del pool di cloud storage
+ a| 
+Il controllo dello stato di salute dei Cloud Storage Pools ha rilevato uno o più nuovi errori.
+
+. Accedere alla sezione Cloud Storage Pools della pagina Storage Pools.
+. Esaminare la colonna Last Error (ultimo errore) per determinare quale pool di storage cloud presenta un errore.
+. Consultare le istruzioni per xref:../ilm/index.adoc[gestione degli oggetti con la gestione del ciclo di vita delle informazioni].
+
+
+
+
+ a| 
+Lease DHCP scaduto
+ a| 
+Il lease DHCP su un'interfaccia di rete è scaduto. Se il lease DHCP è scaduto, seguire le azioni consigliate:
+
+. Assicurarsi che vi sia connettività tra questo nodo e il server DHCP sull'interfaccia interessata.
+. Assicurarsi che siano disponibili indirizzi IP da assegnare nella subnet interessata sul server DHCP.
+. Assicurarsi che vi sia una prenotazione permanente per l'indirizzo IP configurato nel server DHCP. In alternativa, utilizzare lo strumento Modifica IP StorageGRID per assegnare un indirizzo IP statico esterno al pool di indirizzi DHCP. Vedere xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
+
+
+
+
+ a| 
+Il lease DHCP sta per scadere
+ a| 
+Il lease DHCP su un'interfaccia di rete sta per scadere.
+
+Per impedire la scadenza del lease DHCP, seguire le azioni consigliate:
+
+. Assicurarsi che vi sia connettività tra questo nodo e il server DHCP sull'interfaccia interessata.
+. Assicurarsi che siano disponibili indirizzi IP da assegnare nella subnet interessata sul server DHCP.
+. Assicurarsi che vi sia una prenotazione permanente per l'indirizzo IP configurato nel server DHCP. In alternativa, utilizzare lo strumento Modifica IP StorageGRID per assegnare un indirizzo IP statico esterno al pool di indirizzi DHCP. Vedere xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
+
+
+
+
+ a| 
+Server DHCP non disponibile
+ a| 
+Il server DHCP non è disponibile.
+
+Il nodo StorageGRID non è in grado di contattare il server DHCP. Il lease DHCP per l'indirizzo IP del nodo non può essere validato.
+
+. Assicurarsi che vi sia connettività tra questo nodo e il server DHCP sull'interfaccia interessata.
+. Assicurarsi che siano disponibili indirizzi IP da assegnare nella subnet interessata sul server DHCP.
+. Assicurarsi che vi sia una prenotazione permanente per l'indirizzo IP configurato nel server DHCP. In alternativa, utilizzare lo strumento Modifica IP StorageGRID per assegnare un indirizzo IP statico esterno al pool di indirizzi DHCP. Vedere xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
+
+
+
+
+ a| 
+L'i/o del disco è molto lento
+ a| 
+L'i/o del disco molto lento potrebbe influire sulle prestazioni di StorageGRID.
+
+. Se il problema riguarda un nodo dell'appliance di storage, utilizzare Gestione di sistema di SANtricity per verificare la presenza di dischi difettosi, dischi con guasti previsti o riparazioni dei dischi in corso. Controllare inoltre lo stato dei collegamenti Fibre Channel o SAS tra i controller di calcolo e storage dell'appliance per verificare se i collegamenti sono inattivi o mostrano tassi di errore eccessivi.
+. Esaminare il sistema storage che ospita i volumi di questo nodo per determinare e correggere la causa principale del rallentamento dell'i/O.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+*Nota:* i nodi interessati potrebbero disattivare i servizi e riavviarsi per evitare di influire sulle prestazioni complessive della griglia. Quando la condizione sottostante viene cancellata e questi nodi rilevano le normali prestazioni i/o, tornano automaticamente al servizio completo.
+
+
+
+ a| 
+Errore di ribilanciamento EC
+ a| 
+Il processo di ribilanciamento dei dati con codifica di cancellazione tra i nodi di storage non è riuscito o è stato messo in pausa dall'utente.
+
+. Assicurarsi che tutti i nodi di storage del sito da ribilanciare siano online e disponibili.
+. Assicurarsi che non vi siano errori di volume nel sito in fase di ribilanciamento. In caso affermativo, terminare il lavoro di ribilanciamento EC in modo da poter eseguire un lavoro di riparazione.
++
+`'rebalance-data terminate --job-id <ID>'`
+
+. Assicurarsi che non vi siano guasti al servizio sul sito in fase di ribilanciamento. Se un servizio non è in esecuzione, seguire la procedura per avviare o riavviare un servizio nelle istruzioni di ripristino e manutenzione.
+. Dopo aver risolto eventuali problemi, riavviare il processo eseguendo il seguente comando sul nodo di amministrazione primario:
++
+`'rebalance-data start --job-id <ID>'`
+
+. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Errore di riparazione EC
+ a| 
+Un lavoro di riparazione per i dati con codifica di cancellazione non è riuscito o è stato interrotto.
+
+. Assicurarsi che siano disponibili volumi o nodi di storage sufficienti per sostituire il nodo o il volume di storage guasto.
+. Assicurarsi che siano disponibili nodi di storage sufficienti per soddisfare la policy ILM attiva.
+. Assicurarsi che non vi siano problemi di connettività di rete.
+. Dopo aver risolto eventuali problemi, riavviare il processo eseguendo il seguente comando sul nodo di amministrazione primario:
++
+`'repair-data start-ec-node-repair --repair-id <ID>'`
+
+. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Riparazione EC in stallo
+ a| 
+Un lavoro di riparazione per i dati con codifica di cancellazione si è bloccato.
+
+. Assicurarsi che siano disponibili volumi o nodi di storage sufficienti per sostituire il nodo o il volume di storage guasto.
+. Assicurarsi che non vi siano problemi di connettività di rete.
+. Dopo aver risolto eventuali problemi, controllare se l'avviso è stato risolto. Per visualizzare un report più dettagliato sull'avanzamento della riparazione, eseguire il seguente comando sul nodo di amministrazione principale:
++
+`'repair-data show-ec-repair-status --repair-id <ID>'`
+
+. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Errore di notifica e-mail
+ a| 
+Impossibile inviare la notifica via email per un avviso.
+
+Questo avviso viene attivato quando una notifica e-mail di avviso non riesce o non è possibile inviare un'e-mail di prova (inviata dalla pagina *ALERTS* *Email setup*).
+
+. Accedere a Grid Manager dal nodo Admin elencato nella colonna *Sito/nodo* dell'avviso.
+. Accedere alla pagina *ALERTS* *email setup*, controllare le impostazioni e modificarle se necessario.
+. Fare clic su *Send Test Email* (Invia email di prova) e controllare la posta in arrivo di un destinatario del test. Se non è possibile inviare l'e-mail di prova, potrebbe essere attivata una nuova istanza di questo avviso.
+. Se non è stato possibile inviare l'e-mail di prova, verificare che il server e-mail sia in linea.
+. Se il server funziona, selezionare *SUPPORT* *Tools* *Logs* e raccogliere il log per il nodo di amministrazione. Specificare un periodo di tempo di 15 minuti prima e dopo l'ora dell'avviso.
+. Estrarre l'archivio scaricato ed esaminare il contenuto di `prometheus.log` `(_/GID<gid><time_stamp>/<site_node>/<time_stamp>/metrics/prometheus.log)`.
+. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Scadenza dei certificati client configurati nella pagina certificati
+ a| 
+Uno o più certificati client configurati nella pagina certificati stanno per scadere.
+
+. In Grid Manager, selezionare *CONFIGURATION* *Security* *Certificates*, quindi selezionare la scheda *Client*.
+. Seleziona un certificato che scadrà a breve.
+. Selezionare *Allega nuovo certificato* a. xref:../admin/configuring-administrator-client-certificates.adoc[caricare o generare un nuovo certificato].
+. Ripetere questa procedura per ogni certificato che scadrà a breve.
+
+
+
+
+ a| 
+Scadenza del certificato endpoint del bilanciamento del carico
+ a| 
+Uno o più certificati endpoint per il bilanciamento del carico stanno per scadere.
+
+. Selezionare *CONFIGURATION* > *Network* > *Load Balancer Endpoints*.
+. Selezionare un endpoint con un certificato che scadrà a breve.
+. Selezionare *Edit endpoint* (Modifica endpoint) per caricare o generare un nuovo certificato.
+. Ripetere questi passaggi per ogni endpoint con un certificato scaduto o che scadrà a breve.
+
+
+Per ulteriori informazioni sulla gestione degli endpoint del bilanciamento del carico, vedere xref:../admin/index.adoc[Istruzioni per l'amministrazione di StorageGRID].
+
+
+
+ a| 
+Scadenza del certificato del server per l'interfaccia di gestione
+ a| 
+Il certificato del server utilizzato per l'interfaccia di gestione sta per scadere.
+
+. Selezionare *CONFIGURAZIONE* *sicurezza* *certificati*.
+. Nella scheda *Global*, selezionare *Management interface certificate*.
+. xref:../admin/configuring-custom-server-certificate-for-grid-manager-tenant-manager.adoc#add-a-custom-management-interface-certificate[Caricare un nuovo certificato dell'interfaccia di gestione.]
+
+
+
+
+ a| 
+Scadenza del certificato server globale per S3 e Swift API
+ a| 
+Il certificato del server utilizzato per accedere agli endpoint API dello storage sta per scadere.
+
+. Selezionare *CONFIGURAZIONE* *sicurezza* *certificati*.
+. Nella scheda *Global*, selezionare *S3 and Swift API certificate*.
+. xref:../admin/configuring-custom-server-certificate-for-storage-node-or-clb.adoc#add-a-custom-s3-and-swift-api-certificate[Caricare un nuovo certificato API S3 e Swift.]
+
+
+
+
+ a| 
+Scadenza del certificato CA syslog esterno
+ a| 
+Il certificato dell'autorità di certificazione (CA) utilizzato per firmare il certificato del server syslog esterno sta per scadere.
+
+. Aggiornare il certificato CA sul server syslog esterno.
+. Ottenere una copia del certificato CA aggiornato.
+. Da Grid Manager, andare a *CONFIGURAZIONE* *monitoraggio* *Audit e server syslog*.
+. Selezionare *Modifica server syslog esterno*.
+. Selezionare *Sfoglia* per caricare il nuovo certificato.
+. Completare la configurazione guidata per salvare il nuovo certificato e la nuova chiave.
+
+
+
+
+ a| 
+Scadenza del certificato client syslog esterno
+ a| 
+Il certificato client per un server syslog esterno sta per scadere.
+
+. Da Grid Manager, andare a *CONFIGURAZIONE* *monitoraggio* *Audit e server syslog*.
+. Selezionare *Modifica server syslog esterno*.
+. Selezionare *Sfoglia* per caricare il nuovo certificato.
+. Selezionare *Sfoglia* per caricare la nuova chiave privata.
+. Completare la configurazione guidata per salvare il nuovo certificato e la nuova chiave.
+
+
+
+
+ a| 
+Scadenza del certificato del server syslog esterno
+ a| 
+Il certificato del server presentato dal server syslog esterno sta per scadere.
+
+. Aggiornare il certificato del server sul server syslog esterno.
+. Se in precedenza si utilizzava l'API Grid Manager per fornire un certificato server per la convalida del certificato, caricare il certificato server aggiornato utilizzando l'API.
+
+
+
+
+ a| 
+Errore di inoltro del server syslog esterno
+ a| 
+Il nodo non può inoltrare i log al server syslog esterno.
+
+. Da Grid Manager, andare a *CONFIGURAZIONE* *monitoraggio* *Audit e server syslog*.
+. Selezionare *Modifica server syslog esterno*.
+. Avanzare attraverso la Configurazione guidata fino a quando non si è in grado di selezionare *Invia messaggi di prova*.
+. Selezionare *Send test messages* (Invia messaggi di test) per determinare perché i log non possono essere inoltrati al server syslog esterno.
+. Risolvere eventuali problemi segnalati.
+
+
+
+
+ a| 
+Mancata corrispondenza MTU rete griglia
+ a| 
+L'impostazione MTU (Maximum Transmission Unit) per l'interfaccia Grid Network (eth0) differisce significativamente tra i nodi della griglia.
+
+Le differenze nelle impostazioni MTU potrebbero indicare che alcune, ma non tutte, reti eth0 sono configurate per i frame jumbo. Una mancata corrispondenza delle dimensioni MTU superiore a 1000 potrebbe causare problemi di performance di rete.
+
+Consultare le istruzioni per l'avviso di mancata corrispondenza MTU della rete griglia in xref:troubleshooting-network-hardware-and-platform-issues.adoc[Risolvere i problemi di rete, hardware e piattaforma].
+
+
+
+ a| 
+Elevato utilizzo di heap Java
+ a| 
+Viene utilizzata una percentuale elevata di spazio heap Java.
+
+Se l'heap Java diventa pieno, i servizi di metadati potrebbero non essere disponibili e le richieste del client potrebbero non riuscire.
+
+. Esaminare l'attività ILM sulla dashboard. Questo avviso potrebbe essere risolto da solo quando il carico di lavoro ILM diminuisce.
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Latenza elevata per le query sui metadati
+ a| 
+Il tempo medio per le query dei metadati Cassandra è troppo lungo.
+
+Un aumento della latenza delle query può essere causato da una modifica dell'hardware, ad esempio la sostituzione di un disco, una modifica del carico di lavoro, ad esempio un aumento improvviso delle attività di acquisizione, o una modifica della rete, ad esempio un problema di comunicazione tra nodi e siti.
+
+. Determinare se sono state apportate modifiche all'hardware, al carico di lavoro o alla rete durante l'aumento della latenza della query.
+. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Errore di sincronizzazione della federazione delle identità
+ a| 
+Impossibile sincronizzare utenti e gruppi federati dall'origine dell'identità.
+
+. Verificare che il server LDAP configurato sia in linea e disponibile.
+. Esaminare le impostazioni nella pagina Identity Federation (Federazione identità). Verificare che tutti i valori siano aggiornati. Vedere xref:../admin/using-identity-federation.adoc[USA la federazione delle identità] Nelle istruzioni per l'amministrazione di StorageGRID.
+. Fare clic su *Test Connection* (verifica connessione) per convalidare le impostazioni del server LDAP.
+. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Errore di sincronizzazione della federazione delle identità per un tenant
+ a| 
+Impossibile sincronizzare utenti e gruppi federati dall'origine dell'identità configurata da un tenant.
+
+. Accedi al tenant manager.
+. Verificare che il server LDAP configurato dal tenant sia online e disponibile.
+. Esaminare le impostazioni nella pagina Identity Federation (Federazione identità). Verificare che tutti i valori siano aggiornati. Vedere xref:../tenant/using-identity-federation.adoc[USA la federazione delle identità] nelle istruzioni per l'utilizzo di un account tenant.
+. Fare clic su *Test Connection* (verifica connessione) per convalidare le impostazioni del server LDAP.
+. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Posizionamento ILM non raggiungibile
+ a| 
+Non è possibile ottenere un'istruzione di posizionamento in una regola ILM per determinati oggetti.
+
+Questo avviso indica che un nodo richiesto da un'istruzione di posizionamento non è disponibile o che una regola ILM non è configurata correttamente. Ad esempio, una regola potrebbe specificare un numero di copie replicate maggiore rispetto ai nodi di storage.
+
+. Assicurarsi che tutti i nodi siano online.
+. Se tutti i nodi sono in linea, rivedere le istruzioni di posizionamento in tutte le regole ILM che utilizzano il criterio ILM attivo. Verificare che siano presenti istruzioni valide per tutti gli oggetti. Vedere xref:../ilm/index.adoc[istruzioni per la gestione degli oggetti con la gestione del ciclo di vita delle informazioni].
+. Se necessario, aggiornare le impostazioni delle regole e attivare un nuovo criterio.
++
+*Nota:* l'eliminazione dell'avviso potrebbe richiedere fino a 1 giorno.
+
+. Se il problema persiste, contattare il supporto tecnico.
+
+
+*Nota:* questo avviso potrebbe essere visualizzato durante un aggiornamento e potrebbe persistere per 1 giorno dopo il completamento dell'aggiornamento. Quando questo avviso viene attivato da un aggiornamento, viene visualizzato da solo.
+
+
+
+ a| 
+Periodo di scansione ILM troppo lungo
+ a| 
+Il tempo necessario per eseguire la scansione, valutare gli oggetti e applicare ILM è troppo lungo.
+
+Se il tempo stimato per completare una scansione ILM completa di tutti gli oggetti è troppo lungo (vedere *periodo di scansione - stimato* nella dashboard), il criterio ILM attivo potrebbe non essere applicato ai nuovi oggetti acquisiti. Le modifiche al criterio ILM potrebbero non essere applicate agli oggetti esistenti.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Verificare che tutti i nodi di storage siano online.
+. Ridurre temporaneamente la quantità di traffico client. Ad esempio, in Grid Manager, selezionare *CONFIGURATION* *Network* *Traffic classification* e creare una policy che limiti la larghezza di banda o il numero di richieste.
+. Se l'i/o del disco o la CPU sono sovraccarichi, provare a ridurre il carico o aumentare la risorsa.
+. Se necessario, aggiornare le regole ILM per utilizzare il posizionamento sincrono (impostazione predefinita per le regole create dopo StorageGRID 11.3).
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+ a| 
+Velocità di scansione ILM bassa
+ a| 
+La velocità di scansione ILM è impostata su un valore inferiore a 100 oggetti/secondo.
+
+Questo avviso indica che la velocità di scansione ILM del sistema è stata modificata a meno di 100 oggetti/secondo (impostazione predefinita: 400 oggetti/secondo). Il criterio ILM attivo potrebbe non essere applicato ai nuovi oggetti acquisiti. Le modifiche successive al criterio ILM non verranno applicate agli oggetti esistenti.
+
+. Determinare se è stata apportata una modifica temporanea alla velocità di scansione ILM come parte di un'indagine di supporto in corso.
+. Contattare il supporto tecnico.
+
+
+
+IMPORTANT: Non modificare mai la velocità di scansione ILM senza contattare il supporto tecnico.
+
+
+
+ a| 
+Scadenza del certificato CA KMS
+ a| 
+Il certificato dell'autorità di certificazione (CA) utilizzato per firmare il certificato del server di gestione delle chiavi (KMS) sta per scadere.
+
+. Utilizzando il software KMS, aggiornare il certificato CA per il server di gestione delle chiavi.
+. Da Grid Manager, selezionare *CONFIGURATION* *Security* *Key management server*.
+. Selezionare il KMS che presenta un avviso di stato del certificato.
+. Selezionare *Modifica*.
+. Selezionare *Avanti* per passare alla fase 2 (carica certificato server).
+. Selezionare *Sfoglia* per caricare il nuovo certificato.
+. Selezionare *Salva*.
+
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+ a| 
+Scadenza del certificato client KMS
+ a| 
+Il certificato client per un server di gestione delle chiavi sta per scadere.
+
+. Da Grid Manager, selezionare *CONFIGURATION* *Security* *Key management server*.
+. Selezionare il KMS che presenta un avviso di stato del certificato.
+. Selezionare *Modifica*.
+. Selezionare *Avanti* per passare alla fase 3 (carica certificati client).
+. Selezionare *Sfoglia* per caricare il nuovo certificato.
+. Selezionare *Sfoglia* per caricare la nuova chiave privata.
+. Selezionare *Salva*.
+
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+ a| 
+Impossibile caricare la configurazione KMS
+ a| 
+La configurazione per il server di gestione delle chiavi esiste ma non è riuscita a caricarsi.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Errore di connettività KMS
+ a| 
+Un nodo appliance non è riuscito a connettersi al server di gestione delle chiavi del proprio sito.
+
+. Da Grid Manager, selezionare *CONFIGURATION* *Security* *Key management server*.
+. Verificare che le voci relative a porta e nome host siano corrette.
+. Verificare che il certificato del server, il certificato del client e la chiave privata del certificato del client siano corretti e non scaduti.
+. Assicurarsi che le impostazioni del firewall consentano al nodo dell'appliance di comunicare con il KMS specificato.
+. Correggere eventuali problemi di rete o DNS.
+. Se hai bisogno di assistenza o se l'avviso persiste, contatta il supporto tecnico.
+
+
+
+
+ a| 
+Nome chiave di crittografia KMS non trovato
+ a| 
+Il server di gestione delle chiavi configurato non dispone di una chiave di crittografia corrispondente al nome fornito.
+
+. Verificare che il KMS assegnato al sito utilizzi il nome corretto per la chiave di crittografia e le versioni precedenti.
+. Se hai bisogno di assistenza o se l'avviso persiste, contatta il supporto tecnico.
+
+
+
+
+ a| 
+Rotazione della chiave di crittografia KMS non riuscita
+ a| 
+Tutti i volumi dell'appliance sono stati decifrati, ma uno o più volumi non sono stati ruotati sulla chiave più recente.contattare il supporto tecnico.
+
+
+
+ a| 
+KMS non configurato
+ a| 
+Non esiste alcun server di gestione delle chiavi per questo sito.
+
+. Da Grid Manager, selezionare *CONFIGURATION* *Security* *Key management server*.
+. Aggiungere un KMS per questo sito o un KMS predefinito.
+
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+ a| 
+La chiave KMS non è riuscita a decrittare un volume dell'appliance
+ a| 
+Non è stato possibile decifrare uno o più volumi su un'appliance con crittografia del nodo abilitata con la chiave KMS corrente.
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Assicurarsi che il server di gestione delle chiavi (KMS) disponga della chiave di crittografia configurata e di eventuali versioni precedenti.
+. Se hai bisogno di assistenza o se l'avviso persiste, contatta il supporto tecnico.
+
+
+
+
+ a| 
+Scadenza del certificato del server KMS
+ a| 
+Il certificato del server utilizzato dal server di gestione delle chiavi (KMS) sta per scadere.
+
+. Utilizzando il software KMS, aggiornare il certificato del server per il server di gestione delle chiavi.
+. Se hai bisogno di assistenza o se l'avviso persiste, contatta il supporto tecnico.
+
+
+xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+
+ a| 
+Coda di audit di grandi dimensioni
+ a| 
+La coda dei dischi per i messaggi di controllo è piena.
+
+. Controllare il carico sul sistema - se si è verificato un numero significativo di transazioni, l'avviso dovrebbe risolversi nel tempo e si può ignorare l'avviso.
+. Se l'avviso persiste e aumenta di severità, visualizzare un grafico delle dimensioni della coda. Se il numero aumenta costantemente nel corso di ore o giorni, il carico di audit ha probabilmente superato la capacità di audit del sistema.
+. Ridurre il tasso di operazioni del client o diminuire il numero di messaggi di controllo registrati modificando il livello di controllo per le scritture del client e le letture del client su Error (errore) o Off (*CONFIGURATION* *Monitoring* *Audit and syslog server*).
+
+
+xref:../audit/index.adoc[Esaminare i registri di audit]
+
+
+
+ a| 
+Rilevata attività di bilanciamento del carico CLB legacy
+ a| 
+Alcuni client potrebbero connettersi al servizio di bilanciamento del carico CLB obsoleto utilizzando il certificato API S3 e Swift predefinito.
+
+. Per semplificare gli aggiornamenti futuri, installare un certificato S3 e Swift API personalizzato nella scheda *Global* della pagina *Certificates*. Quindi, assicurarsi che tutti i client S3 o Swift che si connettono alla CLB legacy abbiano il nuovo certificato.
+. Creare uno o più endpoint del bilanciamento del carico. Quindi, indirizzare tutti i client S3 e Swift esistenti a questi endpoint. Contattare il supporto tecnico se è necessario rimappare la porta del client.
+
+
+Altre attività potrebbero attivare questo avviso, incluse le scansioni delle porte. Per determinare se il servizio CLB obsoleto è attualmente in uso, consultare la `storagegrid_private_clb_http_connection_established_successful` Metrica Prometheus.
+
+Se necessario, disattivare o disattivare questa regola di avviso se il servizio CLB non è più in uso.
+
+
+
+ a| 
+I registri vengono aggiunti alla coda su disco
+ a| 
+Il nodo non può inoltrare i log al server syslog esterno e la coda su disco si sta riempiendo.
+
+. Da Grid Manager, andare a *CONFIGURAZIONE* *monitoraggio* *Audit e server syslog*.
+. Selezionare *Modifica server syslog esterno*.
+. Avanzare attraverso la Configurazione guidata fino a quando non si è in grado di selezionare *Invia messaggi di prova*.
+. Selezionare *Send test messages* (Invia messaggi di test) per determinare perché i log non possono essere inoltrati al server syslog esterno.
+. Risolvere eventuali problemi segnalati.
+
+
+
+
+ a| 
+Bassa capacità del disco di log di audit
+ a| 
+Lo spazio disponibile per i registri di controllo è insufficiente.
+
+. Monitorare questo avviso per verificare se il problema si risolve da solo e se lo spazio su disco diventa nuovamente disponibile.
+. Contattare il supporto tecnico se lo spazio disponibile continua a diminuire.
+
+
+
+
+ a| 
+Memoria del nodo a bassa disponibilità
+ a| 
+La quantità di RAM disponibile su un nodo è bassa.
+
+Una RAM disponibile bassa potrebbe indicare un cambiamento nel carico di lavoro o una perdita di memoria con uno o più nodi.
+
+. Monitorare questo avviso per verificare se il problema si risolve da solo.
+. Se la memoria disponibile scende al di sotto della soglia di allarme principale, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Spazio libero ridotto per il pool di storage
+ a| 
+La quantità di spazio disponibile per memorizzare i dati degli oggetti in un pool di storage è bassa.
+
+. Selezionare *ILM* > *Storage Pools*.
+. Selezionare il pool di storage elencato nell'avviso e selezionare *Visualizza dettagli*.
+. Determinare dove è richiesta ulteriore capacità di storage. È possibile aggiungere nodi di storage a ciascun sito del pool di storage o aggiungere volumi di storage (LUN) a uno o più nodi di storage esistenti.
+. Eseguire una procedura di espansione per aumentare la capacità dello storage.
+
+
+xref:../expand/index.adoc[Espandi il tuo grid]
+
+
+
+ a| 
+Memoria del nodo installata insufficiente
+ a| 
+La quantità di memoria installata su un nodo è bassa.
+
+Aumentare la quantità di RAM disponibile per la macchina virtuale o l'host Linux. Controllare il valore di soglia dell'avviso principale per determinare il requisito minimo predefinito per un nodo StorageGRID. Consultare le istruzioni per l'installazione della piattaforma:
+
+* xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]
+* xref:../ubuntu/index.adoc[Installare Ubuntu o Debian]
+* xref:../vmware/index.adoc[Installare VMware]
+
+
+
+
+ a| 
+Storage dei metadati basso
+ a| 
+Lo spazio disponibile per memorizzare i metadati degli oggetti è basso.
+
+*Allarme critico*
+
+. Interrompere l'acquisizione degli oggetti.
+. Aggiungere immediatamente nodi di storage in una procedura di espansione.
+
+
+*Allerta importante*
+
+Aggiungere immediatamente nodi di storage in una procedura di espansione.
+
+*Avviso minore*
+
+. Monitorare la velocità di utilizzo dello spazio di metadati dell'oggetto. Selezionare *NODES* *_Storage Node_* *Storage* e visualizzare il grafico Storage Used - Object Metadata.
+. Aggiungere nodi di storage in un xref:../expand/index.adoc[procedura di espansione] il più presto possibile.
+
+
+Una volta aggiunti nuovi nodi di storage, il sistema ribilancia automaticamente i metadati degli oggetti in tutti i nodi di storage e l'allarme viene cancellato.
+
+Consultare le istruzioni per l'avviso di storage metadati in esaurimento in xref:troubleshooting-metadata-issues.adoc[Risolvere i problemi relativi ai metadati].
+
+
+
+ a| 
+Capacità disco di metriche ridotte
+ a| 
+Lo spazio disponibile per il database delle metriche è basso.
+
+. Monitorare questo avviso per verificare se il problema si risolve da solo e se lo spazio su disco diventa nuovamente disponibile.
+. Contattare il supporto tecnico se lo spazio disponibile continua a diminuire.
+
+
+
+
+ a| 
+Storage dei dati a oggetti basso
+ a| 
+Lo spazio disponibile per memorizzare i dati degli oggetti è basso.
+
+Eseguire una procedura di espansione. È possibile aggiungere volumi di storage (LUN) ai nodi di storage esistenti oppure aggiungere nuovi nodi di storage.
+
+xref:troubleshooting-low-object-data-storage-alert.adoc[Risolvere i problemi relativi all'avviso di storage dei dati a oggetti in esaurimento]
+
+xref:../expand/index.adoc[Espandi il tuo grid]
+
+
+
+ a| 
+Override del watermark di sola lettura bassa
+ a| 
+L'override filigrana di sola lettura soft del volume di storage è inferiore al watermark ottimizzato minimo per un nodo di storage.
+
+Per informazioni su come risolvere questo avviso, visitare il sito Web all'indirizzo xref:../monitor/troubleshoot-low-watermark-alert.html[Risolvere i problemi relativi agli avvisi di override del watermark di sola lettura bassa].
+
+
+
+ a| 
+Bassa capacità del disco root
+ a| 
+Lo spazio disponibile per il disco root è insufficiente.
+
+. Monitorare questo avviso per verificare se il problema si risolve da solo e se lo spazio su disco diventa nuovamente disponibile.
+. Contattare il supporto tecnico se lo spazio disponibile continua a diminuire.
+
+
+
+
+ a| 
+Bassa capacità dei dati di sistema
+ a| 
+Lo spazio disponibile per i dati di sistema StorageGRID su `/var/local` il file system è in esaurimento.
+
+. Monitorare questo avviso per verificare se il problema si risolve da solo e se lo spazio su disco diventa nuovamente disponibile.
+. Contattare il supporto tecnico se lo spazio disponibile continua a diminuire.
+
+
+
+
+ a| 
+Spazio libero nella directory tmp basso
+ a| 
+Lo spazio disponibile nella directory /tmp è insufficiente.
+
+. Monitorare questo avviso per verificare se il problema si risolve da solo e se lo spazio su disco diventa nuovamente disponibile.
+. Contattare il supporto tecnico se lo spazio disponibile continua a diminuire.
+
+
+
+
+ a| 
+Errore di connettività di rete del nodo
+ a| 
+Si sono verificati errori durante il trasferimento dei dati tra nodi.
+
+Gli errori di connettività di rete potrebbero essere stati corretti senza l'intervento manuale. Contattare il supporto tecnico se gli errori non sono chiari.
+
+Consultare le istruzioni relative all'allarme NRER (Network Receive Error) in xref:troubleshooting-network-hardware-and-platform-issues.adoc[Risolvere i problemi di rete, hardware e piattaforma].
+
+
+
+ a| 
+Errore frame ricezione rete nodo
+ a| 
+Un'elevata percentuale di frame di rete ricevuti da un nodo presenta errori.
+
+Questo avviso potrebbe indicare un problema hardware, ad esempio un cavo difettoso o un ricetrasmettitore guasto su entrambe le estremità della connessione Ethernet.
+
+. Se si utilizza un'appliance, provare a sostituire ogni ricetrasmettitore e cavo SFP+ o SFP28, uno alla volta, per verificare se l'avviso scompare.
+. Se l'avviso persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Nodo non sincronizzato con il server NTP
+ a| 
+L'ora del nodo non è sincronizzata con il server NTP (Network Time Protocol).
+
+. Verificare di aver specificato almeno quattro server NTP esterni, ciascuno dei quali fornisce un riferimento di livello 3 o superiore.
+. Verificare che tutti i server NTP funzionino correttamente.
+. Verificare le connessioni ai server NTP. Assicurarsi che non siano bloccati da un firewall.
+
+
+
+
+ a| 
+Nodo non bloccato con server NTP
+ a| 
+Il nodo non è bloccato su un server NTP (Network Time Protocol).
+
+. Verificare di aver specificato almeno quattro server NTP esterni, ciascuno dei quali fornisce un riferimento di livello 3 o superiore.
+. Verificare che tutti i server NTP funzionino correttamente.
+. Verificare le connessioni ai server NTP. Assicurarsi che non siano bloccati da un firewall.
+
+
+
+
+ a| 
+Rete nodo non appliance non in funzione
+ a| 
+Uno o più dispositivi di rete sono disconnessi o non attivi. Questo avviso indica che un'interfaccia di rete (eth) per un nodo installato su una macchina virtuale o su un host Linux non è accessibile.
+
+Contattare il supporto tecnico.
+
+
+
+ a| 
+Controllo dell'esistenza dell'oggetto non riuscito
+ a| 
+Il processo di controllo dell'esistenza dell'oggetto non è riuscito.
+
+. Selezionare *MAINTENANCE object existence check*.
+. Annotare il messaggio di errore. Eseguire le azioni correttive appropriate:
++
+*Impossibile avviare*, *connessione persa*, *errore sconosciuto*
+
++
+.. Assicurarsi che i nodi di storage e i volumi inclusi nel processo siano online e disponibili.
+.. Assicurarsi che non vi siano errori di servizio o di volume sui nodi di storage. Se un servizio non è in esecuzione, avviare o riavviare il servizio. Vedere xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
+.. Assicurarsi che il controllo di coerenza selezionato possa essere soddisfatto.
+.. Dopo aver risolto eventuali problemi, selezionare *Riprova*. Il lavoro riprenderà dall'ultimo stato valido.
+
+
++
+*Errore critico dello storage nel volume*
+
++
+.. Ripristinare il volume guasto. Vedere xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
+.. Selezionare *Riprova*.
+.. Al termine del lavoro, creare un altro lavoro per i volumi rimanenti sul nodo per verificare la presenza di errori aggiuntivi.
+
+
+. Se non riesci a risolvere i problemi, contatta il supporto tecnico.
+
+
+
+
+ a| 
+Controllo dell'esistenza dell'oggetto bloccato
+ a| 
+Il lavoro di verifica dell'esistenza dell'oggetto si è bloccato.
+
+Impossibile continuare il lavoro di verifica dell'esistenza dell'oggetto. Uno o più nodi di storage o volumi inclusi nel processo non sono in linea o non rispondono, oppure il controllo di coerenza selezionato non può più essere soddisfatto perché troppi nodi sono inattivi o non disponibili.
+
+. Assicurarsi che tutti i nodi e i volumi di storage controllati siano online e disponibili (selezionare *NODI*).
+. Assicurarsi che siano disponibili e in linea un numero sufficiente di nodi di storage per consentire al nodo coordinatore corrente di leggere i metadati degli oggetti utilizzando il controllo di coerenza selezionato. Se necessario, avviare o riavviare un servizio. Vedere xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
++
+Quando si risolvono i passi 1 e 2, il lavoro viene avviato automaticamente da dove è stato interrotto.
+
+. Se il controllo di coerenza selezionato non può essere soddisfatto, annullare il lavoro e avviare un altro lavoro utilizzando un controllo di coerenza inferiore.
+. Se non riesci a risolvere i problemi, contatta il supporto tecnico.
+
+
+
+
+ a| 
+Oggetti persi
+ a| 
+Uno o più oggetti sono stati persi dalla griglia.
+
+Questo avviso potrebbe indicare che i dati sono stati persi in modo permanente e non sono recuperabili.
+
+. Esaminare immediatamente questo avviso. Potrebbe essere necessario intervenire per evitare ulteriori perdite di dati. Inoltre, se si esegue un'azione rapida, potrebbe essere possibile ripristinare un oggetto perso.
++
+xref:troubleshooting-lost-and-missing-object-data.adoc[Risolvere i problemi relativi ai dati degli oggetti persi e mancanti]
+
+. Una volta risolto il problema sottostante, azzerare il contatore:
++
+.. Selezionare *SUPPORT* > *Tools* > *Grid topology*.
+.. Per il nodo di storage che ha generato l'avviso, selezionare *_Site_* *_Grid Node_* *LDR* *Data Store* *Configuration* *Main*.
+.. Selezionare *Reset Lost Objects Count* e fare clic su *Apply Changes* (Applica modifiche).
+
+
+
+
+
+
+ a| 
+Servizi della piattaforma non disponibili
+ a| 
+In un sito sono in esecuzione o disponibili troppi nodi di storage con il servizio RSM.
+
+Assicurarsi che la maggior parte dei nodi di storage che dispongono del servizio RSM nel sito interessato sia in esecuzione e in stato non di errore.
+
+Consultare "`Troubleshooting platform Services`" in xref:../admin/index.adoc[Istruzioni per l'amministrazione di StorageGRID].
+
+
+
+ a| 
+S3 HA POSTO la dimensione dell'oggetto troppo grande
+ a| 
+Un client S3 sta tentando di eseguire un'operazione PUT Object che supera i limiti di dimensione S3.
+
+. Utilizzare l'ID tenant mostrato nei dettagli dell'avviso per identificare l'account tenant.
+. Accedere a *Support* *Tools* *Logs* e raccogliere i registri delle applicazioni per il nodo di storage mostrato nei dettagli dell'avviso. Specificare un periodo di tempo di 15 minuti prima e dopo l'ora dell'avviso.
+. Estrarre l'archivio scaricato e accedere alla posizione di `bycast.log` (`/GID<grid_id>_<time_stamp>/<site_node>/<time_stamp>/grid/bycast.log`).
+. Cercare il contenuto di `bycast.log` per `"method=PUT"` E identificare l'indirizzo IP del client S3 osservando il `clientIP` campo.
+. Informare tutti gli utenti client che la dimensione massima DELL'oggetto PUT è 5 GiB.
+. USA caricamenti multiparte per oggetti di dimensioni superiori a 5 GiB.
+
+
+
+
+ a| 
+Collegamento dell'appliance di servizi alla porta di rete dell'amministratore 1
+ a| 
+La porta Admin Network 1 dell'appliance è inattiva o disconnessa.
+
+. Controllare il cavo e la connessione fisica alla porta di rete amministrativa 1.
+. Risolvere eventuali problemi di connessione. Consultare le istruzioni di installazione e manutenzione dell'hardware dell'appliance.
+. Se questa porta viene disconnessa in base allo scopo, disattivare questa regola. In Grid Manager, selezionare *ALERTS* *Rules*, selezionare la regola e fare clic su *Edit rule* (Modifica regola). Quindi, deselezionare la casella di controllo *Enabled*.
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:disabling-alert-rules.adoc[Disattiva le regole di avviso]
+
+
+
+
+
+
+ a| 
+Collegamento dell'appliance di servizi su Admin Network (o Client Network)
+ a| 
+L'interfaccia dell'appliance alla rete di amministrazione (eth1) o alla rete client (eth2) è inattiva o disconnessa.
+
+. Controllare i cavi, gli SFP e le connessioni fisiche alla rete StorageGRID.
+. Risolvere eventuali problemi di connessione. Consultare le istruzioni di installazione e manutenzione dell'hardware dell'appliance.
+. Se questa porta viene disconnessa in base allo scopo, disattivare questa regola. In Grid Manager, selezionare *ALERTS* *Rules*, selezionare la regola e fare clic su *Edit rule* (Modifica regola). Quindi, deselezionare la casella di controllo *Enabled*.
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:disabling-alert-rules.adoc[Disattiva le regole di avviso]
+
+
+
+
+
+
+ a| 
+Collegamento dell'appliance di servizi alla porta di rete 1, 2, 3 o 4
+ a| 
+La porta di rete 1, 2, 3 o 4 dell'appliance è inattiva o scollegata.
+
+. Controllare i cavi, gli SFP e le connessioni fisiche alla rete StorageGRID.
+. Risolvere eventuali problemi di connessione. Consultare le istruzioni di installazione e manutenzione dell'hardware dell'appliance.
+. Se questa porta viene disconnessa in base allo scopo, disattivare questa regola. In Grid Manager, selezionare *ALERTS* *Rules*, selezionare la regola e fare clic su *Edit rule* (Modifica regola). Quindi, deselezionare la casella di controllo *Enabled*.
++
+** xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+** xref:disabling-alert-rules.adoc[Disattiva le regole di avviso]
+
+
+
+
+
+
+ a| 
+Connettività dello storage dell'appliance di servizi degradata
+ a| 
+Uno dei due SSD di un'appliance di servizi si è guastato o non è sincronizzato con l'altro.
+
+La funzionalità dell'appliance non viene influenzata, ma il problema deve essere risolto immediatamente. Se entrambi i dischi si guastano, l'apparecchio non funzionerà più.
+
+. Da Grid Manager, selezionare *NODES* ***_Services appliance_, quindi selezionare la scheda **hardware*.
+. Esaminare il messaggio nel campo *Storage RAID Mode* (modalità RAID storage).
+. Se il messaggio indica lo stato di avanzamento di un'operazione di risincronizzazione, attendere il completamento dell'operazione, quindi confermare che l'avviso è stato risolto. Un messaggio di risincronizzazione indica che l'unità SSD è stata sostituita di recente o che viene risincronizzata per un altro motivo.
+. Se il messaggio indica che uno degli SSD è guasto, sostituire il disco guasto non appena possibile.
++
+Per istruzioni su come sostituire un disco in un'appliance di servizi, consultare la guida all'installazione e alla manutenzione delle appliance SG100 e SG1000.
+
++
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
+
+
+
+
+ a| 
+Collegamento dell'appliance di storage alla porta di rete dell'amministratore 1
+ a| 
+La porta Admin Network 1 dell'appliance è inattiva o disconnessa.
+
+. Controllare il cavo e la connessione fisica alla porta di rete amministrativa 1.
+. Risolvere eventuali problemi di connessione. Consultare le istruzioni di installazione e manutenzione dell'hardware dell'appliance.
+. Se questa porta viene disconnessa in base allo scopo, disattivare questa regola. In Grid Manager, selezionare *ALERTS* *Rules*, selezionare la regola e fare clic su *Edit rule* (Modifica regola). Quindi, deselezionare la casella di controllo *Enabled*.
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:disabling-alert-rules.adoc[Disattiva le regole di avviso]
+
+
+
+
+
+
+ a| 
+Collegamento dell'appliance di storage su Admin Network (o Client Network)
+ a| 
+L'interfaccia dell'appliance alla rete di amministrazione (eth1) o alla rete client (eth2) è inattiva o disconnessa.
+
+. Controllare i cavi, gli SFP e le connessioni fisiche alla rete StorageGRID.
+. Risolvere eventuali problemi di connessione. Consultare le istruzioni di installazione e manutenzione dell'hardware dell'appliance.
+. Se questa porta viene disconnessa in base allo scopo, disattivare questa regola. In Grid Manager, selezionare *ALERTS* *Rules*, selezionare la regola e fare clic su *Edit rule* (Modifica regola). Quindi, deselezionare la casella di controllo *Enabled*.
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:disabling-alert-rules.adoc[Disattiva le regole di avviso]
+
+
+
+
+
+
+ a| 
+Collegamento dell'appliance di storage alla porta di rete 1, 2, 3 o 4
+ a| 
+La porta di rete 1, 2, 3 o 4 dell'appliance è inattiva o scollegata.
+
+. Controllare i cavi, gli SFP e le connessioni fisiche alla rete StorageGRID.
+. Risolvere eventuali problemi di connessione. Consultare le istruzioni di installazione e manutenzione dell'hardware dell'appliance.
+. Se questa porta viene disconnessa in base allo scopo, disattivare questa regola. In Grid Manager, selezionare *ALERTS* *Rules*, selezionare la regola e fare clic su *Edit rule* (Modifica regola). Quindi, deselezionare la casella di controllo *Enabled*.
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+** xref:disabling-alert-rules.adoc[Disattiva le regole di avviso]
+
+
+
+
+
+
+ a| 
+La connettività dello storage dell'appliance di storage è degradata
+ a| 
+Si è verificato un problema con una o più connessioni tra il controller di calcolo e il controller dello storage.
+
+. Controllare le spie degli indicatori di porta dall'apparecchio.
+. Se le spie di una porta sono spente, verificare che il cavo sia collegato correttamente. Se necessario, sostituire il cavo.
+. Attendere fino a cinque minuti.
++
+*Nota:* se è necessario sostituire un secondo cavo, non scollegarlo per almeno 5 minuti. In caso contrario, il volume root potrebbe diventare di sola lettura, il che richiede un riavvio hardware.
+
+. Da Grid Manager, selezionare *NODES*. Quindi, selezionare la scheda hardware del nodo che ha riscontrato il problema. Verificare che la condizione di avviso sia stata risolta.
+
+
+
+
+ a| 
+Dispositivo di storage inaccessibile
+ a| 
+Impossibile accedere a un dispositivo di storage.
+
+Questo avviso indica che non è possibile montare o accedere a un volume a causa di un problema con un dispositivo di storage sottostante.
+
+. Controllare lo stato di tutti i dispositivi di storage utilizzati per il nodo:
++
+** Se il nodo è installato su una macchina virtuale o su un host Linux, seguire le istruzioni del sistema operativo per eseguire la diagnostica hardware o eseguire un controllo del file system.
++
+*** xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]
+*** xref:../ubuntu/index.adoc[Installare Ubuntu o Debian]
+*** xref:../vmware/index.adoc[Installare VMware]
+
+
+** Se il nodo è installato su un'appliance SG100, SG1000 o SG6000, utilizzare BMC.
+** Se il nodo è installato su un'appliance SG5600 o SG5700, utilizzare Gestione di sistema di SANtricity.
+
+
+. Se necessario, sostituire il componente. Consultare le istruzioni per l'apparecchio:
++
+** xref:../sg6000/index.adoc[Appliance di storage SG6000]
+** xref:../sg5700/index.adoc[Appliance di storage SG5700]
+** xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+
+
+
+
+
+ a| 
+Utilizzo elevato della quota del tenant
+ a| 
+Viene utilizzata una percentuale elevata di spazio di quota tenant. Se un tenant supera la quota, i nuovi ingest vengono rifiutati.
+
+*Nota:* questa regola di avviso è disattivata per impostazione predefinita perché potrebbe generare numerose notifiche.
+
+. In Grid Manager, selezionare *TENANT*.
+. Ordinare la tabella in base a *quota Utilization*.
+. Selezionare un tenant il cui utilizzo della quota è prossimo al 100%.
+. Eseguire una o entrambe le operazioni seguenti:
++
+** Selezionare *Edit* (Modifica) per aumentare la quota di storage per il tenant.
+** Avvisare il tenant che l'utilizzo delle quote è elevato.
+
+
+
+
+
+
+ a| 
+Impossibile comunicare con il nodo
+ a| 
+Uno o più servizi non rispondono o non è possibile raggiungere il nodo.
+
+Questo avviso indica che un nodo è disconnesso per un motivo sconosciuto. Ad esempio, un servizio sul nodo potrebbe essere stato arrestato o il nodo potrebbe aver perso la connessione di rete a causa di un'interruzione dell'alimentazione o di un'interruzione imprevista.
+
+Monitorare questo avviso per verificare se il problema si risolve da solo. Se il problema persiste:
+
+. Determinare se è presente un altro avviso che interessa questo nodo. Questo avviso potrebbe essere risolto quando si risolve l'altro avviso.
+. Verificare che tutti i servizi su questo nodo siano in esecuzione. Se un servizio viene arrestato, provare ad avviarlo. Vedere xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
+. Assicurarsi che l'host del nodo sia acceso. In caso contrario, avviare l'host.
++
+*Nota:* se più host sono spenti, consultare la xref:../maintain/index.adoc[istruzioni per il ripristino e la manutenzione].
+
+. Determinare se si è verificato un problema di connettività di rete tra questo nodo e il nodo di amministrazione.
+. Se non si riesce a risolvere l'avviso, contattare il supporto tecnico.
+
+
+
+
+ a| 
+Riavvio del nodo imprevisto
+ a| 
+Un nodo si è riavviato inaspettatamente nelle ultime 24 ore.
+
+. Monitorare questo avviso. L'avviso viene cancellato dopo 24 ore. Tuttavia, se il nodo si riavvia di nuovo inaspettatamente, questo avviso viene attivato di nuovo.
+. Se non si riesce a risolvere l'avviso, potrebbe esserci un guasto hardware. Contattare il supporto tecnico.
+
+
+
+
+ a| 
+Rilevato oggetto corrotto non identificato
+ a| 
+È stato trovato un file nello storage a oggetti replicato che non è stato possibile identificare come oggetto replicato.
+
+. Determinare se vi sono problemi con lo storage sottostante su un nodo di storage. Ad esempio, eseguire la diagnostica hardware o eseguire un controllo del file system.
+. Dopo aver risolto eventuali problemi di storage, xref:verifying-object-integrity.adoc[eseguire il controllo dell'esistenza dell'oggetto] Per determinare se le copie replicate, come definito dalla policy ILM, sono mancanti.
+. Monitorare questo avviso. L'avviso verrà visualizzato dopo 24 ore, ma verrà nuovamente attivato se il problema non è stato risolto.
+. Se non si riesce a risolvere l'avviso, contattare il supporto tecnico.
+
+
+|===

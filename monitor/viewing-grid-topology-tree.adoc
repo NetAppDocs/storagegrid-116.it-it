@@ -1,0 +1,20 @@
+---
+permalink: monitor/viewing-grid-topology-tree.html 
+sidebar: sidebar 
+keywords: how to view the Grid Topology tree 
+summary: 'L"albero topologia griglia consente di accedere a informazioni dettagliate sugli elementi del sistema StorageGRID, inclusi siti, nodi griglia, servizi e componenti. Nella maggior parte dei casi, è necessario accedere all"albero topologia griglia solo quando indicato nella documentazione o quando si lavora con il supporto tecnico.' 
+---
+= Visualizzare l'albero topologia griglia
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'albero topologia griglia consente di accedere a informazioni dettagliate sugli elementi del sistema StorageGRID, inclusi siti, nodi griglia, servizi e componenti. Nella maggior parte dei casi, è necessario accedere all'albero topologia griglia solo quando indicato nella documentazione o quando si lavora con il supporto tecnico.
+
+Per accedere alla struttura Grid Topology, selezionare *SUPPORT* *Tools* *Grid Topology*.
+
+image::../media/grid_topology_tree.gif[Parti dell'albero topologia griglia]
+
+Per espandere o comprimere l'albero topologia griglia, fare clic su image:../media/nms_tree_expand.gif["icona del segno più"] oppure image:../media/nms_tree_collapse.gif["icona del segno meno"] a livello di sito, nodo o servizio. Per espandere o comprimere tutti gli elementi nell'intero sito o in ciascun nodo, tenere premuto il tasto *Ctrl* e fare clic su.

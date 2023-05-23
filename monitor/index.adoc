@@ -1,0 +1,24 @@
+---
+permalink: monitor/index.html 
+sidebar: sidebar 
+keywords: monitor StorageGRID 
+summary: Utilizzare queste istruzioni per monitorare un sistema StorageGRID e per valutare e risolvere i problemi che potrebbero verificarsi. 
+---
+= Monitoraggio e risoluzione dei problemi: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzare queste istruzioni per monitorare un sistema StorageGRID e per valutare e risolvere i problemi che potrebbero verificarsi.
+
+
+
+== A proposito di queste istruzioni
+
+Queste istruzioni descrivono come utilizzare Grid Manager per monitorare un sistema StorageGRID. Verranno fornite informazioni su quali informazioni monitorare regolarmente, su come gestire gli avvisi e gli allarmi legacy, su come utilizzare SNMP per il monitoraggio e su come ottenere dati StorageGRID aggiuntivi, tra cui metriche e diagnostica.
+
+Queste istruzioni descrivono anche come risolvere i problemi di un sistema StorageGRID e descrivere tutti gli avvisi di sistema, gli allarmi legacy e i file di registro.
+
+Seguire queste istruzioni se si intende monitorare e supportare un sistema StorageGRID dopo averlo installato.

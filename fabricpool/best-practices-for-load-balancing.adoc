@@ -1,0 +1,64 @@
+---
+permalink: fabricpool/best-practices-for-load-balancing.html 
+sidebar: sidebar 
+keywords: fabricPool, load balancer, endpoint, load balancing, Layer 7, cloud tier, best practices 
+summary: Prima di collegare StorageGRID come livello cloud FabricPool, è necessario utilizzare il gestore di griglia StorageGRID per configurare almeno un endpoint di bilanciamento del carico. 
+---
+= Best practice per il bilanciamento del carico
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di collegare StorageGRID come livello cloud FabricPool, è necessario utilizzare il gestore di griglia StorageGRID per configurare almeno un endpoint di bilanciamento del carico.
+
+
+
+== Cos'è il bilanciamento del carico?
+
+Quando i dati vengono suddivisi in livelli da FabricPool a un sistema StorageGRID, StorageGRID utilizza un sistema di bilanciamento del carico per gestire il carico di lavoro di acquisizione e recupero. Il bilanciamento del carico massimizza la velocità e la capacità di connessione distribuendo il carico di lavoro FabricPool su più nodi di storage.
+
+Il servizio bilanciamento del carico StorageGRID viene installato su tutti i nodi di amministrazione e su tutti i nodi gateway e fornisce il bilanciamento del carico di livello 7. Esegue la terminazione TLS (Transport Layer Security) delle richieste client, ispeziona le richieste e stabilisce nuove connessioni sicure ai nodi di storage.
+
+Il servizio Load Balancer su ciascun nodo funziona in modo indipendente quando si inoltra il traffico client ai nodi di storage. Attraverso un processo di ponderazione, il servizio Load Balancer indirizza più richieste ai nodi di storage con una maggiore disponibilità della CPU.
+
+Anche se il servizio bilanciamento del carico di StorageGRID è il meccanismo di bilanciamento del carico consigliato, potrebbe essere necessario integrare un bilanciamento del carico di terze parti. Per informazioni, contattare il rappresentante commerciale NetApp o visitare il sito Web all'indirizzo https://www.netapp.com/pdf.html?item=/media/17068-tr4626pdf.pdf["TR-4626: Bilanciatori di carico globali e di terze parti StorageGRID"^].
+
+
+NOTE: Il servizio separato di bilanciamento del carico di connessione (CLB) sui nodi gateway è obsoleto e non è più consigliato per l'utilizzo con FabricPool.
+
+
+
+== Best practice per il bilanciamento del carico StorageGRID
+
+Come Best practice generale, ogni sito del sistema StorageGRID deve includere due o più nodi nel servizio bilanciamento del carico. Ad esempio, un sito potrebbe includere due nodi gateway o sia un nodo amministratore che un nodo gateway. Assicurarsi che vi sia un'infrastruttura di rete, hardware o virtualizzazione adeguata per ciascun nodo di bilanciamento del carico, sia che si utilizzino appliance di servizi SG100 o SG1000, nodi bare metal o nodi basati su macchine virtuali (VM).
+
+È necessario configurare un endpoint del bilanciamento del carico StorageGRID per definire la porta che i nodi gateway e i nodi di amministrazione utilizzeranno per le richieste FabricPool in entrata e in uscita.
+
+
+
+== Best practice per il certificato endpoint del bilanciamento del carico
+
+Quando si crea un endpoint di bilanciamento del carico da utilizzare con FabricPool, è necessario utilizzare HTTPS come protocollo. La comunicazione con StorageGRID senza crittografia TLS è supportata ma non consigliata
+
+È quindi possibile caricare un certificato firmato da un'autorità di certificazione pubblica o privata oppure generare un certificato autofirmato. Il certificato consente a ONTAP di autenticarsi con StorageGRID.
+
+Come procedura consigliata, è necessario utilizzare un certificato del server CA per proteggere la connessione. I certificati firmati da una CA possono essere ruotati senza interruzioni.
+
+Quando si richiede un certificato CA per l'utilizzo con l'endpoint del bilanciamento del carico, assicurarsi che il nome di dominio sul certificato corrisponda al nome del server immesso in ONTAP per l'endpoint del bilanciamento del carico. Se possibile, utilizzare un carattere jolly (*) per consentire gli URL di tipo host virtuale. Ad esempio:
+
+[listing]
+----
+*.s3.storagegrid.company.com
+----
+Quando si aggiunge StorageGRID come livello cloud FabricPool, è necessario installare lo stesso certificato nel cluster ONTAP, nonché i certificati di autorità di certificazione (CA) root e subordinate.
+
+
+NOTE: StorageGRID utilizza i certificati del server per diversi scopi. Se ci si connette al servizio Load Balancer, è possibile utilizzare facoltativamente il certificato S3 e Swift API.
+
+Per ulteriori informazioni sul certificato server per un endpoint di bilanciamento del carico:
+
+* xref:../admin/configuring-load-balancer-endpoints.adoc[Configurare gli endpoint del bilanciamento del carico]
+* xref:../harden/hardening-guideline-for-server-certificates.adoc[Linee guida per la protezione avanzata dei certificati server]
+

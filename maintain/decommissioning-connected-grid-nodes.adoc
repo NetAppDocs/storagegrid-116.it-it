@@ -1,0 +1,139 @@
+---
+permalink: maintain/decommissioning-connected-grid-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission, connected nodes, decommission node 
+summary: È possibile decommissionare e rimuovere in modo permanente i nodi collegati alla rete. 
+---
+= Decommissionare i nodi di rete connessi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile decommissionare e rimuovere in modo permanente i nodi collegati alla rete.
+
+* È necessario comprendere i requisiti e. xref:considerations-for-decommissioning-grid-nodes.adoc[considerazioni per la disattivazione dei nodi di rete].
+* È necessario aver raccolto tutti i materiali necessari.
+* È necessario assicurarsi che non siano attivi lavori di riparazione dei dati.
+* È necessario aver confermato che il ripristino del nodo di storage non è in corso in alcun punto della griglia. In tal caso, è necessario attendere il completamento di qualsiasi ricostruzione Cassandra eseguita come parte del ripristino. È quindi possibile procedere con lo smantellamento.
+* È necessario assicurarsi che non vengano eseguite altre procedure di manutenzione mentre la procedura di decommissionamento del nodo è in esecuzione, a meno che la procedura di decommissionamento del nodo non sia in pausa.
+* È necessario disporre della passphrase di provisioning.
+* I nodi della griglia sono connessi.
+* La colonna *Dismissione possibile* per il nodo o i nodi che si desidera decommissionare deve includere un segno di spunta verde.
+* Tutti i nodi della griglia devono avere uno stato di salute normale (verde) image:../media/icon_alert_green_checkmark.png["icona del segno di spunta verde"]. Se nella colonna *Health* viene visualizzata una di queste icone, provare a risolvere il problema:
++
+|===
+
+
+| Icona | Colore | Severità 
+
+
+ a| 
+image:../media/icon_alarm_yellow_notice.gif["icona quadrata gialla"]
+ a| 
+Giallo
+ a| 
+Avviso
+
+
+
+ a| 
+image:../media/icon_alert_yellow_minor.png["icona a forma di diamante arancione chiaro"]
+ a| 
+Arancione chiaro
+ a| 
+Minore
+
+
+
+ a| 
+image:../media/icon_alert_orange_major.png["icona a forma di diamante arancione scuro"]
+ a| 
+Arancione scuro
+ a| 
+Maggiore
+
+
+
+ a| 
+image:../media/icon_alert_red_critical.png["icona x rossa"]
+ a| 
+Rosso
+ a| 
+Critico
+
+|===
+* Se in precedenza è stato dismesso un nodo di storage disconnesso, tutti i lavori di riparazione dei dati sono stati completati correttamente. Vedere xref:checking-data-repair-jobs.adoc[Controllare i lavori di riparazione dei dati].
+
+
+
+IMPORTANT: Non rimuovere la macchina virtuale o altre risorse di un nodo griglia fino a quando non viene richiesto in questa procedura.
+
+. Nella pagina nodi di decommissionazione, selezionare la casella di controllo per ciascun nodo della griglia che si desidera decommissionare.
+. Inserire la passphrase di provisioning.
++
+Il pulsante *Avvia decommissionazione* è attivato.
+
+. Fare clic su *Avvia decommissionazione*.
++
+Viene visualizzata una finestra di dialogo di conferma.
+
++
+image::../media/decommission_confirmation.gif[schermata della finestra di dialogo di conferma della decommissionazione]
+
+. Esaminare l'elenco dei nodi selezionati e fare clic su *OK*.
++
+Viene avviata la procedura di decommissionamento del nodo e viene visualizzato l'avanzamento per ciascun nodo. Durante la procedura, viene generato un nuovo pacchetto di ripristino per mostrare la modifica della configurazione della griglia.
+
++
+image::../media/decommission_nodes_procedure_in_progress.png[schermata dello smantellamento del nodo in corso]
+
++
+
+IMPORTANT: Non scollegare un nodo di storage dopo l'avvio della procedura di decommissionamento. La modifica dello stato potrebbe causare la mancata copia di alcuni contenuti in altre posizioni.
+
+. Non appena il nuovo pacchetto di ripristino sarà disponibile, fare clic sul collegamento o selezionare *MANUTENZIONE* > *sistema* > *pacchetto di ripristino* per accedere alla pagina del pacchetto di ripristino. Quindi, scaricare `.zip` file.
++
+Consultare le istruzioni per xref:downloading-recovery-package.adoc[Download del pacchetto di ripristino].
+
++
+
+NOTE: Scarica il pacchetto di ripristino il prima possibile per assicurarti di ripristinare la griglia in caso di problemi durante la procedura di decommissionamento.
+
+. Monitorare periodicamente la pagina nodi di decommissionazione per assicurarsi che tutti i nodi selezionati vengano decommissionati correttamente.
++
+I nodi di storage possono richiedere giorni o settimane per la decommissionazione. Una volta completate tutte le attività, viene visualizzato nuovamente l'elenco di selezione dei nodi con un messaggio di esito positivo.
+
++
+image::../media/decommission_nodes_procedure_complete.png[schermata che mostra che la decommissionazione è completa]
+
+. Seguire la fase appropriata per la piattaforma. Ad esempio:
++
+** *Linux*: Si consiglia di scollegare i volumi ed eliminare i file di configurazione del nodo creati durante l'installazione.
+** *VMware*: Per eliminare la macchina virtuale, utilizzare l'opzione "`DElimina dal disco`" di vCenter. Potrebbe essere necessario eliminare anche i dischi dati indipendenti dalla macchina virtuale.
+** *Appliance StorageGRID*: Il nodo appliance torna automaticamente allo stato non distribuito, dove è possibile accedere al programma di installazione dell'appliance StorageGRID. È possibile spegnere l'apparecchio o aggiungerlo a un altro sistema StorageGRID.
+
+
+
+
+Completare questi passaggi dopo aver completato la procedura di decommissionamento del nodo:
+
+* Assicurarsi che i dischi del nodo della griglia decommissionata siano puliti. Utilizzare uno strumento o un servizio di cancellazione dei dati disponibile in commercio per rimuovere in modo permanente e sicuro i dati dai dischi.
+* Se un nodo dell'appliance è stato disattivato e i dati dell'appliance sono stati protetti mediante la crittografia del nodo, utilizzare il programma di installazione dell'appliance StorageGRID per cancellare la configurazione del server di gestione delle chiavi (Cancella KMS). Se si desidera utilizzare l'appliance in un'altra griglia, è necessario cancellare la configurazione KMS.
++
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
++
+xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
++
+xref:../sg5700/index.adoc[Appliance di storage SG5700]
+
++
+xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+
+
+.Informazioni correlate
+xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]

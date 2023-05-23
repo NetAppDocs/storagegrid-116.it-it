@@ -1,0 +1,14 @@
+---
+permalink: sg5700/accessing-and-configuring-santricity-system-manager.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, SANtricity System Manager, SANtricity, System Manager, configure, configuring, setup, set up, setting up, access, accessing, E-Series AutoSupport, autosupport 
+summary: 'È possibile utilizzare Gestore di sistema di SANtricity per monitorare lo stato dei controller di storage, dei dischi di storage e di altri componenti hardware nello shelf del controller di storage. È inoltre possibile configurare un proxy per e-Series AutoSupport che consente di inviare messaggi AutoSupport dall"appliance senza utilizzare la porta di gestione.' 
+---
+= Accesso e configurazione di Gestore di sistema SANtricity (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestore di sistema di SANtricity per monitorare lo stato dei controller di storage, dei dischi di storage e di altri componenti hardware nello shelf del controller di storage. È inoltre possibile configurare un proxy per e-Series AutoSupport che consente di inviare messaggi AutoSupport dall'appliance senza utilizzare la porta di gestione.

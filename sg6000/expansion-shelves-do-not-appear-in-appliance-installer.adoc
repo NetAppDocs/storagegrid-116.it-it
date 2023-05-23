@@ -1,0 +1,34 @@
+---
+permalink: sg6000/expansion-shelves-do-not-appear-in-appliance-installer.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance troubleshooting, Expansion, shelves, do not appear, Appliance Installer, missing, not shown 
+summary: 'Se sono stati installati shelf di espansione per SG6060 o SG6060X e non vengono visualizzati nel programma di installazione dell"appliance StorageGRID, verificare che gli shelf siano stati installati e accesi completamente.' 
+---
+= Gli shelf di espansione non vengono visualizzati in Appliance Installer
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se sono stati installati shelf di espansione per SG6060 o SG6060X e non vengono visualizzati nel programma di installazione dell'appliance StorageGRID, verificare che gli shelf siano stati installati e accesi completamente.
+
+.A proposito di questa attività
+È possibile verificare che gli shelf di espansione siano collegati all'appliance visualizzando le seguenti informazioni nel programma di installazione dell'appliance StorageGRID:
+
+* La pagina *Home* contiene un messaggio sugli shelf di espansione.
++
+image::../media/expansion_shelf_home_page_msg.png[Shelf di espansione Msg]
+
+* La pagina *Advanced* *RAID Mode* indica in base al numero di dischi se l'appliance include o meno shelf di espansione. Ad esempio, nella schermata seguente, vengono visualizzati due SSD e 178 HDD. Un SG6060 con due shelf di espansione contiene 180 dischi in totale.
+
+
+image::../media/expansion_shelves_shown_by_num_of_drives.png[Numero di dischi]
+
+Se le pagine del programma di installazione dell'appliance StorageGRID non indicano la presenza di shelf di espansione, seguire questa procedura.
+
+.Fasi
+. Verificare che xref:sg6060-cabling-optional-expansion-shelves.adoc[tutti i cavi necessari sono stati collegati saldamente].
+. Verificare di disporre di xref:connecting-power-cords-and-applying-power-sg6000.adoc[sugli shelf di espansione].
+. Se hai bisogno di aiuto per risolvere un problema, contatta il supporto tecnico.
+

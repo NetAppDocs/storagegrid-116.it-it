@@ -1,0 +1,14 @@
+---
+permalink: admin/verifying-cifs-audit-integration.html 
+sidebar: sidebar 
+keywords: verify cifs, cift audit share 
+summary: 'La condivisione dell"audit è di sola lettura. I file di log devono essere letti dalle applicazioni del computer e la verifica non include l"apertura di un file. Si ritiene sufficiente verificare che i file di registro di controllo vengano visualizzati in una finestra di Esplora risorse. Dopo la verifica della connessione, chiudere tutte le finestre.' 
+---
+= Verificare l'integrazione dell'audit CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La condivisione dell'audit è di sola lettura. I file di log devono essere letti dalle applicazioni del computer e la verifica non include l'apertura di un file. Si ritiene sufficiente verificare che i file di registro di controllo vengano visualizzati in una finestra di Esplora risorse. Dopo la verifica della connessione, chiudere tutte le finestre.

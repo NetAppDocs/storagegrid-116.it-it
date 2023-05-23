@@ -1,0 +1,43 @@
+---
+permalink: maintain/fixing-missing-block-device-errors.html 
+sidebar: sidebar 
+keywords: storagegrid, missing block device, block device error 
+summary: 'Il sistema verifica che ciascun nodo recuperato sia mappato a un file speciale valido per il dispositivo a blocchi o a un softlink valido a un file speciale per il dispositivo a blocchi. Se StorageGRID rileva una mappatura non valida in `/etc/storagegrid/nodes/_node-name_.conf` file, viene visualizzato un errore di dispositivo a blocchi mancante.' 
+---
+= Correggere gli errori del dispositivo a blocchi mancanti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema verifica che ciascun nodo recuperato sia mappato a un file speciale valido per il dispositivo a blocchi o a un softlink valido a un file speciale per il dispositivo a blocchi. Se StorageGRID rileva una mappatura non valida in `/etc/storagegrid/nodes/_node-name_.conf` file, viene visualizzato un errore di dispositivo a blocchi mancante.
+
+Se si verifica un errore corrispondente a questo modello:
+
+`Checking configuration file /etc/storagegrid/nodes/_node-name_.conf for node _node-name_...`
+`ERROR: _node-name_: BLOCK_DEVICE_PURPOSE = _path-name_`` _nome-nodo_: _nome-percorso_ non esiste`
+
+Significa che `/etc/storagegrid/nodes/_node-name_.conf` Esegue la mappatura del dispositivo a blocchi utilizzato da _node-name_ A SCOPO con il nome percorso specificato nel file system Linux, ma non esiste un file speciale valido per il dispositivo a blocchi o un softlink a un file speciale per il dispositivo a blocchi in tale posizione.
+
+Verificare di aver completato le operazioni descritte in xref:deploying-new-linux-hosts.adoc[Implementare nuovi host Linux]. Utilizzare gli stessi nomi persistenti dei dispositivi per tutti i dispositivi a blocchi utilizzati sull'host originale.
+
+Se non si riesce a ripristinare o ricreare il file speciale del dispositivo a blocchi mancante, è possibile allocare un nuovo dispositivo a blocchi della dimensione e della categoria di storage appropriate e modificare il file di configurazione del nodo per modificare il valore DI BLOCK_DEVICE_PURPOSE in modo che punti al nuovo file speciale del dispositivo a blocchi.
+
+Determinare le dimensioni e la categoria di storage appropriate dalle tabelle nella sezione "`Srequisiti di torage`" delle istruzioni di installazione per il sistema operativo Linux in uso. Prima di procedere con la sostituzione del dispositivo a blocchi, consultare le raccomandazioni contenute in "`Configuring host storage`" (Configurazione dello storage host).
+
+
+IMPORTANT: Se è necessario fornire un nuovo dispositivo di storage a blocchi per qualsiasi variabile del file di configurazione che inizia con `BLOCK_DEVICE_` poiché il dispositivo a blocchi originale è stato perso con l'host guasto, assicurarsi che il nuovo dispositivo a blocchi non sia formattato prima di tentare ulteriori procedure di ripristino. Il nuovo dispositivo a blocchi non verrà formattato se si utilizza lo storage condiviso e si è creato un nuovo volume. In caso di dubbi, eseguire il seguente comando per tutti i nuovi file speciali del dispositivo di storage a blocchi.
+
+ATTENZIONE:
+
+Eseguire il seguente comando solo per i nuovi dispositivi di storage a blocchi. Non eseguire questo comando se si ritiene che lo storage a blocchi contenga ancora dati validi per il nodo da ripristinare, in quanto i dati sul dispositivo andranno persi.
+
+[listing]
+----
+sudo dd if=/dev/zero of=/dev/mapper/my-block-device-name bs=1G count=1
+----
+.Informazioni correlate
+xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]
+
+xref:../ubuntu/index.adoc[Installare Ubuntu o Debian]

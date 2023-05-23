@@ -1,0 +1,173 @@
+---
+permalink: ilm/using-advanced-filters-in-ilm-rules.html 
+sidebar: sidebar 
+keywords: ilm rule advanced filtering 
+summary: Il filtraggio avanzato consente di creare regole ILM applicabili solo a oggetti specifici in base ai metadati. Quando si imposta il filtraggio avanzato per una regola, si seleziona il tipo di metadati che si desidera associare, si seleziona un operatore e si specifica un valore di metadati. Quando si valutano gli oggetti, la regola ILM viene applicata solo agli oggetti che hanno metadati corrispondenti al filtro avanzato. 
+---
+= Utilizzare filtri avanzati nelle regole ILM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il filtraggio avanzato consente di creare regole ILM applicabili solo a oggetti specifici in base ai metadati. Quando si imposta il filtraggio avanzato per una regola, si seleziona il tipo di metadati che si desidera associare, si seleziona un operatore e si specifica un valore di metadati. Quando si valutano gli oggetti, la regola ILM viene applicata solo agli oggetti che hanno metadati corrispondenti al filtro avanzato.
+
+La tabella mostra i tipi di metadati che è possibile specificare nei filtri avanzati, gli operatori che è possibile utilizzare per ogni tipo di metadati e i valori di metadati previsti.
+
+[cols="1a,1a,2a"]
+|===
+| Tipo di metadati | Operatori supportati | Valore dei metadati 
+
+
+ a| 
+Tempo di acquisizione (microsecondi)
+ a| 
+* uguale a
+* non uguale
+* inferiore a.
+* inferiore o uguale a.
+* maggiore di
+* maggiore di o uguale a.
+
+ a| 
+Ora e data di acquisizione dell'oggetto.
+
+*Nota:* per evitare problemi di risorse quando si attiva un nuovo criterio ILM, è possibile utilizzare il filtro avanzato Ingest Time in qualsiasi regola che potrebbe modificare la posizione di un gran numero di oggetti esistenti. Impostare Ingest Time (tempo di acquisizione) su un valore maggiore o uguale al tempo approssimativo in cui il nuovo criterio verrà applicato per garantire che gli oggetti esistenti non vengano spostati inutilmente.
+
+
+
+ a| 
+Chiave
+ a| 
+* uguale a
+* non uguale
+* contiene
+* non contiene
+* inizia con
+* non inizia con
+* termina con
+* non finisce con
+
+ a| 
+Tutto o parte di una chiave oggetti S3 o Swift univoca.
+
+Ad esempio, è possibile associare gli oggetti che terminano con `.txt` oppure inizia con `test-object/`.
+
+
+
+ a| 
+Tempo di ultimo accesso (microsecondi)
+ a| 
+* uguale a
+* non uguale
+* inferiore a.
+* inferiore o uguale a.
+* maggiore di
+* maggiore di o uguale a.
+* esiste
+* non esiste
+
+ a| 
+Ora e data dell'ultimo recupero dell'oggetto (letto o visualizzato).
+
+*Nota:* se si prevede di utilizzare l'ultimo tempo di accesso come filtro avanzato, è necessario abilitare gli ultimi aggiornamenti dell'ora di accesso per il bucket S3 o il container Swift.
+
+xref:using-last-access-time-in-ilm-rules.adoc[USA l'ultimo tempo di accesso nelle regole ILM]
+
+
+
+ a| 
+Vincolo di posizione (solo S3)
+ a| 
+* uguale a
+* non uguale
+
+ a| 
+La regione in cui è stato creato un bucket S3. Utilizzare *ILM* > *regioni* per definire le regioni visualizzate.
+
+*Nota:* Un valore di US-East-1 corrisponde agli oggetti nei bucket creati nella regione US-East-1 e agli oggetti nei bucket che non hanno alcuna regione specificata.
+
+xref:configuring-regions-optional-and-s3-only.adoc[Configurazione delle regioni (opzionale e solo S3)]
+
+
+
+ a| 
+Dimensione oggetto (MB)
+ a| 
+* uguale a
+* non uguale
+* inferiore a.
+* inferiore o uguale a.
+* maggiore di
+* maggiore di o uguale a.
+
+ a| 
+Dimensione dell'oggetto in MB.
+
+L'erasure coding è più adatto per oggetti superiori a 1 MB. Non utilizzare la codifica erasure per oggetti di dimensioni inferiori a 200 KB per evitare l'overhead di gestione di frammenti con codifica erasure molto piccoli.
+
+*Nota:* per filtrare le dimensioni degli oggetti inferiori a 1 MB, digitare un valore decimale. Il tipo di browser e le impostazioni internazionali consentono di controllare se è necessario utilizzare un punto o una virgola come separatore decimale.
+
+
+
+ a| 
+Metadati dell'utente
+ a| 
+* contiene
+* termina con
+* uguale a
+* esiste
+* non contiene
+* non finisce con
+* non uguale
+* non esiste
+* non inizia con
+* inizia con
+
+ a| 
+Coppia key-value, dove *User Metadata Name* è la chiave e *User Metadata Value* è il valore.
+
+Ad esempio, per filtrare gli oggetti con metadati utente di `color=blue`, specificare `color` Per *User Metadata Name*, `equals` per l'operatore, e. `blue` Per *valore metadati utente*.
+
+*Nota:* i nomi dei metadati utente non distinguono tra maiuscole e minuscole; i valori dei metadati utente distinguono tra maiuscole e minuscole.
+
+
+
+ a| 
+Tag oggetto (solo S3)
+ a| 
+* contiene
+* termina con
+* uguale a
+* esiste
+* non contiene
+* non finisce con
+* non uguale
+* non esiste
+* non inizia con
+* inizia con
+
+ a| 
+Coppia Key-value, dove *Object Tag Name* è la chiave e *Object Tag Value* è il valore.
+
+Ad esempio, per filtrare gli oggetti che hanno un tag Object di `Image=True`, specificare `Image` Per *Nome tag oggetto*, `equals` per l'operatore, e. `True` Per *valore tag oggetto*.
+
+*Nota:* i nomi dei tag degli oggetti e i valori dei tag degli oggetti fanno distinzione tra maiuscole e minuscole. È necessario inserire questi elementi esattamente come sono stati definiti per l'oggetto.
+
+|===
+
+
+== Specifica di più tipi di metadati e valori
+
+Quando si definisce il filtraggio avanzato, è possibile specificare più tipi di metadati e più valori di metadati. Ad esempio, se si desidera che una regola corrisponda a oggetti di dimensioni comprese tra 10 MB e 100 MB, selezionare il tipo di metadati *Object Size* e specificare due valori di metadati.
+
+* Il primo valore di metadati specifica oggetti superiori o uguali a 10 MB.
+* Il secondo valore di metadati specifica gli oggetti inferiori o uguali a 100 MB.
+
+
+image::../media/advanced_filtering_size_between.gif[Esempio di filtraggio avanzato per le dimensioni degli oggetti]
+
+L'utilizzo di più voci consente di avere un controllo preciso su quali oggetti vengono associati. Nell'esempio seguente, la regola si applica agli oggetti che hanno un marchio A o un marchio B come valore dei metadati dell'utente camera_TYPE. Tuttavia, la regola si applica solo agli oggetti Brand B di dimensioni inferiori a 10 MB.
+
+image::../media/advanced_filtering_multiple_rows.gif[Esempio di filtraggio avanzato per i metadati dell'utente]

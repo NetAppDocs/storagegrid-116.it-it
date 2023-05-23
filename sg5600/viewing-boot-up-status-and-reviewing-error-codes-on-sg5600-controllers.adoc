@@ -1,0 +1,28 @@
+---
+permalink: sg5600/viewing-boot-up-status-and-reviewing-error-codes-on-sg5600-controllers.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, status, boot codes, boot, error codes, error, code, start, startup, start up, start-up, progress, e5600sg 
+summary: 'Il display a sette segmenti di ciascun controller mostra lo stato e i codici di errore quando l"appliance si accende, mentre l"hardware è in fase di inizializzazione e quando l"hardware si guasta e deve uscire dall"inizializzazione. Se si sta monitorando l"avanzamento o la risoluzione dei problemi, è necessario osservare la sequenza dei codici man mano che vengono visualizzati.' 
+---
+= Visualizzazione dello stato di avvio e revisione dei codici di errore sui controller SG5600
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il display a sette segmenti di ciascun controller mostra lo stato e i codici di errore quando l'appliance si accende, mentre l'hardware è in fase di inizializzazione e quando l'hardware si guasta e deve uscire dall'inizializzazione. Se si sta monitorando l'avanzamento o la risoluzione dei problemi, è necessario osservare la sequenza dei codici man mano che vengono visualizzati.
+
+.A proposito di questa attività
+I codici di stato e di errore per la centralina E5600 SG non sono gli stessi del controller E2700.
+
+.Fasi
+. Durante l'avvio, visualizzare i codici visualizzati sui display a sette segmenti per monitorare l'avanzamento.
+. Per esaminare i codici di errore per la centralina E5600SG, vedere le informazioni sullo stato del display a sette segmenti e sui codici di errore.
+. Per consultare i codici di errore del controller E2700, consultare la documentazione del controller E2700 sul sito di supporto.
+
+
+.Informazioni correlate
+xref:e5600sg-controller-seven-segment-display-codes.adoc[Codici display a sette segmenti della centralina E5600SG]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61765["Documentazione NetApp: Serie E2700"^]

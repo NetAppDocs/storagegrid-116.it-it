@@ -1,0 +1,39 @@
+---
+permalink: sg6000/viewing-boot-up-status-codes-for-sg6000-storage-controllers.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, boot codes, boot-up codes, start codes, codes, boot, start, storage controller, controller, storage 
+summary: 'Ogni controller di storage dispone di un display a sette segmenti che fornisce codici di stato all"accensione del controller. I codici di stato sono gli stessi per il controller E2800 e per il controller EF570.' 
+---
+= Visualizza i codici di stato dell'avvio per i controller di storage SG6000
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ogni controller di storage dispone di un display a sette segmenti che fornisce codici di stato all'accensione del controller. I codici di stato sono gli stessi per il controller E2800 e per il controller EF570.
+
+.A proposito di questa attività
+Per le descrizioni di questi codici, consultare le informazioni di monitoraggio del sistema e-Series relative al tipo di controller storage.
+
+.Fasi
+. Durante l'avvio, monitorare l'avanzamento visualizzando i codici visualizzati sul display a sette segmenti per ciascun controller di storage.
++
+Il display a sette segmenti di ciascun controller di storage mostra la sequenza di ripetizione *OS*, *SD*, `*_blank_*` per indicare che il controller sta eseguendo l'elaborazione all'inizio della giornata.
+
+. Dopo l'avvio dei controller, verificare che ogni controller di storage indichi 99, che è l'ID predefinito per uno shelf di controller e-Series.
++
+Assicurarsi che questo valore sia visualizzato su entrambi i controller storage, come mostrato in questo esempio controller E2800.
+
++
+image::../media/seven_segment_display_codes_for_e2800.gif[Codici di visualizzazione a sette segmenti per E2800]
+
+. Se uno o entrambi i controller mostrano altri valori, vedere xref:troubleshooting-hardware-installation.adoc[Risoluzione dei problemi relativi all'installazione dell'hardware (SG6000)] e confermare che la procedura di installazione è stata completata correttamente. Se non si riesce a risolvere il problema, contattare il supporto tecnico.
+
+
+.Informazioni correlate
+https://library.netapp.com/ecmdocs/ECMLP2588751/html/frameset.html["Guida al monitoraggio dei sistemi E5700 ed E2800"^]
+
+https://mysupport.netapp.com/site/global/dashboard["Supporto NetApp"^]
+
+xref:powering-on-sg6000-cn-controller-and-verifying-operation.adoc[Accendere il controller SG6000-CN e verificarne il funzionamento]

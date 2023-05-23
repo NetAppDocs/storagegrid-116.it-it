@@ -1,0 +1,67 @@
+---
+permalink: admin/editing-tenant-account.html 
+sidebar: sidebar 
+keywords: edit tenant account, change tenant name, allow platform services, tenant quota 
+summary: 'È possibile modificare un account tenant per modificare il nome visualizzato, modificare l"impostazione dell"origine dell"identità, consentire o non consentire i servizi della piattaforma o immettere una quota di storage.' 
+---
+= Modificare l'account tenant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare un account tenant per modificare il nome visualizzato, modificare l'impostazione dell'origine dell'identità, consentire o non consentire i servizi della piattaforma o immettere una quota di storage.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.Fasi
+. Selezionare *TENANT*.
++
+image::../media/tenant_accounts_page.png[Pagina account tenant]
+
+. Selezionare l'account tenant che si desidera modificare.
++
+Utilizzare la casella di ricerca per cercare un account tenant in base al nome o all'ID tenant.
+
+. Dal menu a discesa Actions (azioni), selezionare *Edit* (Modifica).
++
+Questo esempio si intende per una griglia che non utilizza SSO (Single Sign-on). Questo account tenant non ha configurato la propria origine di identità.
+
++
+image::../media/edit_tenant_account.png[Modifica account tenant]
+
+. Modificare i valori di questi campi come richiesto:
++
+** *Nome*
+** *Descrizione*
+** *Tipo di client*
+** *Quota di storage*
+
+
+. Selezionare *continua*.
+. Selezionare o deselezionare le autorizzazioni per l'account tenant.
++
+** Se si disattiva *Platform Services* per un tenant che li sta già utilizzando, i servizi configurati per i bucket S3 smetteranno di funzionare. Non viene inviato alcun messaggio di errore al tenant. Ad esempio, se il tenant ha configurato la replica CloudMirror per un bucket S3, può comunque memorizzare oggetti nel bucket, ma le copie di tali oggetti non verranno più eseguite nel bucket S3 esterno configurato come endpoint.
+** Modificare l'impostazione della casella di controllo *utilizza la propria origine dell'identità* per determinare se l'account tenant utilizzerà la propria origine dell'identità o l'origine dell'identità configurata per Grid Manager.
++
+Se la casella di controllo *utilizza la propria origine identità* è:
+
++
+*** Disattivato e selezionato, il tenant ha già attivato la propria origine di identità. Un tenant deve disattivare l'origine dell'identità prima di poter utilizzare l'origine dell'identità configurata per Grid Manager.
+*** Disattivato e deselezionato, SSO è attivato per il sistema StorageGRID. Il tenant deve utilizzare l'origine dell'identità configurata per Grid Manager.
+
+
+** Attivare o disattivare *S3 Select* in base alle esigenze. Vedere xref:manage-s3-select-for-tenant-accounts.adoc[Manage S3 (Gestisci S3): Selezionare per gli account tenant].
+
+
+. Selezionare *Salva*.
+
+
+.Informazioni correlate
+* xref:manage-platform-services-for-tenants.adoc[Gestire i servizi della piattaforma per gli account tenant S3]
+* xref:../tenant/index.adoc[Utilizzare un account tenant]
+

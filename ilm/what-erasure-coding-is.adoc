@@ -1,0 +1,32 @@
+---
+permalink: ilm/what-erasure-coding-is.html 
+sidebar: sidebar 
+keywords: what is erasure coding, what is ec 
+summary: 'Erasure coding è il secondo metodo utilizzato da StorageGRID per memorizzare i dati degli oggetti. Quando StorageGRID associa oggetti a una regola ILM configurata per creare copie con codifica di cancellazione, slice i dati degli oggetti in frammenti di dati, calcola ulteriori frammenti di parità e memorizza ogni frammento su un nodo di storage diverso. Quando si accede a un oggetto, questo viene riassemblato utilizzando i frammenti memorizzati. Se un dato o un frammento di parità viene corrotto o perso, l"algoritmo di erasure coding può ricreare quel frammento utilizzando un sottoinsieme dei dati rimanenti e dei frammenti di parità.' 
+---
+= Che cos'è la cancellazione dei codici
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Erasure coding è il secondo metodo utilizzato da StorageGRID per memorizzare i dati degli oggetti. Quando StorageGRID associa oggetti a una regola ILM configurata per creare copie con codifica di cancellazione, slice i dati degli oggetti in frammenti di dati, calcola ulteriori frammenti di parità e memorizza ogni frammento su un nodo di storage diverso. Quando si accede a un oggetto, questo viene riassemblato utilizzando i frammenti memorizzati. Se un dato o un frammento di parità viene corrotto o perso, l'algoritmo di erasure coding può ricreare quel frammento utilizzando un sottoinsieme dei dati rimanenti e dei frammenti di parità.
+
+Nell'esempio seguente viene illustrato l'utilizzo di un algoritmo di erasure coding sui dati di un oggetto. In questo esempio, la regola ILM utilizza uno schema di erasure coding 4+2. Ciascun oggetto viene suddiviso in quattro frammenti di dati uguali e due frammenti di parità vengono calcolati dai dati dell'oggetto. Ciascuno dei sei frammenti viene memorizzato su un nodo diverso in tre siti del data center per fornire protezione dei dati in caso di guasti al nodo o perdita del sito.
+
+image::../media/ec_three_sites_4_plus_2.png[Erasure coding Three Sites 4 Plus 2]
+
+Lo schema di erasure coding 4+2 richiede un minimo di nove nodi di storage, con tre nodi di storage in ciascuno dei tre siti diversi. Un oggetto può essere recuperato finché quattro dei sei frammenti (dati o parità) rimangono disponibili. È possibile perdere fino a due frammenti senza perdita dei dati dell'oggetto. In caso di perdita di un intero sito del data center, l'oggetto può comunque essere recuperato o riparato, purché tutti gli altri frammenti rimangano accessibili.
+
+image::../media/ec_recoverable_4_plus_2.png[Erasure coding recoverable 4 Plus 2]
+
+In caso di perdita di più di due nodi di storage, l'oggetto non può essere recuperato.
+
+image::../media/ec_unrecoverable_4_plus_2.png[Erasure coding Unrecoverable 4 Plus 2]
+
+.Informazioni correlate
+* xref:what-storage-pool-is.adoc[Che cos'è un pool di storage]
+* xref:what-erasure-coding-schemes-are.adoc[Quali sono gli schemi di erasure coding]
+* xref:creating-erasure-coding-profile.adoc[Creare un profilo di codifica Erasure]
+

@@ -1,0 +1,52 @@
+---
+permalink: admin/specifying-node-client-network-is-untrusted.html 
+sidebar: sidebar 
+keywords: how to specify if client network is untrusted, what is untrusted client network 
+summary: 'Se si utilizza una rete client, è possibile specificare se la rete client di ciascun nodo è attendibile o meno. È inoltre possibile specificare l"impostazione predefinita per i nuovi nodi aggiunti in un"espansione.' 
+---
+= Specificare che la rete client del nodo non è attendibile
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza una rete client, è possibile specificare se la rete client di ciascun nodo è attendibile o meno. È inoltre possibile specificare l'impostazione predefinita per i nuovi nodi aggiunti in un'espansione.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone dell'autorizzazione di accesso root.
+* Se si desidera che un nodo Admin o un nodo gateway accetti il traffico in entrata solo su endpoint configurati esplicitamente, sono stati definiti gli endpoint del bilanciamento del carico.
++
+
+NOTE: Le connessioni client esistenti potrebbero non riuscire se gli endpoint del bilanciamento del carico non sono stati configurati.
+
+
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sicurezza* *reti client non attendibili*.
++
+La pagina reti client non attendibili elenca tutti i nodi nel sistema StorageGRID. La colonna motivo non disponibile include una voce se la rete client del nodo deve essere attendibile.
+
++
+image::../media/untrusted_client_networks_page.png[Reti client non attendibili]
+
+. Nella sezione *Set New Node Default* (Imposta nuovo nodo predefinito), specificare l'impostazione predefinita quando si aggiungono nuovi nodi alla griglia in una procedura di espansione.
++
+** *Trusted*: Quando un nodo viene aggiunto in un'espansione, la sua rete client è attendibile.
+** *Untrusted*: Quando un nodo viene aggiunto in un'espansione, la sua rete client non è attendibile. Se necessario, tornare a questa pagina per modificare l'impostazione di un nuovo nodo specifico.
+
+
++
+
+NOTE: Questa impostazione non influisce sui nodi esistenti nel sistema StorageGRID.
+
+. Nella sezione *Select untrusted Client Network Nodes* (Seleziona nodi di rete client non attendibili), selezionare i nodi che devono consentire le connessioni client solo su endpoint del bilanciamento del carico configurati esplicitamente.
++
+È possibile selezionare o deselezionare la casella di controllo nel titolo per selezionare o deselezionare tutti i nodi.
+
+. Selezionare *Salva*.
++
+Le nuove regole del firewall vengono aggiunte e applicate immediatamente. Le connessioni client esistenti potrebbero non riuscire se gli endpoint del bilanciamento del carico non sono stati configurati.
+
+

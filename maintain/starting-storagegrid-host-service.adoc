@@ -1,0 +1,39 @@
+---
+permalink: maintain/starting-storagegrid-host-service.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, host service, start host service 
+summary: 'Per avviare i nodi StorageGRID e assicurarsi che vengano riavviati dopo un riavvio dell"host, è necessario attivare e avviare il servizio host StorageGRID.' 
+---
+= Avviare il servizio host StorageGRID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per avviare i nodi StorageGRID e assicurarsi che vengano riavviati dopo un riavvio dell'host, è necessario attivare e avviare il servizio host StorageGRID.
+
+. Eseguire i seguenti comandi su ciascun host:
++
+[listing]
+----
+sudo systemctl enable storagegrid
+sudo systemctl start storagegrid
+----
+. Eseguire il seguente comando per assicurarsi che l'implementazione stia procedendo:
++
+`sudo storagegrid node status _node-name_`
+
++
+Per qualsiasi nodo che restituisca uno stato di non in esecuzione o interrotto, eseguire il seguente comando:
+
++
+`sudo storagegrid node start _node-name_`
+
+. Se in precedenza è stato attivato e avviato il servizio host StorageGRID (o se non si è certi che il servizio sia stato attivato e avviato), eseguire anche il seguente comando:
++
+[listing]
+----
+sudo systemctl reload-or-restart storagegrid
+----
+

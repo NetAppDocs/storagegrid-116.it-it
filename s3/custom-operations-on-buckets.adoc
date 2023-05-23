@@ -1,0 +1,112 @@
+---
+permalink: s3/custom-operations-on-buckets.html 
+sidebar: sidebar 
+keywords: operations, buckets, custom, custom operations on buckets 
+summary: 'Il sistema StorageGRID supporta operazioni bucket personalizzate aggiunte all"API REST S3 e specifiche del sistema.' 
+---
+= Operazioni personalizzate sui bucket
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema StorageGRID supporta operazioni bucket personalizzate aggiunte all'API REST S3 e specifiche del sistema.
+
+La seguente tabella elenca le operazioni di bucket personalizzate supportate da StorageGRID.
+
+|===
+| Operazione | Descrizione | Per ulteriori informazioni 
+
+
+ a| 
+COERENZA del bucket
+ a| 
+Restituisce il livello di coerenza applicato a un determinato bucket.
+ a| 
+xref:get-bucket-consistency-request.adoc[OTTIENI una richiesta di coerenza bucket]
+
+
+
+ a| 
+METTI la coerenza del bucket
+ a| 
+Imposta il livello di coerenza applicato a un bucket specifico.
+ a| 
+xref:put-bucket-consistency-request.adoc[INSERIRE la richiesta di coerenza del bucket]
+
+
+
+ a| 
+OTTIENI l'ultimo tempo di accesso a bucket
+ a| 
+Restituisce se gli ultimi aggiornamenti dell'ora di accesso sono attivati o disattivati per un bucket specifico.
+ a| 
+xref:get-bucket-last-access-time-request.adoc[OTTIENI la richiesta dell'ultimo accesso al bucket]
+
+
+
+ a| 
+TEMPO ULTIMO accesso bucket
+ a| 
+Consente di attivare o disattivare gli ultimi aggiornamenti dell'orario di accesso per un determinato bucket.
+ a| 
+xref:put-bucket-last-access-time-request.adoc[METTI richiesta dell'ultimo tempo di accesso al bucket]
+
+
+
+ a| 
+ELIMINA la configurazione di notifica dei metadati del bucket
+ a| 
+Elimina l'XML di configurazione della notifica dei metadati associato a un bucket specifico.
+ a| 
+xref:delete-bucket-metadata-notification-configuration-request.adoc[ELIMINA la richiesta di configurazione della notifica dei metadati del bucket]
+
+
+
+ a| 
+OTTIENI la configurazione della notifica dei metadati del bucket
+ a| 
+Restituisce l'XML di configurazione della notifica dei metadati associato a un bucket specifico.
+ a| 
+xref:get-bucket-metadata-notification-configuration-request.adoc[OTTIENI una richiesta di configurazione per la notifica dei metadati del bucket]
+
+
+
+ a| 
+INSERIRE la configurazione della notifica dei metadati del bucket
+ a| 
+Configura il servizio di notifica dei metadati per un bucket.
+ a| 
+xref:put-bucket-metadata-notification-configuration-request.adoc[INSERIRE la richiesta di configurazione della notifica dei metadati del bucket]
+
+
+
+ a| 
+METTI il bucket con le impostazioni di conformità
+ a| 
+Obsoleto e non supportato: Non è più possibile creare nuovi bucket con Compliance abilitata.
+ a| 
+xref:deprecated-put-bucket-request-modifications-for-compliance.adoc[Deprecato: METTI il bucket con le impostazioni di conformità]
+
+
+
+ a| 
+OTTIENI la compliance del bucket
+ a| 
+Obsoleto ma supportato: Restituisce le impostazioni di conformità attualmente in vigore per un bucket compatibile esistente.
+ a| 
+xref:deprecated-get-bucket-compliance-request.adoc[Deprecato: OTTIENI una richiesta di conformità bucket]
+
+
+
+ a| 
+METTI la compliance del bucket
+ a| 
+Obsoleto ma supportato: Consente di modificare le impostazioni di conformità per un bucket compatibile esistente.
+ a| 
+xref:deprecated-put-bucket-compliance-request.adoc[Deprecato: INSERIRE la richiesta di conformità del bucket]
+
+|===
+.Informazioni correlate
+xref:s3-operations-tracked-in-audit-logs.adoc[Operazioni S3 registrate nei registri di audit]

@@ -1,0 +1,29 @@
+---
+permalink: ilm/creating-ilm-policy.html 
+sidebar: sidebar 
+keywords: create ILM policy, information lifecycle policy considerations 
+summary: Quando si crea un criterio ILM, si inizia selezionando e ordinando le regole ILM. Quindi, verificare il comportamento della policy proposta simulandola rispetto agli oggetti precedentemente acquisiti. Quando si è soddisfatti del corretto funzionamento del criterio proposto, è possibile attivarlo per creare il criterio attivo. 
+---
+= Crea policy ILM: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si crea un criterio ILM, si inizia selezionando e ordinando le regole ILM. Quindi, verificare il comportamento della policy proposta simulandola rispetto agli oggetti precedentemente acquisiti. Quando si è soddisfatti del corretto funzionamento del criterio proposto, è possibile attivarlo per creare il criterio attivo.
+
+
+CAUTION: Un criterio ILM non configurato correttamente può causare una perdita di dati non ripristinabile. Prima di attivare un criterio ILM, esaminare attentamente il criterio ILM e le relative regole ILM, quindi simulare il criterio ILM. Verificare sempre che la policy ILM funzioni come previsto.
+
+
+
+== Considerazioni per la creazione di un criterio ILM
+
+* Utilizzare la policy integrata del sistema, Baseline 2 Copies Policy, solo nei sistemi di test. La regola Make 2 copies di questo criterio utilizza il pool di storage All Storage Node, che contiene tutti i siti. Se il sistema StorageGRID dispone di più siti, è possibile che due copie di un oggetto vengano posizionate sullo stesso sito.
+* Durante la progettazione di un nuovo criterio, considerare tutti i diversi tipi di oggetti che potrebbero essere inseriti nella griglia. Assicurarsi che il criterio includa regole per la corrispondenza e posizionare questi oggetti secondo necessità.
+* Mantenere la policy ILM il più semplice possibile. In questo modo si evitano situazioni potenzialmente pericolose in cui i dati degli oggetti non sono protetti come previsto quando nel tempo vengono apportate modifiche al sistema StorageGRID.
+* Assicurarsi che le regole della policy siano nell'ordine corretto. Una volta attivato il criterio, gli oggetti nuovi ed esistenti vengono valutati dalle regole nell'ordine elencato, iniziando dall'inizio. Ad esempio, se la prima regola di un criterio corrisponde a un oggetto, tale regola non verrà valutata da altre regole.
+* L'ultima regola in ogni policy ILM è la regola ILM predefinita, che non può utilizzare alcun filtro. Se un oggetto non è stato associato da un'altra regola, la regola predefinita controlla la posizione e il tempo di conservazione dell'oggetto.
+* Prima di attivare un nuovo criterio, esaminare le modifiche apportate dal criterio al posizionamento degli oggetti esistenti. La modifica della posizione di un oggetto esistente potrebbe causare problemi di risorse temporanee quando i nuovi posizionamenti vengono valutati e implementati.
+

@@ -1,0 +1,142 @@
+---
+permalink: tenant/managing-local-users.html 
+sidebar: sidebar 
+keywords: StorageGRID, tenant, tenant manager, users, local users, managing local users, users page, access users page, accessing users page 
+summary: 'È possibile creare utenti locali e assegnarli a gruppi locali per determinare le funzionalità a cui questi utenti possono accedere. Il tenant Manager include un utente locale predefinito, denominato "`root`". Sebbene sia possibile aggiungere e rimuovere utenti locali, non è possibile rimuovere l"utente root.' 
+---
+= Gestire gli utenti locali
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile creare utenti locali e assegnarli a gruppi locali per determinare le funzionalità a cui questi utenti possono accedere. Il tenant Manager include un utente locale predefinito, denominato "`root`". Sebbene sia possibile aggiungere e rimuovere utenti locali, non è possibile rimuovere l'utente root.
+
+.Di cosa hai bisogno
+* È necessario accedere al tenant manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario appartenere a un gruppo di utenti in lettura/scrittura che disponga dell'autorizzazione di accesso root. Vedere xref:tenant-management-permissions.adoc[Permessi di gestione del tenant].
+
+
+
+NOTE: Se è attivato il Single Sign-on (SSO) per il sistema StorageGRID, gli utenti locali non potranno accedere al Manager tenant o all'API di gestione tenant, anche se possono utilizzare le applicazioni client S3 o Swift per accedere alle risorse del tenant, in base alle autorizzazioni di gruppo.
+
+
+
+== Accedere alla pagina utenti
+
+Selezionare *ACCESS MANAGEMENT* > *Users*.
+
+image::../media/tenant_users_list.png[Elenco utenti tenant]
+
+
+
+== Creare utenti locali
+
+È possibile creare utenti locali e assegnarli a uno o più gruppi locali per controllarne le autorizzazioni di accesso.
+
+Gli utenti S3 che non appartengono a nessun gruppo non dispongono di autorizzazioni di gestione o criteri di gruppo S3 applicati. Questi utenti potrebbero avere accesso al bucket S3 concesso tramite una policy bucket.
+
+Gli utenti Swift che non appartengono a nessun gruppo non dispongono di autorizzazioni di gestione o di accesso al container Swift.
+
+.Fasi
+. Selezionare *Crea utente*.
+. Compilare i seguenti campi.
++
+** *Nome completo*: Il nome completo dell'utente, ad esempio il nome e il cognome di una persona o il nome di un'applicazione.
+** *Username*: Il nome che l'utente utilizzerà per accedere. I nomi utente devono essere univoci e non possono essere modificati.
+** *Password*: Una password che viene utilizzata quando l'utente effettua l'accesso.
+** *Conferma password*: Digitare la stessa password immessa nel campo Password.
+** *Nega accesso*: Se si seleziona *Sì*, l'utente non potrà accedere all'account tenant, anche se potrebbe ancora appartenere a uno o più gruppi.
++
+Ad esempio, è possibile utilizzare questa funzione per sospendere temporaneamente la capacità di accesso di un utente.
+
+
+
+. Selezionare *continua*.
+. Assegnare l'utente a uno o più gruppi locali.
++
+Gli utenti che non appartengono a nessun gruppo non disporranno di autorizzazioni di gestione. Le autorizzazioni sono cumulative. Gli utenti disporranno di tutte le autorizzazioni per tutti i gruppi a cui appartengono.
+
+. Selezionare *Crea utente*.
++
+Le modifiche potrebbero richiedere fino a 15 minuti per essere effettive a causa del caching.
+
+
+
+
+
+== Modificare i dettagli dell'utente
+
+Quando si modificano i dettagli di un utente, è possibile modificare il nome completo e la password dell'utente, aggiungerlo a gruppi diversi e impedire all'utente di accedere al tenant.
+
+.Fasi
+. Nell'elenco Users (utenti), selezionare il nome dell'utente di cui si desidera visualizzare o modificare i dettagli.
++
+In alternativa, è possibile selezionare la casella di controllo dell'utente, quindi selezionare *azioni* > *Visualizza dettagli utente*.
+
+. Apportare le modifiche necessarie alle impostazioni utente.
++
+.. Modificare il nome completo dell'utente in base alle necessità selezionando il nome completo o l'icona di modifica image:../media/icon_edit_tm.png["Icona Edit (Modifica)"] Nella sezione Panoramica.
++
+Non è possibile modificare il nome utente.
+
+.. Nella scheda *Password*, modificare la password dell'utente in base alle necessità.
+.. Nella scheda *Access*, consentire all'utente di accedere (selezionare *No*) o impedire all'utente di accedere (selezionare *Sì*) in base alle necessità.
+.. Nella scheda *gruppi*, aggiungere l'utente ai gruppi o rimuoverlo dai gruppi in base alle necessità.
+.. In base alle esigenze di ciascuna sezione, selezionare *Save Changes* (Salva modifiche).
++
+Le modifiche potrebbero richiedere fino a 15 minuti per essere effettive a causa del caching.
+
+
+
+
+
+
+
+== Utenti locali duplicati
+
+È possibile duplicare un utente locale per creare un nuovo utente più rapidamente.
+
+.Fasi
+. Nell'elenco Users (utenti), selezionare l'utente che si desidera duplicare.
+. Selezionare *Duplica utente*.
+. Modificare i seguenti campi per il nuovo utente.
++
+** *Nome completo*: Il nome completo dell'utente, ad esempio il nome e il cognome di una persona o il nome di un'applicazione.
+** *Username*: Il nome che l'utente utilizzerà per accedere. I nomi utente devono essere univoci e non possono essere modificati.
+** *Password*: Una password che viene utilizzata quando l'utente effettua l'accesso.
+** *Conferma password*: Digitare la stessa password immessa nel campo Password.
+** *Nega accesso*: Se si seleziona *Sì*, l'utente non potrà accedere all'account tenant, anche se potrebbe ancora appartenere a uno o più gruppi.
++
+Ad esempio, è possibile utilizzare questa funzione per sospendere temporaneamente la capacità di accesso di un utente.
+
+
+
+. Selezionare *continua*.
+. Selezionare uno o più gruppi locali.
++
+Gli utenti che non appartengono a nessun gruppo non disporranno di autorizzazioni di gestione. Le autorizzazioni sono cumulative. Gli utenti disporranno di tutte le autorizzazioni per tutti i gruppi a cui appartengono.
+
+. Selezionare *Crea utente*.
++
+Le modifiche potrebbero richiedere fino a 15 minuti per essere effettive a causa del caching.
+
+
+
+
+
+== Eliminare gli utenti locali
+
+È possibile eliminare in modo permanente gli utenti locali che non hanno più bisogno di accedere all'account tenant StorageGRID.
+
+Utilizzando Tenant Manager, è possibile eliminare gli utenti locali, ma non quelli federati. Per eliminare gli utenti federati, è necessario utilizzare l'origine delle identità federate.
+
+.Fasi
+. Nell'elenco Users (utenti), selezionare la casella di controllo dell'utente locale che si desidera eliminare.
+. Selezionare *azioni* > *Elimina utente*.
+. Nella finestra di dialogo di conferma, selezionare *Delete user* (Elimina utente) per confermare che si desidera eliminare l'utente dal sistema.
++
+Le modifiche potrebbero richiedere fino a 15 minuti per essere effettive a causa del caching.
+
+

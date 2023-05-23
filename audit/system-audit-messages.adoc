@@ -1,0 +1,209 @@
+---
+permalink: audit/system-audit-messages.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, messages, system, ECOC, ETAF, GNRG, GNUR, GTED, GTST, GTSU, IDEL, LKCU, LLST, OLST, ORLM, SADD, SADE, SVRF, SVRU, SYSD, SYST, SYSU, VLST 
+summary: 'Si consiglia di acquisire familiarità con i messaggi di audit appartenenti alla categoria di audit del sistema. Si tratta di eventi correlati al sistema di auditing stesso, agli stati dei nodi della griglia, all"attività delle attività a livello di sistema (attività della griglia) e alle operazioni di backup del servizio, in modo da poter risolvere potenziali problemi.' 
+---
+= Messaggi di audit del sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si consiglia di acquisire familiarità con i messaggi di audit appartenenti alla categoria di audit del sistema. Si tratta di eventi correlati al sistema di audit stesso, agli stati dei nodi della griglia, all'attività delle attività a livello di sistema (attività della griglia) e alle operazioni di backup del servizio, in modo da poter risolvere potenziali problemi.
+
+|===
+| Codice | Titolo e descrizione del messaggio | Vedere 
+
+
+ a| 
+ECMC
+ a| 
+Missing Erasure Coded Data Fragment (frammento di dati codificato con cancellazione mancante): Indica che è stato rilevato un frammento di dati codificato con cancellazione mancante.
+ a| 
+xref:ecmc-missing-erasure-coded-data-fragment.adoc[ECMC: Frammento di dati codificato Erasure mancante]
+
+
+
+ a| 
+ECOC
+ a| 
+Corrotto Erasure Coded Data Fragment: Indica che è stato rilevato un frammento di dati corrotto con codifica di cancellazione.
+ a| 
+xref:ecoc-corrupt-erasure-coded-data-fragment.adoc[ECOC: Corrotto Erasure Coded Data Fragment]
+
+
+
+ a| 
+ETAF
+ a| 
+Autenticazione di sicurezza non riuscita: Tentativo di connessione con Transport Layer Security (TLS) non riuscito.
+ a| 
+xref:etaf-security-authentication-failed.adoc[ETAF: Autenticazione di sicurezza non riuscita]
+
+
+
+ a| 
+GNRG
+ a| 
+Registrazione GNDS: Un servizio aggiornato o registrato informazioni su se stesso nel sistema StorageGRID.
+ a| 
+xref:gnrg-gnds-registration.adoc[GNRG: Registrazione GNDS]
+
+
+
+ a| 
+NUR
+ a| 
+Annullamento registrazione GNDS: Un servizio non si è registrato dal sistema StorageGRID.
+ a| 
+xref:gnur-gnds-unregistration.adoc[GNUR: Annullamento registrazione GNDS]
+
+
+
+ a| 
+GTED
+ a| 
+Grid Task Ended (attività griglia terminata): Il servizio CMN ha terminato l'elaborazione dell'attività Grid.
+ a| 
+xref:gted-grid-task-ended.adoc[GTED: Task Grid terminato]
+
+
+
+ a| 
+GTST
+ a| 
+Grid Task Started (attività griglia avviata): Il servizio CMN ha avviato l'elaborazione dell'attività Grid.
+ a| 
+xref:gtst-grid-task-started.adoc[GTST: Task Grid avviato]
+
+
+
+ a| 
+GTSU
+ a| 
+Grid Task Submitted (attività griglia inviata): È stata inviata un'attività Grid al servizio CMN.
+ a| 
+xref:gtsu-grid-task-submitted.adoc[GTSU: Task Grid inviato]
+
+
+
+ a| 
+IDEL
+ a| 
+ILM Initiated Delete (eliminazione avviata da ILM): Questo messaggio di controllo viene generato quando ILM avvia il processo di eliminazione di un oggetto.
+ a| 
+xref:idel-ilm-initiated-delete.adoc[IDEL: Eliminazione avviata da ILM]
+
+
+
+ a| 
+LKCU
+ a| 
+Pulitura oggetto sovrascritto. Questo messaggio di audit viene generato quando un oggetto sovrascritto viene rimosso automaticamente per liberare spazio di storage.
+ a| 
+xref:lkcu-overwritten-object-cleanup.adoc[LKCU: Pulitura oggetto sovrascritta]
+
+
+
+ a| 
+LLST
+ a| 
+Location Lost (posizione persa): Questo messaggio di audit viene generato quando una posizione viene persa.
+ a| 
+xref:llst-location-lost.adoc[LLST: Località persa]
+
+
+
+ a| 
+OLST
+ a| 
+Object Lost (oggetti persi): Non è possibile individuare un oggetto richiesto all'interno del sistema StorageGRID.
+ a| 
+xref:olst-system-detected-lost-object.adoc[OLST: Il sistema ha rilevato un oggetto perso]
+
+
+
+ a| 
+ORLM
+ a| 
+Regole oggetto soddisfatte: I dati dell'oggetto vengono memorizzati come specificato dalle regole ILM.
+ a| 
+xref:orlm-object-rules-met.adoc[ORLM: Regole oggetto soddisfatte]
+
+
+
+ a| 
+SADD
+ a| 
+Security Audit Disable (Disattiva controllo protezione): La registrazione del messaggio di controllo è stata disattivata.
+ a| 
+xref:sadd-security-audit-disable.adoc[SADD: Disattivazione dell'audit di sicurezza]
+
+
+
+ a| 
+SADE
+ a| 
+Security Audit Enable (attiva controllo di sicurezza): La registrazione del messaggio di controllo è stata ripristinata.
+ a| 
+xref:sade-security-audit-enable.adoc[SADE: Abilitazione controllo di sicurezza]
+
+
+
+ a| 
+SVRF
+ a| 
+Verifica archivio oggetti non riuscita: Un blocco di contenuto non ha superato i controlli di verifica.
+ a| 
+xref:svrf-object-store-verify-fail.adoc[SVRF: Verifica archivio oggetti non riuscita]
+
+
+
+ a| 
+SVRU
+ a| 
+Object Store Verify Unknown (verifica archivio oggetti sconosciuto): Dati di oggetti imprevisti rilevati nell'archivio oggetti.
+ a| 
+xref:svru-object-store-verify-unknown.adoc[SVRU: Verifica archivio oggetti sconosciuta]
+
+
+
+ a| 
+SYSD
+ a| 
+Node Stop (arresto nodo): È stato richiesto lo spegnimento.
+ a| 
+xref:sysd-node-stop.adoc[SYSD: Interruzione nodo]
+
+
+
+ a| 
+SIST
+ a| 
+Node stopping (interruzione nodo): Un servizio ha avviato un'interruzione senza interruzioni.
+ a| 
+xref:syst-node-stopping.adoc[SYST: Interruzione del nodo]
+
+
+
+ a| 
+SISU
+ a| 
+Node Start (Avvio nodo): Un servizio avviato; la natura dello shutdown precedente viene indicata nel messaggio.
+ a| 
+xref:sysu-node-start.adoc[SYSU: Avvio nodo]
+
+
+
+ a| 
+VLST
+ a| 
+Volume avviato dall'utente perso: Il `/proc/CMSI/Volume_Lost` comando eseguito.
+ a| 
+xref:vlst-user-initiated-volume-lost.adoc[VLST: Perdita del volume avviata dall'utente]
+
+|===
+.Informazioni correlate
+xref:lkcu-overwritten-object-cleanup.adoc[LKCU: Pulitura oggetto sovrascritta]

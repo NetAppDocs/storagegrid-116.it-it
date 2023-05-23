@@ -1,0 +1,83 @@
+---
+permalink: audit/object-ingest-transactions.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, message, messages, transaction, transactions, Object ingest, S3 ingest, Swift ingest, S3, Swift, SPUT, ORLM, WPUT 
+summary: 'È possibile identificare le transazioni di acquisizione dei client nel registro di audit individuando i messaggi di audit specifici dell"API (S3 o Swift).' 
+---
+= Transazioni di acquisizione degli oggetti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile identificare le transazioni di acquisizione dei client nel registro di audit individuando i messaggi di audit specifici dell'API (S3 o Swift).
+
+Non tutti i messaggi di audit generati durante una transazione di acquisizione sono elencati nelle tabelle seguenti. Sono inclusi solo i messaggi necessari per tracciare la transazione di acquisizione.
+
+
+
+== S3: Acquisizione di messaggi di audit
+
+|===
+| Codice | Nome | Descrizione | Traccia | Vedere 
+
+
+ a| 
+SPUT
+ a| 
+Transazione S3 PUT
+ a| 
+Una transazione S3 PUT ingest è stata completata correttamente.
+ a| 
+CBID, S3BK, S3KY
+ a| 
+xref:sput-s3-put.adoc[SPUT: S3 PUT]
+
+
+
+ a| 
+ORLM
+ a| 
+Regole oggetto soddisfatte
+ a| 
+Il criterio ILM è stato soddisfatto per questo oggetto.
+ a| 
+CBID
+ a| 
+xref:orlm-object-rules-met.adoc[ORLM: Regole oggetto soddisfatte]
+
+|===
+
+
+== Acquisizione rapida di messaggi di audit
+
+|===
+| Codice | Nome | Descrizione | Traccia | Vedere 
+
+
+ a| 
+WPUT
+ a| 
+Transazione SWIFT PUT
+ a| 
+Una transazione Swift PUT Ingest è stata completata correttamente.
+ a| 
+CBID, WCON, WOBJ
+ a| 
+xref:wput-swift-put.adoc[WPUT: MESSA rapida]
+
+
+
+ a| 
+ORLM
+ a| 
+Regole oggetto soddisfatte
+ a| 
+Il criterio ILM è stato soddisfatto per questo oggetto.
+ a| 
+CBID
+ a| 
+xref:orlm-object-rules-met.adoc[ORLM: Regole oggetto soddisfatte]
+
+|===

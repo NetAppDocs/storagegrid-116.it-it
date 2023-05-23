@@ -1,0 +1,38 @@
+---
+permalink: s3/benefits-of-active-http-connections.html 
+sidebar: sidebar 
+keywords: active http connection benefits 
+summary: 'Per le connessioni dirette ai nodi di storage o al servizio CLB (deprecato) sui nodi gateway, è necessario limitare la durata di una connessione HTTP attiva a un massimo di 10 minuti, anche se la connessione HTTP esegue continuamente transazioni.' 
+---
+= Vantaggi delle connessioni HTTP attive
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per le connessioni dirette ai nodi di storage o al servizio CLB (obsoleto) sui nodi gateway, è necessario limitare la durata di una connessione HTTP attiva a un massimo di 10 minuti, anche se la connessione HTTP esegue continuamente transazioni.
+
+La determinazione della durata massima per‐cui una connessione deve essere mantenuta aperta è un compromesso tra i benefici della persistenza della connessione e l'allocazione ideale della connessione alle risorse di sistema interne.
+
+Per le connessioni client ai nodi di storage o al servizio CLB, la limitazione delle connessioni HTTP attive offre i seguenti vantaggi:
+
+* Consente un bilanciamento ottimale del carico nel sistema StorageGRID.
++
+Quando si utilizza il servizio CLB, è necessario evitare connessioni TCP/IP di lunga durata per ottimizzare il bilanciamento del carico nel sistema StorageGRID‐. È necessario configurare le applicazioni client in modo da tenere traccia della durata di ciascuna connessione HTTP e chiudere la connessione HTTP dopo un determinato periodo di tempo, in modo da poter ristabilita e ribilanciare la connessione HTTP.
+
++
+Il servizio CLB bilancia il carico nel sistema StorageGRID nel momento in cui un'applicazione client stabilisce una connessione HTTP. Con il passare del tempo, una connessione HTTP potrebbe non essere più ottimale con il variare dei requisiti di bilanciamento del carico. Il sistema esegue il miglior bilanciamento del carico quando le applicazioni client stabiliscono una connessione HTTP separata per ciascuna transazione, ma questo nega i guadagni molto più preziosi associati alle connessioni persistenti.
+
++
+
+NOTE: Il servizio CLB è obsoleto.
+
+* Consente alle applicazioni client di indirizzare le transazioni HTTP ai servizi LDR che dispongono di spazio disponibile.
+* Consente l'avvio delle procedure di manutenzione.
++
+Alcune procedure di manutenzione vengono avviate solo dopo il completamento di tutte le connessioni HTTP in corso.
+
+
+
+Per le connessioni client al servizio Load Balancer, la limitazione della durata delle connessioni aperte può essere utile per consentire l'avvio tempestivo di alcune procedure di manutenzione. Se la durata delle connessioni client non è limitata, potrebbero essere necessari alcuni minuti per terminare automaticamente le connessioni attive.

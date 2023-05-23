@@ -1,0 +1,116 @@
+---
+permalink: admin/adding-user-or-group-to-cifs-audit-share.html 
+sidebar: sidebar 
+keywords: CIFS, add user to audit share, add group to audit share, ad authentication 
+summary: 'È possibile aggiungere un utente o un gruppo a una condivisione di audit CIFS integrata con l"autenticazione ad.' 
+---
+= Aggiungere un utente o un gruppo a una condivisione di audit CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere un utente o un gruppo a una condivisione di audit CIFS integrata con l'autenticazione ad.
+
+.Di cosa hai bisogno
+* Hai il `Passwords.txt` File con la password dell'account root/admin (disponibile nel pacchetto).
+* Hai il `Configuration.txt` File (disponibile in DETTO pacchetto).
+
+
+.A proposito di questa attività
+La seguente procedura riguarda una condivisione di controllo integrata con l'autenticazione ad.
+
+
+NOTE: L'esportazione dell'audit tramite CIFS/Samba è stata deprecata e verrà rimossa in una release futura di StorageGRID.
+
+.Fasi
+. Accedere al nodo di amministrazione principale:
++
+.. Immettere il seguente comando: `ssh admin@_primary_Admin_Node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+. Verificare che tutti i servizi abbiano uno stato di esecuzione o verificato. Inserire: `storagegrid-status`
++
+Se tutti i servizi non sono in esecuzione o verificati, risolvere i problemi prima di continuare.
+
+. Tornare alla riga di comando, premere *Ctrl*+*C*.
+. Avviare l'utility di configurazione CIFS: `config_cifs.rb`
++
+[listing]
+----
+
+---------------------------------------------------------------------
+| Shares                 | Authentication         | Config          |
+---------------------------------------------------------------------
+| add-audit-share        | set-authentication     | validate-config |
+| enable-disable-share   | set-netbios-name       | help            |
+| add-user-to-share      | join-domain            | exit            |
+| remove-user-from-share | add-password-server    |                 |
+| modify-group           | remove-password-server |                 |
+|                        | add-wins-server        |                 |
+|                        | remove-wins-server     |                 |
+---------------------------------------------------------------------
+----
+. Iniziare ad aggiungere un utente o un gruppo: `add-user-to-share`
++
+Viene visualizzato un elenco numerato di condivisioni di controllo configurate.
+
+. Quando richiesto, inserire il numero per la condivisione dell'audit (audit-export): `_audit_share_number_`
++
+Viene richiesto se si desidera concedere a un utente o a un gruppo l'accesso a questa condivisione di controllo.
+
+. Quando richiesto, aggiungere un utente o un gruppo: `user` oppure `group`
+. Quando viene richiesto il nome dell'utente o del gruppo per questa condivisione di audit ad, immettere il nome.
++
+L'utente o il gruppo viene aggiunto in sola lettura per la condivisione di controllo sia nel sistema operativo del server che nel servizio CIFS. La configurazione di Samba viene ricaricata per consentire all'utente o al gruppo di accedere alla condivisione del client di audit.
+
+. Quando richiesto, premere *Invio*.
++
+Viene visualizzata l'utility di configurazione CIFS.
+
+. Ripetere questa procedura per ogni utente o gruppo che ha accesso alla condivisione di controllo.
+. In alternativa, verificare la configurazione: `validate-config`
++
+I servizi vengono controllati e visualizzati. È possibile ignorare i seguenti messaggi:
+
++
+** Impossibile trovare il file include /etc/samba/includes/cifs-interfaces.inc
+** Impossibile trovare il file include /etc/samba/includes/cifs-filesystem.inc
+** Impossibile trovare il file include /etc/samba/includes/cifs-custom-config.inc
+** Impossibile trovare il file include /etc/samba/includes/cifs-shares.inc
++
+... Quando richiesto, premere *Invio* per visualizzare la configurazione del client di controllo.
+... Quando richiesto, premere *Invio*.
+
+
+
+
+. Chiudere l'utilità di configurazione CIFS: `exit`
+. Determinare se è necessario attivare ulteriori condivisioni di audit, come segue:
++
+** Se l'implementazione di StorageGRID è un singolo sito, passare alla fase successiva.
+** Se l'implementazione di StorageGRID include nodi di amministrazione in altri siti, abilitare queste condivisioni di controllo come richiesto:
++
+... Accedere in remoto al nodo di amministrazione di un sito:
++
+.... Immettere il seguente comando: `ssh admin@_grid_node_IP_`
+.... Immettere la password elencata in `Passwords.txt` file.
+.... Immettere il seguente comando per passare a root: `su -`
+.... Immettere la password elencata in `Passwords.txt` file.
+
+
+... Ripetere questa procedura per configurare le condivisioni di controllo per ciascun nodo di amministrazione.
+... Chiudere l'accesso remoto sicuro alla shell nel nodo di amministrazione remoto: `exit`
+
+
+
+
+. Disconnettersi dalla shell dei comandi: `exit`
+

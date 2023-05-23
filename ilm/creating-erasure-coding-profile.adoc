@@ -1,0 +1,115 @@
+---
+permalink: ilm/creating-erasure-coding-profile.html 
+sidebar: sidebar 
+keywords: create EC profile, erasure coding profile 
+summary: Per creare un profilo di codifica Erasure, associare un pool di storage contenente nodi di storage a uno schema di codifica erasure. Questa associazione determina il numero di dati e di frammenti di parità creati e la posizione in cui il sistema distribuisce tali frammenti. 
+---
+= Creare un profilo di codifica Erasure
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per creare un profilo di codifica Erasure, associare un pool di storage contenente nodi di storage a uno schema di codifica erasure. Questa associazione determina il numero di dati e di frammenti di parità creati e la posizione in cui il sistema distribuisce tali frammenti.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+* È stato creato un pool di storage che include esattamente un sito o un pool di storage che include tre o più siti. Non sono disponibili schemi di erasure coding per un pool di storage con solo due siti.
+
+
+.A proposito di questa attività
+I pool di storage utilizzati nei profili di codifica Erasure devono includere esattamente un sito o tre o più siti. Se si desidera fornire la ridondanza del sito, il pool di storage deve avere almeno tre siti.
+
+
+NOTE: È necessario selezionare un pool di storage che contiene nodi di storage. Non è possibile utilizzare i nodi di archiviazione per i dati con codifica erasure.
+
+.Fasi
+. Selezionare *ILM* > *Erasure coding*.
++
+Viene visualizzata la pagina Erasure Coding Profiles.
+
++
+image::../media/ec_profiles_page.png[Pagina erasure coding Profiles (erasure profili codifica]
+
+. Selezionare *Crea*.
++
+Viene visualizzata la finestra di dialogo Create EC Profile (Crea profilo EC).
+
++
+image::../media/create_ec_profile_page.png[Pagina Create EC Profile (Crea profilo EC)]
+
+. Immettere un nome univoco per il profilo di codifica Erasure.
++
+I nomi dei profili di erasure coding devono essere univoci. Si verifica un errore di convalida se si utilizza il nome di un profilo esistente, anche se tale profilo è stato disattivato.
+
++
+
+NOTE: Il nome del profilo di codifica Erasure viene aggiunto al nome del pool di storage nelle istruzioni di posizionamento per una regola ILM.
+
++
+image::../media/storage_pool_and_erasure_coding_profile.png[Pool di storage e nome del profilo EC]
+
+. Selezionare il pool di storage creato per questo profilo di codifica Erasure.
++
+
+NOTE: Se il grid attualmente include un solo sito, non è possibile utilizzare il pool di storage predefinito, tutti i nodi di storage o qualsiasi pool di storage che includa il sito predefinito, tutti i siti. Questo comportamento impedisce che il profilo di codifica Erasure diventi non valido se viene aggiunto un secondo sito.
+
++
+
+NOTE: Se un pool di storage include esattamente due siti, non è possibile utilizzare tale pool di storage per la cancellazione del codice. Non sono disponibili schemi di erasure coding per un pool di storage con due siti.
+
++
+Quando si seleziona un pool di storage, viene visualizzato l'elenco degli schemi di erasure coding disponibili, in base al numero di nodi e siti di storage nel pool.
+
++
+image::../media/create_ec_profile_three_sites.png[Crea tre siti del profilo EC]
+
++
+Per ogni schema di erasure coding disponibile sono elencate le seguenti informazioni:
+
++
+** *Erasure Code*: Il nome dello schema di erasure coding nel seguente formato: Frammenti di dati + frammenti di parità.
+** *Overhead dello storage (%)*: Lo storage aggiuntivo richiesto per i frammenti di parità in relazione alle dimensioni dei dati dell'oggetto. Overhead dello storage = numero totale di frammenti di parità / numero totale di frammenti di dati.
+** *Ridondanza dei nodi di storage*: Il numero di nodi di storage che possono essere persi pur mantenendo la capacità di recuperare i dati degli oggetti.
+** *Ridondanza del sito*: Se il codice di cancellazione selezionato consente di recuperare i dati dell'oggetto in caso di perdita di un sito.
++
+Per supportare la ridondanza del sito, il pool di storage selezionato deve includere più siti, ciascuno con un numero sufficiente di nodi di storage per consentire la perdita di qualsiasi sito. Ad esempio, per supportare la ridondanza del sito utilizzando uno schema di erasure coding 6+3, il pool di storage selezionato deve includere almeno tre siti con almeno tre nodi di storage in ciascun sito.
+
+
+
++
+I messaggi vengono visualizzati nei seguenti casi:
+
++
+** Il pool di storage selezionato non fornisce ridondanza del sito. Il seguente messaggio è previsto quando il pool di storage selezionato include un solo sito. È possibile utilizzare questo profilo di codifica Erasure nelle regole ILM per la protezione dai guasti dei nodi.
++
+image::../media/create_ec_profile_no_site_redundancy.png[Crea ridondanza del sito senza profilo EC]
+
+** Il pool di storage selezionato non soddisfa i requisiti per qualsiasi schema di erasure coding. Ad esempio, il seguente messaggio è previsto quando il pool di storage selezionato include esattamente due siti. Se si desidera utilizzare la codifica erasure per proteggere i dati degli oggetti, è necessario selezionare un pool di storage con esattamente un sito o un pool di storage con tre o più siti.
++
+image::../media/ec_profile_error.png[Err. Err. Profilo di codifica]
+
+** Il grid include un solo sito ed è stato selezionato il pool di storage predefinito, tutti i nodi di storage o qualsiasi pool di storage che includa il sito predefinito, tutti i siti.
++
+image::../media/ilm_ec_profile_all_storage_nodes_warning.png[ILM EC Profile All Storage Node Warning (Avviso tutti i nodi di storage profilo EC]
+
+** Lo schema di erasure coding e il pool di storage selezionati si sovrappongono a un altro profilo di codifica Erasure.
++
+image::../media/ilm_ec_profile_ec_scheme_warning.png[ILM EC Profile Erasure Coding Scheme Warning]
+
++
+In questo esempio, viene visualizzato un messaggio di avviso perché un altro profilo di codifica Erasure sta utilizzando lo schema 2+1 e il pool di storage per l'altro profilo utilizza anche uno dei siti nel pool di storage All 3 Sites.
+
++
+Anche se non è possibile creare questo nuovo profilo, è necessario prestare molta attenzione quando si inizia a utilizzarlo nel criterio ILM. Se questo nuovo profilo viene applicato a oggetti con codifica in cancellazione già protetti dall'altro profilo, StorageGRID creerà un set completamente nuovo di frammenti di oggetti. Non riutilizza i frammenti 2+1 esistenti. I problemi relativi alle risorse potrebbero verificarsi quando si esegue la migrazione da un profilo di codifica Erasure all'altro, anche se gli schemi di codifica erasure sono gli stessi.
+
+
+
+. Se sono elencati più schemi di erasure coding, selezionare quello che si desidera utilizzare.
++
+Quando si decide quale schema di erasure coding utilizzare, è necessario bilanciare la tolleranza agli errori (ottenuta con più segmenti di parità) con i requisiti di traffico di rete per le riparazioni (più frammenti equivalgono a più traffico di rete). Ad esempio, quando si decide tra uno schema 4+2 e uno schema 6+3, selezionare lo schema 6+3 se sono richieste ulteriori parità e tolleranza di errore. Selezionare lo schema 4+2 se le risorse di rete sono limitate per ridurre l'utilizzo della rete durante le riparazioni dei nodi.
+
+. Selezionare *Salva*.
+

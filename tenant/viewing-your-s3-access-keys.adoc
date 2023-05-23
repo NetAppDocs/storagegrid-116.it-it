@@ -1,0 +1,45 @@
+---
+permalink: tenant/viewing-your-s3-access-keys.html 
+sidebar: sidebar 
+keywords: how to view your s3 access key 
+summary: 'Se si utilizza un tenant S3 e si dispone delle autorizzazioni appropriate, è possibile visualizzare un elenco delle chiavi di accesso S3. È possibile ordinare l"elenco in base alla data di scadenza, in modo da determinare quali chiavi scadranno a breve. In base alle esigenze, è possibile creare nuove chiavi o eliminare chiavi che non vengono più utilizzate.' 
+---
+= Visualizzare le chiavi di accesso S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza un tenant S3 e si dispone delle autorizzazioni appropriate, è possibile visualizzare un elenco delle chiavi di accesso S3. È possibile ordinare l'elenco in base alla data di scadenza, in modo da determinare quali chiavi scadranno a breve. In base alle esigenze, è possibile creare nuove chiavi o eliminare chiavi che non vengono più utilizzate.
+
+.Di cosa hai bisogno
+* È necessario accedere al tenant manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario disporre dell'autorizzazione Gestisci credenziali S3.
+
+
+
+IMPORTANT: È possibile accedere ai bucket S3 e agli oggetti appartenenti al tuo account utilizzando l'ID della chiave di accesso e la chiave di accesso segreta visualizzati per il tuo account in Tenant Manager. Per questo motivo, proteggere le chiavi di accesso come se si trattasse di una password. Ruotare regolarmente le chiavi di accesso, rimuovere eventuali chiavi inutilizzate dall'account e non condividerle mai con altri utenti.
+
+.Fasi
+. Selezionare *STORAGE (S3)* > *My access key*.
++
+Viene visualizzata la pagina My access keys (i miei tasti di accesso) che elenca tutti i tasti di accesso esistenti.
+
++
+image::../media/access_keys_view_list.png[Elenco delle chiavi di accesso]
+
+. Ordinare le chiavi in base a *scadenza* o *ID chiave di accesso*.
+. Se necessario, creare nuove chiavi ed eliminarle manualmente che non si stanno più utilizzando.
++
+Se si creano nuove chiavi prima della scadenza delle chiavi esistenti, è possibile iniziare a utilizzare le nuove chiavi senza perdere temporaneamente l'accesso agli oggetti dell'account.
+
++
+Le chiavi scadute vengono rimosse automaticamente.
+
+
+
+.Informazioni correlate
+xref:creating-your-own-s3-access-keys.adoc[Creare le proprie chiavi di accesso S3]
+
+xref:deleting-your-own-s3-access-keys.adoc[Eliminare le proprie chiavi di accesso S3]

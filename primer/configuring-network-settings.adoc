@@ -1,0 +1,71 @@
+---
+permalink: primer/configuring-network-settings.html 
+sidebar: sidebar 
+keywords: network settings, configure, configuring, configuration, domain name, virtual hosted-style requests 
+summary: È possibile configurare diverse impostazioni di rete da Gestione griglia per ottimizzare il funzionamento del sistema StorageGRID. 
+---
+= Configurare le impostazioni di rete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare diverse impostazioni di rete da Gestione griglia per ottimizzare il funzionamento del sistema StorageGRID.
+
+
+
+== Nomi di dominio
+
+Se si prevede di supportare le richieste in stile host virtuale S3, è necessario configurare l'elenco dei nomi di dominio degli endpoint a cui si connettono i client S3. Alcuni esempi sono `s3.example.com`, `s3.example.co.uk`, e. `s3-east.example.com`.
+
+I certificati del server configurati devono corrispondere ai nomi di dominio degli endpoint.
+
+
+
+== Gruppi ad alta disponibilità
+
+È possibile utilizzare i gruppi ad alta disponibilità (ha) per fornire connessioni dati altamente disponibili per i client S3 e Swift o per fornire connessioni altamente disponibili a Grid Manager e Tenant Manager.
+
+Quando si crea un gruppo ha, si seleziona un'interfaccia di rete per uno o più nodi. Ciascun gruppo ha fornisce l'accesso ai servizi condivisi sui nodi selezionati.
+
+* I gruppi HA che includono interfacce su nodi gateway, nodi di amministrazione o entrambi forniscono connessioni dati altamente disponibili per i client S3 e Swift.
+* I gruppi HA che includono interfacce sui nodi di amministrazione forniscono solo connessioni altamente disponibili al Grid Manager e al Tenant Manager.
+
+
+Le interfacce possono appartenere a Grid Network (eth0), Client Network (eth2) o a una rete VLAN.
+
+È possibile assegnare fino a 10 indirizzi IP virtuali (VIP) a ciascun gruppo ha. Specificare un'interfaccia come principale e classificare le altre interfacce in ordine di priorità. L'interfaccia principale è l'interfaccia attiva a meno che non si verifichi un errore. Se l'interfaccia attiva non riesce, gli indirizzi VIP passano alla prima interfaccia di backup nell'ordine di priorità. Se l'interfaccia non funziona, gli indirizzi VIP passano all'interfaccia di backup successiva e così via.
+
+
+
+== Costi di collegamento
+
+È possibile regolare i costi dei collegamenti in modo da riflettere la latenza tra i siti. Quando esistono due o più siti del data center, i costi di collegamento danno la priorità a quale sito del data center deve fornire un servizio richiesto.
+
+
+
+== Endpoint del bilanciamento del carico
+
+È possibile utilizzare un bilanciamento del carico per gestire i carichi di lavoro di acquisizione e recupero dai client S3 e Swift. Il bilanciamento del carico massimizza la velocità e la capacità di connessione distribuendo i carichi di lavoro e le connessioni tra più nodi di storage.
+
+Se si desidera utilizzare il servizio di bilanciamento del carico di StorageGRID, incluso nei nodi di amministrazione e nei nodi gateway, è necessario configurare uno o più endpoint di bilanciamento del carico. Ogni endpoint definisce una porta Gateway Node o Admin Node per le richieste S3 e Swift ai nodi di storage.
+
+
+
+== Classificazione del traffico
+
+È possibile creare policy di classificazione del traffico per identificare e gestire diversi tipi di traffico di rete, incluso il traffico relativo a bucket, tenant, subnet client o endpoint del bilanciamento del carico specifici. Queste policy possono essere utili per la limitazione e il monitoraggio del traffico.
+
+
+
+== Interfacce VLAN
+
+È possibile creare interfacce LAN virtuali (VLAN) per isolare e partizionare il traffico per garantire sicurezza, flessibilità e performance. Ogni interfaccia VLAN è associata a una o più interfacce principali sui nodi Admin e Gateway. È possibile utilizzare le interfacce VLAN nei gruppi ha e negli endpoint del bilanciamento del carico per separare il traffico client o amministrativo in base all'applicazione o al tenant.
+
+Ad esempio, la rete potrebbe utilizzare la VLAN 100 per il traffico FabricPool e la VLAN 200 per un'applicazione di archiviazione.
+
+.Informazioni correlate
+* xref:../admin/index.adoc[Amministrare StorageGRID]
+* xref:managing-tenants-and-client-connections.adoc[Gestire tenant e connessioni client]
+

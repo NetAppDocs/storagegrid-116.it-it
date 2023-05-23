@@ -1,0 +1,49 @@
+---
+permalink: upgrade/troubleshooting-upgrade-issues.html 
+sidebar: sidebar 
+keywords: upgrade, troubleshoot, troubleshooting, errors, upgrade precheck 
+summary: 'Se l"aggiornamento non viene completato correttamente, potrebbe essere possibile risolvere il problema da soli. Se non è possibile risolvere un problema, è necessario raccogliere le informazioni necessarie prima di contattare il supporto tecnico.' 
+---
+= L'aggiornamento non viene completato
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se l'aggiornamento non viene completato correttamente, potrebbe essere possibile risolvere il problema da soli. Se non è possibile risolvere un problema, è necessario raccogliere le informazioni necessarie prima di contattare il supporto tecnico.
+
+Le sezioni seguenti descrivono come eseguire il ripristino da situazioni in cui l'aggiornamento non è riuscito parzialmente. Se non si riesce a risolvere un problema di aggiornamento, contattare il supporto tecnico.
+
+
+
+== Errori di controllo preliminare dell'aggiornamento
+
+Per rilevare e risolvere i problemi, è possibile eseguire manualmente i controlli preliminari dell'aggiornamento prima di avviare l'aggiornamento effettivo. La maggior parte degli errori di pre-controllo fornisce informazioni su come risolvere il problema. Se hai bisogno di aiuto, contatta il supporto tecnico.
+
+
+
+== Errori di provisioning
+
+Se il processo di provisioning automatico non riesce, contattare il supporto tecnico.
+
+
+
+== Il nodo Grid si blocca o non si avvia
+
+Se un nodo grid si blocca durante il processo di aggiornamento o non si avvia correttamente al termine dell'aggiornamento, contattare il supporto tecnico per investigare e correggere eventuali problemi sottostanti.
+
+
+
+== L'acquisizione o il recupero dei dati viene interrotto
+
+Se l'acquisizione o il recupero dei dati viene interrotto inaspettatamente quando non si aggiorna un nodo di griglia, contattare il supporto tecnico.
+
+
+
+== Errori di aggiornamento del database
+
+Se l'aggiornamento del database non riesce e viene visualizzato un errore, riprovare. Se il problema persiste, contattare il supporto tecnico.
+
+.Informazioni correlate
+xref:checking-systems-condition-before-upgrading-software.adoc[Verifica delle condizioni del sistema prima dell'aggiornamento del software]

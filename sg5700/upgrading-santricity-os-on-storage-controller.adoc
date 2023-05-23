@@ -1,0 +1,31 @@
+---
+permalink: sg5700/upgrading-santricity-os-on-storage-controller.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, controller, storage controller, upgrade, upgrading, SANtricity OS, SANtricity 
+summary: 'Per garantire un funzionamento ottimale dello storage controller, è necessario eseguire l"aggiornamento alla versione di manutenzione più recente del sistema operativo SANtricity che sia qualificato per l"appliance StorageGRID. Consulta il tool della matrice di interoperabilità NetApp (IMT) per determinare la versione da utilizzare. Se hai bisogno di assistenza, contatta il supporto tecnico.' 
+---
+= Aggiornare il sistema operativo SANtricity sul controller di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per garantire un funzionamento ottimale dello storage controller, è necessario eseguire l'aggiornamento alla versione di manutenzione più recente del sistema operativo SANtricity che sia qualificato per l'appliance StorageGRID. Consulta il tool per la matrice di interoperabilità NetApp (IMT) per determinare la versione da utilizzare. Se hai bisogno di assistenza, contatta il supporto tecnico.
+
+* Se lo storage controller utilizza SANtricity OS 08.42.20.00 (11.42) o versione successiva, utilizzare Grid Manager per eseguire l'aggiornamento.
++
+xref:upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg5700.adoc[Aggiorna il sistema operativo SANtricity sui controller di storage utilizzando Grid Manager]
+
+* Se lo storage controller utilizza una versione di SANtricity OS precedente alla 08.42.20.00 (11.42), utilizzare la modalità di manutenzione per eseguire l'aggiornamento.
++
+xref:upgrading-santricity-os-on-e2800-controller-using-maintenance-mode.adoc[Aggiornare il sistema operativo SANtricity sul controller E2800 utilizzando la modalità di manutenzione]
+
+
+
+.Informazioni correlate
+https://mysupport.netapp.com/matrix["Tool di matrice di interoperabilità NetApp"^]
+
+https://mysupport.netapp.com/site/products/all/details/storagegrid-appliance/downloads-tab["Download NetApp: Appliance StorageGRID"^]
+
+xref:../monitor/index.adoc[Monitorare e risolvere i problemi]

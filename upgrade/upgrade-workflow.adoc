@@ -1,0 +1,34 @@
+---
+permalink: upgrade/upgrade-workflow.html 
+sidebar: sidebar 
+keywords: upgrade workflow 
+summary: 'Prima di iniziare l"aggiornamento, esaminare il flusso di lavoro generale. La pagina aggiornamento StorageGRID guida l"utente attraverso la procedura di aggiornamento.' 
+---
+= Workflow di upgrade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di iniziare l'aggiornamento, esaminare il flusso di lavoro generale. La pagina aggiornamento StorageGRID guida l'utente attraverso ogni fase di aggiornamento.
+
+image::../media/upgrade_workflow.png[Diagramma di flusso delle fasi di aggiornamento del software]
+
+. Se vengono implementati nodi StorageGRID su host Linux, xref:linux-installing-rpm-or-deb-package-on-all-hosts.adoc[Installare il pacchetto RPM o DEB su ciascun host] prima di iniziare l'aggiornamento.
+. Dal nodo di amministrazione principale, accedere alla pagina aggiornamento StorageGRID e caricare il file di aggiornamento.
+. Se si desidera, eseguire i controlli preliminari per l'aggiornamento per rilevare e risolvere eventuali problemi prima di avviare l'aggiornamento effettivo.
+. Avviare l'aggiornamento, che esegue controlli preliminari e aggiorna automaticamente il nodo di amministrazione primario. Non è possibile accedere a Grid Manager durante l'aggiornamento del nodo di amministrazione primario. Anche i registri di controllo non saranno disponibili. L'aggiornamento può richiedere fino a 30 minuti.
+. Una volta aggiornato il nodo amministratore principale, cancellare la cache del browser Web, accedere nuovamente e tornare alla pagina aggiornamento StorageGRID.
+. Scarica un nuovo pacchetto di ripristino.
+. Approvare i nodi della griglia. È possibile approvare singoli nodi griglia, gruppi di nodi griglia o tutti i nodi griglia.
++
+
+IMPORTANT: Non approvare l'aggiornamento per un nodo Grid a meno che non si sia certi che il nodo sia pronto per essere arrestato e riavviato.
+
+. Riprendere le operazioni. Una volta aggiornati tutti i nodi della griglia, vengono attivate nuove funzionalità ed è possibile riprendere le operazioni. È necessario attendere l'esecuzione di una procedura di decommissionamento o espansione fino al completamento dell'attività *Upgrade Database* in background e dell'attività *Final Upgrade Steps*.
+. Una volta completato l'aggiornamento, confermare la versione del software e applicare eventuali hotfix.
+
+
+.Informazioni correlate
+xref:estimating-time-to-complete-upgrade.adoc[Stima del tempo necessario per completare un aggiornamento]

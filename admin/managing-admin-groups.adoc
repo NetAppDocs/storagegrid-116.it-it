@@ -1,0 +1,380 @@
+---
+permalink: admin/managing-admin-groups.html 
+sidebar: sidebar 
+keywords: what are admin groups, user permissions 
+summary: È possibile creare gruppi di amministratori per gestire le autorizzazioni di sicurezza per uno o più utenti amministratori. Gli utenti devono appartenere a un gruppo per poter accedere al sistema StorageGRID. 
+---
+= Gestire i gruppi di amministratori
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile creare gruppi di amministratori per gestire le autorizzazioni di sicurezza per uno o più utenti amministratori. Gli utenti devono appartenere a un gruppo per poter accedere al sistema StorageGRID.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+* Se si intende importare un gruppo federated, la federazione delle identità è stata configurata e il gruppo federated esiste già nell'origine delle identità configurata.
+
+
+
+
+== Creare un gruppo di amministratori
+
+I gruppi di amministratori consentono di determinare quali utenti possono accedere a quali funzionalità e operazioni in Grid Manager e nell'API Grid Management.
+
+
+
+=== Accedere alla procedura guidata
+
+. Selezionare *CONFIGURAZIONE* *controllo accessi* *gruppi amministratori*.
+. Selezionare *Crea gruppo*.
+
+
+
+
+=== Scegliere un tipo di gruppo
+
+È possibile creare un gruppo locale o importare un gruppo federated.
+
+* Creare un gruppo locale se si desidera assegnare le autorizzazioni agli utenti locali.
+* Creare un gruppo federated per importare gli utenti dall'origine dell'identità.
+
+
+[role="tabbed-block"]
+====
+.Gruppo locale
+--
+. Selezionare *Gruppo locale*.
+. Inserire un nome visualizzato per il gruppo, che sarà possibile aggiornare in seguito secondo necessità. Ad esempio, "`Maintenance Users`" o "`ILM Administrators.`"
+. Immettere un nome univoco per il gruppo, che non sarà possibile aggiornare in seguito.
+. Selezionare *continua*.
+
+
+--
+.Gruppo federated
+--
+. Selezionare *Federated group*.
+. Immettere il nome del gruppo che si desidera importare, esattamente come appare nell'origine identità configurata.
++
+** Per Active Directory e Azure, utilizzare sAMAccountName.
+** Per OpenLDAP, utilizzare il CN (Common Name).
+** Per un altro LDAP, utilizzare il nome univoco appropriato per il server LDAP.
+
+
+. Selezionare *continua*.
+
+
+--
+====
+
+
+=== Gestire le autorizzazioni di gruppo
+
+. Per la modalità *Access*, selezionare se gli utenti del gruppo possono modificare le impostazioni ed eseguire operazioni in Grid Manager e nell'API Grid Management o se possono visualizzare solo impostazioni e funzionalità.
++
+** *Read-write* (valore predefinito): Gli utenti possono modificare le impostazioni ed eseguire le operazioni consentite dalle autorizzazioni di gestione.
+** *Sola lettura*: Gli utenti possono visualizzare solo le impostazioni e le funzionalità. Non possono apportare modifiche o eseguire operazioni nell'API Grid Manager o Grid Management. Gli utenti locali di sola lettura possono modificare le proprie password.
++
+
+NOTE: Se un utente appartiene a più gruppi e un gruppo è impostato su *sola lettura*, l'utente avrà accesso in sola lettura a tutte le impostazioni e funzionalità selezionate.
+
+
+
+. Selezionare una o più opzioni <<Permessi di gruppo>>.
++
+È necessario assegnare almeno un'autorizzazione a ciascun gruppo; in caso contrario, gli utenti appartenenti al gruppo non potranno accedere a StorageGRID.
+
+. Se si sta creando un gruppo locale, selezionare *continua*. Se si sta creando un gruppo federated, selezionare *Crea gruppo* e *fine*.
+
+
+
+
+=== Aggiunta di utenti (solo gruppi locali)
+
+. Facoltativamente, selezionare uno o più utenti locali per questo gruppo.
++
+Se non sono ancora stati creati utenti locali, è possibile salvare il gruppo senza aggiungere utenti. È possibile aggiungere questo gruppo all'utente nella pagina utenti. Vederexref:managing-users.adoc[Gestire gli utenti] per ulteriori informazioni.
+
+. Selezionare *Crea gruppo* e *fine*.
+
+
+
+
+== Visualizzare e modificare i gruppi di amministratori
+
+È possibile visualizzare i dettagli dei gruppi esistenti, modificare un gruppo o duplicare un gruppo.
+
+* Per visualizzare le informazioni di base per tutti i gruppi, consultare la tabella nella pagina gruppi.
+* Per visualizzare tutti i dettagli di un gruppo specifico o per modificarlo, utilizzare il menu *azioni* o la pagina dei dettagli.
++
+[cols="1a, 2a,2a"]
+|===
+| Attività | Menu delle azioni | Pagina dei dettagli 
+
+
+ a| 
+Visualizzare i dettagli del gruppo
+ a| 
+.. Selezionare la casella di controllo relativa al gruppo.
+.. Selezionare *azioni* *Visualizza dettagli gruppo*.
+
+ a| 
+Selezionare il nome del gruppo nella tabella.
+
+
+
+ a| 
+Modifica nome visualizzato (solo gruppi locali)
+ a| 
+.. Selezionare la casella di controllo relativa al gruppo.
+.. Selezionare *azioni* > *Modifica nome gruppo*.
+.. Inserire il nuovo nome.
+.. Selezionare *Save Changes* (Salva modifiche).
+
+ a| 
+.. Selezionare il nome del gruppo per visualizzare i dettagli.
+.. Selezionare l'icona di modifica image:../media/icon_edit_tm.png["Icona Edit (Modifica)"].
+.. Inserire il nuovo nome.
+.. Selezionare *Save Changes* (Salva modifiche).
+
+
+
+
+ a| 
+Modificare la modalità di accesso o le autorizzazioni
+ a| 
+.. Selezionare la casella di controllo relativa al gruppo.
+.. Selezionare *azioni* *Visualizza dettagli gruppo*.
+.. In alternativa, modificare la modalità di accesso del gruppo.
+.. Facoltativamente, selezionare o deselezionare <<Permessi di gruppo>>.
+.. Selezionare *Save Changes* (Salva modifiche).
+
+ a| 
+.. Selezionare il nome del gruppo per visualizzare i dettagli.
+.. In alternativa, modificare la modalità di accesso del gruppo.
+.. Facoltativamente, selezionare o deselezionare <<Permessi di gruppo>>.
+.. Selezionare *Save Changes* (Salva modifiche).
+
+
+|===
+
+
+
+
+== Duplicare un gruppo
+
+. Selezionare la casella di controllo relativa al gruppo.
+. Selezionare *azioni* *Gruppo duplicato*.
+. Completare la procedura guidata Duplica gruppo.
+
+
+
+
+== Eliminare un gruppo
+
+È possibile eliminare un gruppo di amministratori quando si desidera rimuovere il gruppo dal sistema e rimuovere tutte le autorizzazioni associate al gruppo. L'eliminazione di un gruppo di amministratori rimuove gli utenti dal gruppo, ma non li elimina.
+
+. Nella pagina gruppi, selezionare la casella di controllo per ciascun gruppo che si desidera rimuovere.
+. Selezionare *azioni* > *Elimina gruppo*.
+. Selezionare *Elimina gruppi*.
+
+
+
+
+== Permessi di gruppo
+
+Quando si creano gruppi di utenti admin, si selezionano una o più autorizzazioni per controllare l'accesso a funzionalità specifiche di Grid Manager. È quindi possibile assegnare ciascun utente a uno o più di questi gruppi di amministratori per determinare quali attività possono essere eseguite dall'utente.
+
+È necessario assegnare almeno un'autorizzazione a ciascun gruppo; in caso contrario, gli utenti appartenenti a tale gruppo non potranno accedere a Grid Manager o all'API Grid Management.
+
+Per impostazione predefinita, qualsiasi utente appartenente a un gruppo che dispone di almeno un'autorizzazione può eseguire le seguenti attività:
+
+* Accedi a Grid Manager
+* Visualizza la dashboard
+* Visualizzare le pagine dei nodi
+* Monitorare la topologia della griglia
+* Visualizzare gli avvisi correnti e risolti
+* Visualizzazione degli allarmi correnti e storici (sistema legacy)
+* Modifica della propria password (solo utenti locali)
+* Visualizzare alcune informazioni nelle pagine Configurazione e manutenzione
+
+
+
+
+=== Interazione tra permessi e modalità di accesso
+
+Per tutte le autorizzazioni, l'impostazione *modalità di accesso* del gruppo determina se gli utenti possono modificare le impostazioni ed eseguire operazioni o se possono visualizzare solo le relative impostazioni e funzionalità. Se un utente appartiene a più gruppi e un gruppo è impostato su *sola lettura*, l'utente avrà accesso in sola lettura a tutte le impostazioni e funzionalità selezionate.
+
+Le sezioni seguenti descrivono le autorizzazioni che è possibile assegnare durante la creazione o la modifica di un gruppo amministrativo. Qualsiasi funzionalità non esplicitamente menzionata richiede l'autorizzazione *Root access*.
+
+
+
+=== Accesso root
+
+Questa autorizzazione consente di accedere a tutte le funzioni di amministrazione della griglia.
+
+
+
+=== Riconoscere gli allarmi (legacy)
+
+Questa autorizzazione consente di riconoscere e rispondere agli allarmi (sistema legacy). Tutti gli utenti che hanno effettuato l'accesso possono visualizzare gli allarmi correnti e storici.
+
+Se si desidera che un utente monitori la topologia della griglia e riconosca solo gli allarmi, è necessario assegnare questa autorizzazione.
+
+
+
+=== Modificare la password root del tenant
+
+Questa autorizzazione consente di accedere all'opzione *Modifica password root* nella pagina tenant, consentendo di controllare chi può modificare la password per l'utente root locale del tenant. Questa autorizzazione viene utilizzata anche per la migrazione delle chiavi S3 quando è attivata la funzione di importazione delle chiavi S3. Gli utenti che non dispongono di questa autorizzazione non possono visualizzare l'opzione *Modifica password root*.
+
+
+NOTE: Per consentire l'accesso alla pagina dei tenant, che contiene l'opzione *Modifica password root*, assegnare anche l'autorizzazione *account tenant*.
+
+
+
+=== Configurazione della pagina della topologia della griglia
+
+Questa autorizzazione consente di accedere alle schede di configurazione nella pagina *SUPPORTO* *Strumenti* *topologia griglia*.
+
+
+
+=== ILM
+
+Questa autorizzazione consente di accedere alle seguenti opzioni del menu *ILM*:
+
+* Regole
+* Policy
+* Erasure coding
+* Regioni
+* Pool di storage
+
+
+
+NOTE: Gli utenti devono disporre delle autorizzazioni *altra configurazione griglia* e *Configurazione della pagina topologia griglia* per gestire i gradi di storage.
+
+
+
+=== Manutenzione
+
+Gli utenti devono disporre dell'autorizzazione Maintenance per utilizzare queste opzioni:
+
+* *CONFIGURAZIONE* *controllo degli accessi*:
++
+** Password di rete
+
+
+* *MANUTENZIONE* *attività*:
++
+** Decommissionare
+** Espansione
+** Controllo dell'esistenza dell'oggetto
+** Recovery (recupero)
+
+
+* *MANUTENZIONE* *sistema*:
++
+** Pacchetto di recovery
+** Aggiornamento del software
+
+
+* *SUPPORTO* *Strumenti*:
++
+** Registri
+
+
+
+
+Gli utenti che non dispongono dell'autorizzazione di manutenzione possono visualizzare, ma non modificare, le seguenti pagine:
+
+* *MANUTENZIONE* *rete*:
++
+** Server DNS
+** Grid Network
+** Server NTP
+
+
+* *MANUTENZIONE* *sistema*:
++
+** Licenza
+
+
+* *CONFIGURAZIONE* *sicurezza*:
++
+** Certificati
+** Nomi di dominio
+
+
+* *CONFIGURAZIONE* *monitoraggio*:
++
+** Server syslog e audit
+
+
+
+
+
+
+=== Gestire gli avvisi
+
+Questa autorizzazione consente di accedere alle opzioni per la gestione degli avvisi. Gli utenti devono disporre di questa autorizzazione per gestire silenzi, notifiche di avviso e regole di avviso.
+
+
+
+=== Query sulle metriche
+
+Questa autorizzazione consente di accedere alla pagina *SUPPORT* *Tools* *Metrics*. Questa autorizzazione consente inoltre di accedere alle query metriche Prometheus personalizzate utilizzando la sezione *metriche* dell'API Grid Management.
+
+
+
+=== Ricerca dei metadati degli oggetti
+
+Questa autorizzazione consente di accedere alla pagina *ILM* *Object metadata lookup*.
+
+
+
+=== Altra configurazione della griglia
+
+Questa autorizzazione consente di accedere a ulteriori opzioni di configurazione della griglia.
+
+
+IMPORTANT: Per visualizzare queste opzioni aggiuntive, gli utenti devono anche disporre dell'autorizzazione *Grid topology page Configuration* (Configurazione pagina topologia griglia).
+
+* *ILM*:
++
+** Gradi di storage
+
+
+* *CONFIGURAZIONE* *rete*:
++
+** Costo del collegamento
+
+
+* *CONFIGURAZIONE* *sistema*:
++
+** Opzioni di visualizzazione
+** Opzioni della griglia
+** Opzioni di storage
+
+
+* *SUPPORTO* *Allarmi (legacy)*:
++
+** Eventi personalizzati
+** Allarmi globali
+** Configurazione della posta elettronica legacy
+
+
+
+
+
+
+=== Amministratore dell'appliance di storage
+
+Questa autorizzazione consente di accedere al gestore di sistema e-Series SANtricity sulle appliance di storage tramite Grid Manager.
+
+
+
+=== Account tenant
+
+Questa autorizzazione consente di accedere alla pagina tenant, in cui è possibile creare, modificare e rimuovere account tenant. Questa autorizzazione consente inoltre agli utenti di visualizzare le policy di classificazione del traffico esistenti.

@@ -1,0 +1,34 @@
+---
+permalink: sg6000/hardware-setup-appears-to-hang.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, troubleshoot, troubleshooting, hardware, setup, hang, hangs, fails, failure, stop, terminate, terminates, stuck 
+summary: 'Il programma di installazione dell"appliance StorageGRID potrebbe non essere disponibile se gli errori hardware o di cablaggio impediscono ai controller storage o al controller SG6000-CN di completare l"elaborazione di avvio.' 
+---
+= La configurazione dell'hardware sembra bloccarsi (SG6000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il programma di installazione dell'appliance StorageGRID potrebbe non essere disponibile se gli errori hardware o di cablaggio impediscono ai controller storage o al controller SG6000-CN di completare l'elaborazione di avvio.
+
+.Fasi
+. Per i controller storage, osservare i codici sui display a sette segmenti.
++
+Durante l'inizializzazione dell'hardware durante l'accensione, i due display a sette segmenti mostrano una sequenza di codici. Quando l'hardware viene avviato correttamente, vengono visualizzati entrambi i display a sette segmenti `99`.
+
+. Esaminare i LED sul controller SG6000-CN e i codici di avvio e di errore visualizzati nel BMC.
+. Se hai bisogno di aiuto per risolvere un problema, contatta il supporto tecnico.
+
+
+.Informazioni correlate
+xref:viewing-boot-up-status-codes-for-sg6000-storage-controllers.adoc[Visualizza i codici di stato dell'avvio per i controller di storage SG6000]
+
+https://library.netapp.com/ecmdocs/ECMLP2588751/html/frameset.html["Guida al monitoraggio dei sistemi E5700 ed E2800"^]
+
+xref:viewing-status-indicators-and-buttons-on-sg6000-cn-controller.adoc[Visualizzare gli indicatori di stato e i pulsanti sul controller SG6000-CN]
+
+xref:viewing-boot-up-codes-for-sg6000-cn-controller.adoc[Visualizza i codici di avvio per il controller SG6000-CN]
+
+xref:viewing-error-codes-for-sg6000-cn-controller.adoc[Visualizza i codici di errore per il controller SG6000-CN]

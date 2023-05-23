@@ -1,0 +1,72 @@
+---
+permalink: sg6000/obtaining-additional-equipment-and-tools-sg6000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, additional, equipment, tools 
+summary: 'Prima di installare l"appliance StorageGRID, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.' 
+---
+= Procurarsi attrezzature e strumenti aggiuntivi (SG6000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance StorageGRID, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.
+
+Per installare e configurare l'hardware sono necessarie le seguenti apparecchiature aggiuntive:
+
+* *Cacciaviti*
++
+image::../media/screwdrivers.gif[Due cacciaviti]
+
++
+Phillips No. 2 cacciaviti
+
++
+Cacciavite medio a lama piatta
+
+* *Braccialetto ESD*
++
+image::../media/appliance_wriststrap.gif[Braccialetto antistatico]
+
+* *Cavi ottici e ricetrasmettitori SFP*
++
+image::../media/fc_cable_and_sfp.gif[Cavo ottico e ricetrasmettitore SFP+]
+
++
+È necessaria una delle seguenti opzioni:
+
++
+** Da uno a quattro cavi twinax o cavi ottici per le porte 10/25-GbE che si intende utilizzare sul controller SG6000-CN
+** Da uno a quattro ricetrasmettitori SFP+ per le porte 10/25-GbE se si utilizzano cavi ottici e velocità di collegamento 10-GbE
+** Da uno a quattro ricetrasmettitori SFP28 per le porte 10/25-GbE se si utilizzano cavi ottici e velocità di collegamento 25-GbE
+
+
+* *Cavi Ethernet RJ-45 (Cat5/Cat5e/Cat6)*
++
+image::../media/ethernet_cables.png[Cavi Ethernet]
+
+* *Laptop di assistenza*
++
+image::../media/sam_management_client.gif[Laptop di assistenza]
+
++
+xref:../admin/web-browser-requirements.adoc[Browser Web supportato]
+
++
+Porta 1-GbE (RJ-45)
+
+* *Strumenti opzionali*
++
+image::../media/optional_tools.gif[Perforatrice e torcia elettrica]
+
++
+Trapano elettrico con punta Phillips
+
++
+Torcia
+
++
+Sollevatore meccanizzato per shelf da 60 dischi
+
+

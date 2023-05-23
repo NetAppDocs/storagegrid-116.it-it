@@ -1,0 +1,54 @@
+---
+permalink: maintain/linux-importing-node-on-target-host.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, linux, import node, importing node, target host 
+summary: 'Dopo aver esportato il nodo dall"host di origine, importare e convalidare il nodo sull"host Linux di destinazione. La convalida conferma che il nodo ha accesso agli stessi dispositivi di storage a blocchi e di interfaccia di rete dell"host di origine.' 
+---
+= Linux: Nodo di importazione sull'host di destinazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver esportato il nodo dall'host di origine, importare e convalidare il nodo sull'host Linux di destinazione. La convalida conferma che il nodo ha accesso agli stessi dispositivi di storage a blocchi e di interfaccia di rete dell'host di origine.
+
+Eseguire il seguente comando sull'host Linux di destinazione.
+
+. Importare il nodo sull'host di destinazione.
++
+[listing]
+----
+sudo storagegrid node import /dev/mapper/sgws-dc1-s3-var-local
+----
++
+`Finished importing node DC1-S3 from /dev/mapper/sgws-dc1-s3-var-local.`
+
++
+`You should run 'storagegrid node validate DC1-S3'`
+
+. Convalidare la configurazione del nodo sul nuovo host.
++
+[listing]
+----
+sudo storagegrid node validate DC1-S3
+----
++
+`+Confirming existence of node DC1-S3... PASSED+`
+
++
+`+Checking configuration file /etc/storagegrid/nodes/DC1-S3.conf for node DC1-S3... PASSED+`
+
++
+`+Checking for duplication of unique values... PASSED+`
+
+. Se si verificano errori di convalida, risolverli prima di avviare il nodo migrato.
++
+Per informazioni sulla risoluzione dei problemi, consultare le istruzioni di installazione di StorageGRID per il sistema operativo Linux in uso.
+
+
+
+.Informazioni correlate
+xref:../rhel/index.adoc[Installare Red Hat Enterprise Linux o CentOS]
+
+xref:../ubuntu/index.adoc[Installare Ubuntu o Debian]

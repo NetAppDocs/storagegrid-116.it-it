@@ -1,0 +1,36 @@
+---
+permalink: sg100-1000/rebooting-services-appliance-while-sg-appliance-installer-is-running-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, reboot, restart 
+summary: 'Potrebbe essere necessario riavviare l"appliance di servizi mentre il programma di installazione dell"appliance StorageGRID è in esecuzione. Ad esempio, se l"installazione non riesce, potrebbe essere necessario riavviare l"appliance di servizi.' 
+---
+= Riavviare l'appliance dei servizi mentre è in esecuzione il programma di installazione dell'appliance StorageGRID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario riavviare l'appliance di servizi mentre il programma di installazione dell'appliance StorageGRID è in esecuzione. Ad esempio, se l'installazione non riesce, potrebbe essere necessario riavviare l'appliance di servizi.
+
+.A proposito di questa attività
+Questa procedura si applica solo quando l'appliance di servizi esegue il programma di installazione dell'appliance StorageGRID. Una volta completata l'installazione, questo passaggio non funziona più perché il programma di installazione dell'appliance StorageGRID non è più disponibile.
+
+.Fasi
+. Dalla barra dei menu del programma di installazione dell'appliance StorageGRID, fare clic su *Avanzate* > *Riavvia controller*.
++
+Viene visualizzata la pagina Reboot Controller (Controller di riavvio).
+
+. Dal programma di installazione dell'appliance StorageGRID, fare clic su *Avanzate* > *Riavvia controller*, quindi selezionare una delle seguenti opzioni:
++
+** Selezionare *Riavvia in StorageGRID* per riavviare il controller con il nodo che si ricongiunge alla griglia. Selezionare questa opzione se si è terminato di lavorare in modalità di manutenzione e si è pronti per ripristinare il normale funzionamento del nodo.
+** Selezionare *Reboot into Maintenance Mode* (Riavvia in modalità di manutenzione) per riavviare il controller con il nodo in modalità di manutenzione. (Questa opzione è disponibile solo quando il controller è in modalità di manutenzione). Selezionare questa opzione se sono necessarie ulteriori operazioni di manutenzione sul nodo prima di ricongiungersi alla griglia.
++
+image::../media/reboot_controller_from_maintenance_mode.png[Riavviare il controller in modalità di manutenzione]
+
++
+L'appliance di servizi viene riavviata.
+
+
+
+

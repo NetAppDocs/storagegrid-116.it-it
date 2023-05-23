@@ -1,0 +1,42 @@
+---
+permalink: sg5600/obtaining-additional-equipment-and-tools-sg5600.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, additional, equipment, tools 
+summary: 'Prima di installare l"appliance SG5600, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.' 
+---
+= Ottenere apparecchiature e strumenti aggiuntivi (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance SG5600, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.
+
+* *Cacciaviti*
++
+image::../media/appliance_screwdrivers.gif[Cacciaviti]
+
++
+Phillips No. 2 cacciaviti
+
++
+Cacciaviti a lama piatta medi
+
+* *Braccialetto ESD*
++
+image::../media/appliance_wriststrap.gif[Braccialetto antistatico]
+
+* *Cavi Ethernet*
++
+image::../media/appliance_ethernet_cables.gif[Cavi Ethernet]
+
+* *Switch Ethernet*
++
+image::../media/appliance_ethernet_switch_network_hub.gif[Hub Ethernet]
+
+* *Laptop di assistenza*xref:../admin/web-browser-requirements.adoc[Browser Web supportato]
++
+image::../media/appliance_laptop.gif[Stazione di gestione]
+
+

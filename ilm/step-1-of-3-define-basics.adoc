@@ -1,0 +1,62 @@
+---
+permalink: ilm/step-1-of-3-define-basics.html 
+sidebar: sidebar 
+keywords: ILM rule step 1, define basics 
+summary: Il passaggio 1 della procedura guidata Crea regola ILM consente di definire i filtri di base e avanzati della regola. 
+---
+= Fase 1 di 3: Definizione delle nozioni di base
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il passaggio 1 (Definisci le basi) della procedura guidata Crea regola ILM consente di definire i filtri di base e avanzati della regola.
+
+.A proposito di questa attività
+Quando si valuta un oggetto rispetto a una regola ILM, StorageGRID confronta i metadati dell'oggetto con i filtri della regola. Se i metadati dell'oggetto corrispondono a tutti i filtri, StorageGRID utilizza la regola per posizionare l'oggetto. È possibile progettare una regola da applicare a tutti gli oggetti, oppure specificare filtri di base, come uno o più account tenant o nomi bucket, o filtri avanzati, come la dimensione dell'oggetto o i metadati dell'utente.
+
+image::../media/ilm_create_ilm_rule_wizard_1.png[Creare la regola ILM passo 1 di 3]
+
+.Fasi
+. Immettere un nome univoco per la regola nel campo *Nome*.
++
+È necessario immettere da 1 a 64 caratteri.
+
+. Se si desidera, inserire una breve descrizione per la regola nel campo *Descrizione*.
++
+È necessario descrivere lo scopo o la funzione della regola in modo da poterne riconoscere in un secondo momento.
+
++
+image::../media/ilm_rule_wizard_name_description.gif[Nome e descrizione della regola]
+
+. Facoltativamente, selezionare uno o più account tenant S3 o Swift a cui si applica questa regola. Se questa regola è applicabile a tutti i tenant, lasciare vuoto questo campo.
++
+Se non si dispone dell'autorizzazione di accesso root o dell'autorizzazione per gli account tenant, non è possibile selezionare i tenant dall'elenco. Immettere invece l'ID tenant o più ID come stringa delimitata da virgole.
+
+. Facoltativamente, specificare i bucket S3 o i container Swift a cui si applica questa regola.
++
+Se l'opzione *Match All* (corrispondenza totale) è selezionata (impostazione predefinita), la regola si applica a tutti i bucket S3 o a tutti i container Swift.
+
+. Se si desidera, selezionare *Advanced Filtering* (filtraggio avanzato) per specificare filtri aggiuntivi.
++
+Se non si configura il filtraggio avanzato, la regola si applica a tutti gli oggetti che corrispondono ai filtri di base.
+
++
+Se questa regola consente di creare copie erasure-coded, aggiungere il filtro avanzato *Object Size (MB)* e impostarlo su *Greater than 1*. Il filtro delle dimensioni garantisce che gli oggetti di dimensioni pari o inferiori a 1 MB non vengano sottoposti a erasure coding.
+
++
+
+IMPORTANT: L'erasure coding è più adatto per oggetti superiori a 1 MB. Non utilizzare la codifica erasure per oggetti di dimensioni inferiori a 200 KB per evitare l'overhead di gestione di frammenti con codifica erasure molto piccoli.
+
+. Selezionare *Avanti*.
++
+Viene visualizzato il punto 2 (definizione delle posizioni).
+
+
+
+.Informazioni correlate
+* xref:what-ilm-rule-is.adoc[Che cos'è una regola ILM]
+* xref:using-advanced-filters-in-ilm-rules.adoc[Utilizzare filtri avanzati nelle regole ILM]
+* xref:step-2-of-3-define-placements.adoc[Fase 2 di 3: Definizione delle posizioni]
+

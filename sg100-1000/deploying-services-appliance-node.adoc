@@ -1,0 +1,14 @@
+---
+permalink: sg100-1000/deploying-services-appliance-node.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, deploy node, deploying node, node, deploy, deploying 
+summary: 'È possibile implementare un"appliance di servizi come nodo di amministrazione primario, nodo di amministrazione non primario o nodo gateway. Sia le appliance SG100 che SG1000 possono operare come nodi gateway e nodi di amministrazione (primari o non primari) contemporaneamente.' 
+---
+= Implementare il nodo dell'appliance di servizi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile implementare un'appliance di servizi come nodo di amministrazione primario, nodo di amministrazione non primario o nodo gateway. Sia le appliance SG100 che SG1000 possono operare come nodi gateway e nodi di amministrazione (primari o non primari) contemporaneamente.

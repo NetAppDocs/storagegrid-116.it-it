@@ -1,0 +1,14 @@
+---
+permalink: sg5700/installing-hardware.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, hardware, install, installing 
+summary: 'L"installazione dell"hardware richiede l"installazione dell"appliance in un cabinet o rack, il collegamento dei cavi e l"alimentazione.' 
+---
+= Installazione dell'hardware (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'installazione dell'hardware richiede l'installazione dell'appliance in un cabinet o rack, il collegamento dei cavi e l'alimentazione.

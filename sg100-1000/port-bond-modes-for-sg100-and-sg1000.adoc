@@ -1,0 +1,14 @@
+---
+permalink: sg100-1000/port-bond-modes-for-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, port bond, port bonding, port bond mode, port-bond mode 
+summary: 'Quando si configurano i collegamenti di rete per le appliance SG100 e SG1000, è possibile utilizzare il bonding delle porte per la connessione alla rete Grid e alla rete client opzionale e le porte di gestione 1-GbE per la connessione alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l"appliance.' 
+---
+= Modalità Port Bond per le appliance SG100 e SG1000
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si configurano i collegamenti di rete per le appliance SG100 e SG1000, è possibile utilizzare il bonding delle porte per la connessione alla rete Grid e alla rete client opzionale e le porte di gestione 1-GbE per la connessione alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l'appliance.

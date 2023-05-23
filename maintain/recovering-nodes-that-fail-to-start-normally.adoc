@@ -1,0 +1,27 @@
+---
+permalink: maintain/recovering-nodes-that-fail-to-start-normally.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, node did not start, node fail to start 
+summary: Se un nodo StorageGRID non si ricongiungerà normalmente alla griglia e non verrà visualizzato come ripristinabile, potrebbe essere danneggiato. È possibile forzare il nodo in modalità di ripristino. 
+---
+= Ripristinare i nodi che non si avviano normalmente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se un nodo StorageGRID non si ricongiungerà normalmente alla griglia e non verrà visualizzato come ripristinabile, potrebbe essere danneggiato. È possibile forzare il nodo in modalità di ripristino.
+
+Per forzare il nodo in modalità di ripristino:
+
+`sudo storagegrid node force-recovery _node-name_`
+
+
+TIP: Prima di eseguire questo comando, verificare che la configurazione di rete del nodo sia corretta; potrebbe non essere riuscito a riconnettersi alla griglia a causa di mappature dell'interfaccia di rete non corrette o di un gateway o indirizzo IP Grid Network non corretto.
+
+
+IMPORTANT: Dopo l'emissione di `storagegrid node force-recovery _node-name_` eseguire ulteriori operazioni di ripristino per _node-name_.
+
+.Informazioni correlate
+xref:whats-next-performing-additional-recovery-steps-if-required.adoc[Cosa c'è di seguito: Se necessario, eseguire ulteriori passaggi di ripristino]

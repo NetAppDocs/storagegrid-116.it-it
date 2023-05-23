@@ -1,0 +1,125 @@
+---
+permalink: monitor/viewing-dashboard.html 
+sidebar: sidebar 
+keywords: how to view the dashboard 
+summary: 'Quando accedi per la prima volta a Grid Manager, puoi utilizzare la dashboard per monitorare le attività del sistema in un colpo d"occhio. La dashboard include informazioni sullo stato di salute del sistema, sulle metriche di utilizzo, sui trend e sui grafici operativi.' 
+---
+= Visualizza la dashboard
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando accedi per la prima volta a Grid Manager, puoi utilizzare la dashboard per monitorare le attività del sistema in un colpo d'occhio. La dashboard include informazioni sullo stato di salute del sistema, sulle metriche di utilizzo, sui trend e sui grafici operativi.
+
+image::../media/grid_manager_dashboard.png[Dashboard di Grid Manager]
+
+
+
+== Campo di ricerca
+
+Il campo *Search* nella barra di intestazione consente di accedere rapidamente a una pagina specifica o a una voce della barra laterale all'interno di Grid Manager. Ad esempio, è possibile immettere *key* per accedere alla pagina Key Management Server.
+
+
+
+== Pannello di salute
+
+|===
+| Descrizione | Visualizza ulteriori dettagli | Scopri di più 
+
+
+ a| 
+Riepiloga lo stato di salute del sistema. Un segno di spunta verde indica che non sono presenti avvisi correnti e che tutti i nodi della griglia sono connessi. Qualsiasi altra icona indica che è presente almeno un nodo di avviso o di disconnessione corrente.
+ a| 
+Potrebbero essere visualizzati uno o più dei seguenti collegamenti:
+
+* *Dettagli griglia*: Viene visualizzato se alcuni nodi sono disconnessi (stato connessione sconosciuto o amministrativamente inattivo). Fare clic sul collegamento o sull'icona blu o grigia per determinare quale nodo o nodi sono interessati.
+* *Current alerts* (Avvisi correnti): Viene visualizzato se sono attivi degli avvisi. Fare clic sul collegamento oppure fare clic su *critico*, *maggiore* o *minore* per visualizzare i dettagli nella pagina *AVVISI* *corrente*.
+* *Recently Resolved alerts* (Avvisi risolti di recente): Viene visualizzato se gli avvisi attivati nell'ultima settimana sono stati risolti. Fare clic sul collegamento per visualizzare i dettagli nella pagina *ALERTS* *resolved*.
+* *Legacy alarms* (Allarmi legacy): Viene visualizzato se sono attivi allarmi (sistema legacy). Fare clic sul collegamento per visualizzare i dettagli nella pagina *SUPPORTO* *Allarmi (legacy)* *Allarmi correnti*.
+* *Licenza*: Viene visualizzato se si verifica un problema con la licenza software per questo sistema StorageGRID. Fare clic sul collegamento per visualizzare i dettagli nella pagina *MANUTENZIONE* *sistema* *licenza*.
+
+ a| 
+* xref:monitoring-node-connection-states.adoc[Monitorare gli stati di connessione del nodo]
+* xref:viewing-current-alerts.adoc[Visualizzare gli avvisi correnti]
+* xref:viewing-resolved-alerts.adoc[Visualizzare gli avvisi risolti]
+* xref:viewing-legacy-alarms.adoc[Visualizzare gli allarmi legacy]
+* xref:../admin/index.adoc[Amministrare StorageGRID]
+
+
+|===
+
+
+== Pannello Available Storage (archiviazione disponibile)
+
+|===
+| Descrizione | Visualizza ulteriori dettagli | Scopri di più 
+
+
+ a| 
+Visualizza la capacità di storage disponibile e utilizzata nell'intera griglia, senza i supporti di archiviazione.
+
+Il grafico generale presenta i totali a livello di griglia. Se si tratta di una griglia multi-sito, vengono visualizzati grafici aggiuntivi per ciascun sito del data center.
+
+È possibile utilizzare queste informazioni per confrontare lo storage utilizzato con lo storage disponibile. Se si dispone di un grid multi-sito, è possibile determinare quale sito consuma più storage.
+ a| 
+* Per visualizzare la capacità, posizionare il cursore sulle sezioni della capacità disponibile e utilizzata del grafico.
+* Per visualizzare le tendenze della capacità in un intervallo di date, fare clic sull'icona del grafico image:../media/icon_chart_new_for_11_5.png["Icona del grafico"] per il grid complessivo o per un sito del data center.
+* Per visualizzare i dettagli, selezionare *NODI*. Quindi, visualizzare la scheda Storage per l'intera griglia, un intero sito o un singolo nodo di storage.
+
+ a| 
+* xref:viewing-storage-tab.adoc[Visualizzare la scheda Storage (archiviazione)]
+* xref:monitoring-storage-capacity.adoc[Monitorare la capacità dello storage]
+
+
+|===
+
+
+== Pannello ILM (Information Lifecycle Management)
+
+|===
+| Descrizione | Visualizza ulteriori dettagli | Scopri di più 
+
+
+ a| 
+Visualizza le operazioni ILM correnti e le code ILM per il sistema. È possibile utilizzare queste informazioni per monitorare il carico di lavoro del sistema.
+
+* *In attesa - Client*: Il numero totale di oggetti in attesa di valutazione ILM dalle operazioni del client (ad esempio, acquisizione).
+* *In attesa - tasso di valutazione*: La velocità corrente alla quale gli oggetti vengono valutati in base alla policy ILM nella griglia.
+* *Scan Period (periodo di scansione) - Estimated (stimato)*: Tempo stimato per completare una scansione ILM completa di tutti gli oggetti. *Nota:* Una scansione completa non garantisce che ILM sia stato applicato a tutti gli oggetti.
+
+ a| 
+* Per visualizzare i dettagli, selezionare *NODI*. Quindi, visualizzare la scheda ILM per l'intera griglia, un intero sito o un singolo nodo di storage.
+* Per visualizzare le regole ILM esistenti, selezionare *ILM* *Rules*.
+* Per visualizzare i criteri ILM esistenti, selezionare *ILM* *Policy*.
+
+ a| 
+* xref:viewing-ilm-tab.adoc[Visualizzare la scheda ILM]
+* xref:../admin/index.adoc[Amministrare StorageGRID].
+
+
+|===
+
+
+== Pannello Protocol Operations (operazioni protocollo)
+
+|===
+| Descrizione | Visualizza ulteriori dettagli | Scopri di più 
+
+
+ a| 
+Visualizza il numero di operazioni specifiche del protocollo (S3 e Swift) eseguite dal sistema.
+
+Puoi utilizzare queste informazioni per monitorare i carichi di lavoro e le efficienze del tuo sistema. Le velocità dei protocolli vengono calcolate in media negli ultimi due minuti.
+ a| 
+* Per visualizzare i dettagli, selezionare *NODI*. Quindi, visualizzare la scheda oggetti per l'intera griglia, un intero sito o un singolo nodo di storage.
+* Per visualizzare i trend in un intervallo di date, fare clic sull'icona del grafico image:../media/icon_chart_new_for_11_5.png["Icona del grafico"] A destra della velocità del protocollo S3 o Swift.
+
+ a| 
+* xref:viewing-objects-tab.adoc[Visualizzare la scheda oggetti]
+* xref:../s3/index.adoc[Utilizzare S3]
+* xref:../swift/index.adoc[USA Swift]
+
+
+|===

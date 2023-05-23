@@ -1,0 +1,103 @@
+---
+permalink: upgrade/how-your-system-is-affected-during-upgrade.html 
+sidebar: sidebar 
+keywords: upgrade, firmware, appliance, alert 
+summary: 'È necessario comprendere in che modo il sistema StorageGRID verrà influenzato durante l"aggiornamento.' 
+---
+= Impatto del sistema durante l'aggiornamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario comprendere in che modo il sistema StorageGRID verrà influenzato durante l'aggiornamento.
+
+
+
+== Gli aggiornamenti di StorageGRID sono senza interruzioni
+
+Il sistema StorageGRID è in grado di acquisire e recuperare i dati dalle applicazioni client durante l'intero processo di aggiornamento. Durante l'aggiornamento, i nodi della griglia vengono disattivati uno alla volta, quindi non c'è tempo in cui tutti i nodi della griglia non sono disponibili.
+
+Per garantire la disponibilità continua, è necessario assicurarsi che gli oggetti vengano memorizzati in modo ridondante utilizzando i criteri ILM appropriati. È inoltre necessario assicurarsi che tutti i client S3 o Swift esterni siano configurati per inviare richieste a uno dei seguenti:
+
+* Endpoint StorageGRID configurato come gruppo ad alta disponibilità (ha)
+* Bilanciamento del carico di terze parti ad alta disponibilità
+* Nodi gateway multipli per ogni client
+* Più nodi di storage per ogni client
+
+
+
+
+== Il firmware dell'appliance viene aggiornato
+
+Durante l'aggiornamento a StorageGRID 11.6:
+
+* Tutti i nodi appliance StorageGRID vengono aggiornati automaticamente alla versione 3.6 del firmware del programma di installazione dell'appliance StorageGRID.
+* Le appliance SG6060 e SGF6024 vengono aggiornate automaticamente alla versione del firmware del BIOS 3B07.EX e alla versione del firmware BMC BMC 3.93.07.
+* Le appliance SG100 e SG1000 vengono aggiornate automaticamente alla versione del firmware del BIOS 3B12.EC e alla versione del firmware BMC 4.67.07.
+
+
+
+
+== Potrebbero essere attivati degli avvisi
+
+Gli avvisi potrebbero essere attivati all'avvio e all'arresto dei servizi e quando il sistema StorageGRID funziona come ambiente a versione mista (alcuni nodi di griglia che eseguono una versione precedente, mentre altri sono stati aggiornati a una versione successiva). Al termine dell'aggiornamento potrebbero essere attivati altri avvisi.
+
+Ad esempio, potrebbe essere visualizzato l'avviso *Impossibile comunicare con il nodo* quando i servizi vengono arrestati oppure l'avviso *errore di comunicazione Cassandra* quando alcuni nodi sono stati aggiornati a StorageGRID 11.6 ma altri nodi eseguono ancora StorageGRID 11.5. In generale, questi avvisi verranno visualizzati al termine dell'aggiornamento.
+
+L'avviso *ILM placement unachievable* potrebbe essere attivato quando i nodi di storage vengono arrestati durante l'aggiornamento a StorageGRID 11.6. Questo avviso potrebbe persistere per 1 giorno dopo il completamento dell'aggiornamento.
+
+Se si utilizzano valori personalizzati per le filigrane del volume di storage, l'avviso *Low Read-only watermark override* potrebbe essere attivato al termine dell'aggiornamento. Vedere xref:../monitor/troubleshoot-low-watermark-alert.adoc[Risolvere i problemi relativi agli avvisi di override del watermark di sola lettura bassa] per ulteriori informazioni.
+
+Una volta completato l'aggiornamento, è possibile rivedere gli avvisi relativi all'aggiornamento selezionando *Avvisi risolti di recente* o *Avvisi correnti* dalla dashboard di Grid Manager.
+
+
+
+== Vengono generate molte notifiche SNMP
+
+Tenere presente che è possibile che vengano generate numerose notifiche SNMP quando i nodi della griglia vengono arrestati e riavviati durante l'aggiornamento. Per evitare notifiche eccessive, deselezionare la casella di controllo *Enable SNMP Agent Notifications* (*CONFIGURATION* > *Monitoring* > *SNMP Agent*) per disattivare le notifiche SNMP prima di avviare l'aggiornamento. Quindi, riattivare le notifiche al termine dell'aggiornamento.
+
+
+
+== Le modifiche alla configurazione sono limitate
+
+
+NOTE: L'elenco delle modifiche limitate alla configurazione può cambiare da release a release. Quando si esegue l'aggiornamento a un'altra release di StorageGRID, fare riferimento all'elenco delle istruzioni di aggiornamento appropriate.
+
+Fino al completamento dell'attività *Enable New Feature*:
+
+* Non apportare modifiche alla configurazione della griglia.
+* Non modificare la configurazione del livello di audit né configurare un server syslog esterno.
+* Non attivare o disattivare nuove funzioni.
+* Non aggiornare la configurazione ILM. In caso contrario, potrebbe verificarsi un comportamento ILM inconsistente e imprevisto.
+* Non applicare una correzione rapida o ripristinare un nodo della griglia.
+* Non è possibile gestire gruppi ha, interfacce VLAN o endpoint di bilanciamento del carico durante l'aggiornamento a StorageGRID 11.6.
+
+
+Fino al completamento dell'attività *fasi finali dell'aggiornamento*:
+
+* Non eseguire una procedura di espansione.
+* Non eseguire una procedura di decommissionamento.
+
+
+
+
+== Non è possibile visualizzare i dettagli del bucket o gestire i bucket dal Tenant Manager
+
+Durante l'aggiornamento a StorageGRID 11.6 (ovvero, mentre il sistema opera come ambiente a versione mista), non è possibile visualizzare i dettagli del bucket o gestire i bucket utilizzando il gestore tenant. Nella pagina Bucket di Tenant Manager viene visualizzato uno dei seguenti errori:
+
+* "`Impossibile utilizzare questa API durante l'aggiornamento alla versione 11.6.`"
+* "`non puoi visualizzare i dettagli della versione del bucket in Tenant Manager durante l'aggiornamento alla versione 11.6.`"
+
+
+Questo errore viene risolto al termine dell'aggiornamento alla versione 11.6.
+
+.Soluzione alternativa
+Mentre è in corso l'aggiornamento 11.6, utilizza i seguenti strumenti per visualizzare i dettagli del bucket o gestire i bucket, invece di utilizzare il Tenant Manager:
+
+* Per eseguire operazioni S3 standard su un bucket, utilizzare l'API REST S3 o l'API di gestione tenant.
+* Per eseguire operazioni personalizzate di StorageGRID su un bucket (ad esempio, visualizzazione e modifica del livello di coerenza del bucket, attivazione o disattivazione degli ultimi aggiornamenti dell'ora di accesso o configurazione dell'integrazione della ricerca), utilizzare l'API di gestione tenant.
+
+
+Vedere xref:../tenant/understanding-tenant-management-api.adoc[Comprendere l'API di gestione dei tenant] e. xref:../s3/index.adoc[Utilizzare S3] per istruzioni.

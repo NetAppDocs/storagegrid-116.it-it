@@ -1,0 +1,52 @@
+---
+permalink: ilm/renaming-erasure-coding-profile.html 
+sidebar: sidebar 
+keywords: rename erasure coding profile, ec profile 
+summary: È possibile rinominare un profilo di codifica Erasure per rendere più evidente la funzione del profilo. 
+---
+= Rinominare un profilo di codifica Erasure
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile rinominare un profilo di codifica Erasure per rendere più evidente la funzione del profilo.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.Fasi
+. Selezionare *ILM* > *Erasure coding*.
++
+Viene visualizzata la pagina Erasure Coding Profiles. I pulsanti *Rinomina* e *Disattiva* sono entrambi disattivati.
+
++
+image::../media/ec_profiles_rename_deactivate_disabled.png[Erasure coding Profiles Rename Disable (Disattiva profili di codifica)]
+
+. Selezionare il profilo che si desidera rinominare.
++
+I pulsanti *Rinomina* e *Disattiva* diventano abilitati.
+
+. Selezionare *Rinomina*.
++
+Viene visualizzata la finestra di dialogo Rename EC Profile (Rinomina profilo EC).
+
++
+image::../media/ec_profile_rename.png[Erasure coding Profile Rename (Rinomina profilo di codifica)]
+
+. Immettere un nome univoco per il profilo di codifica Erasure.
++
+Il nome del profilo di codifica Erasure viene aggiunto al nome del pool di storage nelle istruzioni di posizionamento per una regola ILM.
+
++
+image::../media/storage_pool_and_erasure_coding_profile.png[Pool di storage e nome del profilo EC]
+
++
+
+NOTE: I nomi dei profili di erasure coding devono essere univoci. Si verifica un errore di convalida se si utilizza il nome di un profilo esistente, anche se tale profilo è stato disattivato.
+
+. Selezionare *Salva*.
+

@@ -1,0 +1,23 @@
+---
+permalink: sg5700/he-error-error-synchronizing-with-santricity-os-software.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, troubleshooting, HE, error, synchronize, synchronizing, sunconization, SANtricity OS Software, santricity 
+summary: 'Se il programma di installazione dell"appliance StorageGRID non riesce a eseguire la sincronizzazione con il software SANtricity OS, sul display a sette segmenti del controller di calcolo viene visualizzato un codice di errore HE.' 
+---
+= ERRORE HE: Errore di sincronizzazione con il software SANtricity OS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se il programma di installazione dell'appliance StorageGRID non riesce a eseguire la sincronizzazione con il software SANtricity OS, sul display a sette segmenti del controller di calcolo viene visualizzato un codice di errore HE.
+
+.A proposito di questa attività
+Se viene visualizzato un codice di errore HE, eseguire questa azione correttiva.
+
+.Fasi
+. Controllare i due cavi di interconnessione tra i due controller e verificare che i cavi e i ricetrasmettitori SFP+ siano collegati correttamente.
+. Se necessario, sostituire uno o entrambi i cavi o i ricetrasmettitori SFP+ e riprovare.
+. Se il problema persiste, contattare il supporto tecnico.
+

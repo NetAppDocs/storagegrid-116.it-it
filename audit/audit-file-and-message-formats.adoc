@@ -1,0 +1,14 @@
+---
+permalink: audit/audit-file-and-message-formats.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, log file formats, log formats, message formats, log file format, log format ,message format 
+summary: È possibile utilizzare i registri di controllo per raccogliere informazioni sul sistema e risolvere i problemi. È necessario conoscere il formato del file di log di audit e il formato generale utilizzato per i messaggi di audit. 
+---
+= File di log di audit e formati dei messaggi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare i registri di controllo per raccogliere informazioni sul sistema e risolvere i problemi. È necessario conoscere il formato del file di log di audit e il formato generale utilizzato per i messaggi di audit.

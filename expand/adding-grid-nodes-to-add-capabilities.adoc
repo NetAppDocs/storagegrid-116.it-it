@@ -1,0 +1,33 @@
+---
+permalink: expand/adding-grid-nodes-to-add-capabilities.html 
+sidebar: sidebar 
+keywords: grid nodes, expand, expansion, site, add 
+summary: È possibile aggiungere ridondanza o funzionalità aggiuntive a un sistema StorageGRID aggiungendo nuovi nodi grid ai siti esistenti. 
+---
+= Aggiungi nodi grid per aggiungere funzionalità al tuo sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere ridondanza o funzionalità aggiuntive a un sistema StorageGRID aggiungendo nuovi nodi grid ai siti esistenti.
+
+Ad esempio, è possibile scegliere di aggiungere altri nodi gateway per supportare la creazione di gruppi ad alta disponibilità di nodi gateway oppure aggiungere un nodo amministratore in un sito remoto per consentire il monitoraggio utilizzando un nodo locale.
+
+È possibile aggiungere uno o più dei seguenti tipi di nodi a uno o più siti esistenti in una singola operazione di espansione:
+
+* Nodi amministrativi non primari
+* Nodi di storage
+* Nodi gateway
+* Nodi di archiviazione
+
+
+Durante la preparazione all'aggiunta di nodi di rete, tenere presente le seguenti limitazioni:
+
+* Il nodo di amministrazione primario viene implementato durante l'installazione iniziale. Non è possibile aggiungere un nodo amministratore primario durante un'espansione.
+* È possibile aggiungere nodi di storage e altri tipi di nodi nella stessa espansione.
+* Quando si aggiungono nodi di storage, è necessario pianificare attentamente il numero e la posizione dei nuovi nodi. Vedere xref:../expand/guidelines-for-adding-object-capacity.adoc[Linee guida per l'aggiunta della capacità degli oggetti].
+* Se si aggiungono nodi di archiviazione, tenere presente che ciascun nodo di archiviazione supporta solo il nastro tramite il middleware Tivoli Storage Manager (TSM).
+* Se l'opzione *New Node Client Network Default* è impostata su *Untrusted* nella pagina Untrusted Client Networks, le applicazioni client che si connettono ai nodi di espansione utilizzando la rete client devono connettersi utilizzando una porta endpoint del bilanciamento del carico (*CONFIGURAZIONE* > *rete* > *reti client non attendibili*). Consultare le istruzioni per xref:../admin/index.adoc[Amministrazione di StorageGRID] per modificare l'impostazione del nuovo nodo e configurare gli endpoint del bilanciamento del carico.
+

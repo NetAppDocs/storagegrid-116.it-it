@@ -1,0 +1,76 @@
+---
+permalink: maintain/linux-exporting-node-from-source-host.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, linux, export node, linux source host 
+summary: 'Chiudere il nodo grid ed esportarlo dall"host Linux di origine.' 
+---
+= Linux: Nodo di esportazione dall'host di origine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Chiudere il nodo grid ed esportarlo dall'host Linux di origine.
+
+Eseguire il seguente comando sull'host Linux di origine.
+
+. Ottenere lo stato di tutti i nodi attualmente in esecuzione sull'host di origine.
++
+[listing]
+----
+sudo storagegrid node status all
+----
++
+`Name Config-State Run-State`
+
++
+`DC1-ADM1 Configured Running`
+
++
+`DC1-ARC1 Configured Running`
+
++
+`DC1-GW1 Configured Running`
+
++
+`DC1-S1 Configured Running`
+
++
+`DC1-S2 Configured Running`
+
++
+`DC1-S3 Configured Running`
+
+. Identificare il nome del nodo che si desidera migrare e interromperlo se si trova nello stato di esecuzione `Running`.
++
+[listing]
+----
+sudo storagegrid node stop DC1-S3
+----
++
+`Stopping node DC1-S3`
+
++
+`Waiting up to 630 seconds for node shutdown`
+
+. Esportare il nodo dall'host di origine.
++
+[listing]
+----
+sudo storagegrid node export DC1-S3
+----
++
+`Finished exporting node DC1-S3 to /dev/mapper/sgws-dc1-s3-var-local.`
+
++
+`Use 'storagegrid node import /dev/mapper/sgws-dc1-s3-var-local' if you`
+
++
+`want to import it again.`
+
+. Prendere nota di `import command suggested in the output of the `export` comando.
++
+Questo comando verrà eseguito sull'host di destinazione nel passaggio successivo.
+
+

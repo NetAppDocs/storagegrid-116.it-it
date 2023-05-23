@@ -1,0 +1,66 @@
+---
+permalink: s3/recommendations-for-implementing-s3-rest-api.html 
+sidebar: sidebar 
+keywords: implement s3 rest api 
+summary: 'Seguire questi consigli quando si implementa l"API REST S3 per l"utilizzo con StorageGRID.' 
+---
+= Raccomandazioni per l'implementazione dell'API REST S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Seguire questi consigli quando si implementa l'API REST S3 per l'utilizzo con StorageGRID.
+
+
+
+== Raccomandazioni per la gestione di oggetti inesistenti
+
+Se l'applicazione verifica regolarmente l'esistenza di un oggetto in un percorso in cui non si prevede l'effettiva esistenza dell'oggetto, utilizzare il controllo di coerenza "`Available`". Ad esempio, è necessario utilizzare il controllo di coerenza "`Available`" se l'applicazione dirige una posizione prima DI INSERIRVI.
+
+In caso contrario, se l'operazione HEAD non trova l'oggetto, potrebbe essere visualizzato un numero elevato di errori 500 nel server interno se uno o più nodi di storage non sono disponibili.
+
+È possibile impostare il controllo di coerenza "`Available`" per ciascun bucket utilizzando LA richiesta di coerenza PUT bucket oppure specificare il controllo di coerenza nell'intestazione della richiesta per una singola operazione API.
+
+
+
+== Raccomandazioni per le chiavi a oggetti
+
+Per i bucket creati in StorageGRID 11.4 o versioni successive, non è più necessario limitare i nomi delle chiavi degli oggetti per soddisfare le Best practice di performance. Ad esempio, è ora possibile utilizzare valori casuali per i primi quattro caratteri dei nomi delle chiavi oggetto.
+
+Per i bucket creati in release precedenti a StorageGRID 11.4, continuare a seguire questi consigli per i nomi delle chiavi degli oggetti:
+
+* Non utilizzare valori casuali come primi quattro caratteri delle chiavi oggetto. Ciò è in contrasto con la precedente raccomandazione AWS per i prefissi principali. Si consiglia invece di utilizzare prefissi non casuali e non univoci, ad esempio `image`.
+* Se si segue la precedente raccomandazione AWS per utilizzare caratteri casuali e univoci nei prefissi delle chiavi, è necessario anteporre le chiavi oggetto a un nome di directory. Ovvero, utilizzare questo formato:
++
+[listing]
+----
+mybucket/mydir/f8e3-image3132.jpg
+----
++
+Invece di questo formato:
+
++
+[listing]
+----
+mybucket/f8e3-image3132.jpg
+----
+
+
+
+
+== Raccomandazioni per "`range reads`"
+
+Se l'opzione *compress stored objects* è selezionata (*CONFIGURATION* > *System* > *Grid options*), le applicazioni client S3 dovrebbero evitare di eseguire operazioni GET object che specificano un intervallo di byte da restituire. Queste operazioni "`range Read`" sono inefficienti perché StorageGRID deve decomprimere efficacemente gli oggetti per accedere ai byte richiesti. LE operazioni GET Object che richiedono un piccolo intervallo di byte da un oggetto molto grande sono particolarmente inefficienti; ad esempio, è molto inefficiente leggere un intervallo di 10 MB da un oggetto compresso da 50 GB.
+
+Se gli intervalli vengono letti da oggetti compressi, le richieste del client possono scadere.
+
+
+NOTE: Se è necessario comprimere gli oggetti e l'applicazione client deve utilizzare le letture dell'intervallo, aumentare il timeout di lettura per l'applicazione.
+
+.Informazioni correlate
+* xref:consistency-controls.adoc[Controlli di coerenza]
+* xref:put-bucket-consistency-request.adoc[INSERIRE la richiesta di coerenza del bucket]
+* xref:../admin/index.adoc[Amministrare StorageGRID]
+

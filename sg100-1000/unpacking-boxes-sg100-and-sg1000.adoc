@@ -1,0 +1,43 @@
+---
+permalink: sg100-1000/unpacking-boxes-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, install, installation, unpack, unbox, prepare, inventory, components, contents 
+summary: 'Prima di installare l"appliance StorageGRID, disimballare tutte le confezioni e confrontare il contenuto con gli elementi riportati sulla confezione.' 
+---
+= Disimballare le scatole (SG100 e SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance StorageGRID, disimballare tutte le confezioni e confrontare il contenuto con gli elementi riportati sulla confezione.
+
+
+
+== Hardware dell'appliance
+
+* *SG100 o SG1000*
++
+image::../media/sg6000_cn_front_without_bezel.gif[Unità frontali SG 100 o SG1000 Services appliance]
+
+* *Kit guida con istruzioni*
++
+image::../media/rail_kit.gif[Kit di guide]
+
+
+
+
+
+== Cavi di alimentazione
+
+La spedizione per l'appliance StorageGRID include i seguenti cavi di alimentazione:
+
+* *Due cavi di alimentazione per il tuo paese*
++
+image::../media/power_cords.gif[Cavi di alimentazione]
+
++
+Il cabinet potrebbe essere dotato di cavi di alimentazione speciali utilizzati al posto dei cavi di alimentazione forniti con l'apparecchio.
+
+

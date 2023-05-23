@@ -1,0 +1,30 @@
+---
+permalink: ilm/using-multiple-storage-pools-for-cross-site-replication.html 
+sidebar: sidebar 
+keywords: site-loss protection, cross-site replication, storage pools 
+summary: 'Se l"implementazione di StorageGRID include più siti, è possibile attivare la protezione dalla perdita di sito creando un pool di storage per ciascun sito e specificando entrambi i pool di storage nelle istruzioni di posizionamento della regola. Ad esempio, se si configura una regola ILM per eseguire due copie replicate e specificare pool di storage in due siti, una copia di ciascun oggetto verrà posizionata in ciascun sito. Se si configura una regola per eseguire due copie e si specificano tre pool di storage, le copie vengono distribuite in modo da bilanciare l"utilizzo del disco tra i pool di storage, garantendo al contempo che le due copie vengano memorizzate in siti diversi.' 
+---
+= Utilizzo di più pool di storage per la replica tra siti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se l'implementazione di StorageGRID include più siti, è possibile attivare la protezione dalla perdita di sito creando un pool di storage per ciascun sito e specificando entrambi i pool di storage nelle istruzioni di posizionamento della regola. Ad esempio, se si configura una regola ILM per eseguire due copie replicate e specificare pool di storage in due siti, una copia di ciascun oggetto verrà posizionata in ciascun sito. Se si configura una regola per eseguire due copie e si specificano tre pool di storage, le copie vengono distribuite in modo da bilanciare l'utilizzo del disco tra i pool di storage, garantendo al contempo che le due copie vengano memorizzate in siti diversi.
+
+Nell'esempio seguente viene illustrato cosa può accadere se una regola ILM inserisce copie di oggetti replicate in un singolo pool di storage contenente nodi di storage da due siti. Poiché il sistema utilizza i nodi disponibili nel pool di storage quando inserisce le copie replicate, potrebbe posizionare tutte le copie di alcuni oggetti all'interno di uno solo dei siti. In questo esempio, il sistema ha memorizzato due copie di Object AAA sui nodi di storage nel sito 1 e due copie di Object CCC sui nodi di storage nel sito 2. Solo il BBB oggetto è protetto se uno dei siti si guasta o diventa inaccessibile.
+
+image::../media/ilm_replication_make_2_copies_1_pool_2_sites.png[Regola 2 copie in due siti, ma solo in un pool di storage]
+
+Al contrario, questo esempio illustra come vengono memorizzati gli oggetti quando si utilizzano più pool di storage. Nell'esempio, la regola ILM specifica che devono essere create due copie replicate di ciascun oggetto e che le copie devono essere distribuite in due pool di storage. Ogni pool di storage contiene tutti i nodi di storage in un sito. Poiché una copia di ciascun oggetto viene memorizzata in ogni sito, i dati dell'oggetto sono protetti da guasti o inaccessibilità del sito.
+
+image::../media/ilm_replication_make_2_copies_2_pools_2_sites.png[Regola 2 copie in due siti e due pool di storage]
+
+Quando si utilizzano più pool di storage, tenere presenti le seguenti regole:
+
+* Se si creano n copie, è necessario aggiungere n o più pool di storage. Ad esempio, se una regola è configurata per eseguire tre copie, è necessario specificare tre o più pool di storage.
+* Se il numero di copie corrisponde al numero di pool di storage, viene memorizzata una copia dell'oggetto in ciascun pool di storage.
+* Se il numero di copie è inferiore al numero di pool di storage, il sistema distribuisce le copie per mantenere bilanciato l'utilizzo del disco tra i pool e garantire che due o più copie non vengano memorizzate nello stesso pool di storage.
+* Se i pool di storage si sovrappongono (contengono gli stessi nodi di storage), tutte le copie dell'oggetto potrebbero essere salvate in un solo sito. È necessario assicurarsi che i pool di storage selezionati non contengano gli stessi nodi di storage.
+

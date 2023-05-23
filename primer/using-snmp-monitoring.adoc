@@ -1,0 +1,39 @@
+---
+permalink: primer/using-snmp-monitoring.html 
+sidebar: sidebar 
+keywords: snmp, simple network management protocol, agent, trap, inform, mib 
+summary: 'Se si desidera monitorare StorageGRID utilizzando il protocollo SNMP (Simple Network Management Protocol), è possibile utilizzare Grid Manager per configurare l"agente SNMP.' 
+---
+= Utilizzare il monitoraggio SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si desidera monitorare StorageGRID utilizzando il protocollo SNMP (Simple Network Management Protocol), è possibile configurare l'agente SNMP utilizzando Grid Manager.
+
+Ogni nodo StorageGRID esegue un agente SNMP, o daemon, che fornisce una base di informazioni di gestione (MIB). Il MIB StorageGRID contiene definizioni di tabella e notifica per avvisi e allarmi. Ogni nodo StorageGRID supporta anche un sottoinsieme di oggetti MIB-II.
+
+Inizialmente, SNMP viene disattivato su tutti i nodi. Quando si configura l'agente SNMP, tutti i nodi StorageGRID ricevono la stessa configurazione.
+
+L'agente SNMP StorageGRID supporta tutte e tre le versioni del protocollo SNMP. L'agente fornisce accesso MIB di sola lettura per le query e può inviare due tipi di notifiche basate sugli eventi a un sistema di gestione:
+
+* *Trap* sono notifiche inviate dall'agente SNMP che non richiedono un riconoscimento da parte del sistema di gestione. Le trap servono a notificare al sistema di gestione che si è verificato qualcosa all'interno di StorageGRID, ad esempio un avviso attivato. I trap sono supportati in tutte e tre le versioni di SNMP.
+* Le informazioni * sono simili alle trap, ma richiedono un riconoscimento da parte del sistema di gestione. Se l'agente SNMP non riceve una conferma entro un determinato periodo di tempo, invia nuovamente l'informazione fino a quando non viene ricevuta una conferma o non viene raggiunto il valore massimo di ripetizione. Le informazioni sono supportate in SNMPv2c e SNMPv3.
+
+
+Le notifiche trap e inform vengono inviate nei seguenti casi:
+
+* Viene attivato un avviso predefinito o personalizzato a qualsiasi livello di severità. Per eliminare le notifiche SNMP per un avviso, è necessario configurare un silenzio per l'avviso. Le notifiche di avviso vengono inviate da qualsiasi nodo amministrativo configurato come mittente preferito.
+* Alcuni allarmi (sistema legacy) vengono attivati a livelli di severità specificati o superiori.
++
+
+NOTE: Le notifiche SNMP non vengono inviate per ogni allarme o per ogni severità di allarme.
+
+
+
+*Informazioni correlate*
+
+* xref:../monitor/index.adoc[Monitorare e risolvere i problemi]
+

@@ -1,0 +1,29 @@
+---
+permalink: maintain/installing-services-appliance-platform-change-only.html 
+sidebar: sidebar 
+keywords: storagegrid, recover services appliance, recover appliance, recovering appliance, recovering services appliance, install services appliance, installing services appliance, services appliance 
+summary: 'Durante il ripristino di un nodo Grid guasto ospitato su VMware o su un host Linux e si utilizza un"appliance di servizi SG100 o SG1000 per il nodo sostitutivo, è necessario installare prima il nuovo hardware dell"appliance utilizzando lo stesso nome del nodo guasto.' 
+---
+= Installare l'appliance di servizi (solo modifica della piattaforma)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Durante il ripristino di un nodo Grid guasto ospitato su VMware o su un host Linux e si utilizza un'appliance di servizi SG100 o SG1000 per il nodo sostitutivo, è necessario installare prima il nuovo hardware dell'appliance utilizzando lo stesso nome del nodo guasto.
+
+È necessario disporre delle seguenti informazioni sul nodo guasto:
+
+* *Node name* (Nome nodo): È necessario installare l'appliance di servizi utilizzando lo stesso nome di nodo del nodo guasto.
+* *Indirizzi IP*: È possibile assegnare al dispositivo di servizi gli stessi indirizzi IP del nodo guasto, che è l'opzione preferita, oppure selezionare un nuovo indirizzo IP inutilizzato su ciascuna rete.
+
+
+Eseguire questa procedura solo se si sta ripristinando un nodo guasto ospitato su VMware o Linux e lo si sta sostituendo con un nodo ospitato su un'appliance di servizi.
+
+. Seguire le istruzioni per l'installazione di una nuova appliance di servizi SG100 o SG1000.
+. Quando viene richiesto il nome di un nodo, utilizzare il nome del nodo guasto.
+
+
+.Informazioni correlate
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]

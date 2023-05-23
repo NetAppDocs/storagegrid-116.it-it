@@ -1,0 +1,67 @@
+---
+permalink: monitor/monitoring-node-connection-states.html 
+sidebar: sidebar 
+keywords: monitor, monitoring node connection states, node connection states 
+summary: Se uno o più nodi sono disconnessi dalla rete, potrebbero verificarsi problemi con le operazioni critiche di StorageGRID. È necessario monitorare gli stati di connessione dei nodi e risolvere tempestivamente eventuali problemi. 
+---
+= Monitorare gli stati di connessione del nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se uno o più nodi sono disconnessi dalla rete, potrebbero verificarsi problemi con le operazioni critiche di StorageGRID. È necessario monitorare gli stati di connessione dei nodi e risolvere tempestivamente eventuali problemi.
+
+.Di cosa hai bisogno
+* È necessario accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+
+
+.A proposito di questa attività
+I nodi possono avere uno dei tre stati di connessione:
+
+* *Non connesso - Sconosciuto* image:../media/icon_alarm_blue_unknown.png["icona del punto interrogativo blu"]: Il nodo non è connesso alla rete per un motivo sconosciuto. Ad esempio, la connessione di rete tra i nodi è stata persa o l'alimentazione è inattiva. Potrebbe essere attivato anche l'avviso *Impossibile comunicare con il nodo*. Potrebbero essere attivi anche altri avvisi. Questa situazione richiede un'attenzione immediata.
++
+
+NOTE: Un nodo potrebbe apparire come sconosciuto durante le operazioni di shutdown gestite. In questi casi, è possibile ignorare lo stato Unknown (Sconosciuto).
+
+* *Non connesso - amministrazione non attiva* image:../media/icon_alarm_gray_administratively_down.png["icona del punto interrogativo grigio"]: Il nodo non è connesso alla rete per un motivo previsto. Ad esempio, il nodo o i servizi sul nodo sono stati normalmente spenti, il nodo è in fase di riavvio o il software è in fase di aggiornamento. Potrebbero essere attivi anche uno o più avvisi.
+* *Connesso* image:../media/icon_alert_green_checkmark.png["icona di avviso segno di spunta verde"]: Il nodo è collegato alla rete.
+
+
+.Fasi
+. Se viene visualizzata un'icona blu o grigia nel pannello Health (Salute) della dashboard, fare clic sull'icona o fare clic su *Grid details* (Dettagli griglia). (Le icone blu o grigie e il collegamento *Dettagli griglia* vengono visualizzati solo se almeno un nodo è scollegato dalla griglia).
++
+Viene visualizzata la pagina Overview (Panoramica) per il primo nodo blu nella struttura dei nodi. Se non sono presenti nodi blu, viene visualizzata la pagina Panoramica relativa al primo nodo grigio della struttura.
+
++
+Nell'esempio, il nodo di storage denominato DC1-S3 presenta un'icona blu. L'opzione *Connection state* (Stato connessione) nel pannello Node Information (informazioni nodo) è *Unknown* (Sconosciuto) e l'avviso *Unable to communicate with Node* (Impossibile comunicare con il nodo) è attivo. L'avviso indica che uno o più servizi non rispondono o che il nodo non può essere raggiunto.
+
++
+image::../media/node_connection_state_blue.png[Stato connessione nodo blu]
+
+. Se un nodo presenta un'icona blu, attenersi alla seguente procedura:
++
+.. Selezionare ciascun avviso nella tabella e seguire le azioni consigliate.
++
+Ad esempio, potrebbe essere necessario riavviare un servizio che ha arrestato o riavviato l'host per il nodo.
+
+.. Se non riesci a riportare il nodo online, contatta il supporto tecnico.
+
+
+. Se un nodo presenta un'icona grigia, attenersi alla seguente procedura:
++
+I nodi grigi sono previsti durante le procedure di manutenzione e potrebbero essere associati a uno o più avvisi. In base al problema sottostante, questi nodi "`amministrativamente giù`" spesso tornano online senza alcun intervento.
+
++
+.. Consultare la sezione Avvisi e determinare se sono presenti avvisi che influiscono su questo nodo.
+.. Se uno o più avvisi sono attivi, selezionare ciascun avviso nella tabella e seguire le azioni consigliate.
+.. Se non riesci a riportare il nodo online, contatta il supporto tecnico.
+
+
+
+
+.Informazioni correlate
+xref:alerts-reference.adoc[Riferimenti agli avvisi]
+
+xref:../maintain/index.adoc[Ripristino e manutenzione]

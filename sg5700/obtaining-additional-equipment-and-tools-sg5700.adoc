@@ -1,0 +1,72 @@
+---
+permalink: sg5700/obtaining-additional-equipment-and-tools-sg5700.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, additional, equipment, tools 
+summary: 'Prima di installare l"appliance StorageGRID, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.' 
+---
+= Ottenere apparecchiature e strumenti aggiuntivi (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance StorageGRID, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.
+
+Per installare e configurare l'hardware sono necessarie le seguenti apparecchiature aggiuntive:
+
+* *Cacciaviti*
++
+image::../media/screwdrivers.gif[Due cacciaviti]
+
++
+Phillips No. 2 cacciaviti
+
++
+Cacciavite medio a lama piatta
+
+* *Braccialetto ESD*
++
+image::../media/appliance_wriststrap.gif[Braccialetto antistatico]
+
+* *Cavi ottici e ricetrasmettitori SFP*
++
+image::../media/fc_cable_and_sfp.gif[Cavo ottico e ricetrasmettitore SFP+]
+
++
+Cavi ottici per le porte 10/25-GbE che si intende utilizzare
+
++
+Opzionale: Ricetrasmettitori SFP28 se si desidera utilizzare la velocità di collegamento a 25 GbE
+
+* *Cavi Ethernet*
++
+image::../media/ethernet_cables.png[Cavi Ethernet]
+
+* *Laptop di assistenza*
++
+image::../media/sam_management_client.gif[Laptop di assistenza]
+
++
+xref:../admin/web-browser-requirements.adoc[Browser Web supportato]
+
++
+Client SSH, ad esempio putty
+
++
+Porta Ethernet da 1 GB (RJ-45)
+
+* *Strumenti opzionali*
++
+image::../media/optional_tools.gif[Perforatrice e torcia elettrica]
+
++
+Trapano elettrico con punta Phillips
+
++
+Torcia
+
++
+Sollevatore meccanizzato per SG5760
+
+

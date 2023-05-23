@@ -1,0 +1,78 @@
+---
+permalink: admin/configuring-s3-api-endpoint-domain-names.html 
+sidebar: sidebar 
+keywords: s3 api, endpoint domain names, virtual hosted-style requests 
+summary: 'Per supportare le richieste in stile host virtuale S3, è necessario utilizzare Grid Manager per configurare l"elenco dei nomi di dominio degli endpoint a cui si connettono i client S3.' 
+---
+= Configurare i nomi di dominio degli endpoint API S3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per supportare le richieste in stile host virtuale S3, è necessario utilizzare Grid Manager per configurare l'elenco dei nomi di dominio degli endpoint a cui si connettono i client S3.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+* Hai confermato che non è in corso un aggiornamento della griglia.
++
+
+CAUTION: Non apportare modifiche alla configurazione del nome di dominio quando è in corso un aggiornamento della griglia.
+
+
+
+.A proposito di questa attività
+Per consentire ai client di utilizzare i nomi di dominio degli endpoint S3, è necessario eseguire tutte le seguenti operazioni:
+
+* Utilizzare Grid Manager per aggiungere i nomi di dominio degli endpoint S3 al sistema StorageGRID.
+* Assicurarsi che il certificato utilizzato dal client per le connessioni HTTPS a StorageGRID sia firmato per tutti i nomi di dominio richiesti dal client.
++
+Ad esempio, se l'endpoint è `s3.company.com`, È necessario assicurarsi che il certificato utilizzato per le connessioni HTTPS includa `s3.company.com` Endpoint e SAN (Subject alternative Name) con caratteri jolly dell'endpoint: `*.s3.company.com`.
+
+* Configurare il server DNS utilizzato dal client. Includere i record DNS per gli indirizzi IP utilizzati dai client per effettuare le connessioni e assicurarsi che i record riferiscano a tutti i nomi di dominio degli endpoint richiesti, inclusi i nomi con caratteri jolly.
++
+
+NOTE: I client possono connettersi a StorageGRID utilizzando l'indirizzo IP di un nodo gateway, di un nodo amministratore o di un nodo di storage oppure connettendosi all'indirizzo IP virtuale di un gruppo ad alta disponibilità. È necessario comprendere il modo in cui le applicazioni client si connettono alla griglia in modo da includere gli indirizzi IP corretti nei record DNS.
+
+
+
+I client che utilizzano connessioni HTTPS (consigliate) alla griglia possono utilizzare uno dei seguenti certificati:
+
+* I client che si connettono a un endpoint di bilanciamento del carico possono utilizzare un certificato personalizzato per tale endpoint. Ogni endpoint del bilanciamento del carico può essere configurato in modo da riconoscere nomi di dominio degli endpoint diversi.
+* I client che si connettono a un endpoint di bilanciamento del carico, direttamente a un nodo di storage o direttamente al servizio CLB obsoleto su un nodo gateway possono personalizzare il certificato globale S3 e Swift API per includere tutti i nomi di dominio degli endpoint richiesti.
+
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *rete* *nomi di dominio*.
++
+Viene visualizzata la pagina Endpoint Domain Names (nomi dominio endpoint).
+
++
+image::../media/configure_endpoint_domain_names.png[Schermata della finestra di dialogo Endpoint Domain Names (nomi dominio endpoint)]
+
+. Immettere l'elenco dei nomi di dominio degli endpoint API S3 nei campi *Endpoint*. Utilizzare image:../media/icon_plus_sign_black_on_white_old.png["icona del segno più"] per aggiungere altri campi.
++
+Se l'elenco è vuoto, il supporto per le richieste di tipo host virtuale S3 viene disattivato.
+
+. Selezionare *Salva*.
+. Assicurarsi che i certificati server utilizzati dai client corrispondano ai nomi di dominio degli endpoint richiesti.
++
+** Se i client si connettono a un endpoint di bilanciamento del carico che utilizza il proprio certificato, aggiornare il certificato associato all'endpoint.
+** Se i client si connettono a un endpoint di bilanciamento del carico che utilizza il certificato API globale S3 e Swift, direttamente ai nodi di storage o al servizio CLB sui nodi gateway, aggiornare il certificato API globale S3 e Swift.
+
+
+. Aggiungere i record DNS necessari per garantire che le richieste dei nomi di dominio degli endpoint possano essere risolte.
+
+
+.Risultato
+Ora, quando i client utilizzano l'endpoint `bucket.s3.company.com`, Il server DNS si risolve nell'endpoint corretto e il certificato autentica l'endpoint come previsto.
+
+.Informazioni correlate
+* xref:../s3/index.adoc[Utilizzare S3]
+* xref:viewing-ip-addresses.adoc[Visualizzare gli indirizzi IP]
+* xref:configure-high-availability-group.adoc[Configurare i gruppi ad alta disponibilità]
+* xref:configuring-custom-server-certificate-for-storage-node-or-clb.adoc[Configurare i certificati API S3 e Swift]
+* xref:configuring-load-balancer-endpoints.adoc[Configurare gli endpoint del bilanciamento del carico]
+

@@ -1,0 +1,17 @@
+---
+permalink: sg5600/port-bond-modes-for-e5600sg-controller-ports.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, port bond, port bonding, port bond mode, port-bond mode 
+summary: 'Quando si configurano i collegamenti di rete per le porte del controller E5600SG, è possibile utilizzare il bonding di porta per le porte 10-GbE che si collegano alla rete Grid e alla rete client opzionale, nonché per le porte di gestione 1-GbE che si collegano alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l"appliance.' 
+---
+= Modalità di port bond per le porte del controller E5600SG
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si configurano i collegamenti di rete per le porte del controller E5600SG, è possibile utilizzare il bonding di porta per le porte 10-GbE che si collegano alla rete Grid e alla rete client opzionale, nonché per le porte di gestione 1-GbE che si collegano alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l'appliance.
+
+.Informazioni correlate
+xref:configuring-network-links-sg5600.adoc[Configurazione dei collegamenti di rete (SG5600)]

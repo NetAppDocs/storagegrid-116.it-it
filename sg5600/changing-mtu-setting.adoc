@@ -1,0 +1,71 @@
+---
+permalink: sg5600/changing-mtu-setting.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, mtu, set, setting, change, changing, modify 
+summary: 'È possibile modificare l"impostazione MTU assegnata durante la configurazione degli indirizzi IP per il nodo dell"appliance.' 
+---
+= Modificare l'impostazione MTU
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare l'impostazione MTU assegnata durante la configurazione degli indirizzi IP per il nodo dell'appliance.
+
+.A proposito di questa attività
+
+IMPORTANT: Il valore MTU della rete deve corrispondere al valore configurato sulla porta dello switch a cui è connesso il nodo. In caso contrario, potrebbero verificarsi problemi di performance di rete o perdita di pacchetti.
+
+
+IMPORTANT: Per ottenere le migliori performance di rete, tutti i nodi devono essere configurati con valori MTU simili sulle interfacce Grid Network. L'avviso *Grid Network MTU mismatch* (mancata corrispondenza MTU rete griglia) viene attivato se si verifica una differenza significativa nelle impostazioni MTU per Grid Network su singoli nodi. I valori MTU non devono essere uguali per tutti i tipi di rete.
+
+Per modificare l'impostazione MTU senza riavviare il nodo dell'appliance, <<Modificare l'impostazione MTU utilizzando lo strumento Change IP,Utilizzare lo strumento Change IP>>.
+
+Se il client o la rete amministrativa non sono stati configurati nel programma di installazione dell'appliance StorageGRID durante l'installazione iniziale, <<Modificare l'impostazione MTU utilizzando la modalità di manutenzione,Modificare l'impostazione MTU utilizzando la modalità di manutenzione>>.
+
+
+
+== Modificare l'impostazione MTU utilizzando lo strumento Change IP
+
+.Di cosa hai bisogno
+Hai il `Passwords.txt` File per utilizzare lo strumento Change IP.
+
+.Fasi
+Accedere allo strumento Change IP e aggiornare le impostazioni MTU come descritto in xref:../maintain/changing-nodes-network-configuration.adoc[Modificare la configurazione di rete del nodo].
+
+
+
+== Modificare l'impostazione MTU utilizzando la modalità di manutenzione
+
+Modificare l'impostazione MTU utilizzando la modalità di manutenzione se non si riesce ad accedere a queste impostazioni utilizzando lo strumento Change IP.
+
+.Di cosa hai bisogno
+L'apparecchio è stato utilizzato xref:placing-appliance-into-maintenance-mode.adoc[modalità di manutenzione attivata].
+
+.Fasi
+. Dal programma di installazione dell'appliance StorageGRID, selezionare *Configura rete* > *Configurazione IP*.
+. Apportare le modifiche desiderate alle impostazioni MTU per Grid Network, Admin Network e Client Network.
++
+image::../media/grid_network_static.png[Grid Network IP (IP rete griglia)]
+
+. Quando si è soddisfatti delle impostazioni, selezionare *Save* (Salva).
+. Riavviare il nodo. Dal programma di installazione dell'appliance StorageGRID, selezionare *Avanzate* > *Riavvia controller*, quindi selezionare una delle seguenti opzioni:
++
+** Selezionare *Riavvia in StorageGRID* per riavviare il controller con il nodo che si ricongiunge alla griglia. Selezionare questa opzione se si è terminato di lavorare in modalità di manutenzione e si è pronti per ripristinare il normale funzionamento del nodo.
+** Selezionare *Reboot into Maintenance Mode* (Riavvia in modalità di manutenzione) per riavviare il controller con il nodo in modalità di manutenzione. (Questa opzione è disponibile solo quando il controller è in modalità di manutenzione). Selezionare questa opzione se sono necessarie ulteriori operazioni di manutenzione sul nodo prima di ricongiungersi alla griglia.
++
+image::../media/reboot_controller_from_maintenance_mode.png[Riavviare il controller in modalità di manutenzione]
+
++
+Il riavvio dell'appliance e il ricongiungersi alla griglia possono richiedere fino a 20 minuti. Per confermare che il riavvio è stato completato e che il nodo ha ricongiungersi alla griglia, tornare a Grid Manager. La pagina *NODES* dovrebbe visualizzare uno stato normale (nessuna icona) per il nodo appliance, a indicare che non sono attivi avvisi e che il nodo è connesso alla griglia.
+
++
+image::../media/nodes_menu.png[Nodo appliance riconentrato in Grid]
+
+
+
+
+
+.Informazioni correlate
+xref:../admin/index.adoc[Amministrare StorageGRID]

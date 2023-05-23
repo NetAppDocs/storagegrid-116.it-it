@@ -1,0 +1,36 @@
+---
+permalink: maintain/configuring-dns-servers.html 
+sidebar: sidebar 
+keywords: storagegrid, dns, configuring dns, configure dns, domain name system 
+summary: 'È possibile aggiungere, rimuovere e aggiornare i server DNS (Domain Name System), in modo da poter utilizzare i nomi host FQDN (Fully Qualified Domain Name) anziché gli indirizzi IP.' 
+---
+= Configurare i server DNS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aggiungere, rimuovere e aggiornare i server DNS (Domain Name System), in modo da poter utilizzare i nomi host FQDN (Fully Qualified Domain Name) anziché gli indirizzi IP.
+
+.Di cosa hai bisogno
+* È necessario accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario disporre dell'autorizzazione Maintenance (manutenzione) o Root Access (accesso root).
+* Per eseguire la configurazione, è necessario disporre degli indirizzi IP dei server DNS.
+
+
+La specifica delle informazioni sul server DNS consente di utilizzare i nomi host FQDN (Fully Qualified Domain Name) anziché gli indirizzi IP per le notifiche e-mail o SNMP e AutoSupport. Si consiglia di specificare almeno due server DNS.
+
+
+IMPORTANT: Fornire da due a sei indirizzi IP per i server DNS. In generale, selezionare i server DNS ai quali ciascun sito può accedere localmente in caso di rete. In questo modo si garantisce che un sito islanded continui ad avere accesso al servizio DNS. Dopo aver configurato l'elenco dei server DNS a livello di griglia, è possibile xref:modifying-dns-configuration-for-single-grid-node.adoc[Personalizzare ulteriormente l'elenco dei server DNS per ciascun nodo].
+
+Se le informazioni del server DNS vengono omesse o configurate in modo errato, viene attivato un allarme DNST sul servizio SSM di ciascun nodo della rete. L'allarme viene cancellato quando il DNS è configurato correttamente e le nuove informazioni sul server hanno raggiunto tutti i nodi della griglia.
+
+.Fasi
+. Selezionare *MANUTENZIONE* *rete* *Server DNS*.
+. Nella sezione Server, aggiungere o rimuovere le voci del server DNS, se necessario.
++
+Si consiglia di specificare almeno due server DNS per sito. È possibile specificare fino a sei server DNS.
+
+. Fare clic su *Save* (Salva).
+

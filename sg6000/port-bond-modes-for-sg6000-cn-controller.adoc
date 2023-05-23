@@ -1,0 +1,17 @@
+---
+permalink: sg6000/port-bond-modes-for-sg6000-cn-controller.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, port bond, port bonding, port bond mode, port-bond mode 
+summary: 'Quando si configurano i collegamenti di rete per SG6000-CN, è possibile utilizzare il bonding di porta per le porte 10/25-GbE che si collegano alla rete Grid e alla rete client opzionale, nonché per le porte di gestione 1-GbE che si collegano alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l"appliance.' 
+---
+= Modalità Port Bond per controller SG6000-CN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si configurano i collegamenti di rete per SG6000-CN, è possibile utilizzare il bonding di porta per le porte 10/25-GbE che si collegano alla rete Grid e alla rete client opzionale, nonché per le porte di gestione 1-GbE che si collegano alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l'appliance.
+
+.Informazioni correlate
+xref:configuring-network-links-sg6000.adoc[Configurazione dei collegamenti di rete (SG6000)]

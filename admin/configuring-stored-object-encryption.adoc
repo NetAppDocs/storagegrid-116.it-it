@@ -1,0 +1,38 @@
+---
+permalink: admin/configuring-stored-object-encryption.html 
+sidebar: sidebar 
+keywords: stored object encryption, grid options, encrypt 
+summary: È possibile crittografare gli oggetti memorizzati se si desidera garantire che i dati non possano essere recuperati in un formato leggibile se un archivio di oggetti viene compromesso. Per impostazione predefinita, gli oggetti non vengono crittografati. 
+---
+= Configurare la crittografia degli oggetti memorizzati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile crittografare gli oggetti memorizzati se si desidera garantire che i dati non possano essere recuperati in un formato leggibile se un archivio di oggetti viene compromesso. Per impostazione predefinita, gli oggetti non vengono crittografati.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.A proposito di questa attività
+La crittografia degli oggetti memorizzati consente la crittografia di tutti i dati degli oggetti durante l'acquisizione tramite S3 o Swift. Quando si attiva l'impostazione, tutti gli oggetti inseriti di recente vengono crittografati, ma non vengono apportate modifiche agli oggetti memorizzati esistenti. Se si disattiva la crittografia, gli oggetti attualmente crittografati rimangono crittografati, ma gli oggetti appena acquisiti non vengono crittografati.
+
+
+NOTE: Se si modifica questa impostazione, l'applicazione della nuova impostazione richiede circa un minuto. Il valore configurato viene memorizzato nella cache per le prestazioni e la scalabilità.
+
+Gli oggetti memorizzati possono essere crittografati utilizzando l'algoritmo di crittografia AES‐128 o AES‐256.
+
+L'impostazione crittografia oggetti memorizzati si applica solo agli oggetti S3 che non sono stati crittografati mediante crittografia a livello di bucket o a livello di oggetto.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sistema* *Opzioni griglia*.
+. Nella sezione Stored Object Options, impostare l'opzione Stored Object Encryption su *None* (Nessuna) (impostazione predefinita), *AES-128* o *AES-256*.
++
+image::../media/stored_object_encryption.png[Storage Object Encryption]
+
+. Selezionare *Salva*.
+

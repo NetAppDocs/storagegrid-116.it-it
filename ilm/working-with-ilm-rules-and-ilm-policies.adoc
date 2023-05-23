@@ -1,0 +1,141 @@
+---
+permalink: ilm/working-with-ilm-rules-and-ilm-policies.html 
+sidebar: sidebar 
+keywords: delete ilm rule, edit ilm rule, clone ilm rule, ilm queue 
+summary: Dopo aver creato le regole ILM e un criterio ILM, è possibile continuare a utilizzarli, modificandone la configurazione man mano che cambiano i requisiti di storage. 
+---
+= Utilizzare le regole ILM e i criteri ILM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta create le regole ILM e un criterio ILM, è possibile continuare a utilizzarli, modificandone la configurazione man mano che cambiano i requisiti di storage.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+
+
+== Eliminare una regola ILM
+
+Per mantenere gestibile l'elenco delle regole ILM correnti, eliminare eventuali regole ILM che non si intende utilizzare.
+
+Non è possibile eliminare una regola ILM se è attualmente utilizzata nel criterio attivo o nel criterio proposto. Se è necessario eliminare una regola ILM che utilizza un criterio, è necessario eseguire prima questa procedura:
+
+. Clonare il criterio attivo o modificare il criterio proposto.
+. Rimuovere la regola ILM dal criterio.
+. Salvare, simulare e attivare il nuovo criterio per assicurarsi che gli oggetti siano protetti come previsto.
+
+
+.Fasi
+. Selezionare *ILM* > *regole*.
+. Esaminare la voce della tabella relativa alla regola che si desidera rimuovere.
++
+Verificare che la regola non sia utilizzata nel criterio ILM attivo o nel criterio ILM proposto.
+
+. Se la regola che si desidera rimuovere non è in uso, selezionare il pulsante di opzione e selezionare *Rimuovi*.
+. Selezionare *OK* per confermare che si desidera eliminare la regola ILM.
++
+La regola ILM viene eliminata.
+
++
+[NOTE]
+====
+Se si elimina una regola utilizzata in un criterio storico, viene visualizzato image:../media/icon_ilm_rule_historical.png["Cronologia regole ILM icona"] quando si visualizza il criterio, viene visualizzata un'icona che indica che la regola è diventata una regola storica.
+
+image::../media/ilm_rule_historical.png[Cronologia regola ILM]
+
+====
+
+
+
+
+== Modificare una regola ILM
+
+Potrebbe essere necessario modificare una regola ILM per modificare un filtro o un'istruzione di posizionamento.
+
+Non è possibile modificare una regola se utilizzata nel criterio ILM proposto o nel criterio ILM attivo. È invece possibile clonare queste regole e apportare le modifiche necessarie alla copia clonata. Inoltre, non è possibile modificare la regola ILM (creare 2 copie) o le regole ILM create prima della versione 10.3 di StorageGRID.
+
+
+NOTE: Prima di aggiungere una regola modificata al criterio ILM attivo, tenere presente che una modifica alle istruzioni di posizionamento di un oggetto potrebbe causare un aumento del carico sul sistema.
+
+.Fasi
+. Selezionare *ILM* > *regole*.
++
+Viene visualizzata la pagina ILM Rules (regole ILM). Questa pagina mostra tutte le regole disponibili e indica le regole utilizzate nel criterio attivo o nel criterio proposto.
+
++
+image::../media/ilm_rules_page_with_edit_and_clone_enabled.png[Pagina regole ILM]
+
+. Selezionare una regola non utilizzata e selezionare *Modifica*.
++
+Viene visualizzata la procedura guidata Edit ILM Rule (Modifica regola ILM).
+
++
+image::../media/edit_ilm_rule_step_1.png[Pagina Edit ILM Rule (Modifica regola ILM)]
+
+. Completare le pagine della procedura guidata Edit ILM Rule (Modifica regola ILM), seguendo la procedura descritta in xref:access-create-ilm-rule-wizard.adoc[Creazione di una regola ILM] e. xref:using-advanced-filters-in-ilm-rules.adoc[utilizzo di filtri avanzati], se necessario.
++
+Quando si modifica una regola ILM, non è possibile modificarne il nome.
+
+. Selezionare *Salva*.
++
+[NOTE]
+====
+Se si modifica una regola utilizzata in un criterio storico, viene visualizzato image:../media/icon_ilm_rule_historical.png["Cronologia regole ILM icona"] quando si visualizza il criterio, viene visualizzata un'icona che indica che la regola è diventata una regola storica.
+
+image::../media/ilm_rule_historical.png[Cronologia regola ILM]
+
+====
+
+
+
+
+== Clonare una regola ILM
+
+Non è possibile modificare una regola se utilizzata nel criterio ILM proposto o nel criterio ILM attivo. È invece possibile clonare una regola e apportare le modifiche necessarie alla copia clonata. Quindi, se necessario, è possibile rimuovere la regola originale dal criterio proposto e sostituirla con la versione modificata. Non è possibile clonare una regola ILM se è stata creata utilizzando StorageGRID versione 10.2 o precedente.
+
+Prima di aggiungere una regola clonata al criterio ILM attivo, tenere presente che una modifica alle istruzioni di posizionamento di un oggetto potrebbe causare un aumento del carico sul sistema.
+
+.Fasi
+. Selezionare *ILM* > *regole*.
++
+Viene visualizzata la pagina ILM Rules (regole ILM).
+
++
+image::../media/ilm_rules_page_with_edit_and_clone_enabled.png[Pagina ILM Rule]
+
+. Selezionare la regola ILM che si desidera clonare e selezionare *Clone*.
++
+Viene visualizzata la procedura guidata Create ILM Rule (Crea regola ILM).
+
+. Aggiornare la regola clonata seguendo la procedura per modificare una regola ILM e utilizzando filtri avanzati.
++
+Quando si clonano una regola ILM, è necessario immettere un nuovo nome.
+
+. Selezionare *Salva*.
++
+Viene creata la nuova regola ILM.
+
+
+
+
+
+== Visualizzare la coda di attività del criterio ILM
+
+È possibile visualizzare il numero di oggetti presenti nella coda da valutare in base al criterio ILM in qualsiasi momento. È possibile monitorare la coda di elaborazione ILM per determinare le prestazioni del sistema. Una coda di grandi dimensioni potrebbe indicare che il sistema non è in grado di tenere il passo con la velocità di acquisizione, che il carico dalle applicazioni client è troppo elevato o che esiste una condizione anomala.
+
+.Fasi
+. Selezionare *Dashboard*.
++
+image::../media/grid_manager_dashboard.png[Dashboard nell'interfaccia di gestione della griglia]
+
+. Monitorare la sezione Information Lifecycle Management (ILM).
++
+È possibile selezionare il punto interrogativo image:../media/icon_nms_question.png["icona del punto interrogativo"] per visualizzare una descrizione degli elementi di questa sezione.
+
+

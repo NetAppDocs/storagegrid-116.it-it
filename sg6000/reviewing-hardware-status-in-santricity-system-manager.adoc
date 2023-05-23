@@ -1,0 +1,59 @@
+---
+permalink: sg6000/reviewing-hardware-status-in-santricity-system-manager.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, SANtricity System Manager, SANtricity, System Manager, hardware, status, diagnostic, environment drives, drive, temperature 
+summary: 'È possibile utilizzare Gestione di sistema di SANtricity per monitorare e gestire i singoli componenti hardware nello shelf dello storage controller e per esaminare informazioni ambientali e diagnostiche dell"hardware, come la temperatura dei componenti, nonché i problemi relativi ai dischi.' 
+---
+= Esaminare lo stato dell'hardware in Gestore di sistema di SANtricity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Gestione di sistema di SANtricity per monitorare e gestire i singoli componenti hardware nello shelf dello storage controller e per esaminare informazioni ambientali e diagnostiche dell'hardware, come la temperatura dei componenti, nonché i problemi relativi ai dischi.
+
+.Di cosa hai bisogno
+* Si sta utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Per accedere a Gestione di sistema SANtricity tramite Gestione griglia, è necessario disporre dell'autorizzazione Amministratore appliance di storage o dell'autorizzazione di accesso root.
+* Per accedere a Gestione di sistema di SANtricity utilizzando il programma di installazione dell'appliance di StorageGRID, è necessario disporre del nome utente e della password dell'amministratore di Gestione di sistema di SANtricity.
+* Per accedere direttamente a Gestore di sistema di SANtricity utilizzando un browser Web, è necessario disporre del nome utente e della password dell'amministratore di Gestione di sistema di SANtricity.
+
+
+
+NOTE: È necessario disporre del firmware SANtricity 8.70 (11.70) o superiore per accedere a Gestione sistemi SANtricity utilizzando Gestione griglia o il programma di installazione dell'appliance StorageGRID.
+
+
+IMPORTANT: L'accesso a Gestione di sistema SANtricity da Gestione griglia o dal programma di installazione dell'appliance è generalmente destinato solo al monitoraggio dell'hardware e alla configurazione di e-Series AutoSupport. Molte funzionalità e operazioni di Gestione sistema di SANtricity, come l'aggiornamento del firmware, non si applicano al monitoraggio dell'appliance StorageGRID. Per evitare problemi, seguire sempre le istruzioni di installazione e manutenzione dell'hardware dell'appliance.
+
+.Fasi
+. xref:setting-up-and-accessing-santricity-system-manager.adoc[Accedere a Gestore di sistema di SANtricity].
+. Se necessario, immettere il nome utente e la password dell'amministratore.
+. Fare clic su *Annulla* per chiudere la procedura guidata di configurazione e visualizzare la home page di Gestore di sistema di SANtricity.
++
+Viene visualizzata la home page di Gestore di sistema di SANtricity. In Gestore di sistema di SANtricity, lo shelf del controller viene definito storage array.
+
++
+image::../media/sam_home_page.gif[Schermata iniziale di Gestione sistema SANtricity]
+
+. Esaminare le informazioni visualizzate per l'hardware dell'appliance e verificare che tutti i componenti hardware abbiano uno stato ottimale.
++
+.. Fare clic sulla scheda *hardware*.
+.. Fare clic su *Mostra retro dello shelf*.
++
+image::../media/sam_hardware_controllers_a_and_b.gif[Scheda hardware status (Stato hardware) in Gestore di sistema di SANtricity]
+
++
+Dal retro dello shelf, è possibile visualizzare entrambi i controller di storage, la batteria di ciascun controller di storage, i due contenitori di alimentazione, i due contenitori per ventole e gli eventuali shelf di espansione. È inoltre possibile visualizzare le temperature dei componenti.
+
+.. Per visualizzare le impostazioni di ciascun controller di storage, selezionare il controller e selezionare *View settings* (Visualizza impostazioni) dal menu di scelta rapida.
+.. Per visualizzare le impostazioni degli altri componenti sul retro dello shelf, selezionare il componente che si desidera visualizzare.
+.. Fare clic su *Mostra parte anteriore dello shelf* e selezionare il componente che si desidera visualizzare.
++
+Dalla parte anteriore dello shelf, è possibile visualizzare le unità e i cassetti delle unità per lo shelf del controller di storage o gli shelf di espansione (se presenti).
+
+
+
+
+
+Se lo stato di un componente richiede attenzione, seguire la procedura descritta nel Recovery Guru per risolvere il problema o contattare il supporto tecnico.

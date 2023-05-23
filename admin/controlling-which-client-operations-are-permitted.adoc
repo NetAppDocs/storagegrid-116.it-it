@@ -1,0 +1,49 @@
+---
+permalink: admin/controlling-which-client-operations-are-permitted.html 
+sidebar: sidebar 
+keywords: prevent client modification, grid option, deny client operations 
+summary: 'È possibile selezionare l"opzione Impedisci modifica client per negare specifiche operazioni del client HTTP.' 
+---
+= Controllare quali operazioni client sono consentite
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile selezionare l'opzione Impedisci modifica client per negare specifiche operazioni del client HTTP.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.A proposito di questa attività
+Impedisci modifica client è un'impostazione a livello di sistema. Quando si seleziona l'opzione Impedisci modifica client, le seguenti richieste vengono rifiutate:
+
+* *S3 REST API*
++
+** Elimina richieste bucket
+** Qualsiasi richiesta di modifica dei dati di un oggetto esistente, dei metadati definiti dall'utente o del tagging degli oggetti S3
++
+
+NOTE: Questa impostazione non si applica ai bucket con versione attivata. Il controllo delle versioni impedisce già le modifiche ai dati degli oggetti, ai metadati definiti dall'utente e all'etichettatura degli oggetti.
+
+
+
+* *API REST Swift*
++
+** Eliminare le richieste di container
+** Richiede di modificare qualsiasi oggetto esistente. Ad esempio, le seguenti operazioni sono negate: Put Overwrite (Inserisci sovrascrittura), Delete (Elimina), Metadata Update (aggiornamento metadati) e così via.
+
+
+
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sistema* *Opzioni griglia*.
+. Nella sezione Opzioni di rete, selezionare la casella di controllo *Impedisci modifica client*.
++
+image::../media/prevent_client_modification.png[Impedire la modifica del client]
+
+. Selezionare *Salva*.
+

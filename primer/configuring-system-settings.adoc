@@ -1,0 +1,42 @@
+---
+permalink: primer/configuring-system-settings.html 
+sidebar: sidebar 
+keywords: system settings, grid manager, configure, configuration, display options, grid options, key management server, S3 object lock, storage options 
+summary: È possibile configurare diverse impostazioni di sistema da Gestione griglia per ottimizzare il funzionamento del sistema StorageGRID. 
+---
+= Configurare le impostazioni di sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare diverse impostazioni di sistema da Gestione griglia per ottimizzare il funzionamento del sistema StorageGRID.
+
+
+
+== Opzioni di visualizzazione
+
+Le opzioni di visualizzazione consentono di specificare il periodo di timeout per le sessioni utente e di eliminare le notifiche e-mail per gli allarmi legacy e i messaggi AutoSupport attivati dagli eventi.
+
+
+
+== Opzioni della griglia
+
+È possibile utilizzare Opzioni griglia per configurare le impostazioni per tutti gli oggetti memorizzati nel sistema StorageGRID, inclusa la compressione degli oggetti memorizzati e la crittografia degli oggetti memorizzati. e l'hashing degli oggetti memorizzati.
+
+È inoltre possibile utilizzare queste opzioni per specificare le impostazioni globali per le operazioni dei client S3 e Swift.
+
+
+
+== Blocco oggetti S3
+
+La funzione blocco oggetti StorageGRID S3 è una soluzione di protezione degli oggetti equivalente a blocco oggetti S3 in Amazon Simple Storage Service (Amazon S3). È possibile attivare l'impostazione di blocco oggetti S3 globale per un sistema StorageGRID per consentire agli account tenant S3 di creare bucket con blocco oggetti S3 attivato. Il tenant può quindi utilizzare un'applicazione client S3 per specificare facoltativamente le impostazioni di conservazione (conserva fino alla data, conservazione legale o entrambe) per gli oggetti in tali bucket. Inoltre, ogni bucket con S3 Object Lock abilitato può disporre di una modalità di conservazione e di un periodo di conservazione predefiniti, che si applicano se gli oggetti vengono aggiunti al bucket senza le proprie impostazioni di conservazione.
+
+image::../media/s3_object_lock_architecture.png[Architettura di blocco oggetti S3]
+
+
+
+== Opzioni di storage
+
+Le opzioni di storage consentono di controllare la segmentazione degli oggetti e di ignorare le impostazioni di filigrana del volume di storage per gestire lo spazio di storage utilizzabile di un nodo di storage.

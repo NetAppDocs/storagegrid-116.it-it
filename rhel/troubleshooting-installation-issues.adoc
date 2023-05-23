@@ -1,0 +1,41 @@
+---
+permalink: rhel/troubleshooting-installation-issues.html 
+sidebar: sidebar 
+keywords: how to troubleshoot red hat linux centos installation 
+summary: 'Se si verificano problemi durante l"installazione del sistema StorageGRID, è possibile accedere ai file di log dell"installazione. Per risolvere i problemi, potrebbe essere necessario utilizzare anche i file di log dell"installazione.' 
+---
+= Risolvere i problemi di installazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si verificano problemi durante l'installazione del sistema StorageGRID, è possibile accedere ai file di log dell'installazione. Per risolvere i problemi, potrebbe essere necessario utilizzare anche i file di log dell'installazione.
+
+I seguenti file di log per l'installazione sono disponibili dal container che esegue ciascun nodo:
+
+* `/var/local/log/install.log` (trovato su tutti i nodi della griglia)
+* `/var/local/log/gdu-server.log` (Trovato sul nodo di amministrazione primario)
+
+
+I seguenti file di log per l'installazione sono disponibili dall'host:
+
+* `/var/log/storagegrid/daemon.log`
+* `/var/log/storagegrid/nodes/node-name.log`
+
+
+Per informazioni su come accedere ai file di registro, consultare le istruzioni per il monitoraggio e la risoluzione dei problemi di StorageGRID. Per assistenza nella risoluzione dei problemi di installazione dell'appliance, consultare le istruzioni di installazione e manutenzione dell'appliance. Se hai bisogno di ulteriore assistenza, contatta il supporto tecnico.
+
+.Informazioni correlate
+xref:../monitor/index.adoc[Monitorare e risolvere i problemi]
+
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
+xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+xref:../sg5700/index.adoc[Appliance di storage SG5700]
+
+xref:../sg5600/index.adoc[Appliance di storage SG5600]
+
+https://mysupport.netapp.com/site/global/dashboard["Supporto NetApp"^]

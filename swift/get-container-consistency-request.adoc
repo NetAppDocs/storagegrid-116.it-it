@@ -1,0 +1,121 @@
+---
+permalink: swift/get-container-consistency-request.html 
+sidebar: sidebar 
+keywords: get container consistency request 
+summary: I controlli di coerenza forniscono un equilibrio tra la disponibilità degli oggetti e la coerenza di tali oggetti nei diversi nodi e siti di storage. La richiesta DI coerenza GET Container consente di determinare il livello di coerenza applicato a un determinato container. 
+---
+= OTTENERE una richiesta di coerenza dei container
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I controlli di coerenza forniscono un equilibrio tra la disponibilità degli oggetti e la coerenza di tali oggetti nei diversi nodi e siti di storage. La richiesta DI coerenza GET Container consente di determinare il livello di coerenza applicato a un determinato container.
+
+
+
+== Richiesta
+
+|===
+| Richiedi intestazione HTTP | Descrizione 
+
+
+ a| 
+`X-Auth-Token`
+ a| 
+Specifica il token di autenticazione Swift per l'account da utilizzare per la richiesta.
+
+
+
+ a| 
+`x-ntap-sg-consistency`
+ a| 
+Specifica il tipo di richiesta, dove `true` = OTTENERE la coerenza del container, e. `false` = GET container (OTTIENI container).
+
+
+
+ a| 
+`Host`
+ a| 
+Il nome host a cui viene indirizzata la richiesta.
+
+|===
+
+
+== Esempio di richiesta
+
+[listing]
+----
+GET /v1/28544923908243208806/Swift container
+X-Auth-Token: SGRD_3a877009a2d24cb1801587bfa9050f29
+x-ntap-sg-consistency: true
+Host: test.com
+----
+
+
+== Risposta
+
+|===
+| Intestazione HTTP di risposta | Descrizione 
+
+
+ a| 
+`Date`
+ a| 
+La data e l'ora della risposta.
+
+
+
+ a| 
+`Connection`
+ a| 
+Se la connessione al server è aperta o chiusa.
+
+
+
+ a| 
+`X-Trans-Id`
+ a| 
+Identificativo univoco della transazione per la richiesta.
+
+
+
+ a| 
+`Content-Length`
+ a| 
+La lunghezza del corpo di risposta.
+
+
+
+ a| 
+`x-ntap-sg-consistency`
+ a| 
+Il livello di controllo della coerenza applicato al container. Sono supportati i seguenti valori:
+
+* *All*: Tutti i nodi ricevono i dati immediatamente o la richiesta non riesce.
+* *Strong-Global*: Garantisce la coerenza di lettura dopo scrittura per tutte le richieste dei client in tutti i siti.
+* *Strong-Site*: Garantisce la coerenza di lettura dopo scrittura per tutte le richieste dei client all'interno di un sito.
+* *Read-after-new-write*: Fornisce coerenza di lettura dopo scrittura per nuovi oggetti ed eventuale coerenza per gli aggiornamenti degli oggetti. Offre alta disponibilità e garanzie di protezione dei dati.
++
+*Nota*: Se l'applicazione utilizza richieste HEAD su oggetti che non esistono, potrebbe essere visualizzato un numero elevato di errori 500 interni del server se uno o più nodi di storage non sono disponibili. Per evitare questi errori, utilizzare il livello "`Available`".
+
+* *Available* (eventuale coerenza per le operazioni HEAD): Si comporta come il livello di coerenza "`read-after-new-write`", ma fornisce solo una coerenza finale per le operazioni HEAD. Offre una maggiore disponibilità per le operazioni HEAD rispetto a "`read-after-new-write`" se i nodi storage non sono disponibili.
+
+
+|===
+
+
+== Esempio di risposta
+
+[listing]
+----
+HTTP/1.1 204 No Content
+Date: Sat, 29 Nov 2015 01:02:18 GMT
+Connection: CLOSE
+X-Trans-Id: 1936575373
+Content-Length: 0
+x-ntap-sg-consistency: strong-site
+----
+.Informazioni correlate
+xref:../tenant/index.adoc[USA account tenant]

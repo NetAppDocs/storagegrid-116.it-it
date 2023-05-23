@@ -1,0 +1,54 @@
+---
+permalink: admin/selecting-preferred-sender.html 
+sidebar: sidebar 
+keywords: preferred sender, admin nodes, primary admin node 
+summary: 'Se l"implementazione di StorageGRID include più nodi di amministrazione, è possibile selezionare quale nodo di amministrazione deve essere il mittente preferito delle notifiche. Per impostazione predefinita, viene selezionato il nodo di amministrazione principale, ma qualsiasi nodo di amministrazione può essere il mittente preferito.' 
+---
+= Selezionare un mittente preferito
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se l'implementazione di StorageGRID include più nodi di amministrazione, è possibile selezionare quale nodo di amministrazione deve essere il mittente preferito delle notifiche. Per impostazione predefinita, viene selezionato il nodo di amministrazione principale, ma qualsiasi nodo di amministrazione può essere il mittente preferito.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.A proposito di questa attività
+La pagina *CONFIGURAZIONE* *sistema* *Opzioni di visualizzazione* mostra quale nodo amministrativo è attualmente selezionato come mittente preferito. Per impostazione predefinita, viene selezionato il nodo di amministrazione principale.
+
+Nelle normali operazioni di sistema, solo il mittente preferito invia le seguenti notifiche:
+
+* Messaggi AutoSupport
+* Notifiche SNMP
+* E-mail di avviso
+* Email di allarme (sistema legacy)
+
+
+Tuttavia, tutti gli altri nodi di amministrazione (mittenti in standby) monitorano il mittente preferito. Se viene rilevato un problema, anche un mittente in standby può inviare queste notifiche.
+
+Sia il mittente preferito che il mittente in standby potrebbero inviare notifiche nei seguenti casi:
+
+* Se i nodi di amministrazione diventano "`islanded`" l'uno dall'altro, sia il mittente preferito che i mittenti di standby tenteranno di inviare notifiche e potrebbero essere ricevute più copie delle notifiche.
+* Dopo che un mittente in standby rileva problemi con il mittente preferito e inizia a inviare notifiche, il mittente preferito potrebbe riacquistare la capacità di inviare notifiche. In questo caso, potrebbero essere inviate notifiche duplicate. Il mittente in standby interrompe l'invio di notifiche quando non rileva più errori sul mittente preferito.
+
+
+
+NOTE: Quando si testano le notifiche di allarme e i messaggi AutoSupport, tutti i nodi di amministrazione inviano l'email di test. Quando si verificano le notifiche di avviso, è necessario accedere a ogni nodo amministratore per verificare la connettività.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* > *sistema* > *Opzioni di visualizzazione*.
+. Dal menu Display Options (Opzioni di visualizzazione), selezionare *Options* (Opzioni).
+. Selezionare il nodo Admin che si desidera impostare come mittente preferito dall'elenco a discesa.
++
+image::../media/display_options_preferred_sender.gif[Pagina Display Options (Opzioni di visualizzazione)]
+
+. Selezionare *Applica modifiche*.
++
+L'Admin Node viene impostato come mittente preferito delle notifiche.
+
+

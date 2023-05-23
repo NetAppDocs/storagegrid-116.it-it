@@ -1,0 +1,48 @@
+---
+permalink: rhel/planning-and-preparation.html 
+sidebar: sidebar 
+keywords: installation planning red hat linux 
+summary: Prima di implementare i nodi grid e configurare la griglia StorageGRID, è necessario conoscere i passaggi e i requisiti per completare la procedura. 
+---
+= Prima di installare (Red Hat o CentOS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di implementare i nodi grid e configurare la griglia StorageGRID, è necessario conoscere i passaggi e i requisiti per completare la procedura.
+
+Le procedure di implementazione e configurazione di StorageGRID presuppongono una conoscenza dell'architettura e del funzionamento del sistema StorageGRID.
+
+È possibile implementare uno o più siti contemporaneamente; tuttavia, tutti i siti devono soddisfare il requisito minimo di avere almeno tre nodi di storage.
+
+Prima di avviare un'installazione StorageGRID, è necessario:
+
+* Comprendere i requisiti di calcolo di StorageGRID, inclusi i requisiti minimi di CPU e RAM per ciascun nodo.
+* Scopri come StorageGRID supporta più reti per la separazione del traffico, la sicurezza e la convenienza amministrativa e utilizza un piano per le reti che intendi collegare a ciascun nodo StorageGRID.
++
+Consultare le linee guida per il collegamento in rete di StorageGRID.
+
+* Comprendere i requisiti di storage e performance di ogni tipo di nodo grid.
+* Identificare un insieme di server (fisici, virtuali o entrambi) che, in aggregato, forniscono risorse sufficienti per supportare il numero e il tipo di nodi StorageGRID che si intende implementare.
+* Comprendere i requisiti per la migrazione dei nodi, se si desidera eseguire la manutenzione pianificata sugli host fisici senza alcuna interruzione del servizio.
+* Raccogliere tutte le informazioni di rete in anticipo. A meno che non si utilizzi DHCP, raccogliere gli indirizzi IP da assegnare a ciascun nodo della griglia e gli indirizzi IP dei server DNS (Domain Name System) e NTP (Network Time Protocol) che verranno utilizzati.
+* Installazione, connessione e configurazione di tutto l'hardware richiesto, incluse eventuali appliance StorageGRID, in base alle specifiche.
++
+
+NOTE: Le istruzioni di installazione e integrazione specifiche dell'hardware non sono incluse nella procedura di installazione di StorageGRID. Per informazioni su come installare le appliance StorageGRID, consultare le istruzioni di installazione e manutenzione dell'appliance.
+
+* Decidere quali strumenti di implementazione e configurazione si desidera utilizzare.
+
+
+.Informazioni correlate
+xref:../network/index.adoc[Linee guida per il networking]
+
+xref:../sg100-1000/index.adoc[Appliance di servizi SG100 e SG1000]
+
+xref:../sg6000/index.adoc[Appliance di storage SG6000]
+
+xref:../sg5700/index.adoc[Appliance di storage SG5700]
+
+xref:../sg5600/index.adoc[Appliance di storage SG5600]

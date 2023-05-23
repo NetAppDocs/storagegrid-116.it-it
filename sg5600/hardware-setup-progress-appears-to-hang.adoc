@@ -1,0 +1,62 @@
+---
+permalink: sg5600/hardware-setup-progress-appears-to-hang.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, troubleshoot, troubleshooting, hardware, setup, hang, hangs, fails, failure, stop, terminate, terminates, stuck 
+summary: 'Il programma di installazione dell"appliance StorageGRID potrebbe non essere disponibile se errori hardware o di cablaggio impediscono al controller E5600SG di completare l"elaborazione di avvio.' 
+---
+= L'installazione dell'hardware sembra bloccarsi (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il programma di installazione dell'appliance StorageGRID potrebbe non essere disponibile se errori hardware o di cablaggio impediscono al controller E5600SG di completare l'elaborazione di avvio.
+
+.Fasi
+. Controllare il LED needs Attention (attenzione necessaria) su uno dei controller e verificare la presenza di un codice di errore lampeggiante.
++
+Durante l'accensione, i LED Service Action Allowed (azione di servizio consentita) e Service Action Required (azione di servizio richiesta) si accendono durante l'inizializzazione dell'hardware. Si illumina anche il punto decimale superiore della cifra inferiore, denominato _LED diagnostico_. Il display a sette segmenti attraversa una sequenza di codici comuni a entrambi i controller. Questo è normale e non indica un errore. Quando l'hardware viene avviato correttamente, i LED dell'azione di servizio si spengono e i display sono azionati dal firmware.
+
+. Esaminare i codici sul display a sette segmenti della centralina E5600SG.
++
+
+NOTE: L'installazione e il provisioning richiedono tempo. Alcune fasi di installazione non riportano gli aggiornamenti al programma di installazione dell'appliance StorageGRID per alcuni minuti.
+
++
+Se si verifica un errore, il display a sette segmenti fa lampeggiare una sequenza, ad esempio HE.
+
+. Per comprendere il significato di questi codici, consulta le seguenti risorse:
++
+|===
+| Controller | Riferimento 
+
+
+ a| 
+Controller E5600SG
+ a| 
+** "`errore: Errore di sincronizzazione con il software SANtricity OS`"
+** "`codici display a sette segmenti della centralina E5600SG`"
+
+
+
+
+ a| 
+Controller E2700
+ a| 
+Documentazione di e-Series
+
+*Nota:* i codici descritti per il controller e-Series E5600 non si applicano al controller E5600 dell'appliance.
+
+|===
+. Se il problema persiste, contattare il supporto tecnico.
+
+
+.Informazioni correlate
+xref:e5600sg-controller-seven-segment-display-codes.adoc[Codici display a sette segmenti della centralina E5600SG]
+
+xref:he-error-error-synchronizing-with-santricity-os-software.adoc[ERRORE HE: Errore di sincronizzazione con il software SANtricity OS]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2344477["Guida all'installazione del tray di dischi e dei relativi tray di dischi per controller E2700"^]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61765["Documentazione NetApp: Serie E2700"^]

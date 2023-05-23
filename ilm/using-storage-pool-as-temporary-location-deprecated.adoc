@@ -1,0 +1,22 @@
+---
+permalink: ilm/using-storage-pool-as-temporary-location-deprecated.html 
+sidebar: sidebar 
+keywords: storage pool temporary location 
+summary: Quando si crea una regola ILM con un posizionamento degli oggetti che include un singolo pool di storage, viene richiesto di specificare un secondo pool di storage da utilizzare come posizione temporanea. 
+---
+= Utilizzo di un pool di storage come posizione temporanea (obsoleto)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si crea una regola ILM con un posizionamento degli oggetti che include un singolo pool di storage, viene richiesto di specificare un secondo pool di storage da utilizzare come posizione temporanea.
+
+Le posizioni temporanee sono state deprecate e verranno rimosse in una release futura. Non selezionare un pool di storage come posizione temporanea per una nuova regola ILM.
+
+
+NOTE: Se si seleziona il comportamento di acquisizione rigorosa (fase 3 della procedura guidata Crea regola ILM), la posizione temporanea viene ignorata.
+
+.Informazioni correlate
+xref:data-protection-options-for-ingest.adoc[Opzioni di protezione dei dati per l'acquisizione]

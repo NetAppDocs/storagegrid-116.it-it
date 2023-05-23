@@ -1,0 +1,44 @@
+---
+permalink: admin/enabling-http-for-client-communications.html 
+sidebar: sidebar 
+keywords: enable http, clb connections, storage node connections 
+summary: Per impostazione predefinita, le applicazioni client utilizzano il protocollo di rete HTTPS per tutte le connessioni ai nodi di storage o al servizio CLB obsoleto sui nodi gateway. È possibile attivare il protocollo HTTP per queste connessioni, ad esempio durante il test di un grid non di produzione. 
+---
+= Abilitare HTTP per le comunicazioni client
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per impostazione predefinita, le applicazioni client utilizzano il protocollo di rete HTTPS per tutte le connessioni ai nodi di storage o al servizio CLB obsoleto sui nodi gateway. È possibile attivare il protocollo HTTP per queste connessioni, ad esempio durante il test di un grid non di produzione.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.A proposito di questa attività
+Completare questa attività solo se i client S3 e Swift devono stabilire connessioni HTTP direttamente ai nodi di storage o al servizio CLB obsoleto sui nodi gateway.
+
+Non è necessario completare questa attività per i client che utilizzano solo connessioni HTTPS o per i client che si connettono al servizio Load Balancer (poiché è possibile configurare ciascun endpoint Load Balancer in modo che utilizzi HTTP o HTTPS). Per ulteriori informazioni, vedere le informazioni sulla configurazione degli endpoint del bilanciamento del carico.
+
+Vedere xref:summary-ip-addresses-and-ports-for-client-connections.adoc[Riepilogo: Indirizzi IP e porte per le connessioni client] Per sapere quali porte S3 e i client Swift utilizzano per la connessione ai nodi di storage o al servizio CLB obsoleto utilizzando HTTP o HTTPS
+
+
+IMPORTANT: Prestare attenzione quando si attiva HTTP per una griglia di produzione perché le richieste verranno inviate senza crittografia.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sistema* *Opzioni griglia*.
+. Nella sezione Opzioni di rete, selezionare la casella di controllo *attiva connessione HTTP*.
++
+image::../media/http_enabled.png[Attiva connessione HTTP]
+
+. Selezionare *Salva*.
+
+
+.Informazioni correlate
+* xref:configuring-load-balancer-endpoints.adoc[Configurare gli endpoint del bilanciamento del carico]
+* xref:../s3/index.adoc[Utilizzare S3]
+* xref:../swift/index.adoc[USA Swift]
+

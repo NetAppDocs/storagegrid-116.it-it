@@ -1,0 +1,46 @@
+---
+permalink: ilm/editing-storage-pool.html 
+sidebar: sidebar 
+keywords: edit storage pool 
+summary: È possibile modificare un pool di storage per modificarne il nome o per aggiornare siti e gradi di storage. 
+---
+= Modificare il pool di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile modificare un pool di storage per modificarne il nome o per aggiornare siti e gradi di storage.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+* Hai esaminato le linee guida per la creazione di pool di storage.
+* Se si intende modificare un pool di storage utilizzato da una regola nel criterio ILM attivo, si è preso in considerazione il modo in cui le modifiche influiranno sul posizionamento dei dati degli oggetti.
+
+
+.A proposito di questa attività
+Se si aggiunge un nuovo livello di storage a un pool di storage utilizzato nel criterio ILM attivo, tenere presente che i nodi di storage nel nuovo livello di storage non verranno utilizzati automaticamente. Per forzare StorageGRID a utilizzare un nuovo livello di storage, è necessario attivare un nuovo criterio ILM dopo aver salvato il pool di storage modificato.
+
+.Fasi
+. Selezionare *ILM* > *Storage Pools*.
++
+Viene visualizzata la pagina Storage Pools.
+
+. Selezionare il pulsante di opzione per il pool di storage che si desidera modificare.
++
+Non è possibile modificare il pool di storage di tutti i nodi di storage.
+
+. Selezionare *Modifica*.
+. Se necessario, modificare il nome del pool di storage.
+. Se necessario, selezionare altri siti e livelli di storage.
++
+
+NOTE: Se il pool di storage viene utilizzato in un profilo di codifica Erasure e la modifica causerebbe l'invalidità dello schema di erasure coding, non sarà possibile modificare il livello di sito o storage. Ad esempio, se un pool di storage utilizzato in un profilo di codifica Erasure include attualmente un livello di storage con un solo sito, non è possibile utilizzare un livello di storage con due siti, in quanto la modifica renderebbe lo schema di erasure-coding non valido.
+
+. Selezionare *Salva*.
+
+
+.Al termine
+Se è stato aggiunto un nuovo livello di storage a un pool di storage utilizzato nel criterio ILM attivo, attivare un nuovo criterio ILM per forzare StorageGRID a utilizzare il nuovo livello di storage. Ad esempio, clonare il criterio ILM esistente e attivare il clone.

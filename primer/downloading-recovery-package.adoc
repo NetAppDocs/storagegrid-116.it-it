@@ -1,0 +1,31 @@
+---
+permalink: primer/downloading-recovery-package.html 
+sidebar: sidebar 
+keywords: recovery package, download, encryption keys 
+summary: 'Il pacchetto di ripristino è un file .zip scaricabile che contiene file e software specifici per l"implementazione necessari per installare, espandere, aggiornare e gestire un sistema StorageGRID.' 
+---
+= Scaricare il pacchetto di ripristino
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il pacchetto di ripristino è un file .zip scaricabile che contiene file e software specifici per l'implementazione necessari per installare, espandere, aggiornare e gestire un sistema StorageGRID.
+
+Il file Recovery Package contiene anche informazioni di configurazione e integrazione specifiche del sistema, inclusi nomi host e indirizzi IP dei server, nonché password altamente riservate necessarie durante la manutenzione, l'aggiornamento e l'espansione del sistema. Il pacchetto di ripristino è necessario per eseguire il ripristino in caso di guasto del nodo di amministrazione primario.
+
+Quando si installa un sistema StorageGRID, è necessario scaricare il file del pacchetto di ripristino e confermare che è possibile accedere al contenuto del file. È inoltre necessario scaricare il file ogni volta che la topologia della griglia del sistema StorageGRID cambia a causa delle procedure di manutenzione o aggiornamento.
+
+image::../media/recovery_package.png[Pagina Recovery Package]
+
+Dopo aver scaricato il file del pacchetto di ripristino e aver confermato che è possibile estrarre il contenuto, copiare il file del pacchetto di ripristino in due posizioni sicure, sicure e separate.
+
+
+IMPORTANT: Il file del pacchetto di ripristino deve essere protetto perché contiene chiavi di crittografia e password che possono essere utilizzate per ottenere dati dal sistema StorageGRID.
+
+.Informazioni correlate
+* xref:../upgrade/index.adoc[Aggiornare il software]
+* xref:../expand/index.adoc[Espandi il tuo grid]
+* xref:../maintain/index.adoc[Ripristino e manutenzione]
+

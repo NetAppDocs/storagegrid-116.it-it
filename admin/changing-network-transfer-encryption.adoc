@@ -1,0 +1,31 @@
+---
+permalink: admin/changing-network-transfer-encryption.html 
+sidebar: sidebar 
+keywords: network transfer encryption, TLS algorithm 
+summary: 'Il sistema StorageGRID utilizza TLS (Transport Layer Security) per proteggere il traffico di controllo interno tra i nodi di rete. L"opzione Network Transfer Encryption (crittografia trasferimento di rete) imposta l"algoritmo utilizzato da TLS per crittografare il traffico di controllo tra i nodi della griglia. Questa impostazione non influisce sulla crittografia dei dati.' 
+---
+= Modificare la crittografia del trasferimento di rete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema StorageGRID utilizza TLS (Transport Layer Security) per proteggere il traffico di controllo interno tra i nodi di rete. L'opzione Network Transfer Encryption (crittografia trasferimento di rete) imposta l'algoritmo utilizzato da TLS per crittografare il traffico di controllo tra i nodi della griglia. Questa impostazione non influisce sulla crittografia dei dati.
+
+.Di cosa hai bisogno
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone di autorizzazioni di accesso specifiche.
+
+
+.A proposito di questa attività
+Per impostazione predefinita, la crittografia del trasferimento di rete utilizza l'algoritmo AES256-SHA. Il traffico di controllo può anche essere crittografato utilizzando l'algoritmo AES128-SHA.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* *sistema* *Opzioni griglia*.
+. Nella sezione Network Options (Opzioni di rete), impostare Network Transfer Encryption (crittografia trasferimento di rete) su *AES128-SHA* o *AES256-SHA* (impostazione predefinita).
++
+image::../media/network_transfer_encryption.png[Configurazione della griglia crittografia di rete]
+
+. Selezionare *Salva*.
+

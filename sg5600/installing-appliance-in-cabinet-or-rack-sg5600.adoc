@@ -1,0 +1,82 @@
+---
+permalink: sg5600/installing-appliance-in-cabinet-or-rack-sg5600.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5600, storage node, storage appliance, install, installing, installation, cabinet, rack, rail, rails 
+summary: 'Installare le guide nel cabinet o nel rack, quindi far scorrere l"apparecchio sulle guide. Se si dispone di un sistema SG5660, è necessario installare anche i dischi dopo l"installazione dell"apparecchio.' 
+---
+= Installazione dell'appliance in cabinet o rack (SG5600)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Installare le guide nel cabinet o nel rack, quindi far scorrere l'apparecchio sulle guide. Se si dispone di un sistema SG5660, è necessario installare anche i dischi dopo l'installazione dell'apparecchio.
+
+.Di cosa hai bisogno
+* Hai esaminato il documento Safety Notices incluso nella confezione e compreso le precauzioni per lo spostamento e l'installazione dell'hardware.
+* Si dispone delle istruzioni di installazione e-Series per l'hardware.
+
+
+
+CAUTION: Installare l'hardware dalla parte inferiore del rack, dell'armadio o del rack per evitare che l'apparecchiatura si ribalti.
+
+
+CAUTION: SG5612 pesa circa 27 kg (60 lb) quando è completamente carico di dischi. Per spostare in sicurezza il sistema SG5612 sono necessarie due persone o un sollevatore meccanico.
+
+
+CAUTION: SG5660 pesa circa 60 kg (132 lb) senza dischi installati. Sono necessarie quattro persone o un sollevatore meccanico per spostare in sicurezza un SG5660 vuoto.
+
+
+CAUTION: Per evitare di danneggiare l'hardware, non spostare mai un SG5660 se sono installati dischi. Prima di spostare l'apparecchio, è necessario rimuovere tutti i dischi.
+
+.A proposito di questa attività
+Completare le seguenti operazioni per installare l'appliance SG5660 in un cabinet o in un rack.
+
+* *Installare le guide di montaggio*
++
+Installare le guide di montaggio nel cabinet o nel rack.
+
++
+Consultare le istruzioni di installazione di e-Series per E2700 o E5600.
+
+* *Installare l'appliance nell'armadio o nel rack*
++
+Far scorrere l'apparecchio nell'armadietto o nel rack e fissarlo.
+
++
+
+NOTE: Se si solleva manualmente il sistema SG5660, collegare le quattro maniglie ai lati del telaio. Rimuovete queste maniglie mentre fate scorrere l'apparecchio sulle guide.
+
+* *Installare i dischi*
++
+Se si dispone di un SG5660, installare 12 dischi in ciascuno dei 5 cassetti.
+
++
+Per garantire il corretto funzionamento, è necessario installare tutti e 60 i dischi.
+
++
+.. Indossare il braccialetto ESD e rimuovere le unità dalla confezione.
+.. Rilasciare le leve sul cassetto superiore e far scorrere il cassetto verso l'esterno utilizzando le leve.
+.. Sollevare la maniglia dell'unità in verticale e allineare i pulsanti dell'unità con le tacche del cassetto.
++
+image::../media/appliance_drive_insertion.gif[Inserimento del disco]
+
+.. Premendo delicatamente sulla parte superiore dell'unità, ruotare la maniglia verso il basso fino a quando l'unità non scatta in posizione.
+.. Dopo aver installato le prime 12 unità, far scorrere nuovamente il cassetto spingendo al centro e chiudendo delicatamente entrambe le leve.
+.. Ripetere questa procedura per gli altri quattro cassetti.
+
+
+* *Fissare il pannello anteriore*
++
+*SG5612*: Fissare i cappucci terminali destro e sinistro sulla parte anteriore.
+
++
+*SG5660*: Fissare il pannello frontale.
+
+
+
+.Informazioni correlate
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2344477["Guida all'installazione del tray di dischi e dei relativi tray di dischi per controller E2700"^]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMP1532527["Guida all'installazione del tray di dischi e dei relativi tray di dischi per controller E5600"^]

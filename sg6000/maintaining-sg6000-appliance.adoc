@@ -1,0 +1,19 @@
+---
+permalink: sg6000/maintaining-sg6000-appliance.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, maintain, maintaining, hardware, procedures, tasks 
+summary: 'Potrebbe essere necessario eseguire le procedure di manutenzione sull"appliance SG6000. Le procedure descritte in questa sezione presuppongono che l"appliance sia già stata implementata come nodo di storage in un sistema StorageGRID.' 
+---
+= Manutenzione dell'appliance SG6000
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario eseguire le procedure di manutenzione sull'appliance SG6000. Le procedure descritte in questa sezione presuppongono che l'appliance sia già stata implementata come nodo di storage in un sistema StorageGRID.
+
+Per evitare interruzioni del servizio, verificare che tutti gli altri nodi di storage siano collegati alla rete prima di spegnere l'appliance o spegnere l'appliance durante una finestra di manutenzione programmata quando sono accettabili periodi di interruzione del servizio. Consultare le informazioni su xref:../monitor/monitoring-node-connection-states.adoc[monitoraggio degli stati di connessione del nodo].
+
+
+IMPORTANT: Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è necessario spegnere l'appliance durante una finestra di manutenzione programmata. In caso contrario, si potrebbe perdere temporaneamente l'accesso a tali oggetti durante qualsiasi procedura di manutenzione che porti fuori servizio un nodo di storage. Consultare le informazioni su xref:../ilm/index.adoc[gestione degli oggetti con la gestione del ciclo di vita delle informazioni].

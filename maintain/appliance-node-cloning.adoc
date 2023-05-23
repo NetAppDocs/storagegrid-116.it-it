@@ -1,0 +1,14 @@
+---
+permalink: maintain/appliance-node-cloning.html 
+sidebar: sidebar 
+keywords: node cloning, clone node 
+summary: 'È possibile clonare un nodo appliance in StorageGRID per utilizzare un"appliance di progettazione più recente o con funzionalità avanzate. La clonazione trasferisce tutte le informazioni sul nodo esistente alla nuova appliance, fornisce un processo di aggiornamento dell"hardware semplice da eseguire e fornisce un"alternativa alla disattivazione e all"espansione per la sostituzione delle appliance.' 
+---
+= Cloning del nodo dell'appliance
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile clonare un nodo appliance in StorageGRID per utilizzare un'appliance di progettazione più recente o con funzionalità avanzate. La clonazione trasferisce tutte le informazioni sul nodo esistente alla nuova appliance, fornisce un processo di aggiornamento dell'hardware semplice da eseguire e fornisce un'alternativa alla disattivazione e all'espansione per la sostituzione delle appliance.

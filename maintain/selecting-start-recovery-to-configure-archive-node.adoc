@@ -1,0 +1,50 @@
+---
+permalink: maintain/selecting-start-recovery-to-configure-archive-node.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, archive node 
+summary: Dopo aver sostituito un nodo di archiviazione, selezionare Avvia ripristino in Grid Manager per configurare il nuovo nodo come sostituzione del nodo guasto. 
+---
+= Selezionare Start Recovery (Avvia ripristino) per configurare il nodo di archiviazione
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver sostituito un nodo di archiviazione, selezionare Avvia ripristino in Grid Manager per configurare il nuovo nodo come sostituzione del nodo guasto.
+
+.Di cosa hai bisogno
+* È necessario accedere a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* È necessario disporre dell'autorizzazione Maintenance (manutenzione) o Root Access (accesso root).
+* È necessario disporre della passphrase di provisioning.
+* È necessario aver implementato e configurato il nodo sostitutivo.
+
+
+.Fasi
+. In Grid Manager, selezionare *MANUTENZIONE* *attività* *Recovery*.
+. Selezionare il nodo della griglia che si desidera ripristinare nell'elenco Pending Nodes (nodi in sospeso).
++
+I nodi vengono visualizzati nell'elenco dopo un errore, ma non è possibile selezionare un nodo fino a quando non è stato reinstallato e pronto per il ripristino.
+
+. Immettere la *Provisioning Passphrase*.
+. Fare clic su *Start Recovery* (Avvia ripristino).
++
+image::../media/4b_select_recovery_node.png[Schermata che mostra la pagina Maintenance Recovery]
+
+. Monitorare l'avanzamento del ripristino nella tabella Recovery Grid Node (nodo griglia di ripristino).
++
+
+NOTE: Durante l'esecuzione della procedura di ripristino, fare clic su *Reset* (Ripristina) per avviare un nuovo ripristino. Viene visualizzata una finestra di dialogo Info, che indica che il nodo viene lasciato in uno stato indeterminato se si ripristina la procedura.
+
++
+image::../media/recovery_reset_warning.gif[schermata che mostra la finestra di dialogo di avviso di ripristino]
+
++
+Se si desidera riprovare il ripristino dopo aver reimpostato la procedura, è necessario ripristinare il nodo a uno stato preinstallato, come segue:
+
++
+** *VMware*: Eliminare il nodo virtual grid implementato. Quindi, quando si è pronti per riavviare il ripristino, ridistribuire il nodo.
+** *Linux*: Riavviare il nodo eseguendo questo comando sull'host Linux: `storagegrid node force-recovery _node-name_`
+
+
+

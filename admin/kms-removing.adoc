@@ -1,0 +1,46 @@
+---
+permalink: admin/kms-removing.html 
+sidebar: sidebar 
+keywords: remove kms, remove key management server 
+summary: In alcuni casi, potrebbe essere necessario rimuovere un server di gestione delle chiavi. Ad esempio, è possibile rimuovere un KMS specifico del sito se il sito è stato decommissionato. 
+---
+= Rimozione di un server di gestione delle chiavi (KMS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In alcuni casi, potrebbe essere necessario rimuovere un server di gestione delle chiavi. Ad esempio, è possibile rimuovere un KMS specifico del sito se il sito è stato decommissionato.
+
+.Di cosa hai bisogno
+* Hai esaminato il xref:kms-considerations-and-requirements.adoc[considerazioni e requisiti per l'utilizzo di un server di gestione delle chiavi].
+* Hai effettuato l'accesso a Grid Manager utilizzando un xref:../admin/web-browser-requirements.adoc[browser web supportato].
+* Si dispone dell'autorizzazione di accesso root.
+
+
+.A proposito di questa attività
+È possibile rimuovere un KMS nei seguenti casi:
+
+* È possibile rimuovere un KMS specifico del sito se il sito è stato decommissionato o se il sito non include nodi appliance con crittografia del nodo attivata.
+* È possibile rimuovere il KMS predefinito se esiste già un KMS specifico del sito per ogni sito che ha nodi appliance con crittografia del nodo attivata.
+
+
+.Fasi
+. Selezionare *CONFIGURATION* *Security* *Key management server*.
++
+Viene visualizzata la pagina Key Management Server (Server di gestione delle chiavi) che mostra tutti i server di gestione delle chiavi configurati.
+
++
+image::../media/kms_configuration_details_table.png[Tabella KMS Dettagli configurazione KMS]
+
+. Selezionare il pulsante di opzione relativo al KMS che si desidera rimuovere e selezionare *Remove* (Rimuovi).
+. Esaminare le considerazioni nella finestra di dialogo di avviso.
++
+image::../media/kms_remove_warning.png[Avviso di rimozione KMS]
+
+. Selezionare *OK*.
++
+La configurazione KMS viene rimossa.
+
+

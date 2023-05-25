@@ -1258,11 +1258,11 @@
           
           <a target="_blank" 
             
-              href="/it-it/storagegrid-116/pdfs/sidebar/Accesso_e_configurazione_di_Gestione_di_sistema_SANtricity__SG6000_.pdf" 
+              href="/it-it/storagegrid-116/pdfs/sidebar/Accesso_e_configurazione_di_Gestore_di_sistema_SANtricity__SG6000_.pdf" 
             
           >
             <img src="/it-it/storagegrid-116/images/pdf.png" alt="" width="16" height="16"/>
-            Accesso e configurazione di Gestione di sistema SANtricity (SG6000)
+            Accesso e configurazione di Gestore di sistema SANtricity (SG6000)
           </a>
           
 
@@ -9015,20 +9015,20 @@
         Verificare le connessioni di rete a livello di porta
       </a></li></ul></li><li 
       data-pdf-exists="true" 
-      data-pdf-filename="Accesso e configurazione di Gestione di sistema SANtricity (SG6000)"
+      data-pdf-filename="Accesso e configurazione di Gestore di sistema SANtricity (SG6000)"
       data-li-level="4" 
       class="subfolders "
     ><a href="/it-it/storagegrid-116/sg6000/accessing-and-configuring-santricity-system-manager.html">
-        <div class="na-navbar-padding"> Accesso e configurazione di Gestione di sistema SANtricity (SG6000)</div>
+        <div class="na-navbar-padding"> Accesso e configurazione di Gestore di sistema SANtricity (SG6000)</div>
       </a>
       <ul style="display: none;">
         <li 
       data-pdf-exists="true" 
-      data-pdf-filename="Configurazione e accesso a Gestione di sistema SANtricity"
+      data-pdf-filename="Configurare e accedere a Gestore di sistema di SANtricity"
       data-li-level="5#" 
       class=" "
     ><a class="na-navbar-padding" href="/it-it/storagegrid-116/sg6000/setting-up-and-accessing-santricity-system-manager.html">
-        Configurazione e accesso a Gestione di sistema SANtricity
+        Configurare e accedere a Gestore di sistema di SANtricity
       </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Esaminare lo stato dell'hardware in Gestore di sistema di SANtricity"
@@ -17121,7 +17121,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-23 18:30:32 +0000">05/23/2023</time>
+    <time datetime="2023-05-25 17:40:27 +0000">05/25/2023</time>
     
   
 
@@ -17171,6 +17171,38 @@ Se si sostituisce il controller prima di installare il software StorageGRID, pot
 <div class="title">Fasi</div>
 <ol class="arabic">
 <li>
+<p>Visualizzare le configurazioni correnti dell&#8217;appliance e registrarle.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Accedere all&#8217;apparecchio da sostituire:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Immettere il seguente comando: <code>ssh admin@<em>grid_node_IP</em></code></p>
+</li>
+<li>
+<p>Immettere la password elencata in <code>Passwords.txt</code> file.</p>
+</li>
+<li>
+<p>Immettere il seguente comando per passare a root: <code>su -</code></p>
+</li>
+<li>
+<p>Immettere la password elencata in <code>Passwords.txt</code> file.</p>
+<div class="paragraph">
+<p>Una volta effettuato l&#8217;accesso come root, il prompt cambia da <code>$</code> a. <code>#</code>.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Inserire: <code><strong>run-host-command ipmitool lan print</strong></code> Per visualizzare le configurazioni BMC correnti per l&#8217;appliance.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
 <p>Se il controller SG6000-CN funziona in modo sufficiente per consentire un arresto controllato, spegnere il controller SG6000-CN.</p>
 <div class="paragraph">
 <p><a href="shutting-down-sg6000-cn-controller.html">Spegnere il controller SG6000-CN</a></p>
@@ -17190,7 +17222,7 @@ Se si sostituisce il controller prima di installare il software StorageGRID, pot
 </div>
 </li>
 <li>
-<p>Se le reti StorageGRID collegate al controller utilizzano server DHCP, aggiornare le impostazioni DNS/rete e indirizzo IP.</p>
+<p>Se una delle interfacce di rete di questo dispositivo StorageGRID è configurata per DHCP, potrebbe essere necessario aggiornare le assegnazioni permanenti del lease DHCP sui server DHCP per fare riferimento agli indirizzi MAC del dispositivo sostitutivo. L&#8217;aggiornamento garantisce che all&#8217;appliance siano assegnati gli indirizzi IP previsti.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -17202,7 +17234,12 @@ Se si sostituisce il controller prima di installare il software StorageGRID, pot
 <img src="/us-en/storagegrid-116/images/note.svg" alt="Nota">
 </td>
 <td class="content">
-L&#8217;etichetta dell&#8217;indirizzo MAC elenca l&#8217;indirizzo MAC per la porta di gestione BMC. + per determinare l&#8217;indirizzo MAC per la porta Admin Network, è necessario aggiungere <strong>2</strong> al numero esadecimale sull&#8217;etichetta. Ad esempio, se l&#8217;indirizzo MAC sull&#8217;etichetta termina con <strong>09</strong>, l&#8217;indirizzo MAC della porta di amministrazione terminerà con <strong>0B</strong>. Se l&#8217;indirizzo MAC sull&#8217;etichetta termina in <strong>(<em>y</em>)FF</strong>, l&#8217;indirizzo MAC per la porta di amministrazione terminerà in <strong>(<em>y</em>+1)01</strong>. È possibile eseguire facilmente questo calcolo aprendo Calculator in Windows, impostandolo sulla modalità Programmer, selezionando Hex, digitando l&#8217;indirizzo MAC e digitando <strong>+ 2 =</strong>.
+<div class="paragraph">
+<p>L&#8217;etichetta dell&#8217;indirizzo MAC elenca l&#8217;indirizzo MAC per la porta di gestione BMC.</p>
+</div>
+<div class="paragraph">
+<p>Per determinare l&#8217;indirizzo MAC della porta Admin Network, è necessario aggiungere <strong>2</strong> al numero esadecimale sull&#8217;etichetta. Ad esempio, se l&#8217;indirizzo MAC sull&#8217;etichetta termina con <strong>09</strong>, l&#8217;indirizzo MAC della porta di amministrazione terminerà con <strong>0B</strong>. Se l&#8217;indirizzo MAC sull&#8217;etichetta termina in <strong>(<em>y</em>)FF</strong>, l&#8217;indirizzo MAC per la porta di amministrazione terminerà in <strong>(<em>y</em>+1)01</strong>. È possibile eseguire facilmente questo calcolo aprendo Calculator in Windows, impostandolo sulla modalità Programmer, selezionando Hex, digitando l&#8217;indirizzo MAC e digitando <strong>+ 2 =</strong>.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -17273,28 +17310,81 @@ Per evitare prestazioni degradate, non attorcigliare, piegare, pizzicare o salir
 </div>
 </li>
 <li>
-<p>Verificare che il nodo di storage dell&#8217;appliance sia visualizzato in Grid Manager e che non vengano visualizzati allarmi.</p>
+<p>Se l&#8217;appliance in cui è stato sostituito il controller utilizzava un server di gestione delle chiavi (KMS) per crittografare i dati, potrebbe essere necessaria una configurazione aggiuntiva prima che il nodo possa unirsi alla griglia. Se il nodo non si unisce automaticamente alla griglia, assicurarsi che queste impostazioni di configurazione siano state trasferite al nuovo controller e configurare manualmente le impostazioni che non hanno la configurazione prevista:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../sg6000/configuring-storagegrid-connections.html">"Configurare le connessioni StorageGRID"</a></p>
 </li>
 <li>
-<p>In Grid Manager, selezionare <strong>NODES</strong> e verificare che l&#8217;indirizzo IP BMC del controller del nodo sia corretto.</p>
+<p><a href="../admin/kms-overview-of-kms-and-appliance-configuration.html#set-up-the-appliance">"Configurare la crittografia dei nodi per l&#8217;appliance"</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Accedere all&#8217;appliance con il controller sostituito:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Immettere il seguente comando: <code>ssh admin@<em>grid_node_IP</em></code></p>
+</li>
+<li>
+<p>Immettere la password elencata in <code>Passwords.txt</code> file.</p>
+</li>
+<li>
+<p>Immettere il seguente comando per passare a root: <code>su -</code></p>
+</li>
+<li>
+<p>Immettere la password elencata in <code>Passwords.txt</code> file.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Ripristinare la connettività di rete BMC per l&#8217;appliance. Sono disponibili due opzioni:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizzare IP statico, netmask e gateway</p>
+</li>
+<li>
+<p>Utilizzare DHCP per ottenere un IP, una netmask e un gateway</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Per ripristinare la configurazione BMC in modo che utilizzi un IP statico, una netmask e un gateway, immettere i seguenti comandi:</p>
 <div class="paragraph">
-<p>Se l&#8217;indirizzo IP del controller del nodo non è valido o non rientra nell&#8217;intervallo previsto, riconfigurare l&#8217;indirizzo IP come descritto nelle istruzioni di ripristino e manutenzione.</p>
+<p><code><strong>run-host-command ipmitool lan set 1 ipaddr <em>Appliance_IP</em></strong></code></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<img src="/us-en/storagegrid-116/images/note.svg" alt="Nota">
-</td>
-<td class="content">
-Se durante l&#8217;installazione originale sono state applicate ulteriori personalizzazioni, ad esempio l&#8217;impostazione delle destinazioni dei messaggi trap SNMP o le notifiche e-mail, registrare e convalidare la configurazione e, se necessario, riapplicarla.
-</td>
-</tr>
-</table>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p><a href="../maintain/index.html">Ripristino e manutenzione</a></p>
+<p><code><strong>run-host-command ipmitool lan set 1 netmask <em>Netmask_IP</em></strong></code></p>
 </div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code><strong>run-host-command ipmitool lan set 1 defgw ipaddr <em>Default_gateway</em></strong></code></p>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Per ripristinare la configurazione BMC in modo che utilizzi DHCP per ottenere un IP, una netmask e un gateway, immettere il seguente comando:</p>
+<div class="paragraph">
+<p><code><strong>run-host-command ipmitool lan set 1 ipsrc dhcp</strong></code></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Dopo aver ripristinato la connettività di rete BMC, connettersi all&#8217;interfaccia BMC per controllare e ripristinare eventuali configurazioni BMC personalizzate aggiuntive applicate. Ad esempio, è necessario confermare le impostazioni per le destinazioni dei messaggi trap SNMP e le notifiche e-mail. Vedere <a href="configuring-bmc-interface-sg6000.html">"Configurare l&#8217;interfaccia BMC"</a>.</p>
+</li>
+<li>
+<p>Verificare che il nodo appliance sia visualizzato in Grid Manager e che non vengano visualizzati avvisi.</p>
 </li>
 </ol>
 </div>

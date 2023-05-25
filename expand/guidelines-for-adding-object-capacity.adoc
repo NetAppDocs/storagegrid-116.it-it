@@ -22,7 +22,7 @@ Prima di aggiungere volumi di storage ai nodi di storage esistenti, consultare l
 * È necessario esaminare le regole ILM correnti per determinare dove e quando aggiungere volumi di storage per aumentare lo storage disponibile per gli oggetti replicati o con codifica di cancellazione. Consultare le istruzioni per xref:../ilm/index.adoc[gestione degli oggetti con la gestione del ciclo di vita delle informazioni].
 * Non è possibile aumentare la capacità dei metadati del sistema aggiungendo volumi di storage perché i metadati degli oggetti vengono memorizzati solo sul volume 0.
 * Ogni nodo di storage basato su software può supportare un massimo di 16 volumi di storage. Se è necessario aggiungere capacità oltre tale limite, è necessario aggiungere nuovi nodi di storage.
-* È possibile aggiungere uno o due shelf di espansione a ciascuna appliance SG6060 o SG6060X. Ogni shelf di espansione aggiunge 16 volumi di storage. Con entrambi gli shelf di espansione installati, SG6060 e SG6060X possono supportare eacg per un totale di 48 volumi di storage.
+* È possibile aggiungere uno o due shelf di espansione a ciascuna appliance SG6060 o SG6060X. Ogni shelf di espansione aggiunge 16 volumi di storage. Con entrambi gli shelf di espansione installati, SG6060 e SG6060X possono supportare ciascuno un totale di 48 volumi di storage.
 * Non è possibile aggiungere volumi di storage ad altre appliance di storage.
 * Non è possibile aumentare le dimensioni di un volume di storage esistente.
 * Non è possibile aggiungere volumi di storage a un nodo di storage contemporaneamente all'aggiornamento del sistema, all'operazione di recovery o a un'altra espansione.

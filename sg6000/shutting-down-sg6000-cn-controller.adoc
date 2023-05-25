@@ -25,9 +25,7 @@ xref:locating-controller-in-data-center.adoc[Individuare il controller nel data 
 Per evitare interruzioni del servizio, verificare che tutti gli altri nodi di storage siano collegati alla rete prima di spegnere il controller o spegnere il controller durante una finestra di manutenzione programmata quando sono accettabili periodi di interruzione del servizio. Consultare le informazioni sulla determinazione degli stati di connessione dei nodi nelle istruzioni per la gestione degli oggetti con la gestione del ciclo di vita delle informazioni.
 
 
-IMPORTANT: Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è necessario spegnere il controller durante una finestra di manutenzione pianificata. In caso contrario, è possibile che l'accesso a tali oggetti venga temporaneamente perso durante questa procedura.
-
-+ informazioni sulla gestione degli oggetti con la gestione del ciclo di vita delle informazioni.
+IMPORTANT: Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è necessario spegnere il controller durante una finestra di manutenzione pianificata. In caso contrario, è possibile che l'accesso a tali oggetti venga temporaneamente perso durante questa procedura. Vedere link:../ilm/index.html["Gestire gli oggetti con la gestione del ciclo di vita delle informazioni"].
 
 .Fasi
 . Una volta attivata la modalità di manutenzione dell'apparecchio, spegnere il controller SG6000-CN:

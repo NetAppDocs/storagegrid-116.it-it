@@ -49,12 +49,6 @@ Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
 +
 xref:shutting-down-sg6000-cn-controller.adoc[Spegnere il controller SG6000-CN]
 
-. Utilizzare uno dei due metodi per verificare che l'alimentazione del controller SG6000-CN sia spenta:
-+
-** Il LED dell'indicatore di alimentazione sulla parte anteriore del controller è spento.
-** La pagina Power Control dell'interfaccia BMC indica che il controller è spento.
-
-
 . Se una delle interfacce di rete di questo dispositivo StorageGRID è configurata per DHCP, potrebbe essere necessario aggiornare le assegnazioni permanenti del lease DHCP sui server DHCP per fare riferimento agli indirizzi MAC del dispositivo sostitutivo. L'aggiornamento garantisce che all'appliance siano assegnati gli indirizzi IP previsti.
 +
 .. Individuare l'etichetta dell'indirizzo MAC sulla parte anteriore del controller SG6000-CN e determinare l'indirizzo MAC della porta Admin Network.

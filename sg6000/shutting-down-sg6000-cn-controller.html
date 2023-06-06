@@ -17121,7 +17121,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-25 17:40:27 +0000">05/25/2023</time>
+    <time datetime="2023-06-06 13:51:35 +0000">06/06/2023</time>
     
   
 
@@ -17134,23 +17134,13 @@
 <div class="paragraph lead">
 <p>Spegnere il controller SG6000-CN per eseguire la manutenzione dell&#8217;hardware.</p>
 </div>
-<div class="ulist">
-<div class="title">Di cosa hai bisogno</div>
-<ul>
-<li>
-<p>Il controller SG6000-CN è stato fisicamente posizionato e richiede manutenzione nel data center.</p>
 <div class="paragraph">
-<p><a href="locating-controller-in-data-center.html">Individuare il controller nel data center</a></p>
-</div>
-</li>
-<li>
-<p>L&#8217;apparecchio è stato utilizzato <a href="placing-appliance-into-maintenance-mode.html">in modalità di manutenzione</a>.</p>
-</li>
-</ul>
+<div class="title">Di cosa hai bisogno</div>
+<p>Il controller SG6000-CN è stato fisicamente posizionato e richiede manutenzione nel data center. Vedere <a href="locating-controller-in-data-center.html">Individuare il controller nel data center</a>.</p>
 </div>
 <div class="paragraph">
 <div class="title">A proposito di questa attività</div>
-<p>Per evitare interruzioni del servizio, verificare che tutti gli altri nodi di storage siano collegati alla rete prima di spegnere il controller o spegnere il controller durante una finestra di manutenzione programmata quando sono accettabili periodi di interruzione del servizio. Consultare le informazioni sulla determinazione degli stati di connessione dei nodi nelle istruzioni per la gestione degli oggetti con la gestione del ciclo di vita delle informazioni.</p>
+<p>Per evitare interruzioni del servizio, verificare che tutti gli altri nodi di storage siano collegati alla rete prima di spegnere il controller o spegnere il controller durante una finestra di manutenzione programmata quando sono accettabili periodi di interruzione del servizio. Consultare le informazioni su <a href="monitoring-node-connection-states.html">monitoraggio degli stati di connessione del nodo</a>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -17168,7 +17158,7 @@ Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è 
 <div class="title">Fasi</div>
 <ol class="arabic">
 <li>
-<p>Una volta attivata la modalità di manutenzione dell&#8217;apparecchio, spegnere il controller SG6000-CN:</p>
+<p>Spegnere il controller SG6000-CN:</p>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -17176,7 +17166,7 @@ Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è 
 <img src="/us-en/storagegrid-116/images/caution.svg" alt="Avvertenza">
 </td>
 <td class="content">
-È necessario eseguire un arresto controllato del controller immettendo i comandi specificati di seguito. Lo spegnimento del controller mediante l&#8217;interruttore di alimentazione comporta la perdita di dati.
+È necessario eseguire un arresto controllato del controller immettendo i comandi specificati di seguito. È consigliabile eseguire un arresto controllato quando possibile per evitare avvisi non necessari, garantire la disponibilità di registri completi ed evitare interruzioni del servizio.
 </td>
 </tr>
 </table>
@@ -17184,7 +17174,7 @@ Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è 
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Accedere al nodo grid utilizzando putty o un altro client ssh:</p>
+<p>Se non hai ancora effettuato l&#8217;accesso al nodo grid, effettua l&#8217;accesso utilizzando putty o un altro client ssh:</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -17206,13 +17196,15 @@ Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è 
 </div>
 </li>
 <li>
-<p>Spegnere il controller SG6000-CN:<br>
-<code><strong>shutdown -h now</strong></code></p>
+<p>Spegnere il controller SG6000-CN:</p>
 <div class="paragraph">
-<p>Il completamento di questo comando potrebbe richiedere fino a 10 minuti.</p>
+<p><code><strong>shutdown -h now</strong></code></p>
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Il completamento di questo comando potrebbe richiedere fino a 10 minuti.</p>
 </div>
 </li>
 <li>

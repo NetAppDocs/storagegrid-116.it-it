@@ -53,7 +53,7 @@ Ad esempio, se un'appliance SG1000 di nodi di origine viene utilizzata come nodo
 
 * Un'appliance di storage sostitutiva deve avere una capacità uguale o superiore a quella del nodo di storage che sta sostituendo.
 +
-** Se l'appliance di storage di destinazione ha lo stesso numero di dischi del nodo di origine, i dischi dell'appliance di destinazione devono avere la stessa capacità (in TB) o superiore.
+** Se l'appliance di storage di destinazione ha lo stesso numero di dischi del nodo di origine, i dischi dell'appliance di destinazione devono avere una capacità maggiore (in TB).
 ** Se si intende utilizzare la stessa modalità RAID sul nodo di destinazione utilizzata sul nodo di origine, In caso di una modalità RAID meno efficiente in termini di storage (ad esempio, passando da RAID6 a DDP), i dischi dell'appliance di destinazione devono essere più grandi (in TB) rispetto ai dischi dell'appliance di origine.
 ** Se il numero di dischi standard installati in un'appliance di storage di destinazione è inferiore al numero di dischi nel nodo di origine, a causa dell'installazione di dischi a stato solido (SSD), la capacità di storage complessiva dei dischi standard nell'appliance di destinazione (in TB) Deve soddisfare o superare la capacità totale delle unità funzionali di tutti i dischi nel nodo di storage di origine.
 +
